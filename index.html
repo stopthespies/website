@@ -2,19 +2,12 @@
 layout: default
 ---
 
-<div class="home">
+<h3>Who wants to spy?</h3>
+<p>The Anti-Terrorism laws which are currently being developed contain some questionable clauses about your digital privacy. This website hopes to provide you with the information you need to be informed and tools to contact your representatives to let them know how you feel about the issue.</p>
+<h3>How does it affect me?</h3>
+  <iframe width="560" height="315" src="//www.youtube.com/embed/aGmiw_rrNxk" frameborder="0" allowfullscreen></iframe>
 
-  <h1>Posts</h1>
+<h3>How am I represented?</h3>
 
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+<h3>Quotes</h3>
+<p>"Surveilling an entire population to catch a criminal is like dragnetting the entire ocean to catch a shark."</p>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Your awesome title</title>
+    <title>Stop The Spies</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
-    <link>http://yourdomain.comhttp://thomasdavis.github.io/saveprivacy/</link>
-    <atom:link href="http://yourdomain.comhttp://thomasdavis.github.io/saveprivacy/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 06 Aug 2014 22:24:37 +1000</pubDate>
-    <lastBuildDate>Wed, 06 Aug 2014 22:24:37 +1000</lastBuildDate>
+    <link>http://yourdomain.com/</link>
+    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 08 Aug 2014 18:51:32 +1000</pubDate>
+    <lastBuildDate>Fri, 08 Aug 2014 18:51:32 +1000</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -26,8 +26,8 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 </description>
         <pubDate>Thu, 07 Aug 2014 08:16:58 +1000</pubDate>
-        <link>http://yourdomain.comhttp://thomasdavis.github.io/saveprivacy/jekyll/update/2014/08/07/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://yourdomain.comhttp://thomasdavis.github.io/saveprivacy/jekyll/update/2014/08/07/welcome-to-jekyll/</guid>
+        <link>http://yourdomain.com/jekyll/update/2014/08/07/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2014/08/07/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>

@@ -11,7 +11,7 @@ Read the Github issues to get more of an idea
 
 Just using this repo to also prototype some website ideas
 
-[http://thomasdavis.github.io/saveprivacy/](http://thomasdavis.github.io/saveprivacy/)
+[http://stopthespies.org/](http://stopthespies.org/)
 
 To develop
 
