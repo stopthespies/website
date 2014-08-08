@@ -13,13 +13,19 @@
       {{ content }}
       </div>
       <div class="col-md-3">
-      <h3>Campaign Stats</h3>
-      <button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-star"></span> Star
-</button>
+    {% include stats.html %}
+
+     
       </div>
       </div>  
     {% include footer.html %}
     </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script>
+    $('.metric').popover({
+      trigger: 'hover'
+    })
+    </script>
     </body>
 </html>

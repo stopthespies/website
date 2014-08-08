@@ -64,10 +64,47 @@
 </div>
       </div>
       <div class="col-md-3">
-      <h3>Campaign Stats</h3>
-      <button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-star"></span> Star
-</button>
+    
+
+<style>
+.metric {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    width: 100px;
+}
+.metric:hover {
+	background: #ebebeb;
+	cursor: pointer;
+}
+.metric .title {
+    font-weight: bold;
+}
+.metric .icon {
+    font-size: 40px;
+}
+</style>
+<h3 style="text-align:center;margin-bottom: 20px;">Campaign Stats</h3>
+<div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+    <div class="title">Calls</div>
+    <div class="icon">
+        <span class="glyphicon glyphicon-earphone"></span>
+    </div>
+    <div class="total">1000</div>
+</div>
+
+<div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+    <div class="title">Views</div>
+    <div class="icon">
+        <span class="glyphicon glyphicon-eye-open"></span>
+    </div>
+    <div class="total">1000</div>
+</div>
+
+
+     
       </div>
       </div>  
     <div class="footer">
@@ -75,5 +112,12 @@
 </div>
 
     </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script>
+    $('.metric').popover({
+      trigger: 'hover'
+    })
+    </script>
     </body>
 </html>
