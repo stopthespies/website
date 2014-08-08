@@ -1,3 +1,54 @@
 html {
 	overflow-y: scroll;
 }
+body {
+	font-size: 16px;
+}
+.who {
+	background: #01A8C6;
+	color: #F9F2E7;
+}
+.how {
+	background: #3FC0CB;
+	color: #F9F2E7;
+
+}
+.supporters {
+	background: #8FBE01;
+	color: #F9F2E7;
+}
+.who .row{
+    overflow: hidden; 
+}
+
+.who [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+.stats-container {
+	background: #fff;
+	height: 100%;
+}
+.stats {
+  background: #fff;
+  
+  color: #444;
+}
+.metric {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    width: 100px;
+}
+.metric:hover {
+  background: #ebebeb;
+  cursor: pointer;
+}
+.metric .title {
+    font-weight: bold;
+}
+.metric .icon {
+    font-size: 40px;
+}
