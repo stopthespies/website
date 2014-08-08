@@ -5296,11 +5296,15 @@ html {
   overflow-y: scroll; }
 
 body {
-  font-size: 16px; }
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif; }
 
 .who {
   background: #01A8C6;
   color: #F9F2E7; }
+
+.who p {
+  text-align: justify; }
 
 .how {
   background: #3FC0CB;
