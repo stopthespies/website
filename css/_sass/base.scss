@@ -46,6 +46,13 @@ body a {
 section { 
 padding: 40px 0;
 }
+section h2 {
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: -1px;
+}
 .who {
 	background: $brand5;
 	color: $brand1;
@@ -97,14 +104,10 @@ padding: 40px 0;
 .metric {
     text-align: center;
     margin-bottom: 20px;
-    border: 1px solid #ebebeb;
-    border-radius: 4px;
-    width: 100px;
-    float: left;
-    margin-right: 10px;
+    border-radius: 8px;
 }
 .metric:hover {
-  background: #ebebeb;
+  background: darken($brand3, 1%);
   cursor: pointer;
 }
 .metric .title {
