@@ -5363,6 +5363,10 @@ section h2 {
   .video-placeholder i {
     font-size: 90px; }
 
+.video-placeholder:hover {
+  background: #292929;
+  cursor: pointer; }
+
 .how {
   color: #fbf7e4;
   background: #8e001c; }

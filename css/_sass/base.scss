@@ -79,6 +79,10 @@ section h2 {
   }
 }
 
+  .video-placeholder:hover {
+    background: darken($brand4, 10%);
+    cursor: pointer;
+  }
 .how {
 	color: $brand3;
   background: $brand5;
