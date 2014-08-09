@@ -258,6 +258,14 @@ section h2 {
 .reading a {
   color: darken($brand2, 20%);
 }
+.actions { 
+  padding: 20px;
+  color: $brand4;
+  text-align: center;
+}
+.actions p {
+  text-align: justify;
+}
 .sharing-buttons {
     padding: 20px 0;
   

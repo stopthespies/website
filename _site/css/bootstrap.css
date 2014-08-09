@@ -5524,6 +5524,14 @@ section h2 {
 .reading a {
   color: #b0a767; }
 
+.actions {
+  padding: 20px;
+  color: #424242;
+  text-align: center; }
+
+.actions p {
+  text-align: justify; }
+
 .sharing-buttons {
   padding: 20px 0; }
 
