@@ -102,6 +102,9 @@ To add new posts, simply add a file in the <code>_posts</code> directory that fo
       container: 'body',
       placement: 'top'
     });
+    $('body').on('click', '.contact li', function () {
+      $('#myModal').modal();
+    })
     </script>
     </body>
 </html>
