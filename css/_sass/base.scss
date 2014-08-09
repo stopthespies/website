@@ -1,45 +1,58 @@
+$brand1:        #E7E8D1 !default;
+$brand2:        #D3CEAA !default;
+$brand3:        #FBF7E4 !default;
+$brand4:        #424242 !default;
+$brand5:        #8E001C !default;
+
+
 html {
 	overflow-y: scroll;
+}
+.header {
+  background: $brand4;
+  color: $brand3;
+}
+.header a {
+  color: $brand3;
 }
 body {
 	font-size: 18px;
 	font-family: 'Open Sans', sans-serif;
+  background: lighten($brand3, 10%);
+  color: darken($brand4, 10%);
 }
 section { 
 padding: 40px 0;
 }
 .who {
-	background: #01A8C6;
-	color: #F9F2E7;
+	background: $brand5;
+	color: $brand1;
 	text-align: center;
 }
 .who p {
 	text-align: justify;
 }
 .how {
-	background: #3FC0CB;
-	color: #F9F2E7;
+	color: $brand3;
+  background: $brand5;
 
 }
 .supporters {
 	background: #8FBE01;
-	color: #F9F2E7;
+	color: $brand1;
 }
 .footer {
   line-height: 15px;
   padding: 20px 0;
   font-size: 14px;
-  background: #01A8C6;
-  color: #F9F2E7;
+  background: $brand5;
+  color: $brand1;
 }
 .footer a {
-  
-  color: #F9F2E7;
+  color: $brand1;
 }
 .stats {
-  background: #fff;
   
-  color: #444;
 }
 .metric {
     text-align: center;

@@ -5295,42 +5295,47 @@ button.close {
 html {
   overflow-y: scroll; }
 
+.header {
+  background: #424242;
+  color: #fbf7e4; }
+
+.header a {
+  color: #fbf7e4; }
+
 body {
   font-size: 18px;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  background: white;
+  color: #292929; }
 
 section {
   padding: 40px 0; }
 
 .who {
-  background: #01A8C6;
-  color: #F9F2E7;
+  background: #8e001c;
+  color: #e7e8d1;
   text-align: center; }
 
 .who p {
   text-align: justify; }
 
 .how {
-  background: #3FC0CB;
-  color: #F9F2E7; }
+  color: #fbf7e4;
+  background: #8e001c; }
 
 .supporters {
   background: #8FBE01;
-  color: #F9F2E7; }
+  color: #e7e8d1; }
 
 .footer {
   line-height: 15px;
   padding: 20px 0;
   font-size: 14px;
-  background: #01A8C6;
-  color: #F9F2E7; }
+  background: #8e001c;
+  color: #e7e8d1; }
 
 .footer a {
-  color: #F9F2E7; }
-
-.stats {
-  background: #fff;
-  color: #444; }
+  color: #e7e8d1; }
 
 .metric {
   text-align: center;
