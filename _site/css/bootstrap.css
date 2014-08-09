@@ -5403,10 +5403,18 @@ section h2 {
   background: #8FBE01;
   color: #e7e8d1; }
 
-.nav-tabs a {
+.nav-tabs {
+  border-bottom: none; }
+
+.nav-tabs li a {
   font-size: 22px;
-  padding: 10px;
+  padding: 10px 25px;
   text-transform: uppercase; }
+
+.nav-tabs li.active:hover a {
+  background: #424242;
+  border-color: #424242;
+  color: #e7e8d1; }
 
 .nav-tabs li.active a {
   background: #424242;
@@ -5419,7 +5427,17 @@ section h2 {
   color: #424242; }
 
 .tab-content {
-  padding: 20px 0; }
+  padding: 20px 0;
+  background: #fbf7e4;
+  padding: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px; }
+
+.tab-content img {
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer; }
 
 .footer {
   line-height: 15px;

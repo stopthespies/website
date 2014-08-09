@@ -179,10 +179,10 @@
                 </ul>
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade in active" id="home">
-                        <img src="http://lorempixel.com/70/70/people" />
-                        <img src="http://lorempixel.com/70/70/people?1" />
-                        <img src="http://lorempixel.com/70/70/people?2" />
-                        <img src="http://lorempixel.com/70/70/people?3" />
+                        <img src="http://lorempixel.com/70/70/people"  data-toggle="popover" title="Popover title" data-content="The users tweet will go here. I support #stopthespies" />
+                        <img src="http://lorempixel.com/70/70/people?1"  data-toggle="popover" title="Popover title" data-content="The users tweet will go here. I support #stopthespies" />
+                        <img src="http://lorempixel.com/70/70/people?2"  data-toggle="popover" title="Popover title" data-content="The users tweet will go here. I support #stopthespies" />
+                        <img src="http://lorempixel.com/70/70/people?3"  data-toggle="popover" title="Popover title" data-content="The users tweet will go here. I support #stopthespies" />
                     </div>
                     <div class="tab-pane fade" id="profile">
                         <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
@@ -231,7 +231,13 @@
       trigger: 'hover',
       container: 'body',
       placement: 'top'
-    })
+    });
+
+    $('.support img').popover({
+      trigger: 'hover',
+      container: 'body',
+      placement: 'top'
+    });
     </script>
     </body>
 </html>

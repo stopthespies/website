@@ -126,12 +126,19 @@ section h2 {
   background: #8FBE01;
   color: $brand1;
 }
-.nav-tabs a {
+.nav-tabs {
+  border-bottom: none;
+}
+.nav-tabs li a {
   font-size: 22px;
-  padding: 10px;
+  padding: 10px 25px;
   text-transform: uppercase;
 }
-.nav-tabs li.active {
+.nav-tabs li.active:hover a {
+
+  background: $brand4;
+  border-color: $brand4;
+  color: $brand1;
 }
 .nav-tabs li.active a {
   background: $brand4;
@@ -146,7 +153,18 @@ section h2 {
 }
 .tab-content {
   padding: 20px 0;
+  background: $brand3;
+  padding: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
 }
+.tab-content img {
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
 .footer {
   line-height: 15px;
   padding: 20px 0;
