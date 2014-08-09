@@ -5441,7 +5441,13 @@ section h2 {
 .tab-content img {
   border-radius: 8px;
   margin-right: 10px;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-top: 20px;
+  border: 1px solid #e7d05f;
+  opacity: 0.7; }
+
+.tab-content img:hover {
+  opacity: 1; }
 
 .footer {
   line-height: 15px;
@@ -5449,3 +5455,28 @@ section h2 {
   font-size: 14px;
   background: #424242;
   color: #e7e8d1; }
+
+.extra {
+  background: #8e001c;
+  color: #e7e8d1; }
+
+.extra .intro {
+  margin-bottom: 20px;
+  text-align: justify; }
+
+.extra h4 {
+  text-transform: uppercase;
+  color: #424242;
+  text-align: center;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  padding-top: 20px; }
+
+.step {
+  background: #d3ceaa;
+  height: 200px;
+  border-radius: 8px; }
+
+.reading a {
+  color: #b0a767; }
