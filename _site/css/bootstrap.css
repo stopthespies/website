@@ -5518,8 +5518,58 @@ section h2 {
 
 .step {
   background: #d3ceaa;
-  height: 200px;
+  min-height: 200px;
   border-radius: 8px; }
 
 .reading a {
   color: #b0a767; }
+
+.sharing-buttons {
+  padding: 20px 0; }
+
+.sharing-buttons .share {
+  display: block;
+  width: 185px;
+  left: -10px;
+  height: 40px;
+  background: #000;
+  text-decoration: none;
+  border-radius: 0 3px 3px 0;
+  padding: 8px 12px;
+  color: #fff;
+  font-weight: bold;
+  margin: auto;
+  margin-bottom: 10px;
+  font-size: 13px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.sharing-buttons .share:hover {
+  left: 0px; }
+
+.sharing-buttons span.light {
+  font-weight: normal; }
+
+.sharing-buttons .share.twitter {
+  background: #59adeb; }
+  .sharing-buttons .share.twitter:hover {
+    background: #2b97e6; }
+
+.sharing-buttons .share.tumblr {
+  background: #32506e; }
+  .sharing-buttons .share.tumblr:hover {
+    background: #22364b; }
+
+.sharing-buttons .share.facebook {
+  background: #3c5a96; }
+  .sharing-buttons .share.facebook:hover {
+    background: #2d4472; }
+
+.sharing-buttons .share.facebook img {
+  margin-top: -3px; }
+
+.sharing-buttons .share.googleplus {
+  background: #db585a; }
+  .sharing-buttons .share.googleplus:hover {
+    background: #d22e31; }
