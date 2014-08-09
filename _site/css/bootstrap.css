@@ -5296,8 +5296,8 @@ html {
   overflow-y: scroll; }
 
 .header {
-  background: #424242;
-  color: #fbf7e4; }
+  background: #fbf7e4;
+  color: #424242; }
 
 .header h3 {
   line-height: 56px;
@@ -5319,7 +5319,7 @@ html {
   padding: 0 20px; }
 
 .header a {
-  color: #fbf7e4; }
+  color: #424242; }
 
 body {
   font-size: 18px;
