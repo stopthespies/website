@@ -5367,16 +5367,12 @@ section h2 {
   color: #fbf7e4;
   background: #8e001c; }
 
-.supporters {
-  background: #8FBE01;
-  color: #e7e8d1; }
+.how a {
+  color: #b0a767; }
 
-.footer {
-  line-height: 15px;
-  padding: 20px 0;
-  font-size: 14px;
-  background: #8e001c;
-  color: #e7e8d1; }
+.how .intro {
+  text-align: justify;
+  margin-bottom: 20px; }
 
 .footer a {
   color: #e7e8d1; }
@@ -5398,3 +5394,36 @@ section h2 {
 
 .legislator {
   margin-bottom: 20px; }
+
+.support .intro {
+  margin-bottom: 30px;
+  text-align: justify; }
+
+.supporters {
+  background: #8FBE01;
+  color: #e7e8d1; }
+
+.nav-tabs a {
+  font-size: 22px;
+  padding: 10px;
+  text-transform: uppercase; }
+
+.nav-tabs li.active a {
+  background: #424242;
+  border-color: #424242;
+  color: #e7e8d1; }
+
+.nav-tabs li:hover a {
+  background: #dcd8bb;
+  border-color: #dcd8bb;
+  color: #424242; }
+
+.tab-content {
+  padding: 20px 0; }
+
+.footer {
+  line-height: 15px;
+  padding: 20px 0;
+  font-size: 14px;
+  background: #424242;
+  color: #e7e8d1; }
