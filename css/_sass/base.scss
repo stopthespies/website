@@ -95,6 +95,11 @@ section h2 {
   text-align: justify;
   margin-bottom: 20px;
 }
+.how img {
+  border: 2px solid darken($brand5, 2%);
+  border-radius: 8px;
+  width: 100%;
+}
 .footer a {
   color: $brand1;
 }

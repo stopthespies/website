@@ -5378,6 +5378,11 @@ section h2 {
   text-align: justify;
   margin-bottom: 20px; }
 
+.how img {
+  border: 2px solid #84001a;
+  border-radius: 8px;
+  width: 100%; }
+
 .footer a {
   color: #e7e8d1; }
 
