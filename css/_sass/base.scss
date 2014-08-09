@@ -100,6 +100,38 @@ section h2 {
   border-radius: 8px;
   width: 100%;
 }
+.how h4 {
+  font-size: 26px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.how .contact { 
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.how .contact li {
+  float: left;
+  margin-right: 10px;
+  font-size: 30px;
+  padding: 0 5px;
+
+  cursor: pointer;
+}
+.how .contact li:hover {
+  background: $brand2;
+  color: $brand4;
+  border-radius: 8px;
+
+}
+.how .status {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;  
+  text-align: justify;
+}
 .footer a {
   color: $brand1;
 }
@@ -126,7 +158,7 @@ section h2 {
 .legislator {
   margin-bottom: 20px;
 }
-.support .intro {
+ .intro {
   margin-bottom: 30px;
   text-align: justify;
 }
