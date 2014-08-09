@@ -5341,6 +5341,21 @@ section {
 .who p {
   text-align: justify; }
 
+.video-placeholder {
+  width: 560px;
+  height: 280px;
+  background: #424242;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  valign: center;
+  font-size: 24px;
+  font-weight: 700;
+  padding-top: 50px; }
+  .video-placeholder i {
+    font-size: 90px; }
+
 .how {
   color: #fbf7e4;
   background: #8e001c; }
