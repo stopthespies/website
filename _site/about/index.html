@@ -107,8 +107,12 @@
       container: 'body',
       placement: 'top'
     });
-    $('body').on('click', '.contact li', function () {
-      $('#myModal').modal();
+    $('body').on('click', '.contact .call-action', function () {
+      $('#call-modal').modal();
+    });
+
+    $('body').on('click', '.contact .email-action', function () {
+      $('#email-modal').modal();
     })
     </script>
     </body>
