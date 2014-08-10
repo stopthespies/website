@@ -19,13 +19,12 @@ function debounce(func, wait) {
 $(function() {
   var locationMarker = $('#request-location');
   var locationOffset = parseInt(locationMarker.data('offset') || 0);
-  var scrollCB;
 
   function checkScroll(e)
   {
     if ($(window).scrollTop() > locationMarker.offset().top - locationOffset) {
       askLocation();
-      $(window).off('scroll', scrollCB);
+      $(window).off('scroll', checkScroll);
     }
   }
 
@@ -44,10 +43,8 @@ $(function() {
     });
   }
 
-  scrollCB = debounce(checkScroll);
-
   checkScroll();
-  $(window).on('scroll', scrollCB);
+  $(window).on('scroll', checkScroll);
 });
 
 
