@@ -262,11 +262,18 @@ section h2 {
   padding: 0;
   margin: 0;
   padding-top: 20px;
+
+  background: $brand2;  // this is for legislator search globe drop-in from behind heading
+  position: relative;
+  z-index: 1;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 .step {
   background: $brand2;
   min-height: 150px;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .reading a {
@@ -345,4 +352,23 @@ section h2 {
 }
 .btn-primary {
   border-color: lighten($brand5, 5%) !important;
+}
+
+
+.postcode-steps {
+  overflow: hidden;
+
+  .actions .fa {
+    position: relative;
+    font-size: 2.5em;
+    color: $brand5;
+  }
+}
+
+.legislators {
+  height: 0;
+  overflow: hidden;
+  .legislator {
+    @include transform-origin(top center);
+  }
 }
