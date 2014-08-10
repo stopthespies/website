@@ -1,8 +1,60 @@
+function debounce(func, wait) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      timeout = null;
+      func.apply(context, args);
+    }, wait || 300);
+  };
+};
+
+
+//--------------------------------------------------------------------------------
+// location prompt
+//--------------------------------------------------------------------------------
+
+$(function() {
+  var locationMarker = $('#request-location');
+  var locationOffset = parseInt(locationMarker.data('offset') || 0);
+  var scrollCB;
+
+  function checkScroll(e)
+  {
+    if ($(window).scrollTop() > locationMarker.offset().top - locationOffset) {
+      askLocation();
+      $(window).off('scroll', scrollCB);
+    }
+  }
+
+  function askLocation()
+  {
+    if (!("geolocation" in navigator)) {
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+      // :TODO: call API
+      // (position.coords.latitude, position.coords.longitude);
+    }, function() {
+      // :TODO:
+      console.error("Geo fail");
+    });
+  }
+
+  scrollCB = debounce(checkScroll);
+
+  checkScroll();
+  $(window).on('scroll', scrollCB);
+});
+
+
 
 
 var legislatorTemplate = $('#legislator-template').html();
 var legislators = {
-  'H6V': { 
+  'H6V': {
     name: 'John Brown',
     title: 'Senator',
     image: 'H6V'
