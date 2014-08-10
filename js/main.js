@@ -35,6 +35,7 @@ $(function() {
     }
 
     navigator.geolocation.getCurrentPosition(function(position) {
+
       $.ajax({
         url: "http://legislators-locator.herokuapp.com/",
         jsonp: "callback",
@@ -61,8 +62,10 @@ $(function() {
 
 
 var legislatorTemplate = $('#legislator-template').html();
+var legislators = {};
 
 var renderLegislators = function(legislators) {
+  legislators = legislators;
   _.each(legislators, function (legislator) {
     $('.legislators').append(_.template(legislatorTemplate, legislator));
   })
