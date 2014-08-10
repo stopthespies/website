@@ -92,7 +92,7 @@ layout: default
                 </span>
             </div>-->
             <!-- /input-group -->
-            <div class="row">
+            <div class="row postcode-steps">
 
                 <div class="col-md-6">
                 <div class="step step-1">
@@ -100,7 +100,7 @@ layout: default
                     <br />
                     <form class="postcode-lookup">
                       <div class="input-group col-md-8 col-md-offset-2">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" pattern="[0-9]{4}" required>
                         <span class="input-group-btn">
                           <button class="btn btn-primary" type="submit">Lookup!</button>
                         </span>
@@ -114,6 +114,7 @@ layout: default
                     <h4>Auto Lookup!</h4>
 
                     <div class="actions">
+                      <i class="fa fa-globe"></i>
                       <p>Accept the notification.</p>
                     </div>
                 </div>
@@ -314,7 +315,7 @@ layout: default
             <img class="" src="/img/legislators/<%= image %>.jpg" />
             </div>
             <div class="col-md-10">
-                <h4>Senator <%= name %></h4>
+                <h4>Senator <%= full_name %></h4>
                 <p  class="status">This legislator has not put out an official statement. Lets encourage them to not vote in favor of the new proposals.</p>
                 <ul class="contact">
                     <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number"><i class="fa fa-phone"></i></li>

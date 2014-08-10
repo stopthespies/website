@@ -100,7 +100,21 @@ renderLegislators(legislators);
 // ----------------- FORM SUBMISSION ----------------------
 
 $('.postcode-lookup').on('submit', function(ev){
-  console.log('asd');
+  $('.postcode-steps').fadeOut(400);
+  var postcode = $('input', $(ev.currentTarget)).val();
+  $.ajax({
+    url: "http://legislators-locator.herokuapp.com/",
+    jsonp: "callback",
+    dataType: "jsonp",
+    data: {
+        postcode: postcode
+    },
+    // work with the response
+    success: function( response ) {
+        renderLegislators(response);
+        console.log( response ); // server response
+    }
+  });
   return false;
 });
 
