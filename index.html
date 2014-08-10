@@ -247,7 +247,7 @@ layout: default
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal <%=name %></h4>
+            <h4 class="modal-title" id="myModalLabel">Modal <%= full_name %></h4>
           </div>
           <div class="modal-body">
            <div class="form-group">
@@ -278,7 +278,7 @@ layout: default
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-phone" style="margin-right: 10px;"></i>Call Tool for <%= name %></h4>
+        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-phone" style="margin-right: 10px;"></i>Call Tool for <%= full_name %></h4>
       </div>
       <div class="modal-body">
 
@@ -310,7 +310,7 @@ layout: default
 <!-- TEMPLATES -->
 
 <script type="text/template" id="legislator-template">
-   <div class="legislator row" data-legislator-id="<%= image %>">
+   <div class="legislator row" data-legislator-id="<%= person_id %>">
         <div class="col-md-2">
             <img class="" src="http://data.openaustralia.org/members<%= image %>" />
             </div>
