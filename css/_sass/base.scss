@@ -25,8 +25,8 @@ h1 {
 }
 .header h3 {
   line-height: 56px;
-margin: 0;
-padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .nav ul {
   height: 56px;
@@ -271,7 +271,7 @@ section h2 {
 }
 .step {
   background: $brand2;
-  min-height: 200px;
+  min-height: 150px;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -350,8 +350,6 @@ section h2 {
       background: darken(#db585a, 10%);
     }
 }
-
-
 
 
 

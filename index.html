@@ -116,11 +116,15 @@ layout: default
                     <h4>Auto Lookup!</h4>
 
                     <div class="actions">
-                      <i class="fa fa-globe"></i>
-                      <p>Accept the notification.</p>
+                      <!--<i class="fa fa-globe"></i>-->
+                      <p style="text-align: center;">Accept the browser request to share your location.</p>
                     </div>
                 </div>
+
         </div>
+
+        <div style="clear: both;"></div>
+        <p style="text-align: center;font-size: 14px;margin-top: 10px;">We use your postcode/address to find legislators that represent you. We don't store this data and we use encrypted requests.</p>
     </div>
 
             <div class="legislators"></div>
@@ -312,7 +316,7 @@ layout: default
 <!-- TEMPLATES -->
 
 <script type="text/template" id="legislator-template">
-   <div class="legislator row" data-legislator-id="<%= person_id %>">
+   <div class="legislator row" data-legislator-id="<%= member_id %>">
         <div class="col-md-2">
             <img class="" src="http://data.openaustralia.org/members<%= image %>" />
             </div>
