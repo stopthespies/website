@@ -64,8 +64,9 @@ $(function() {
 var legislatorTemplate = $('#legislator-template').html();
 var legislators = {};
 
-var renderLegislators = function(legislators) {
-  legislators = legislators;
+var renderLegislators = function(reps) {
+  legislators = reps;
+
   _.each(legislators, function (legislator) {
     $('.legislators').append(_.template(legislatorTemplate, legislator));
   })
