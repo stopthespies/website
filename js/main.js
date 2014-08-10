@@ -79,7 +79,7 @@ var legislators = {
 legislators = {};
 
 $.ajax({
-  url: "http://query.yahooapis.com/v1/public/yql",
+  url: "http://legislators-locator.herokuapp.com/",
   jsonp: "callback",
   dataType: "jsonp",
   data: {
@@ -99,6 +99,14 @@ var renderLegislators = function(legislators) {
 };
 
 renderLegislators(legislators);
+
+// ----------------- FORM SUBMISSION ----------------------
+
+$('.postcode-lookup').on('submit', function(ev){
+  console.log('asd');
+  return false;
+});
+
 
 // ----------------- POP OVERS ----------------------------
 
