@@ -35,7 +35,7 @@ $(function() {
     }
 
     navigator.geolocation.getCurrentPosition(function(position) {
-
+      $('.postcode-steps').fadeOut(400);  // hide location form
       $.ajax({
         url: "http://legislators-locator.herokuapp.com/",
         jsonp: "callback",
