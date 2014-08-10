@@ -92,60 +92,10 @@ layout: default
                 </span>
             </div>-->
             <!-- /input-group -->
-
-            <div class="legislator row">
-            <div class="col-md-2">
-                <img class="" src="/img/legislators/2L6.jpg" />
-                </div>
-                <div class="col-md-10">
-                    <h4>Senator Toni Braxton</h4>
-                    <p  class="status">This legislator has not put out an official statement. Let's encourage them to not vote in favor of the new proposals.</p>
-
-                    <ul class="contact">
-                        <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number"><i class="fa fa-phone"></i></li>
-                        <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say"><i class="fa fa-envelope-o"></i></li>
-                        <li data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!"><i class="fa fa-twitter"></i></li>
-                        <li data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page"><i class="fa fa-facebook"></i></li>
-                    </ul>
-                    <div style="clear: both;"></div>
-                </div>
-
-            </div>
-
-            <div class="legislator row">
-            <div class="col-md-2">
-                <img class="" src="/img/legislators/H6V.jpg" />
-                </div>
-                <div class="col-md-10">
-                    <h4>Senator Sarah Leeroy</h4>
-                    <p  class="status">This legislator has not put out an official statement. Let's encourage them to not vote in favor of the new proposals.</p>
-                    <ul class="contact">
-                        <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number"><i class="fa fa-phone"></i></li>
-                        <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say"><i class="fa fa-envelope-o"></i></li>
-                        <li data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!"><i class="fa fa-twitter"></i></li>
-                        <li data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page"><i class="fa fa-facebook"></i></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="legislator row">
-            <div class="col-md-2">
-                <img class="" src="/img/legislators/YE4.jpg" />
-                </div>
-                <div class="col-md-10">
-                    <h4>Senator Josh Kelly</h4>
-                    <p  class="status">This legislator has not put out an official statement. Let's encourage them to not vote in favor of the new proposals.</p>
-                    <ul class="contact">
-                        <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number"><i class="fa fa-phone"></i></li>
-                        <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say"><i class="fa fa-envelope-o"></i></li>
-                        <li data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!"><i class="fa fa-twitter"></i></li>
-                        <li data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page"><i class="fa fa-facebook"></i></li>
-                    </ul>
-                </div>
-
-            </div>
+            <div class="legislators"></div>
+         
             <a href="">Not your representatives?</a>
+
         </div>
 </section>
 <section class="support">
@@ -259,49 +209,64 @@ layout: default
 <!-- MODALS -->
 
 <!-- EMAIL MODAL -->
-<div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+
+<div id="email-modal-container"></div>
+<script type="text/template" id="email-modal-template">
+    <div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal <%=name %></h4>
+          </div>
+          <div class="modal-body">
+           <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
       </div>
-      <div class="modal-body">
-       <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Message</label>
-    <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Message goes here"></textarea>    
-  </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Message</label>
+        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Message goes here"></textarea>    
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Send Email</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Send Email</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+</script>
 <!-- END EMAIL MODAL -->
 
 
 <!-- CALL MODAL -->
+<div id="call-modal-container"></div>
+<script type="text/template" id="call-modal-template">
+
 <div class="modal fade" id="call-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-phone" style="margin-right: 10px;"></i>Call Tool</h4>
       </div>
       <div class="modal-body">
-       <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Message</label>
-    <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Message goes here"></textarea>    
-  </div>
+
+            <aside>
+                <ol>
+                    <h3>What to say</h3>
+                    <li>
+                        <p>I am one of your constituents, and I’m calling to ask you to take action against mass surveillance by the NSA.</p>
+                        <p>I’d like Senator/Representative ____ to support and co-sponsor the <strong>USA Freedom Act</strong>. I would also like you to oppose S. 1631, the so-called <strong>FISA Improvements Act</strong>. Moreover, I’d like you to work to prevent the NSA from <strong>undermining encryption standards</strong> and to <strong>protect the privacy rights of non-Americans</strong>.</p>
+                    </li>
+                </ol>           
+                
+            </aside>
+
+        
+            <a class="cta-button" href="thank-you.html?called=true">Click here once you're done  &rarr;</a>
+            
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Send Email</button>
@@ -309,4 +274,29 @@ layout: default
     </div>
   </div>
 </div>
+</script>
 <!-- END CALL MODAL -->
+
+<!-- TEMPLATES -->
+
+<script type="text/template" id="legislator-template">
+   <div class="legislator row" data-legislator-id="<%= image %>">
+        <div class="col-md-2">
+            <img class="" src="/img/legislators/<%= image %>.jpg" />
+            </div>
+            <div class="col-md-10">
+                <h4>Senator <%= name %></h4>
+                <p  class="status">This legislator has not put out an official statement. Lets encourage them to not vote in favor of the new proposals.</p>
+                <ul class="contact">
+                    <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number"><i class="fa fa-phone"></i></li>
+                    <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say"><i class="fa fa-envelope-o"></i></li>
+                    <li data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!"><i class="fa fa-twitter"></i></li>
+                    <li data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page"><i class="fa fa-facebook"></i></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</script>
+
+<!-- END TEMPLATES -->
