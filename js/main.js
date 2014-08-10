@@ -68,8 +68,6 @@ var renderLegislators = function(legislators) {
   })
 };
 
-renderLegislators(legislators);
-
 // ----------------- FORM SUBMISSION ----------------------
 
 $('.postcode-lookup').on('submit', function(ev){
