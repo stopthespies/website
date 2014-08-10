@@ -343,3 +343,6 @@ section h2 {
       background: darken(#db585a, 10%);
     }
 }
+.btn-primary {
+  border-color: lighten($brand5, 5%) !important;
+}
