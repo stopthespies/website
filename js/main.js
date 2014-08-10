@@ -11,6 +11,13 @@ function debounce(func, wait) {
   };
 };
 
+function measureH(el) { // measure things with CSS height defined as 0 & overflow hidden
+  el.css({'visibility': 'hidden', 'height': 'auto'});
+  var h = el.height();
+  el.css({'visibility': '', 'height': ''});
+  return h;
+};
+
 
 //--------------------------------------------------------------------------------
 // location prompt
@@ -28,14 +35,40 @@ $(function() {
     }
   }
 
+  // jiggle the location box somewhat to draw attention back
+  function showLocationInfoTip()
+  {
+    var icon = $('.postcode-steps .actions .fa')[0],
+      tl = new TimelineLite();
+
+    tl.fromTo(icon, 0.5, {
+      top: -100,
+      opacity: 0
+    }, {
+      top: 0,
+      opacity: 1,
+      ease: Bounce.easeOut,
+      onComplete : function() {
+        var iconClone = $(icon).clone(),
+          iconOffset = $(icon).position();
+
+        iconClone.css($.extend(iconOffset, {position: 'absolute'})).insertBefore(icon);
+        TweenLite.fromTo(iconClone, 0.4, {opacity: 0.5}, {opacity: 0, transform: "scale(2.5)"});
+      }
+    });
+  }
+
+
   function askLocation()
   {
     if (!("geolocation" in navigator)) {
       return;
     }
 
+    showLocationInfoTip();
+
     navigator.geolocation.getCurrentPosition(function(position) {
-      $('.postcode-steps').fadeOut(400);  // hide location form
+      hideLegislatorSearch();
       $.ajax({
         url: "http://legislators-locator.herokuapp.com/",
         jsonp: "callback",
@@ -65,16 +98,31 @@ var legislatorTemplate = $('#legislator-template').html();
 var legislators = {};
 
 var renderLegislators = function(legislators) {
+  var container = $('.legislators');
+
   legislators = legislators;
+
   _.each(legislators, function (legislator) {
-    $('.legislators').append(_.template(legislatorTemplate, legislator));
-  })
+    container.append(_.template(legislatorTemplate, legislator));
+  });
+
+  TweenLite.fromTo(container[0], 0.8, {height: 0}, {height: measureH(container)});
+  TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 };
+
+function hideLegislatorSearch()
+{
+  var div = $('.postcode-steps');
+  div.css('height', div.height());
+  TweenLite.to(div[0], 0.4, {opacity: 0, height: 0, onComplete: function() {
+    div.remove();
+  }});
+}
 
 // ----------------- FORM SUBMISSION ----------------------
 
 $('.postcode-lookup').on('submit', function(ev){
-  $('.postcode-steps').fadeOut(400);
+  hideLegislatorSearch();
   var postcode = $('input', $(ev.currentTarget)).val();
   $.ajax({
     url: "http://legislators-locator.herokuapp.com/",

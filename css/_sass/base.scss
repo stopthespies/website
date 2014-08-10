@@ -133,7 +133,7 @@ section h2 {
   margin-bottom: 5px;
 }
 
-.how .contact { 
+.how .contact {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -155,14 +155,14 @@ section h2 {
 .how .status {
   padding: 0;
   margin: 0;
-  font-size: 16px;  
+  font-size: 16px;
   text-align: justify;
 }
 .footer a {
   color: $brand1;
 }
 .stats {
-  
+
 }
 .metric {
     text-align: center;
@@ -262,17 +262,24 @@ section h2 {
   padding: 0;
   margin: 0;
   padding-top: 20px;
+
+  background: $brand2;  // this is for legislator search globe drop-in from behind heading
+  position: relative;
+  z-index: 1;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 .step {
   background: $brand2;
   min-height: 200px;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .reading a {
   color: darken($brand2, 20%);
 }
-.actions { 
+.actions {
   padding: 20px;
   color: $brand4;
   text-align: center;
@@ -282,7 +289,7 @@ section h2 {
 }
 .sharing-buttons {
     padding: 20px 0;
-  
+
 }
 .sharing-buttons .share {
     display: block;
@@ -342,4 +349,26 @@ section h2 {
     &:hover {
       background: darken(#db585a, 10%);
     }
+}
+
+
+
+
+
+.postcode-steps {
+  overflow: hidden;
+
+  .actions .fa {
+    position: relative;
+    font-size: 2.5em;
+    color: $brand5;
+  }
+}
+
+.legislators {
+  height: 0;
+  overflow: hidden;
+  .legislator {
+    @include transform-origin(top center);
+  }
 }
