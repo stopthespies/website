@@ -35,8 +35,17 @@ $(function() {
     }
 
     navigator.geolocation.getCurrentPosition(function(position) {
-      // :TODO: call API
-      // (position.coords.latitude, position.coords.longitude);
+      $.ajax({
+        url: "http://legislators-locator.herokuapp.com/",
+        jsonp: "callback",
+        dataType: "jsonp",
+        data: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        },
+        // work with the response
+        success: renderLegislators
+      });
     }, function() {
       // :TODO:
       console.error("Geo fail");
@@ -53,49 +62,11 @@ $(function() {
 
 var legislatorTemplate = $('#legislator-template').html();
 
-// Legislators needs to be brought down dynamically
-
-var legislators = {
-  'H6V': {
-    name: 'John Brown',
-    title: 'Senator',
-    image: 'H6V'
-  },
-  'YE4': {
-    name: 'Sarah Pale',
-    title: 'Senator',
-    image: 'YE4'
-  },
-  '2L6': {
-    name: 'Steve Gates',
-    title: 'Senator',
-    image: '2L6'
-  }
-};
-
-legislators = {};
-
-$.ajax({
-  url: "http://legislators-locator.herokuapp.com/",
-  jsonp: "callback",
-  dataType: "jsonp",
-  data: {
-      lat: '-27.529993400000002',
-      lng: '153.0397888'
-  },
-  // work with the response
-  success: function( response ) {
-      console.log( response ); // server response
-  }
-});
-
 var renderLegislators = function(legislators) {
   _.each(legislators, function (legislator) {
     $('.legislators').append(_.template(legislatorTemplate, legislator));
   })
 };
-
-renderLegislators(legislators);
 
 // ----------------- FORM SUBMISSION ----------------------
 
