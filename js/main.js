@@ -53,8 +53,8 @@ $(function() {
     });
   }
 
-  checkScroll();
   $(window).on('scroll', checkScroll);
+  checkScroll();
 });
 
 
