@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-// ----------------- LEGISLATORS CALL ----------------------------
-=======
+
 function debounce(func, wait) {
   var timeout;
   return function() {
@@ -53,7 +51,7 @@ $(function() {
 });
 
 
->>>>>>> fcdb1133c2840c772d9d1f27eddc73beea4a1424
+// ----------------- LEGISLATORS CALL ----------------------------
 
 
 var legislatorTemplate = $('#legislator-template').html();
