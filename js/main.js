@@ -1,6 +1,10 @@
+// ----------------- LEGISLATORS CALL ----------------------------
 
 
 var legislatorTemplate = $('#legislator-template').html();
+
+// Legislators needs to be brought down dynamically
+
 var legislators = {
   'H6V': { 
     name: 'John Brown',
@@ -18,11 +22,33 @@ var legislators = {
     image: '2L6'
   }
 };
-_.each(legislators, function (legislator) {
-  console.log(legislator);
-  $('.legislators').append(_.template(legislatorTemplate, legislator));
 
-})
+legislators = {};
+
+$.ajax({
+  url: "http://query.yahooapis.com/v1/public/yql",
+  jsonp: "callback",
+  dataType: "jsonp",
+  data: {
+      lat: '-27.529993400000002',
+      lng: '153.0397888'
+  },
+  // work with the response
+  success: function( response ) {
+      console.log( response ); // server response
+  }
+});
+
+var renderLegislators = function(legislators) {
+  _.each(legislators, function (legislator) {
+    $('.legislators').append(_.template(legislatorTemplate, legislator));
+  })
+};
+
+renderLegislators(legislators);
+
+// ----------------- POP OVERS ----------------------------
+
 $('.metric').popover({
   trigger: 'hover',
   container: 'body',
@@ -39,6 +65,8 @@ $('.contact li').popover({
   container: 'body',
   placement: 'top'
 });
+
+// ----------------- MODALS ----------------------------
 $('body').on('click', '.contact .call-action', function (e) {
   var legislatorId = $(e.currentTarget).parents('.legislator').attr('data-legislator-id');
   var legislator = legislators[legislatorId];
