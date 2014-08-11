@@ -178,3 +178,6 @@ $('body').on('click', '.contact .email-action', function (e) {
   $('#email-modal').modal();
 });
 
+$(function () {
+  TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
+})

@@ -11,10 +11,18 @@ Read the Github issues to get more of an idea
 
 Just using this repo to also prototype some website ideas
 
-[http://stopthespies.org/](http://stopthespies.org/)
+[http://stage.stopthespies.org/](http://stopthespies.org/)
 
 To develop
 
 ```
 jekyll serve --watch
 ```
+
+### Contributing
+
+Join us on #ausprivacy on freenode IRC
+
+Check out the issues
+
+All tooling will be released opensource in the github.com/australia account
