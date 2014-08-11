@@ -26,3 +26,5 @@ Join us on #ausprivacy on freenode IRC
 Check out the issues
 
 All tooling will be released opensource in the github.com/australia account
+
+Email thomasalwyndavis@gmail.com if you need a repo created or access to certain repos
