@@ -108,6 +108,13 @@ var renderLegislators = function(reps) {
 
   TweenLite.fromTo(container[0], 0.8, {height: 0}, {height: measureH(container)});
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
+
+  $('.contact li').popover({
+    trigger: 'hover',
+    container: 'body',
+    placement: 'top'
+  });
+
 };
 
 function hideLegislatorSearch()
@@ -154,12 +161,6 @@ $('.support img').popover({
   container: 'body',
   placement: 'top'
 });
-$('.contact li').popover({
-  trigger: 'hover',
-  container: 'body',
-  placement: 'top'
-});
-
 // ----------------- MODALS ----------------------------
 $('body').on('click', '.contact .call-action', function (e) {
   var legislatorId = $(e.currentTarget).parents('.legislator').attr('data-legislator-id');
