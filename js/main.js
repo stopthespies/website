@@ -179,6 +179,53 @@ $('body').on('click', '.contact .email-action', function (e) {
   $('#email-modal').modal();
 });
 
+
+// Start up scripts
 $(function () {
   TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
-})
+
+  // GET AGGERGATE TOTALS
+  $.ajax({
+    url: "http://localhost:5000/stats",
+    jsonp: "callback",
+    dataType: "jsonp",
+    // work with the response
+    success: function( res ) {
+        $('.email-total').text(res.emails);
+        $('.call-total').text(res.calls);
+        $('.view-total').text(res.views);
+    }
+  });
+
+  // GET SOCIAL TOTALS
+  var shareUrl = 'https://shutthebackdoor.net';
+  $.ajax('https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=' + shareUrl, {
+      success: function(res, err) {
+
+        $('.facebook-total').text(res.facebook);
+        $('.google-total').text(res.googleplus);
+        $('.twitter-total').text(res.twitter);
+      },
+      dataType: 'jsonp',
+      cache         : true,
+      jsonpCallback : 'myCallback'
+  });
+});
+
+
+// ---------------- API SERVER TOOLS -----------------------
+
+var log = function(options) {
+  var event = options.event;
+  var legislator = options.legislator || null;
+  /*$.ajax({
+    url: "http://localhost:5000/stats",
+    jsonp: "callback",
+    dataType: "jsonp",
+    // work with the response
+    success: function( response ) {
+        console.log( response ); // server response
+    }
+  });*/
+};
+//log({event: 'view'});
