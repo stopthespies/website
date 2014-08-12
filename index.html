@@ -141,7 +141,7 @@ layout: default
             <p class="intro"><i class="fa fa-twitter" style="font-size: 30px;line-height: 40px;margin-right: 10px;"></i>By tweeting "I support #stopthespies" you will automatically be added to the list below. Currently, 145, 000 people have shown their support on Twitter.</p>
             <div class="bs-example bs-example-tabs">
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#home" role="tab" data-toggle="tab">Politicians</a>
+                    <li class="active"><a href="#politician-tweets" role="tab" data-toggle="tab">Politicians</a>
                     </li>
                     <li><a href="#profile" role="tab" data-toggle="tab">Celebrities</a>
                     </li>
@@ -149,7 +149,7 @@ layout: default
                     </li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade in active" id="home">
+                    <div class="tab-pane fade in active" id="politician-tweets">
                         <img src="http://lorempixel.com/70/70/people"  data-toggle="popover" title="Popover title" data-content="The users tweet will go here. I support #stopthespies" />
                         <img src="http://lorempixel.com/70/70/people?1"  data-toggle="popover" title="Popover title" data-content="The users tweet will go here. I support #stopthespies" />
                         <img src="http://lorempixel.com/70/70/people?2"  data-toggle="popover" title="Popover title" data-content="The users tweet will go here. I support #stopthespies" />
@@ -337,5 +337,11 @@ layout: default
         </div>
     </div>
 </script>
+
+<script type="text/template" id="tweet-template">
+    <img class="tweet" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %>" data-content="<%= tweet %>" />
+
+</script>
+
 
 <!-- END TEMPLATES -->

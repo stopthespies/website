@@ -156,11 +156,6 @@ $('.metric').popover({
   placement: 'top'
 });
 
-$('.support img').popover({
-  trigger: 'hover',
-  container: 'body',
-  placement: 'top'
-});
 // ----------------- MODALS ----------------------------
 $('body').on('click', '.contact .call-action', function (e) {
   var legislatorId = $(e.currentTarget).parents('.legislator').attr('data-legislator-id');
@@ -210,6 +205,45 @@ $(function () {
       cache         : true,
       jsonpCallback : 'myCallback'
   });
+
+  // GET TWEETS
+  var tweetTemplate = $('#tweet-template').html();
+  $.ajax({
+    url: "http://localhost:5000/tweets",
+    jsonp: "callback",
+    dataType: "jsonp",
+    // work with the response
+    success: function( tweets ) {
+      _.each(tweets, function(tweet){
+        if(tweet.category === "politician") {
+          $('#politician-tweets').append(_.template(tweetTemplate, tweet));
+        }
+
+      });
+      $('.support img').popover({
+        trigger: 'hover',
+        container: 'body',
+        placement: 'top'
+      });
+    }
+  });
+
+  // SEND AN EMAIL
+  $.ajax({
+    url: "http://localhost:5000/email",
+    type: "POST",
+
+    contentType: "application/json",
+    crossDomain: true,
+    dataType: 'json',
+
+    data: '{"some":"json"}',
+    // work with the response
+    success: function( res ) {
+      console.log(res)
+    }
+  });
+
 });
 
 
