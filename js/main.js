@@ -181,7 +181,7 @@ $(function () {
 
   // GET AGGERGATE TOTALS
   $.ajax({
-    url: "http://stage.stopthespies.org/stats",
+    url: "http://stopthespies-api.herokuapp.com/stats",
     jsonp: "callback",
     dataType: "jsonp",
     // work with the response
@@ -209,7 +209,7 @@ $(function () {
   // GET TWEETS
   var tweetTemplate = $('#tweet-template').html();
   $.ajax({
-    url: "http://stage.stopthespies.org/tweets",
+    url: "http://stopthespies-api.herokuapp.com/tweets",
     jsonp: "callback",
     dataType: "jsonp",
     // work with the response
@@ -230,7 +230,7 @@ $(function () {
 
   // SEND AN EMAIL
   $.ajax({
-    url: "http://stage.stopthespies.org/email",
+    url: "http://stopthespies-api.herokuapp.com/email",
     type: "POST",
 
     contentType: "application/json",
