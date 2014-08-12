@@ -2,8 +2,8 @@ $brand1:        #E7E8D1 !default;
 $brand2:        #D3CEAA !default;
 $brand3:        #FBF7E4 !default;
 $brand4:        #424242 !default;
-$brand5:        #8E001C !default;
-
+$brand5:        #50e3c2 !default;
+/*#50e3c2*/
 
 html {
 }
@@ -48,7 +48,7 @@ h1 {
 body {
 	font-size: 18px;
 	font-family: 'Open Sans', sans-serif;
-  background: lighten($brand3, 10%);
+  background: lighten($brand3, 0%);
   color: darken($brand4, 10%);
 }
 body a {

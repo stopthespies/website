@@ -244,6 +244,17 @@ $(function () {
     }
   });
 
+   // LOG INITIAL VIEW
+  $.ajax({
+    url: "http://stopthespies-api.herokuapp.com/log?event=views",
+    jsonp: "callback",
+    dataType: "jsonp",
+    // work with the response
+    success: function( res ) {
+    }
+  });
+
+
 });
 
 
