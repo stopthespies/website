@@ -13,7 +13,7 @@
 	<meta itemprop="email" content="{{ site.email }}">
 	<meta itemprop="url" content="{{ site.url }}">
 
-	<meta name="twitter:card" content="summary_large_image">
+	{% if site.share_twitter_card %}<meta name="twitter:card" content="summary_large_image">{% endif %}
 	<meta name="twitter:site" content="@{{ site.twitter_username }}">
 	<meta name="twitter:domain" content="{{ site.domain }}">
 	<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
@@ -28,7 +28,7 @@
 	<meta property="og:image" content="{{ site.share_image_facebook }}" />
 	<meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
 	<meta property="og:description" content="{{ site.description }}" />
-	<meta property="fb:admins" content="{{ facebook_admin_userid }}" />
+	{% if site.facebook_admin_userid %}<meta property="fb:admins" content="{{ facebook_admin_userid }}" />{% endif %}
 
     <!-- Custom CSS -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
