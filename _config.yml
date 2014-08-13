@@ -2,7 +2,8 @@
 title: Stop The Spies
 email: TODO@stopthespies.org
 description: TODO		# must be less than 200 characters for twitter meta tag
-url: http://stopthespies.org
+url: http://stage.stopthespies.org	# :TODO: point to live site after validating social tags
+domain: stopthespies.org
 baseurl: ""
 github_username:  stopthespies
 
@@ -11,9 +12,9 @@ twitter_username: TODO
 facebook_username: TODO
 facebook_admin_userid : TODO
 # facebook_app_id :
-share_image_twitter: http://dummyimage.com/280x150/049/fff			# 280x150. TODO - final image paths should be relative URLs via `| prepend: site.baseurl`
-share_image_facebook: http://dummyimage.com/1200x1200/009/fff		# 1200x1200
-share_image_gplus: http://dummyimage.com/800x600/900/fff			# 800x600
+share_image_twitter: http://dummyimage.com/450x250/049/fff			# TODO - final image paths should be relative URLs via `| prepend: site.baseurl`
+share_image_facebook: http://dummyimage.com/1200x1200/009/fff
+share_image_gplus: http://dummyimage.com/800x600/900/fff
 
 # Build settings
 markdown: kramdown
