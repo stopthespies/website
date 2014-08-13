@@ -6,6 +6,28 @@
     <meta name="description" content="{{ site.description }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
+    <!-- Social metadata -->
+	<meta itemprop="name" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+	<meta itemprop="description" content="{{ site.description }}">
+	<meta itemprop="image" content="{{ site.share_image_gplus }}">
+	<meta itemprop="email" content="{{ site.email }}">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@{{ site.twitter_username }}">
+	<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+	<meta name="twitter:description" content="{{ site.description }}">
+	<meta name="twitter:creator" content="@{{ site.twitter_username }}">
+	<meta name="twitter:image:src" content="{{ site.share_image_twitter }}">
+
+	{% if site.facebook_app_id %}<meta property="og:app_id" content="{{ site.facebook_app_id }}" />{% endif %}
+	{% if page.title %}<meta property="og:site_name" content="{{ site.title }}" />{% endif %}
+	<meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+	<meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}" />
+	<meta property="og:image" content="{{ site.share_image_facebook }}" />
+	<meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+	<meta property="og:description" content="{{ site.description }}" />
+	<meta property="fb:admins" content="{{ facebook_admin_userid }}" />
+
     <!-- Custom CSS -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,800,700,300' rel='stylesheet' type='text/css'>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html itemscope itemtype="http://schema.org/Organization">
 
   {% include head.html %}
 
-    <body>
+    <body{% if page.title %} itemscope itemtype="http://schema.org/Article"{% endif %}>
 
     {% include header.html %}
 
