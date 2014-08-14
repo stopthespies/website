@@ -11,7 +11,7 @@ Read the Github issues to get more of an idea
 
 Just using this repo to also prototype some website ideas
 
-[http://stage.stopthespies.org/](http://stopthespies.org/)
+[http://stage.stopthespies.org/](http://stage.stopthespies.org/)
 
 To develop
 
