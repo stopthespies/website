@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html itemscope itemtype="http://schema.org/Organization">
 
   {% include head.html %}
 
-    <body>
+    <body{% if page.title %} itemscope itemtype="http://schema.org/Article"{% endif %}>
+    	{% if page.title %}
+    		<meta itemprop="name" content="{{ page.title }}">
+    		<meta itemprop="url" content="{{ page.url }}">
+    	{% endif %}
 
     {% include header.html %}
 

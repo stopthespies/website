@@ -1,3 +1,14 @@
+var
+	LEGISLATORS_LOCATOR_URL	= "http://legislators-locator.herokuapp.com/",
+	SOCIAL_STATS_URL		= "https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net",
+	TWEETS_READ_URL			= "http://stopthespies-api.herokuapp.com/tweets",
+	STATS_READ_URL			= "http://stopthespies-api.herokuapp.com/stats",
+
+	SEND_EMAIL_URL			= "http://stopthespies-api.herokuapp.com/email",
+	LOG_URL_BASE			= "http://stopthespies-api.herokuapp.com/log?event="
+;
+
+//--------------------------------------------------------------------------------
 
 function debounce(func, wait) {
   var timeout;
@@ -70,7 +81,7 @@ $(function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       hideLegislatorSearch();
       $.ajax({
-        url: "http://legislators-locator.herokuapp.com/",
+        url: LEGISLATORS_LOCATOR_URL,
         jsonp: "callback",
         dataType: "jsonp",
         data: {
@@ -132,7 +143,7 @@ $('.postcode-lookup').on('submit', function(ev){
   hideLegislatorSearch();
   var postcode = $('input', $(ev.currentTarget)).val();
   $.ajax({
-    url: "http://legislators-locator.herokuapp.com/",
+    url: LEGISLATORS_LOCATOR_URL,
     jsonp: "callback",
     dataType: "jsonp",
     data: {
@@ -181,7 +192,7 @@ $(function () {
 
   // GET AGGERGATE TOTALS
   $.ajax({
-    url: "http://stopthespies-api.herokuapp.com/stats",
+    url: STATS_READ_URL,
     jsonp: "callback",
     dataType: "jsonp",
     // work with the response
@@ -193,8 +204,7 @@ $(function () {
   });
 
   // GET SOCIAL TOTALS
-  var shareUrl = 'https://shutthebackdoor.net';
-  $.ajax('https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=' + shareUrl, {
+  $.ajax(SOCIAL_STATS_URL, {
       success: function(res, err) {
 
         $('.facebook-total').text(res.facebook);
@@ -209,7 +219,7 @@ $(function () {
   // GET TWEETS
   var tweetTemplate = $('#tweet-template').html();
   $.ajax({
-    url: "http://stopthespies-api.herokuapp.com/tweets",
+    url: TWEETS_READ_URL,
     jsonp: "callback",
     dataType: "jsonp",
     // work with the response
@@ -230,7 +240,7 @@ $(function () {
 
   // SEND AN EMAIL
   $.ajax({
-    url: "http://stopthespies-api.herokuapp.com/email",
+    url: SEND_EMAIL_URL,
     type: "POST",
 
     contentType: "application/json",
@@ -246,7 +256,7 @@ $(function () {
 
    // LOG INITIAL VIEW
   $.ajax({
-    url: "http://stopthespies-api.herokuapp.com/log?event=views",
+    url: LOG_URL_BASE + "views",
     jsonp: "callback",
     dataType: "jsonp",
     // work with the response
@@ -264,7 +274,7 @@ var log = function(options) {
   var event = options.event;
   var legislator = options.legislator || null;
   /*$.ajax({
-    url: "http://localhost:5000/stats",
+    url: STATS_READ_URL,
     jsonp: "callback",
     dataType: "jsonp",
     // work with the response
