@@ -13,7 +13,14 @@ Just using this repo to also prototype some website ideas
 
 [http://stage.stopthespies.org/](http://stage.stopthespies.org/)
 
-To develop
+##### To setup dev environment
+
+```
+rvm use 2.1.2		# probably works with other ruby versions
+gem install jekyll jekyll-assets sass uglifier
+```
+
+##### To develop
 
 ```
 jekyll serve --watch

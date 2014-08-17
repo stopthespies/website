@@ -33,5 +33,20 @@ share_image_gplus: http://dummyimage.com/800x600/900/fff
 markdown: kramdown
 permalink: pretty
 
-sass:
-    sass_dir: css/_sass
+assets:
+  dirname: assets
+  baseurl: /assets/
+  sources:
+    - _assets/javascripts
+    - _assets/stylesheets
+    - _assets/images
+  cache: false
+  # --- DEV ---
+  js_compressor:  ~
+  css_compressor: sass
+  cachebust: none
+  debug: true
+  # --- PROD :TODO: enable for launch ---
+  # js_compressor: uglifier
+  # css_compressor: sass
+  # cachebust: hard
