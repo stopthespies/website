@@ -26,6 +26,12 @@ gem install jekyll jekyll-assets sass uglifier
 jekyll serve --watch
 ```
 
+##### To build and delpoy
+
+```
+rake site:publish
+```
+
 ### Contributing
 
 Join us on #ausprivacy on freenode IRC
