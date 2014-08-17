@@ -1,0 +1,23 @@
+{
+  "name": "StopTheSpies",
+  "version": "0.0.1",
+  "homepage": "https://github.com/stopthespies/website",
+  "authors": [
+    "StopTheSpies <admin@stopthespies.org>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  	"Leaflet.FeatureSelect" : "openplans/Leaflet.FeatureSelect#gh-pages"
+  },
+  "devDependencies": {
+  }
+}

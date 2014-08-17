@@ -5395,14 +5395,13 @@ section h2 {
   color: #fbf7e4;
   background: #8e001c; }
 
-.how a {
-  color: #b0a767; }
-
 .how .intro {
   text-align: justify;
   margin-bottom: 20px; }
 
-.how img {
+.how .legislators a {
+  color: #b0a767; }
+.how .legislators img {
   border: 2px solid #84001a;
   border-radius: 8px;
   width: 100%; }
@@ -5626,3 +5625,7 @@ section h2 {
 .tweet {
   width: 70px;
   height: 70px; }
+
+#campaign-map {
+  height: 500px;
+  margin-top: 2em; }
