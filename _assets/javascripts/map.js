@@ -1,7 +1,10 @@
+//= require vendor/Leaflet.FeatureSelect/js/feature-select.js
+//= require map-featureselect-optimised
+
 (function(jQuery) {
 
 var MAP_ELEMENT = '#campaign-map';
-var DEFAULT_COORDS = [-26.543981, 134.912109];
+var DEFAULT_COORDS = [-29.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
 
 //------------------------------------------------------------------------------
@@ -9,6 +12,7 @@ var DEFAULT_ZOOM = 4;
 
 var map;
 var mapAreas;
+var featureSelect;
 
 function initMap(el)
 {
@@ -26,25 +30,52 @@ function initMap(el)
 		dataType: "json",
 		data: {},
 		success: function(geojson) {
-			mapAreas = L.geoJson(geojson, {
-				style : function(feature) {
-					// :TODO: finalise pallete and hookup to legislator data
-					var colors = [
-						'#D3CEAA',
-						'#8E001C',
-						'#1D8E00'
-					];
-					var picked = colors[Math.floor(Math.random() * colors.length)];
-					return {
-			            weight: 1,
-			            opacity: 1,
-			            fillOpacity: Math.random(),
-			            color: picked,
-			            fillColor: picked
-			        };
-				}
-			}).addTo(map);
+			showElectorates(geojson);
+			bindSelector();
 		}
+	});
+}
+
+function showElectorates(geojson)
+{
+	mapAreas = L.geoJson(geojson, {
+		style : function(feature) {
+			// :TODO: finalise pallete and hookup to legislator data
+			var colors = [
+				'#D3CEAA',
+				'#8E001C',
+				'#1D8E00'
+			];
+			var picked = colors[Math.floor(Math.random() * colors.length)];
+			return {
+	            weight: 1,
+	            opacity: 1,
+	            fillOpacity: Math.random(),
+	            color: picked,
+	            fillColor: picked
+	        };
+		}
+	}).addTo(map);
+}
+
+function bindSelector()
+{
+	featureSelect = L.FeatureSelectDelayed({
+		featureGroup: mapAreas,
+		selectSize: [16, 16]
+	}).addTo(map);
+
+	// :TODO:
+
+	featureSelect.on('select', function(evt) {
+		var layer;
+		for (var i = 0; i < evt.layers.length; i++) {
+			layer = evt.layers[i];
+			console.log('focus electorate:', layer.feature.properties.ELECT_DIV, layer.feature.properties.STATE);
+		}
+	});
+	featureSelect.on('unselect', function(evt) {
+
 	});
 }
 
