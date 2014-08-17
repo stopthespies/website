@@ -1,9 +1,0 @@
-// translate units by parent element ratio
-@mixin emsize($property, $desired, $base : $BASE_FONT_SIZE) {
-	#{property}: 1em * (unit($desired) / unit($base));
-}
-
-// a wrapper for setting font size
-@mixin emfz($desired, $base : $BASE_FONT_SIZE) {
-	@include emsize(font-size, $desired, $base);
-}
