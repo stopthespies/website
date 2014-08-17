@@ -26,6 +26,13 @@ namespace :site do
 
       Dir.chdir pwd
     end
+
+    Dir.chdir('_site') do
+      # pull latest version before committing
+      system "git pull origin gh-pages"
+    end
+
+    Dir.chdir pwd
   end
 
   desc "Compile site..."
@@ -41,9 +48,6 @@ namespace :site do
   task :publish => [:generate] do
 
     Dir.chdir('_site') do
-      # pull latest version before committing
-      system "git pull origin gh-pages"
-
       # add all changes and push
       system "git add ."
       message = "Site updated at #{Time.now.utc}"
