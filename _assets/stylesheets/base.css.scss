@@ -133,17 +133,19 @@ section h2 {
   background: $brand5;
 
 }
-.how a {
-  color: darken($brand2, 20%);
-}
 .how .intro {
   text-align: justify;
   margin-bottom: 20px;
 }
-.how img {
-  border: 2px solid darken($brand5, 2%);
-  border-radius: 8px;
-  width: 100%;
+.how .legislators {
+  a {
+    color: darken($brand2, 20%);
+  }
+  img {
+    border: 2px solid darken($brand5, 2%);
+    border-radius: 8px;
+    width: 100%;
+  }
 }
 .how h4 {
   font-size: 26px;
@@ -396,3 +398,7 @@ section h2 {
   width: 70px;
   height: 70px;
 }
+
+
+
+@import "map.scss"

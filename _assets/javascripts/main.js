@@ -1,3 +1,5 @@
+//= require map
+
 var
 	LEGISLATORS_LOCATOR_URL	= "http://legislators-locator.herokuapp.com/",
 	SOCIAL_STATS_URL		= "https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net",
@@ -99,6 +101,9 @@ $(function() {
 
   $(window).on('scroll', checkScroll);
   checkScroll();
+
+  // load up map
+  window.CampaignMap.init();
 });
 
 
