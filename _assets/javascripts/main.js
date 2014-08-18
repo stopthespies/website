@@ -1,3 +1,4 @@
+//= require polyfills
 //= require map
 
 var
