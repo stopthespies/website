@@ -1,4 +1,9 @@
-(function(jQuery) {
+(function($) {
+
+$(function() {
+	// load up map when page is ready
+	window.CampaignMap.init();
+});
 
 var MAP_ELEMENT = '#campaign-map';
 var DEFAULT_COORDS = [-29.043981, 134.912109];
@@ -89,4 +94,4 @@ window.CampaignMap = {
 	init : initMap
 };
 
-})($);
+})(jQuery);
