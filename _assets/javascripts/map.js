@@ -26,7 +26,7 @@ function initMap(el)
 	}).addTo(map);
 
 	$.ajax({
-		url: '/map/COM20111216_ELB_region.json',
+		url: '/map/electorates.json',
 		dataType: "json",
 		data: {},
 		success: function(geojson) {
@@ -71,7 +71,7 @@ function bindSelector()
 		var layer;
 		for (var i = 0; i < evt.layers.length; i++) {
 			layer = evt.layers[i];
-			console.log('focus electorate:', layer.feature.properties.ELECT_DIV, layer.feature.properties.STATE);
+			console.log('focus electorate:', layer.feature.properties);
 		}
 	});
 	featureSelect.on('unselect', function(evt) {
