@@ -1,7 +1,9 @@
-//= require vendor/Leaflet.FeatureSelect/js/feature-select.js
-//= require map-featureselect-optimised
+(function($) {
 
-(function(jQuery) {
+$(function() {
+	// load up map when page is ready
+	window.CampaignMap.init();
+});
 
 var MAP_ELEMENT = '#campaign-map';
 var DEFAULT_COORDS = [-29.043981, 134.912109];
@@ -31,7 +33,6 @@ function initMap(el)
 		data: {},
 		success: function(geojson) {
 			showElectorates(geojson);
-			bindSelector();
 		}
 	});
 }
@@ -47,36 +48,43 @@ function showElectorates(geojson)
 				'#1D8E00'
 			];
 			var picked = colors[Math.floor(Math.random() * colors.length)];
-			return {
-	            weight: 1,
-	            opacity: 1,
-	            fillOpacity: Math.random(),
-	            color: picked,
-	            fillColor: picked
-	        };
+
+			var style = {
+				weight: 1,
+				opacity: 1,
+				fillOpacity: Math.min(1, 0.1 + Math.random()),
+				color: picked,
+				fillColor: picked
+			};
+
+			feature.__defaultStyle = style;	// reference here for use in callbacks
+
+			return style;
+		},
+		onEachFeature: function(feature, layer) {
+			layer.on("mouseover touchstart", function (e) {
+				onFocusWard.call(layer, e, feature);
+			});
+			layer.on("mouseout touchend", function (e) {
+				onBlurWard.call(layer, e, feature);
+			});
 		}
 	}).addTo(map);
 }
 
-function bindSelector()
+//------------------------------------------------------------------------------
+// layer event callbacks (context is leaflet layer object)
+
+function onFocusWard(e, feature)
 {
-	featureSelect = L.FeatureSelectDelayed({
-		featureGroup: mapAreas,
-		selectSize: [16, 16]
-	}).addTo(map);
+	var style = $.extend({}, feature.__defaultStyle);
+	style.color = style.fillColor = '#F0F';
+	this.setStyle(style);
+}
 
-	// :TODO:
-
-	featureSelect.on('select', function(evt) {
-		var layer;
-		for (var i = 0; i < evt.layers.length; i++) {
-			layer = evt.layers[i];
-			console.log('focus electorate:', layer.feature.properties);
-		}
-	});
-	featureSelect.on('unselect', function(evt) {
-
-	});
+function onBlurWard(e, feature)
+{
+	this.setStyle(feature.__defaultStyle);
 }
 
 //------------------------------------------------------------------------------
@@ -86,4 +94,4 @@ window.CampaignMap = {
 	init : initMap
 };
 
-})($);
+})(jQuery);
