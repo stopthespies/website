@@ -49,7 +49,7 @@ $(function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       hideLegislatorSearch();
       $.ajax({
-        url: LEGISLATORS_LOCATOR_URL,
+        url: 'http://legislators-locator.herokuapp.com/',
         jsonp: "callback",
         dataType: "jsonp",
         data: {
@@ -71,7 +71,7 @@ $(function() {
     hideLegislatorSearch();
     var postcode = $('input', $(ev.currentTarget)).val();
     $.ajax({
-      url: LEGISLATORS_LOCATOR_URL,
+      url: 'http://legislators-locator.herokuapp.com/',
       jsonp: "callback",
       dataType: "jsonp",
       data: {
