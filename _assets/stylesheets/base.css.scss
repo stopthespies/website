@@ -5,7 +5,7 @@ $brand1:        #E7E8D1 !default;
 $brand2:        #D3CEAA !default;
 $brand3:        #FBF7E4 !default;
 $brand4:        #424242 !default;
-$brand5:        #8E001C !default;
+$brand5:        #f1592a !default;
 
 //------------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ h1 {
   color: $brand4;
 }
 body {
-  background: lighten($brand3, 10%);
+  background: #f3f3f3;
   color: darken($brand4, 10%);
 }
 body a {
@@ -91,8 +91,14 @@ section h2 {
 .who p {
 	text-align: justify;
 }
-
+section.video {
+  background: #000;
+}
 .video-container {
+
+  height: 340px;
+  padding: 80px;
+  text-align: center;
   max-width: 560px;
   background: $brand4;
   margin: auto;
@@ -102,15 +108,12 @@ section h2 {
   vertical-align: center;
   font-size: 24px;
   font-weight: 700;
-  padding-top: 50px;
   margin-top: 30px;
   i {
     font-size: 90px;
   }
 
   position: relative;
-  padding-bottom: 36.25%;
-  height: 0;
   overflow: hidden;
 }
 
@@ -201,7 +204,14 @@ section h2 {
     font-size: 40px;
 }
 
+.introduction {
+  font-size: 30px;
+  line-height: 56px;
+  color: #949494;
+  padding: 150px 0;
+  font-family: 'Source Sans Pro', sans-serif;
 
+}
 .legislator {
   margin-bottom: 20px;
 }
@@ -401,4 +411,5 @@ section h2 {
 
 
 
-@import "map.scss"
+@import "map"
+
