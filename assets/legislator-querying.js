@@ -93,7 +93,6 @@ $(function() {
 // -------------------- RENDERING ----------------------
 
 var legislatorTemplate = $('#legislator-template').html();
-var legislators = {};
 
 function renderLegislators(reps) {
   var container = $('.legislators');

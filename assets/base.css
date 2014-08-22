@@ -5306,7 +5306,8 @@ h1 {
   font-weight: 700;
   margin: 0;
   padding: 0;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  font-size: 90px; }
 
 .header {
   background: #fbf7e4;
@@ -5335,7 +5336,7 @@ h1 {
   color: #424242; }
 
 body {
-  background: white;
+  background: #f3f3f3;
   color: #292929; }
 
 body a {
@@ -5352,14 +5353,20 @@ section h2 {
   letter-spacing: -1px; }
 
 .who {
-  background: #8e001c;
+  background: #f1592a;
   color: #e7e8d1;
   text-align: center; }
 
 .who p {
   text-align: justify; }
 
+section.video {
+  background: #000; }
+
 .video-container {
+  height: 340px;
+  padding: 80px;
+  text-align: center;
   max-width: 560px;
   background: #424242;
   margin: auto;
@@ -5369,11 +5376,8 @@ section h2 {
   vertical-align: center;
   font-size: 24px;
   font-weight: 700;
-  padding-top: 50px;
   margin-top: 30px;
   position: relative;
-  padding-bottom: 36.25%;
-  height: 0;
   overflow: hidden; }
   .video-container i {
     font-size: 90px; }
@@ -5393,7 +5397,7 @@ section h2 {
 
 .how {
   color: #fbf7e4;
-  background: #8e001c; }
+  background: #f1592a; }
 
 .how .intro {
   text-align: justify;
@@ -5402,7 +5406,7 @@ section h2 {
 .how .legislators a {
   color: #b0a767; }
 .how .legislators img {
-  border: 2px solid #84001a;
+  border: 2px solid #f05220;
   border-radius: 8px;
   width: 100%; }
 
@@ -5452,6 +5456,13 @@ section h2 {
 
 .metric .icon {
   font-size: 40px; }
+
+.introduction {
+  font-size: 30px;
+  line-height: 56px;
+  color: #949494;
+  padding: 150px 0;
+  font-family: 'Source Sans Pro', sans-serif; }
 
 .legislator {
   margin-bottom: 20px; }
@@ -5514,7 +5525,7 @@ section h2 {
   color: #e7e8d1; }
 
 .extra {
-  background: #8e001c;
+  background: #f1592a;
   color: #e7e8d1; }
 
 .extra .intro {
@@ -5604,14 +5615,14 @@ section h2 {
     background: #d22e31; }
 
 .btn-primary {
-  border-color: #a80021 !important; }
+  border-color: #f36c42 !important; }
 
 .postcode-steps {
   overflow: hidden; }
   .postcode-steps .actions .fa {
     position: relative;
     font-size: 2.5em;
-    color: #8e001c; }
+    color: #f1592a; }
 
 .legislators {
   height: 0;
@@ -5629,3 +5640,6 @@ section h2 {
 #campaign-map {
   height: 500px;
   margin-top: 2em; }
+
+.leaflet-container {
+  background: #f1592a !important; }

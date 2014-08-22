@@ -36,6 +36,7 @@
     <!-- Custom CSS -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type='text/css' />
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,800,700,300' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
     <link href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type='text/css' />
 
 	<link rel="stylesheet" href="/assets/base.css">
@@ -45,7 +46,7 @@
     <body>
     	
 
-    <div class="header">
+    <!--<div class="header">
 <div class="container">
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
@@ -64,6 +65,7 @@
     </div>
 </div>
 </div>
+-->
 
 
       <section class="who">
@@ -71,14 +73,21 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="logo"><i class="fa fa-eye-slash"></i></div>
-                <h1>STOP THE SPIES</h1>
-                <p>Who are the spies? The Anti-Terrorism laws which are currently being developed contain some questionable clauses about your digital privacy. This website hopes to provide you with the information you need to be informed and tools to contact your representatives to let them know how you feel about the issue.</p>
-                <div class="video-container">Video<br />Placeholder<br /><i class="fa fa-play-circle-o"></i></div>
-            </div>
-            <div class="col-md-4 stats-container">
-
+                <h1>STOP<br/>THE<br/>SPIES</h1>
             </div>
         </div>
+</section>
+<section class="introduction">
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <p>Who are the spies? The Anti-Terrorism laws which are currently being developed contain some questionable clauses about your digital privacy. This website hopes to provide you with the information you need to be informed and tools to contact your representatives to let them know how you feel about the issue.</p>
+            </div>
+        </div>
+</section>
+<section class="video">
+                <div class="video-container">Video<br />Placeholder<br /><i class="fa fa-play-circle-o"></i></div>
+
 </section>
 <section class="stats">
     <div class="container">
@@ -289,15 +298,13 @@
                 <li><a href="#">Australian Proposal Would Require Suspicionless Domestic Spying by ISPs</a> - EFF</li>
     </ul>
     </div>
-     <div class="row">
-                <div class="col-xs-12" id="campaign-map"></div>
-            </div>
+    </div>
+</section>
+<section style="margin-bottom: 0;padding:0;margin-top: 20px;">
+
+                <div  id="campaign-map"></div>
 
 </section>
-<br />
-<br />
-<br />
-<br />
 <!-- MODALS -->
 
 <!-- EMAIL MODAL -->
@@ -396,7 +403,7 @@
 </script>
 
 <script type="text/template" id="tweet-template">
-    <img class="tweet" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %>" data-content="<%= tweet %>" />
+    <img class="tweet" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %>" data-content="<%= tweet %> - <%= followers %>" />
 
 </script>
 
