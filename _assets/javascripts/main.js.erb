@@ -5,6 +5,8 @@
 //= require legislator-querying
 //= require map
 
+//= require vendor/jquery.numberSpinner/src/jquery.numberSpinner.js
+
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
 
 (function($) {
@@ -54,6 +56,8 @@ $(function() {
 
   TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
 
+  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner();
+
   // GET AGGERGATE TOTALS
 
   $.ajax({
@@ -62,9 +66,9 @@ $(function() {
     dataType: "jsonp",
     // work with the response
     success: function( res ) {
-        $('.email-total').text(res.emails);
-        $('.call-total').text(res.calls);
-        $('.view-total').text(res.views);
+        $('.email-total').numberSpinner('set', res.emails);
+        $('.call-total').numberSpinner('set', res.calls);
+        $('.view-total').numberSpinner('set', res.views);
     }
   });
 
@@ -72,10 +76,9 @@ $(function() {
 
   $.ajax(SOCIAL_STATS_URL, {
       success: function(res, err) {
-
-        $('.facebook-total').text(res.facebook);
-        $('.google-total').text(res.googleplus);
-        $('.twitter-total').text(res.twitter);
+        $('.facebook-total').numberSpinner('set', res.facebook);
+        $('.google-total').numberSpinner('set', res.googleplus);
+        $('.twitter-total').numberSpinner('set', res.twitter);
       },
       dataType: 'jsonp',
       cache         : true,
