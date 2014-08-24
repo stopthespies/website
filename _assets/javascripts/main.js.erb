@@ -1,6 +1,7 @@
 //= require polyfills
 //= require helpers
 
+//= require event-handler
 //= require legislator-querying
 //= require map
 
@@ -9,13 +10,14 @@ var legislators = {}; // Too lazy to pass this variable around to modals ATM - T
 (function($) {
 
 var
-  LEGISLATORS_LOCATOR_URL = "http://legislators-locator.herokuapp.com/",
-  SOCIAL_STATS_URL    = "https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net",
-  TWEETS_READ_URL     = "http://stopthespies-api.herokuapp.com/tweets",
-  STATS_READ_URL      = "http://stopthespies-api.herokuapp.com/stats",
+  LEGISLATORS_LOCATOR_URL = '<%= site.config['legislators_locator_url'] %>',
+  SOCIAL_STATS_URL    = '<%= site.config['social_stats_url'] %>',
 
-  SEND_EMAIL_URL      = "http://stopthespies-api.herokuapp.com/email",
-  LOG_URL_BASE      = "http://stopthespies-api.herokuapp.com/log?event="
+  TWEETS_READ_URL     = '<%= site.config['api_url'] + site.config['tweets_read_path'] %>',
+  STATS_READ_URL      = '<%= site.config['api_url'] + site.config['stats_read_path'] %>',
+
+  SEND_EMAIL_URL      = '<%= site.config['api_url'] + site.config['send_email_path'] %>',
+  LOG_URL_BASE      = '<%= site.config['api_url'] + site.config['log_path'] %>'
 ;
 
 // Start up scripts

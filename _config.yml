@@ -11,6 +11,17 @@ github_username:  stopthespies
 url: http://stage.stopthespies.org
 domain: stage.stopthespies.org
 
+#------------------------------------------------------------------------------#
+# API urls and endpoints
+
+api_url: http://booty:5000
+tweets_read_path: /tweets
+stats_read_path: /stats
+send_email_path: /email
+log_path: /log?event=
+
+legislators_locator_url : http://legislators-locator.herokuapp.com/
+social_stats_url    : 'https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net'
 
 #------------------------------------------------------------------------------#
 # social metadata
