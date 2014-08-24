@@ -1,0 +1,51 @@
+/**
+ * Number spinner styles
+ */
+
+
+.number-spinner {
+	border: solid 1px #000;
+}
+
+.number-spinner,
+.number-spinner .tiles,
+.number-spinner .tiles .tile {
+	display: inline-block;
+}
+
+.number-spinner .tiles,
+.number-spinner .tiles .tile,
+.number-spinner .tiles .tile .digits .digit {
+	height: 20px;
+}
+
+.number-spinner .tiles .tile,
+.number-spinner .tiles .tile .digits .digit {
+	background-color: #000;
+}
+
+.number-spinner .tiles {
+	float: right;
+	padding: 2px;
+	white-space: nowrap;
+}
+
+.number-spinner .tiles .tile {
+	margin-right: 2px;
+	color: #fff;
+	overflow: hidden;
+}
+.number-spinner .tiles .tile:last-child {
+	margin-right: 0px;
+}
+
+.number-spinner .tiles .tile .digits {
+	position: relative;
+	top: 0px;
+}
+
+.number-spinner .tiles .tile .digits .digit {
+	display: block;
+	padding: 0px 2px;
+	line-height: 20px;
+}
