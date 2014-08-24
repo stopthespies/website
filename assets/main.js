@@ -4,18 +4,20 @@
 
 
 
+
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
 
 (function($) {
 
 var
-  LEGISLATORS_LOCATOR_URL = "http://legislators-locator.herokuapp.com/",
-  SOCIAL_STATS_URL    = "https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net",
-  TWEETS_READ_URL     = "http://stopthespies-api.herokuapp.com/tweets",
-  STATS_READ_URL      = "http://stopthespies-api.herokuapp.com/stats",
+  LEGISLATORS_LOCATOR_URL = 'http://legislators-locator.herokuapp.com/',
+  SOCIAL_STATS_URL    = 'https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net',
 
-  SEND_EMAIL_URL      = "http://stopthespies-api.herokuapp.com/email",
-  LOG_URL_BASE      = "http://stopthespies-api.herokuapp.com/log?event="
+  TWEETS_READ_URL     = 'http://stopthespies-api.herokuapp.com/tweets',
+  STATS_READ_URL      = 'http://stopthespies-api.herokuapp.com/stats',
+
+  SEND_EMAIL_URL      = 'http://stopthespies-api.herokuapp.com/email',
+  LOG_URL_BASE      = 'http://stopthespies-api.herokuapp.com/log?event='
 ;
 
 // Start up scripts
