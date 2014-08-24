@@ -16,7 +16,8 @@
     "tests"
   ],
   "dependencies": {
-  	"Leaflet.FeatureSelect" : "openplans/Leaflet.FeatureSelect#gh-pages"
+  	"Leaflet.FeatureSelect" : "openplans/Leaflet.FeatureSelect#gh-pages",
+  	"jquery.numberSpinner" : "moles1/jquery.numberSpinner"
   },
   "devDependencies": {
   }
