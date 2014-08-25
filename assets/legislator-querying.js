@@ -100,10 +100,13 @@ function renderLegislators(reps) {
   legislators = reps;
 
   _.each(legislators, function (legislator) {
+  	legislator.image || (legislator.image = '');	// avoid template errors with missing data :TODO: fallback image
     container.append(_.template(legislatorTemplate, legislator));
   });
 
-  TweenLite.fromTo(container[0], 0.8, {height: 0}, {height: measureH(container)});
+  TweenLite.fromTo(container[0], 0.8, {height: 0}, {height: measureH(container), onComplete: function(e) {
+	container.css('height', 'auto');
+  }});
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 
   $('.contact li').popover({

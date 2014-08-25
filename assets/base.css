@@ -3298,16 +3298,49 @@ section.video {
   .how .step-1 {
     float: left; } }
 
-.legislator .pic {
-  display: inline;
-  float: left;
-  width: 14.58333%;
-  margin: 0 1.04167%; }
-.legislator .details {
-  display: inline;
-  float: left;
-  width: 81.25%;
-  margin: 0 1.04167%; }
+.legislator {
+  display: block;
+  width: 102.08333%;
+  margin: 0 -1.04167%;
+  *zoom: 1;
+  margin-top: 1em; }
+  .legislator:before, .legislator:after {
+    content: "";
+    display: table; }
+  .legislator:after {
+    clear: both; }
+  .legislator .pic {
+    display: inline;
+    float: left;
+    width: 31.25%;
+    margin: 0 1.04167%; }
+  .legislator .details {
+    display: inline;
+    float: left;
+    width: 64.58333%;
+    margin: 0 1.04167%; }
+  @media (min-width: 480px) {
+    .legislator .pic {
+      display: inline;
+      float: left;
+      width: 22.91667%;
+      margin: 0 1.04167%; }
+    .legislator .details {
+      display: inline;
+      float: left;
+      width: 72.91667%;
+      margin: 0 1.04167%; } }
+  @media (min-width: 600px) {
+    .legislator .pic {
+      display: inline;
+      float: left;
+      width: 14.58333%;
+      margin: 0 1.04167%; }
+    .legislator .details {
+      display: inline;
+      float: left;
+      width: 81.25%;
+      margin: 0 1.04167%; } }
 
 .extra .sharing-buttons {
   display: block;
