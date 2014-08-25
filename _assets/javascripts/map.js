@@ -6,7 +6,7 @@ $(function() {
 });
 
 var MAP_ELEMENT = '#campaign-map';
-var DEFAULT_COORDS = [-29.043981, 134.912109];
+var DEFAULT_COORDS = [-28.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
 
 //------------------------------------------------------------------------------
