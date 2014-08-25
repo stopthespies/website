@@ -17,7 +17,8 @@
   ],
   "dependencies": {
   	"Leaflet.FeatureSelect" : "openplans/Leaflet.FeatureSelect#gh-pages",
-  	"jquery.numberSpinner" : "moles1/jquery.numberSpinner"
+  	"jquery.numberSpinner" : "moles1/jquery.numberSpinner",
+  	"semantic.gs" : "pospi/semantic.gs"
   },
   "devDependencies": {
   }

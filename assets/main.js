@@ -15,11 +15,11 @@ var
   LEGISLATORS_LOCATOR_URL = 'http://legislators-locator.herokuapp.com/',
   SOCIAL_STATS_URL    = 'https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net',
 
-  TWEETS_READ_URL     = 'http://stopthespies-api.herokuapp.com/tweets',
-  STATS_READ_URL      = 'http://stopthespies-api.herokuapp.com/stats',
+  TWEETS_READ_URL     = 'http://booty:5000/tweets',
+  STATS_READ_URL      = 'http://booty:5000/stats',
 
-  SEND_EMAIL_URL      = 'http://stopthespies-api.herokuapp.com/email',
-  LOG_URL_BASE      = 'http://stopthespies-api.herokuapp.com/log?event='
+  SEND_EMAIL_URL      = 'http://booty:5000/email',
+  LOG_URL_BASE      = 'http://booty:5000/log?event='
 ;
 
 // Start up scripts
