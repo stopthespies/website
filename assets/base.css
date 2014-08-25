@@ -3152,8 +3152,7 @@ section.video {
   margin-right: 10px; }
 
 #campaign-map {
-  height: 500px;
-  margin-top: 2em; }
+  height: 500px; }
 
 .leaflet-container {
   background: #f1592a !important; }
@@ -3315,6 +3314,17 @@ section.video {
   float: left;
   width: 47.91667%;
   margin: 0 1.04167%; }
+
+section.map {
+  padding: 0; }
+
+.footer {
+  text-align: right; }
+  .footer .col {
+    display: inline;
+    float: left;
+    width: 97.91667%;
+    margin: 0 1.04167%; }
 
 .step {
   display: inline;

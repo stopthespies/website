@@ -6,7 +6,7 @@ $(function() {
 });
 
 var MAP_ELEMENT = '#campaign-map';
-var DEFAULT_COORDS = [-29.043981, 134.912109];
+var DEFAULT_COORDS = [-28.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
 
 //------------------------------------------------------------------------------
@@ -18,7 +18,9 @@ var featureSelect;
 
 function initMap(el)
 {
-	map = L.map($(MAP_ELEMENT)[0]).setView(DEFAULT_COORDS, DEFAULT_ZOOM);
+	map = L.map($(MAP_ELEMENT)[0], {
+		scrollWheelZoom: false
+	}).setView(DEFAULT_COORDS, DEFAULT_ZOOM);
 
 	//var mapBG = L.tileLayer('http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png', {
 	var mapBG = L.tileLayer('', {
