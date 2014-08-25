@@ -100,6 +100,7 @@ function renderLegislators(reps) {
   legislators = reps;
 
   _.each(legislators, function (legislator) {
+  	legislator.image || (legislator.image = '');	// avoid template errors with missing data :TODO: fallback image
     container.append(_.template(legislatorTemplate, legislator));
   });
 
