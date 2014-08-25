@@ -115,6 +115,21 @@
 	}
 }
 
+// MAP
+
+section.map {
+	padding: 0;
+}
+
+// FOOTER
+
+.footer {
+	text-align: right;
+	.col {
+		@include column(12);
+	}
+}
+
 // STEPS BOXES
 // 1 > 2 columns
 .step {
