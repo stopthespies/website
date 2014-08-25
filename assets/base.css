@@ -3298,6 +3298,17 @@ section.video {
   .how .step-1 {
     float: left; } }
 
+.legislator .pic {
+  display: inline;
+  float: left;
+  width: 14.58333%;
+  margin: 0 1.04167%; }
+.legislator .details {
+  display: inline;
+  float: left;
+  width: 81.25%;
+  margin: 0 1.04167%; }
+
 .extra .sharing-buttons {
   display: block;
   width: 102.08333%;
