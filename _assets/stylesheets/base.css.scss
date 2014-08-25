@@ -1,4 +1,6 @@
 @import "bootstrap.scss";
+@import "vars.scss";
+@import "../javascripts/vendor/semantic.gs/stylesheets/scss/grid.scss";
 @import "mixins.scss";
 
 $brand1:        #E7E8D1 !default;
@@ -182,11 +184,18 @@ section.video {
   font-size: 16px;
   text-align: justify;
 }
+.how .postcode-steps {
+	p {
+		text-align: center;
+	}
+}
 .footer a {
   color: $brand1;
 }
 .stats {
-
+	h2 {
+		text-align: center;
+	}
 }
 .metric {
     text-align: center;
@@ -302,7 +311,7 @@ section.video {
 }
 .step {
   background: $brand2;
-  min-height: 150px;
+  min-height: 200px;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -324,23 +333,14 @@ section.video {
 }
 .sharing-buttons .share {
     display: block;
-    width:185px;
-    left:-10px;
-    height:40px;
     background: #000;
     text-align: center;
     text-decoration: none;
     border-radius: 3px 3px 3px 3px;
-    padding:8px 12px;
+    padding: 1em;
     color:#fff;
     font-weight: bold;
-    margin: auto;
-    margin-bottom:10px;
-
     font-size: 15px;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
 }
 
 .sharing-buttons .share:hover {
@@ -411,5 +411,12 @@ section.video {
 
 
 
+.modal-title i {
+	margin-right: 10px;
+}
+
+
+
 @import "map";
 @import "counters";
+@import "layout";
