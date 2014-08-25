@@ -1,44 +1,75 @@
+// CONTENT
+// outer margins, decreased at small res
+
 .container {
 	max-width: $content-max-width;
 	@include clearfix();
 }
 
-// intro column is a bit wider
-.introduction {
+.introduction, .stats, .how, .support, .extra, .reading {
 	.col {
-		@include column(10);
-		@include push(1);
+		@include column(12);
 	}
 }
 
-// other content is 8/12 with 2/12 gutters
-.stats, .how, .support, .extra, .reading {
-	.col {
-		@include column(8);
-		@include push(2);
+@media (min-width: $set-larger-content-margin) {
+	// intro column is a bit wider
+	.introduction {
+		.col {
+			@include column(10);
+			@include push(1);
+		}
+	}
+
+	// other content is 8/12 with 2/12 gutters
+	.stats, .how, .support, .extra, .reading {
+		.col {
+			@include column(8);
+			@include push(2);
+		}
 	}
 }
 
-// 6 columns of stats
+// STATS
+// 2 > 3 > 6 cols
+
 .stats {
+	padding-bottom: 0;
+
 	.metrics {
 		@include row();
 	}
 	.metric {
-		@include column(2);
+		@include column(6);
+		padding-bottom: 40px;
+	}
+
+	@media (min-width: $set-stats-3-cols) {
+		.metric {
+			@include column(4);
+		}
+	}
+
+	@media (min-width: $set-stats-6-cols) {
+		.metric {
+			@include column(2);
+		}
 	}
 }
 
-// 2 columns for location lookup & 8-column postcode inputs
+// LEGISLATOR SEARCH
+// 2 columns for location lookup boxes
+
 .how {
+	.step {
+		h4 {
+			padding: 0.5em 1em;
+		}
+	}
 	.postcode-steps, .location-privacy, .postcode-lookup {
 		@include row();
 	}
-	.step {
-		@include column(6);
-	}
 	.location-privacy {
-		margin-top: 1em;
 		font-size: 14px;
 		p {
 			@include column(12);
@@ -60,17 +91,39 @@
 			width: 40%;
 		}
 	}
+
+	@media (min-width: $set-steps-2-cols) {
+		.step-2 {	// swap rows on desktop
+			float: right;
+		}
+		.step-1 {
+			float: left;
+		}
+	}
 }
 
+// SHARE BUTTONS
 // 2 columns for what else section, 2 columns for sharing
+
 .extra {
-	.steps, .sharing-buttons {
+	.sharing-buttons {
 		@include row();
-	}
-	.step {
-		@include column(6);
+		padding: 20px 20px 0 20px;
 	}
 	.share {
 		@include column(6);
+	}
+}
+
+// STEPS BOXES
+// 1 > 2 columns
+.step {
+	@include column(12);
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+
+	@media (min-width: $set-steps-2-cols) {
+		@include column(6);
+		margin-bottom: 1em;
 	}
 }

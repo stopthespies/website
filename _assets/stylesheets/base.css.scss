@@ -320,16 +320,12 @@ section.video {
   color: darken($brand2, 20%);
 }
 .actions {
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   color: $brand4;
   text-align: center;
 }
 .actions p {
   text-align: justify;
-}
-.sharing-buttons {
-    padding: 20px 0;
-
 }
 .sharing-buttons .share {
     display: block;
