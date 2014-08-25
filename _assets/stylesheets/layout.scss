@@ -102,6 +102,15 @@
 	}
 }
 
+.legislator {
+	.pic {
+		@include column(2);
+	}
+	.details {
+		@include column(10);
+	}
+}
+
 // SHARE BUTTONS
 // 2 columns for what else section, 2 columns for sharing
 
