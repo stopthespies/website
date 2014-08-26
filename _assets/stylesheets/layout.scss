@@ -3,6 +3,7 @@
 
 .container {
 	max-width: $content-max-width;
+	margin: 0 auto;
 	@include clearfix();
 }
 
