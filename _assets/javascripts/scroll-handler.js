@@ -1,6 +1,11 @@
 /**
  * Scroll event handler
  * Triggers whatever actions at whatever scroll offsets, based on DOM element visibility
+ *
+ * Scroll is computed against things appearing at the bottom of the window.
+ * Thus, it is best used when combined with dom elements appearing either
+ * immediately before things you want to enter animating; or immediately
+ * after things you want to be completely visible before starting.
  */
 
 window.ScrollHandler || (window.ScrollHandler = {});
@@ -8,7 +13,7 @@ window.ScrollHandler || (window.ScrollHandler = {});
 (function($) {
 
 var $window;
-var wt, i, l;
+var wt, whOffset, i, l;
 var scroll_triggers;
 var scroll_bindings;
 var scroll_offsets;
@@ -58,7 +63,7 @@ window.ScrollHandler = {
 $(function() {
   function checkScroll(e)
   {
-    wt = $window.scrollTop();
+    wt = $window.scrollTop() + whOffset;
     l = scroll_triggers.length;
 
     for (i = 0; i < l; ++i) {
@@ -68,9 +73,16 @@ $(function() {
     }
   }
 
+  function checkSize()
+  {
+    whOffset = $window.innerHeight();
+  }
+
   $window = $(window);
   $window.on('scroll', checkScroll);
+  $window.on('resize', checkSize);
   checkScroll();
+  checkSize();
 });
 
 })(jQuery);
