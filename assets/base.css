@@ -3201,6 +3201,7 @@ section.video {
 
 .container {
   max-width: 1200px;
+  margin: 0 auto;
   *zoom: 1; }
   .container:before, .container:after {
     content: "";
