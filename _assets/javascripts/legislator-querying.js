@@ -1,19 +1,10 @@
+window.LegislatorQuery || (window.LegislatorQuery = {});
+
 (function($) {
 
 $(function() {
 
   // ----------------- GEO-BASED ----------------------
-
-  var locationMarker = $('#request-location');
-  var locationOffset = parseInt(locationMarker.data('offset') || 0);
-
-  function checkScroll(e)
-  {
-    if ($(window).scrollTop() > locationMarker.offset().top - locationOffset) {
-      askLocation();
-      $(window).off('scroll', checkScroll);
-    }
-  }
 
   // jiggle the location box somewhat to draw attention back
   function showLocationInfoTip()
@@ -63,7 +54,11 @@ $(function() {
       // :TODO:
       console.error("Geo fail");
     });
+
+    ScrollHandler.removeTrigger(askLocation);
   }
+
+  window.ScrollHandler.addTrigger('#request-location', askLocation);
 
   // ----------------- POSTCODE LOOKUP ----------------------
 
@@ -85,9 +80,6 @@ $(function() {
     });
     return false;
   });
-
-  $(window).on('scroll', checkScroll);
-  checkScroll();
 });
 
 // -------------------- RENDERING ----------------------
