@@ -72,6 +72,10 @@ function showElectorates(geojson)
 			layer.on("mouseout touchend", function (e) {
 				onBlurWard.call(layer, e, feature);
 			});
+			layer.on("dblclick", function(e) {
+				map.setZoomAround(e.latlng);
+				map.zoomIn(1);
+			});
 		}
 	}).addTo(map);
 }
