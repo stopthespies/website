@@ -55,9 +55,15 @@ $(function() {
 
   // ---------- bring in metrics -----------
 
-  TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
+  function animateStats()
+  {
+	TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
+	$('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner();
 
-  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner();
+	ScrollHandler.removeTrigger(animateStats);
+  }
+
+  ScrollHandler.addTrigger('#load-stats', animateStats);
 
   // GET AGGERGATE TOTALS
 
