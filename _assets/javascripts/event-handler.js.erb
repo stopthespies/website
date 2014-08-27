@@ -1,6 +1,15 @@
+// socket.io application object
 (function($, io) {
 
 	io = io.connect('<%= site.config['api_url'] %>');
+
+	io.on('get_stats', function(stats) {
+		STS.events.onStatsLoad(stats);
+	});
+
+	io.on('get_tweets', function(tweets) {
+		STS.events.onTweetsLoad(tweets);
+	});
 
 	io.on('views', function(reps) {
 		console.log('views', reps);
@@ -21,5 +30,8 @@
 	io.on('facebooks', function(reps) {
 		console.log('facebooks', reps);
 	});
+
+	// EXPORTS
+	STS.app = io;
 
 })(jQuery, io);

@@ -1,6 +1,6 @@
 window.LegislatorQuery || (window.LegislatorQuery = {});
 
-(function($) {
+(function($, io) {
 
 $(function() {
 
@@ -97,7 +97,7 @@ function renderLegislators(reps) {
   });
 
   TweenLite.fromTo(container[0], 0.8, {height: 0}, {height: measureH(container), onComplete: function(e) {
-	container.css('height', 'auto');
+  	container.css('height', 'auto');
   }});
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 
@@ -107,6 +107,11 @@ function renderLegislators(reps) {
     placement: 'top'
   });
 
+  // log event to the server
+  io.emit('log', {
+    'event' : 'views',
+    'legislators' : _.map(reps, function(r) { return r.member_id; }).join(',')
+  });
 };
 
 function hideLegislatorSearch()
@@ -118,4 +123,4 @@ function hideLegislatorSearch()
   }});
 }
 
-})(jQuery);
+})(jQuery, STS.app);
