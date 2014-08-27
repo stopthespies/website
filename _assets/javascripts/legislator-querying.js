@@ -107,12 +107,34 @@ function renderLegislators(reps) {
     placement: 'top'
   });
 
+  container.find('.number-spinner').numberSpinner();
+
+  var legislatorIds = _.map(reps, function(r) { return r.member_id; });
+
+  // request legislator counts
+  io.emit('stats', {legislators: legislatorIds})
+
   // log event to the server
   io.emit('log', {
     'event' : 'views',
-    'legislators' : _.map(reps, function(r) { return r.member_id; }).join(',')
+    'legislators' : legislatorIds.join(',')
   });
 };
+
+function setLegislatorCounts(stats)
+{
+  var wrapper;
+
+  _.each(stats, function(member) {
+    wrapper = $('.legislator[data-legislator-id="' + member._id + '"]');
+
+    wrapper.find('.legislator-views').numberSpinner('set', member.views || 0);
+    wrapper.find('.legislator-calls').numberSpinner('set', member.calls || 0);
+    wrapper.find('.legislator-emails').numberSpinner('set', member.emails || 0);
+    wrapper.find('.legislator-tweets').numberSpinner('set', member.tweets || 0);
+    wrapper.find('.legislator-facebooks').numberSpinner('set', member.facebooks || 0);
+  });
+}
 
 function hideLegislatorSearch()
 {
@@ -122,5 +144,8 @@ function hideLegislatorSearch()
     div.remove();
   }});
 }
+
+// EXPORTS
+STS.events.onLegislatorStats = setLegislatorCounts;
 
 })(jQuery, STS.app);
