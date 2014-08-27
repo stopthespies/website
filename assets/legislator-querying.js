@@ -1,19 +1,10 @@
-(function($) {
+window.LegislatorQuery || (window.LegislatorQuery = {});
+
+(function($, io) {
 
 $(function() {
 
   // ----------------- GEO-BASED ----------------------
-
-  var locationMarker = $('#request-location');
-  var locationOffset = parseInt(locationMarker.data('offset') || 0);
-
-  function checkScroll(e)
-  {
-    if ($(window).scrollTop() > locationMarker.offset().top - locationOffset) {
-      askLocation();
-      $(window).off('scroll', checkScroll);
-    }
-  }
 
   // jiggle the location box somewhat to draw attention back
   function showLocationInfoTip()
@@ -63,7 +54,11 @@ $(function() {
       // :TODO:
       console.error("Geo fail");
     });
+
+    ScrollHandler.removeTrigger(askLocation);
   }
+
+  window.ScrollHandler.addTrigger('#request-location', askLocation);
 
   // ----------------- POSTCODE LOOKUP ----------------------
 
@@ -85,9 +80,6 @@ $(function() {
     });
     return false;
   });
-
-  $(window).on('scroll', checkScroll);
-  checkScroll();
 });
 
 // -------------------- RENDERING ----------------------
@@ -105,7 +97,7 @@ function renderLegislators(reps) {
   });
 
   TweenLite.fromTo(container[0], 0.8, {height: 0}, {height: measureH(container), onComplete: function(e) {
-	container.css('height', 'auto');
+  	container.css('height', 'auto');
   }});
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 
@@ -115,7 +107,34 @@ function renderLegislators(reps) {
     placement: 'top'
   });
 
+  container.find('.number-spinner').numberSpinner();
+
+  var legislatorIds = _.map(reps, function(r) { return r.member_id; });
+
+  // request legislator counts
+  io.emit('stats', {legislators: legislatorIds})
+
+  // log event to the server
+  io.emit('log', {
+    'event' : 'views',
+    'legislators' : legislatorIds.join(',')
+  });
 };
+
+function setLegislatorCounts(stats)
+{
+  var wrapper;
+
+  _.each(stats, function(member) {
+    wrapper = $('.legislator[data-legislator-id="' + member._id + '"]');
+
+    wrapper.find('.legislator-views').numberSpinner('set', member.views || 0);
+    wrapper.find('.legislator-calls').numberSpinner('set', member.calls || 0);
+    wrapper.find('.legislator-emails').numberSpinner('set', member.emails || 0);
+    wrapper.find('.legislator-tweets').numberSpinner('set', member.tweets || 0);
+    wrapper.find('.legislator-facebooks').numberSpinner('set', member.facebooks || 0);
+  });
+}
 
 function hideLegislatorSearch()
 {
@@ -126,4 +145,7 @@ function hideLegislatorSearch()
   }});
 }
 
-})(jQuery);
+// EXPORTS
+STS.events.onLegislatorStats = setLegislatorCounts;
+
+})(jQuery, STS.app);

@@ -7,9 +7,11 @@
 
 
 
+
+
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
 
-(function($) {
+(function($, io) {
 
 var
   LEGISLATORS_LOCATOR_URL = 'http://legislators-locator.herokuapp.com/',
@@ -54,31 +56,41 @@ $(function() {
 
   // ---------- bring in metrics -----------
 
-  TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
+  ScrollHandler.addTrigger('#load-stats', animateStats);
+
+  function animateStats()
+  {
+    TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
+    ScrollHandler.removeTrigger(animateStats);
+  }
+
+  function statsLoaded()
+  {
+    return loadedStats !== undefined && socialStats !== undefined;
+  }
+
+  function onStatsLoaded(data)
+  {
+    $('.email-total').numberSpinner('set', data.emails || 0);
+    $('.call-total').numberSpinner('set', data.calls || 0);
+    $('.view-total').numberSpinner('set', data.views || 0);
+  }
 
   $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner();
 
-  // GET AGGERGATE TOTALS
+  // ------------------------------ LOAD DATA ----------------------------------
 
-  $.ajax({
-    url: STATS_READ_URL,
-    jsonp: "callback",
-    dataType: "jsonp",
-    // work with the response
-    success: function( res ) {
-        $('.email-total').numberSpinner('set', res.emails);
-        $('.call-total').numberSpinner('set', res.calls);
-        $('.view-total').numberSpinner('set', res.views);
-    }
-  });
+  // GET AGGREGATE TOTALS
+
+  io.emit('stats');
 
   // GET SOCIAL TOTALS
 
   $.ajax(SOCIAL_STATS_URL, {
       success: function(res, err) {
-        $('.facebook-total').numberSpinner('set', res.facebook);
-        $('.google-total').numberSpinner('set', res.googleplus);
-        $('.twitter-total').numberSpinner('set', res.twitter);
+        $('.facebook-total').numberSpinner('set', res.facebook || 0);
+        $('.google-total').numberSpinner('set', res.googleplus || 0);
+        $('.twitter-total').numberSpinner('set', res.twitter || 0);
       },
       dataType: 'jsonp',
       cache         : true,
@@ -87,26 +99,23 @@ $(function() {
 
   // GET TWEETS
 
-  var tweetTemplate = $('#tweet-template').html();
-  $.ajax({
-    url: TWEETS_READ_URL,
-    jsonp: "callback",
-    dataType: "jsonp",
-    // work with the response
-    success: function( tweets ) {
-      _.each(tweets, function(tweet){
-        if(tweet.category === "politician") {
-          $('#politician-tweets').append(_.template(tweetTemplate, tweet));
-        }
+  io.emit('tweets');
 
-      });
-      $('.support img').popover({
-        trigger: 'hover',
-        container: 'body',
-        placement: 'top'
-      });
-    }
-  });
+  var tweetTemplate = $('#tweet-template').html();
+
+  function onTweetsLoaded(tweets)
+  {
+    _.each(tweets, function(tweet){
+      if(tweet.category === "politician") {
+        $('#politician-tweets').append(_.template(tweetTemplate, tweet));
+      }
+    });
+    $('.support img').popover({
+      trigger: 'hover',
+      container: 'body',
+      placement: 'top'
+    });
+  }
 
   // SEND AN EMAIL (TEST ONLY)
 
@@ -127,18 +136,16 @@ $(function() {
 
   // LOG INITIAL VIEW
 
-  $.ajax({
-    url: LOG_URL_BASE + "views",
-    jsonp: "callback",
-    dataType: "jsonp",
-    // work with the response
-    success: function( res ) {
-    }
-  });
+  io.emit('log', {'event' : 'views'});
+
+  // -------------------------------- EXPORTS ----------------------------------
+
+  STS.events.onStatsLoad = onStatsLoaded;
+  STS.events.onTweetsLoad = onTweetsLoaded;
 
 });
 
-})(jQuery);
+})(jQuery, STS.app);
 
 
 // ---------------- API SERVER TOOLS -----------------------
