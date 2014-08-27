@@ -307,12 +307,28 @@ layout: default
         </div>
         <div class="details">
             <h4>Senator <%= full_name %></h4>
-            <p  class="status">This legislator has not put out an official statement. Lets encourage them to not vote in favor of the new proposals.</p>
+            <p class="status">This legislator has not put out an official statement. Lets encourage them to not vote in favor of the new proposals.</p>
             <ul class="contact">
-                <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action."><i class="fa fa-phone"></i></li>
-                <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET"><i class="fa fa-envelope-o"></i></li>
-                <li data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!"><i class="fa fa-twitter"></i></li>
-                <li data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page"><i class="fa fa-facebook"></i></li>
+                <li class="call-action">
+		            <i class="fa fa-eye"></i>
+		            <div class="number-spinner legislator-views">0</div>
+              	</li>
+                <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
+                	<i class="fa fa-phone"></i>
+                	<div class="number-spinner legislator-calls">0</div>
+              	</li>
+                <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
+                	<i class="fa fa-envelope-o"></i>
+                	<div class="number-spinner legislator-emails">0</div>
+                </li>
+                <li data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
+                	<i class="fa fa-twitter"></i>
+                	<div class="number-spinner legislator-tweets">0</div>
+                </li>
+                <li data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">
+                	<i class="fa fa-facebook"></i>
+                	<div class="number-spinner legislator-facebooks">0</div>
+                </li>
             </ul>
         </div>
     </div>
