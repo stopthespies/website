@@ -116,6 +116,7 @@ function renderLegislators(reps) {
   // bind postcode search retry
   $('.retry-legislators .postcode').on('click', function(e) {
     e.preventDefault();
+    resetLegislatorResults();
     showLegislatorSearch();
   });
 
@@ -162,8 +163,17 @@ function hideLegislatorSearch()
 function showLegislatorSearch()
 {
   var div = $('.postcode-steps');
-  TweenLite.fromTo(div[0], 0.4, {opacity: 0, height: 0}, {height: measureH(div), opacity: 1, onComplete: function(e) {
-    container.css('height', 'auto');
+  TweenLite.fromTo(div[0], 0.4, {opacity: 0, height: 0, overflow: 'hidden'}, {height: measureH(div), opacity: 1, onComplete: function(e) {
+    div.css('height', 'auto');
+  }});
+}
+
+function resetLegislatorResults()
+{
+  var container = $('.legislators');
+
+  TweenLite.fromTo(container[0], 0.8, {height: measureH(container)}, {height: 0, onComplete: function(e) {
+    container.empty().css('height', 'auto');
   }});
 }
 
