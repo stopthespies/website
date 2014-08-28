@@ -120,12 +120,6 @@ layout: default
 
             <div class="legislators"></div>
 
-
-         <!--
-           :TODO: <a href="">Not your representatives?</a>
-            -->
-
-
         </div>
     </div>
 </section>
@@ -226,9 +220,9 @@ layout: default
 <!-- ------------------------------ MODALS --------------------------------- -->
 
 <!-- EMAIL MODAL -->
-
 <div id="email-modal-container"></div>
 <script type="text/template" id="email-modal-template">
+
     <div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -256,6 +250,7 @@ layout: default
         </div>
       </div>
     </div>
+
 </script>
 <!-- END EMAIL MODAL -->
 
@@ -295,11 +290,13 @@ layout: default
     </div>
   </div>
 </div>
+
 </script>
 <!-- END CALL MODAL -->
 
-<!-- TEMPLATES -->
+<!-- ------------------------------ TEMPLATES --------------------------------- -->
 
+<!-- LEGISLATOR TEMPLATE -->
 <script type="text/template" id="legislator-template">
    <div class="legislator" data-legislator-id="<%= member_id %>">
         <div class="pic">
@@ -333,11 +330,24 @@ layout: default
         </div>
     </div>
 </script>
+<!-- END LEGISLATOR -->
 
+<!-- LEGISLATOR RETRY -->
+<script type="text/template" id="legislator-retry-template">
+
+	<div class="retry-legislators">
+		<p>Not your representatives?</p>
+		<p class="postcode"><a href="#">Search again</a></p>
+		<p class="map"><a href="#">Use the map</a></p>
+	</div>
+
+</script>
+<!-- END LEGISLATOR RETRY -->
+
+<!-- TWEET -->
 <script type="text/template" id="tweet-template">
+
     <img class="tweet" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %>" data-content="<%= tweet %> - <%= followers %>" />
 
 </script>
-
-
-<!-- END TEMPLATES -->
+<!-- END TWEET -->
