@@ -1,7 +1,7 @@
 // socket.io application object
 (function($, io) {
 
-	io = io.connect('<%= site.config['api_url'] %>');
+	io = io.connect('<%= site.config['api_url'] %>:80');
 
 	io.on('get_stats', function(stats) {
 		STS.events.onStatsLoad(stats[0]);	// :NOTE: array of records comes back from API
