@@ -3160,9 +3160,6 @@ section.video {
 /**
  * Number spinner styles
  */
-.number-spinner {
-  border: solid 1px #000; }
-
 .number-spinner,
 .number-spinner .tiles,
 .number-spinner .tiles .tile {

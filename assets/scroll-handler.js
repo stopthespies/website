@@ -62,6 +62,8 @@ window.ScrollHandler = {
 };
 
 $(function() {
+
+setTimeout(function() {		// the easiest thing to do to ensure that all pending DOMReady callbacks have fired & bound Scrollhandler events
   function checkScroll(e)
   {
     wt = $window.scrollTop() + whOffset;
@@ -82,8 +84,10 @@ $(function() {
   $window = $(window);
   $window.on('scroll', checkScroll);
   $window.on('resize', checkSize);
-  checkScroll();
   checkSize();
+  checkScroll();
+}, 250);
+
 });
 
 })(jQuery);

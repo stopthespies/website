@@ -85,33 +85,51 @@ $(function() {
 // -------------------- RENDERING ----------------------
 
 var legislatorTemplate = $('#legislator-template').html();
+var retryTemplate = $('#legislator-retry-template').html();
 
 function renderLegislators(reps) {
-  var container = $('.legislators');
+  var container = $('.legislators').empty();
 
   legislators = reps;
 
+  // build DOM
   _.each(legislators, function (legislator) {
   	legislator.image || (legislator.image = '');	// avoid template errors with missing data :TODO: fallback image
     container.append(_.template(legislatorTemplate, legislator));
   });
 
+  container.append(_.template(retryTemplate, {}));
+
+  // transition in
   TweenLite.fromTo(container[0], 0.8, {height: 0}, {height: measureH(container), onComplete: function(e) {
   	container.css('height', 'auto');
   }});
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 
+  // bind tooltips
   $('.contact li').popover({
     trigger: 'hover',
     container: 'body',
     placement: 'top'
   });
 
+  // bind postcode search retry
+  $('.retry-legislators .postcode').on('click', function(e) {
+    e.preventDefault();
+    resetLegislatorResults();
+    showLegislatorSearch();
+  });
+
+  $('.retry-legislators .map').on('click', function(e) {
+    e.preventDefault();
+    // :TODO: move to and activate map
+  });
+
+  // init counters
   container.find('.number-spinner').numberSpinner();
 
-  var legislatorIds = _.map(reps, function(r) { return r.member_id; });
-
   // request legislator counts
+  var legislatorIds = _.map(reps, function(r) { return r.member_id; });
   io.emit('stats', {legislators: legislatorIds})
 
   // log event to the server
@@ -139,9 +157,23 @@ function setLegislatorCounts(stats)
 function hideLegislatorSearch()
 {
   var div = $('.postcode-steps');
-  div.css('height', div.height());
-  TweenLite.to(div[0], 0.4, {opacity: 0, height: 0, onComplete: function() {
-    div.remove();
+  TweenLite.fromTo(div[0], 0.4, {height: div.height()}, {opacity: 0, height: 0});
+}
+
+function showLegislatorSearch()
+{
+  var div = $('.postcode-steps');
+  TweenLite.fromTo(div[0], 0.4, {opacity: 0, height: 0, overflow: 'hidden'}, {height: measureH(div), opacity: 1, onComplete: function(e) {
+    div.css('height', 'auto');
+  }});
+}
+
+function resetLegislatorResults()
+{
+  var container = $('.legislators');
+
+  TweenLite.fromTo(container[0], 0.8, {height: measureH(container)}, {height: 0, onComplete: function(e) {
+    container.empty().css('height', 'auto');
   }});
 }
 

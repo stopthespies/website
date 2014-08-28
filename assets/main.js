@@ -57,6 +57,7 @@ $(function() {
   // ---------- bring in metrics -----------
 
   ScrollHandler.addTrigger('#load-stats', animateStats);
+  TweenLite.set(".stats .metric", { transform: "scaleX(0)", opacity: 0 });
 
   function animateStats()
   {
@@ -75,8 +76,6 @@ $(function() {
     $('.call-total').numberSpinner('set', data.calls || 0);
     $('.view-total').numberSpinner('set', data.views || 0);
   }
-
-  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner();
 
   // ------------------------------ LOAD DATA ----------------------------------
 
@@ -103,13 +102,16 @@ $(function() {
 
   var tweetTemplate = $('#tweet-template').html();
 
-  function onTweetsLoaded(tweets)
+  function onTweetsLoaded(tweetdata)
   {
-    _.each(tweets, function(tweet){
-      if(tweet.category === "politician") {
-        $('#politician-tweets').append(_.template(tweetTemplate, tweet));
-      }
+    _.each(tweetdata.latest, function(tweets, type) {
+      _.each(tweets, function(tweet) {
+        $('#' + type + '-tweets').append(_.template(tweetTemplate, tweet));
+      });
     });
+
+    $('.tweets-support-total').numberSpinner('set', tweetdata.total);
+
     $('.support img').popover({
       trigger: 'hover',
       container: 'body',
@@ -133,6 +135,11 @@ $(function() {
       console.log(res)
     }
   });
+
+  // init live counter widgets
+
+  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total, \
+    .tweets-support-total').addClass('number-spinner').numberSpinner();
 
   // LOG INITIAL VIEW
 
