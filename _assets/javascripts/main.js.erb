@@ -57,6 +57,7 @@ $(function() {
   // ---------- bring in metrics -----------
 
   ScrollHandler.addTrigger('#load-stats', animateStats);
+  TweenLite.set(".stats .metric", { transform: "scaleX(0)", opacity: 0 });
 
   function animateStats()
   {
