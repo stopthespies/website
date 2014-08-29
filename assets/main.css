@@ -2794,7 +2794,6 @@ a.label:hover, a.label:focus {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
 
-/* These variables are included after bootstrap's, so you can add overrides here */
 body {
   width: 100%;
   *zoom: 1; }
@@ -2804,6 +2803,7 @@ body {
   body:after {
     clear: both; }
 
+/* These variables are included after bootstrap's, so you can add overrides here */
 html {
   font-size: 100%;
   *font-size: 16px;
@@ -2811,19 +2811,64 @@ html {
 
 body {
   font-size: 112.5%;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  background: #f3f3f3;
+  color: #292929; }
+
+a {
+  color: #292929; }
+
+section {
+  padding: 40px 0; }
+  section h1 {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+    font-size: 90px; }
+  section h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: -1px; }
+
+.intro {
+  margin-bottom: 30px;
+  text-align: justify; }
+
+.actions {
+  padding: 20px 20px 0 20px;
+  color: #424242;
+  text-align: center; }
+
+.actions p {
+  text-align: justify; }
+
+.step h4 {
+  text-transform: uppercase;
+  color: #424242;
+  text-align: center;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  padding-top: 20px;
+  background: #D3CEAA;
+  position: relative;
+  z-index: 1;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px; }
+
+.step {
+  background: #D3CEAA;
+  min-height: 200px;
+  border-radius: 8px;
+  overflow: hidden; }
 
 .logo i {
   font-size: 90px;
   margin: 0;
   padding: 0; }
-
-h1 {
-  font-weight: 700;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 30px;
-  font-size: 90px; }
 
 .header {
   background: #FBF7E4;
@@ -2851,23 +2896,6 @@ h1 {
 .header a {
   color: #424242; }
 
-body {
-  background: #f3f3f3;
-  color: #292929; }
-
-body a {
-  color: #292929; }
-
-section {
-  padding: 40px 0; }
-
-section h2 {
-  font-size: 30px;
-  text-transform: uppercase;
-  margin-bottom: 25px;
-  text-align: center;
-  letter-spacing: -1px; }
-
 .who {
   background: #f1592a;
   color: #E7E8D1;
@@ -2875,6 +2903,13 @@ section h2 {
 
 .who p {
   text-align: justify; }
+
+.introduction {
+  font-size: 30px;
+  line-height: 56px;
+  color: #949494;
+  padding: 150px 0;
+  font-family: 'Source Sans Pro', sans-serif; }
 
 section.video {
   background: #000; }
@@ -2911,56 +2946,6 @@ section.video {
   background: #292929;
   cursor: pointer; }
 
-.how {
-  color: #FBF7E4;
-  background: #f1592a; }
-
-.how .intro {
-  text-align: justify;
-  margin-bottom: 20px; }
-
-.how .legislators a {
-  color: #b0a767; }
-.how .legislators img {
-  border: 2px solid #f05220;
-  border-radius: 8px;
-  width: 100%; }
-
-.how h4 {
-  font-size: 26px;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 5px; }
-
-.how .contact {
-  margin: 0;
-  padding: 0;
-  list-style: none; }
-
-.how .contact li {
-  float: left;
-  margin-right: 10px;
-  font-size: 30px;
-  padding: 0 5px;
-  cursor: pointer; }
-
-.how .contact li:hover {
-  background: #D3CEAA;
-  color: #424242;
-  border-radius: 8px; }
-
-.how .status {
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-  text-align: justify; }
-
-.how .postcode-steps p {
-  text-align: center; }
-
-.footer a {
-  color: #E7E8D1; }
-
 .stats h2 {
   text-align: center; }
 
@@ -2979,19 +2964,66 @@ section.video {
 .metric .icon {
   font-size: 40px; }
 
-.introduction {
-  font-size: 30px;
-  line-height: 56px;
-  color: #949494;
-  padding: 150px 0;
-  font-family: 'Source Sans Pro', sans-serif; }
+.how {
+  color: #FBF7E4;
+  background: #f1592a; }
+  .how .intro {
+    text-align: justify;
+    margin-bottom: 20px; }
+  .how .legislators a {
+    color: #b0a767; }
+  .how .legislators img {
+    border: 2px solid #f05220;
+    border-radius: 8px;
+    width: 100%; }
+  .how h4 {
+    font-size: 26px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px; }
+  .how .contact {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  .how .contact li {
+    float: left;
+    margin-right: 10px;
+    font-size: 30px;
+    padding: 0 5px;
+    cursor: pointer; }
+  .how .contact li:hover {
+    background: #D3CEAA;
+    color: #424242;
+    border-radius: 8px; }
+  .how .status {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    text-align: justify; }
+  .how .postcode-steps p {
+    margin: 20% 10% 0 10%;
+    text-align: center;
+    color: #424242; }
+  .how .location-error {
+    display: none; }
+
+.postcode-steps {
+  overflow: hidden; }
+  .postcode-steps .actions .fa {
+    position: relative;
+    font-size: 2.5em;
+    color: #f1592a; }
+
+.legislators {
+  display: none; }
+  .legislators .legislator {
+    -webkit-transform-origin: top center;
+    -moz-transform-origin: top center;
+    -ms-transform-origin: top center;
+    transform-origin: top center; }
 
 .legislator {
   margin-bottom: 20px; }
-
-.intro {
-  margin-bottom: 30px;
-  text-align: justify; }
 
 .supporters {
   background: #8FBE01;
@@ -3039,12 +3071,9 @@ section.video {
 .tab-content img:hover {
   opacity: 1; }
 
-.footer {
-  line-height: 15px;
-  padding: 20px 0;
-  font-size: 14px;
-  background: #424242;
-  color: #E7E8D1; }
+.tweet {
+  width: 70px;
+  height: 70px; }
 
 .extra {
   background: #f1592a;
@@ -3052,37 +3081,6 @@ section.video {
 
 .extra .intro {
   margin-bottom: 20px;
-  text-align: justify; }
-
-.step h4 {
-  text-transform: uppercase;
-  color: #424242;
-  text-align: center;
-  font-weight: 700;
-  padding: 0;
-  margin: 0;
-  padding-top: 20px;
-  background: #D3CEAA;
-  position: relative;
-  z-index: 1;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px; }
-
-.step {
-  background: #D3CEAA;
-  min-height: 200px;
-  border-radius: 8px;
-  overflow: hidden; }
-
-.reading a {
-  color: #b0a767; }
-
-.actions {
-  padding: 20px 20px 0 20px;
-  color: #424242;
-  text-align: center; }
-
-.actions p {
   text-align: justify; }
 
 .sharing-buttons .share {
@@ -3125,31 +3123,22 @@ section.video {
   .sharing-buttons .share.googleplus:hover {
     background: #d22e31; }
 
-.btn-primary {
-  border-color: #f36c42 !important; }
+.reading a {
+  color: #b0a767; }
 
-.postcode-steps {
-  overflow: hidden; }
-  .postcode-steps .actions .fa {
-    position: relative;
-    font-size: 2.5em;
-    color: #f1592a; }
-
-.legislators {
-  height: 0;
-  overflow: hidden; }
-  .legislators .legislator {
-    -webkit-transform-origin: top center;
-    -moz-transform-origin: top center;
-    -ms-transform-origin: top center;
-    transform-origin: top center; }
-
-.tweet {
-  width: 70px;
-  height: 70px; }
+.footer {
+  line-height: 15px;
+  padding: 20px 0;
+  font-size: 14px;
+  background: #424242; }
+  .footer, .footer a {
+    color: #E7E8D1; }
 
 .modal-title i {
   margin-right: 10px; }
+
+.btn-primary {
+  border-color: #f36c42 !important; }
 
 #campaign-map {
   height: 500px; }
@@ -3158,46 +3147,68 @@ section.video {
   background: #f1592a !important; }
 
 /**
- * Number spinner styles
+ * Number spinner structure
  */
-.number-spinner {
-  border: solid 1px #000; }
-
 .number-spinner,
 .number-spinner .tiles,
-.number-spinner .tiles .tile {
+.number-spinner .tile {
   display: inline-block; }
 
 .number-spinner .tiles,
-.number-spinner .tiles .tile,
-.number-spinner .tiles .tile .digits .digit {
-  height: 20px; }
-
-.number-spinner .tiles .tile,
-.number-spinner .tiles .tile .digits .digit {
-  background-color: #000; }
+.number-spinner .tile,
+.number-spinner .digit {
+  line-height: 1;
+  height: 1em; }
 
 .number-spinner .tiles {
-  float: right;
-  padding: 2px;
+  padding: 0.1em;
   white-space: nowrap; }
 
-.number-spinner .tiles .tile {
-  margin-right: 2px;
-  color: #fff;
+.number-spinner .tile {
+  margin-right: 0.1em;
   overflow: hidden; }
 
-.number-spinner .tiles .tile:last-child {
-  margin-right: 0px; }
+.number-spinner .tile:last-child {
+  margin-right: 0; }
 
-.number-spinner .tiles .tile .digits {
+.number-spinner .digits {
   position: relative;
-  top: 0px; }
+  top: 0; }
 
-.number-spinner .tiles .tile .digits .digit {
+.number-spinner .digit {
   display: block;
-  padding: 0px 2px;
-  line-height: 20px; }
+  padding: 0 0.1em; }
+
+/**
+ * Number spinner theme
+ */
+.number-spinner {
+  height: 1.2em;
+  padding: 0.1em;
+  border-radius: 0.15em;
+  line-height: 1;
+  font-weight: bold;
+  background: #000;
+  color: white;
+  text-shadow: 0 1px 2px #821000;
+  text-align: center; }
+  .number-spinner .tiles {
+    padding: 0; }
+  .number-spinner .digit {
+    background: #010101;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #959595), color-stop(46%, #0d0d0d), color-stop(50%, #010101), color-stop(53%, #0a0a0a), color-stop(76%, #4e4e4e), color-stop(87%, #383838), color-stop(100%, #1b1b1b));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -ms-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=0 );
+    /* IE6-9 */ }
 
 .container {
   max-width: 1200px;
@@ -3229,6 +3240,21 @@ section.video {
     width: 64.58333%;
     margin: 0 1.04167%;
     margin-left: 17.70833%; } }
+.step {
+  display: inline;
+  float: left;
+  width: 97.91667%;
+  margin: 0 1.04167%;
+  margin-bottom: 1em;
+  padding-bottom: 1em; }
+  @media (min-width: 530px) {
+    .step {
+      display: inline;
+      float: left;
+      width: 47.91667%;
+      margin: 0 1.04167%;
+      margin-bottom: 1em; } }
+
 .stats {
   padding-bottom: 0; }
   .stats .metrics {
@@ -3298,6 +3324,13 @@ section.video {
     float: right; }
   .how .step-1 {
     float: left; } }
+@media (max-width: 529px) {
+  .how .no-location .step-2 {
+    background: transparent;
+    min-height: 0; }
+    .how .no-location .step-2 p {
+      color: #FBF7E4;
+      margin-top: 0; } }
 
 .legislator {
   display: block;
@@ -3370,18 +3403,3 @@ section.map {
     float: left;
     width: 97.91667%;
     margin: 0 1.04167%; }
-
-.step {
-  display: inline;
-  float: left;
-  width: 97.91667%;
-  margin: 0 1.04167%;
-  margin-bottom: 1em;
-  padding-bottom: 1em; }
-  @media (min-width: 530px) {
-    .step {
-      display: inline;
-      float: left;
-      width: 47.91667%;
-      margin: 0 1.04167%;
-      margin-bottom: 1em; } }

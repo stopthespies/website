@@ -39,7 +39,7 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
     <link href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type='text/css' />
 
-	<link rel="stylesheet" href="/assets/base.css">
+	<link rel="stylesheet" href="/assets/main.css">
 </head>
 
 
@@ -92,7 +92,7 @@
 <section class="stats">
     <div class="container">
         <div class="col">
-			<a id="load-stats"></a>
+      			<!-- TRIGGER --><a id="load-stats"></a><!-- /TRIGGER -->
             <h2>
               How are we doing?
             </h2>
@@ -103,7 +103,7 @@
                         <i class="fa fa-phone"></i>
 
                     </div>
-                    <div class="total call-total">0</div>
+                    <div class="total call-total number-spinner">0</div>
                 </div>
                 <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <div class="title">Emails</div>
@@ -111,7 +111,7 @@
                         <i class="fa fa-envelope-o"></i>
 
                     </div>
-                    <div class="total email-total">0</div>
+                    <div class="total email-total number-spinner">0</div>
                 </div>
                 <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <div class="title">Views</div>
@@ -119,7 +119,7 @@
                         <i class="fa fa-eye"></i>
 
                     </div>
-                    <div class="total view-total">0</div>
+                    <div class="total view-total number-spinner">0</div>
                 </div>
                 <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <div class="title">Tweets</div>
@@ -127,7 +127,7 @@
                         <i class="fa fa-twitter"></i>
 
                     </div>
-                    <div class="total twitter-total">0</div>
+                    <div class="total twitter-total number-spinner">0</div>
                 </div>
                 <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <div class="title">Shares</div>
@@ -135,7 +135,7 @@
                         <i class="fa fa-facebook"></i>
 
                     </div>
-                    <div class="total facebook-total">0</div>
+                    <div class="total facebook-total number-spinner">0</div>
                 </div>
                 <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <div class="title">Google+</div>
@@ -143,7 +143,7 @@
                         <i class="fa fa-google-plus"></i>
 
                     </div>
-                    <div class="total google-total">0</div>
+                    <div class="total google-total number-spinner">0</div>
                 </div>
             </div>
         </div>
@@ -159,13 +159,20 @@
 
             <div class="postcode-steps">
                 <div class="step step-2">
+                  <div class="location-search">
                     <h4>Auto Lookup!</h4>
-					<a id="request-location"></a>
+                    <!-- TRIGGER --><a id="request-location"></a><!-- /TRIGGER -->
 
                     <div class="actions">
                       <i class="fa fa-globe"></i>
                       <p>Accept the browser request to share your location.</p>
                     </div>
+                  </div>
+                  <div class="location-error">
+                    <p>
+                      Oh no! We couldn't find you. Try your postcode instead.
+                    </p>
+                  </div>
                 </div>
                 <div class="step step-1">
                     <h4>Postcode Lookup!</h4>
@@ -178,6 +185,7 @@
                         </span>
                       </div>
                     </form>
+
                 </div>
             </div>
 
@@ -194,10 +202,11 @@
 <section class="support">
     <div class="container">
         <div class="col">
+            <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
             <h2>Who supports us?</h2>
             <p class="intro">
                 <i class="fa fa-twitter"></i>
-                By tweeting "I support #stopthespies" you will automatically be added to the list below. Currently, <strong class="tweets-support-total">0</strong> people have shown their support on Twitter.
+                By tweeting "I support #stopthespies" you will automatically be added to the list below. Currently, <strong class="tweets-support-total number-spinner">0</strong> people have shown their support on Twitter.
             </p>
             <div class="bs-example bs-example-tabs">
                 <ul class="nav nav-tabs" role="tablist">
@@ -444,6 +453,7 @@
 <script src="/assets/polyfills.js"></script>
 <script src="/assets/helpers.js"></script>
 <script src="/assets/env.js"></script>
+<script src="/assets/animations.js"></script>
 <script src="/assets/event-handler.js"></script>
 <script src="/assets/legislator-querying.js"></script>
 <script src="/assets/map.js"></script>

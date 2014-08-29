@@ -9,6 +9,8 @@
 
 
 
+
+
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
 
 (function($, io) {
@@ -56,13 +58,30 @@ $(function() {
 
   // ---------- bring in metrics -----------
 
-  ScrollHandler.addTrigger('#load-stats', animateStats);
+  var loadedStats, socialStats;
+
+  ScrollHandler.addTrigger('#load-stats', bringInStats);
   TweenLite.set(".stats .metric", { transform: "scaleX(0)", opacity: 0 });
+
+  function bringInStats()
+  {
+    if (!statsLoaded()) {
+      setTimeout(bringInStats, 100);
+    } else {
+      animateStats();
+    }
+  }
 
   function animateStats()
   {
     TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
-    ScrollHandler.removeTrigger(animateStats);
+
+    $('.email-total').numberSpinner('set', loadedStats.emails || 0);
+    $('.call-total').numberSpinner('set', loadedStats.calls || 0);
+    $('.view-total').numberSpinner('set', loadedStats.views || 0);
+    $('.facebook-total').numberSpinner('set', socialStats.facebook || 0);
+    $('.google-total').numberSpinner('set', socialStats.googleplus || 0);
+    $('.twitter-total').numberSpinner('set', socialStats.twitter || 0);
   }
 
   function statsLoaded()
@@ -72,9 +91,7 @@ $(function() {
 
   function onStatsLoaded(data)
   {
-    $('.email-total').numberSpinner('set', data.emails || 0);
-    $('.call-total').numberSpinner('set', data.calls || 0);
-    $('.view-total').numberSpinner('set', data.views || 0);
+    loadedStats = data;
   }
 
   // ------------------------------ LOAD DATA ----------------------------------
@@ -87,9 +104,7 @@ $(function() {
 
   $.ajax(SOCIAL_STATS_URL, {
       success: function(res, err) {
-        $('.facebook-total').numberSpinner('set', res.facebook || 0);
-        $('.google-total').numberSpinner('set', res.googleplus || 0);
-        $('.twitter-total').numberSpinner('set', res.twitter || 0);
+        socialStats = res;
       },
       dataType: 'jsonp',
       cache         : true,
@@ -98,7 +113,12 @@ $(function() {
 
   // GET TWEETS
 
-  io.emit('tweets');
+  ScrollHandler.addTrigger('#load-tweets', bringInTweets);
+
+  function bringInTweets()
+  {
+    io.emit('tweets');
+  }
 
   var tweetTemplate = $('#tweet-template').html();
 
@@ -110,7 +130,7 @@ $(function() {
       });
     });
 
-    //$('.tweets-support-total').numberSpinner('set', tweetdata.total);
+    $('.tweets-support-total').numberSpinner('set', tweetdata.total);
 
     $('.support img').popover({
       trigger: 'hover',
@@ -153,21 +173,3 @@ $(function() {
 });
 
 })(jQuery, STS.app);
-
-
-// ---------------- API SERVER TOOLS -----------------------
-
-var log = function(options) {
-  var event = options.event;
-  var legislator = options.legislator || null;
-  /*$.ajax({
-    url: STATS_READ_URL,
-    jsonp: "callback",
-    dataType: "jsonp",
-    // work with the response
-    success: function( response ) {
-        console.log( response ); // server response
-    }
-  });*/
-};
-//log({event: 'view'});
