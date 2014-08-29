@@ -14,7 +14,7 @@ domain: stage.stopthespies.org
 #------------------------------------------------------------------------------#
 # API urls and endpoints
 
-api_url: http://stopthespies-api.herokuapp.com
+api_url: http://stopthespies-api.herokuapp.com:80
 tweets_read_path: /tweets
 stats_read_path: /stats
 send_email_path: /email
