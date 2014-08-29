@@ -1,6 +1,6 @@
 window.LegislatorQuery || (window.LegislatorQuery = {});
 
-(function($, io) {
+(function($, io, anim) {
 
 $(function() {
 
@@ -50,10 +50,7 @@ $(function() {
         // work with the response
         success: renderLegislators
       });
-    }, function() {
-      // :TODO:
-      console.error("Geo fail");
-    });
+    }, onLocationError);
 
     ScrollHandler.removeTrigger(askLocation);
   }
@@ -101,9 +98,7 @@ function renderLegislators(reps) {
   container.append(_.template(retryTemplate, {}));
 
   // transition in
-  TweenLite.fromTo(container[0], 0.8, {height: 0}, {height: measureH(container), onComplete: function(e) {
-  	container.css('height', 'auto');
-  }});
+  anim.appearVSlide(container, 0.8);
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 
   // bind tooltips
@@ -156,28 +151,32 @@ function setLegislatorCounts(stats)
 
 function hideLegislatorSearch()
 {
-  var div = $('.postcode-steps');
-  TweenLite.fromTo(div[0], 0.4, {height: div.height()}, {opacity: 0, height: 0});
+  anim.hideVSlide($('.postcode-steps'), 0.4);
 }
 
 function showLegislatorSearch()
 {
-  var div = $('.postcode-steps');
-  TweenLite.fromTo(div[0], 0.4, {opacity: 0, height: 0, overflow: 'hidden'}, {height: measureH(div), opacity: 1, onComplete: function(e) {
-    div.css('height', 'auto');
-  }});
+  anim.appearVSlide($('.postcode-steps'), 0.4);
 }
 
 function resetLegislatorResults()
 {
   var container = $('.legislators');
 
-  TweenLite.fromTo(container[0], 0.8, {height: measureH(container)}, {height: 0, onComplete: function(e) {
+  anim.hideVSlide($('.legislators'), 0.8, function onComplete(e) {
     container.empty().css('height', 'auto');
-  }});
+  });
+}
+
+// Hide the geo query box in case of a location error and show a message
+function onLocationError()
+{
+  $('.postcode-steps').addClass('no-location');
+  anim.hideVSlide($('.how .location-search'), 0.4);
+  anim.appearVSlide($('.how .location-error'), 0.4);
 }
 
 // EXPORTS
 STS.events.onLegislatorStats = setLegislatorCounts;
 
-})(jQuery, STS.app);
+})(jQuery, STS.app, STS.anim);
