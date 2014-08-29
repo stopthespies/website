@@ -1,51 +1,68 @@
 /**
- * Number spinner styles
+ * Number spinner structure
  */
-
-
-.number-spinner {
-	border: solid 1px #000;
-}
 
 .number-spinner,
 .number-spinner .tiles,
-.number-spinner .tiles .tile {
+.number-spinner .tile {
 	display: inline-block;
 }
 
 .number-spinner .tiles,
-.number-spinner .tiles .tile,
-.number-spinner .tiles .tile .digits .digit {
-	height: 20px;
-}
-
-.number-spinner .tiles .tile,
-.number-spinner .tiles .tile .digits .digit {
-	background-color: #000;
+.number-spinner .tile,
+.number-spinner .digit {
+  line-height: 1;
+	height: 1em;
 }
 
 .number-spinner .tiles {
-	float: right;
-	padding: 2px;
+	padding: 0.1em;
 	white-space: nowrap;
 }
 
-.number-spinner .tiles .tile {
-	margin-right: 2px;
-	color: #fff;
+.number-spinner .tile {
+	margin-right: 0.1em;
 	overflow: hidden;
 }
-.number-spinner .tiles .tile:last-child {
-	margin-right: 0px;
+.number-spinner .tile:last-child {
+	margin-right: 0;
 }
 
-.number-spinner .tiles .tile .digits {
+.number-spinner .digits {
 	position: relative;
-	top: 0px;
+	top: 0;
 }
 
-.number-spinner .tiles .tile .digits .digit {
+.number-spinner .digit {
 	display: block;
-	padding: 0px 2px;
-	line-height: 20px;
+	padding: 0 0.1em;
+}
+
+/**
+ * Number spinner theme
+ */
+
+.number-spinner {
+  height: 1.2em;
+  padding: 0.1em;
+  border-radius: 0.15em;
+  line-height: 1;
+  font-weight: bold;
+  background: #000;
+  color: white;
+  text-shadow: 0 1px 2px #821000;
+  text-align: center;
+
+  .tiles {
+    padding: 0;
+  }
+  .digit {
+    background: #010101; /* Old browsers */
+    background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#959595), color-stop(46%,#0d0d0d), color-stop(50%,#010101), color-stop(53%,#0a0a0a), color-stop(76%,#4e4e4e), color-stop(87%,#383838), color-stop(100%,#1b1b1b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* Chrome10+,Safari5.1+ */
+    background: -ms-linear-gradient(top, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=0 ); /* IE6-9 */
+  }
 }
