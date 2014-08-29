@@ -113,7 +113,12 @@ $(function() {
 
   // GET TWEETS
 
-  io.emit('tweets');
+  ScrollHandler.addTrigger('#load-tweets', bringInTweets);
+
+  function bringInTweets()
+  {
+    io.emit('tweets');
+  }
 
   var tweetTemplate = $('#tweet-template').html();
 
