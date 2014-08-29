@@ -9,6 +9,8 @@ $brand3:        #FBF7E4 !default;
 $brand4:        #424242 !default;
 $brand5:        #f1592a !default;
 
+@import "legislator-lookup.scss";
+
 //------------------------------------------------------------------------------
 
 $BASE_FONT_SIZE : 18;
@@ -76,7 +78,7 @@ body a {
   color: darken($brand4, 10%);
 }
 section {
-padding: 40px 0;
+  padding: 40px 0;
 }
 section h2 {
   font-size: 30px;
@@ -96,6 +98,7 @@ section h2 {
 section.video {
   background: #000;
 }
+
 .video-container {
 
   height: 340px;
@@ -133,62 +136,7 @@ section.video {
     background: darken($brand4, 10%);
     cursor: pointer;
   }
-.how {
-	color: $brand3;
-  background: $brand5;
 
-}
-.how .intro {
-  text-align: justify;
-  margin-bottom: 20px;
-}
-.how .legislators {
-  a {
-    color: darken($brand2, 20%);
-  }
-  img {
-    border: 2px solid darken($brand5, 2%);
-    border-radius: 8px;
-    width: 100%;
-  }
-}
-.how h4 {
-  font-size: 26px;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 5px;
-}
-
-.how .contact {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.how .contact li {
-  float: left;
-  margin-right: 10px;
-  font-size: 30px;
-  padding: 0 5px;
-
-  cursor: pointer;
-}
-.how .contact li:hover {
-  background: $brand2;
-  color: $brand4;
-  border-radius: 8px;
-
-}
-.how .status {
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-  text-align: justify;
-}
-.how .postcode-steps {
-	p {
-		text-align: center;
-	}
-}
 .footer a {
   color: $brand1;
 }
@@ -393,8 +341,7 @@ section.video {
 }
 
 .legislators {
-  height: 0;
-  overflow: hidden;
+  display: none;
   .legislator {
     @include transform-origin(top center);
   }

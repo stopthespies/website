@@ -31,6 +31,19 @@
 	}
 }
 
+// STEPS BOXES
+// 1 > 2 columns
+.step {
+  @include column(12);
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+
+  @media (min-width: $set-steps-2-cols) {
+    @include column(6);
+    margin-bottom: 1em;
+  }
+}
+
 // STATS
 // 2 > 3 > 6 cols
 
@@ -96,11 +109,22 @@
 	@media (min-width: $set-steps-2-cols) {
 		.step-2 {	// swap rows on desktop
 			float: right;
-		}
-		.step-1 {
-			float: left;
+    }
+    .step-1 {
+      float: left;
 		}
 	}
+
+  @media (max-width: ($set-steps-2-cols - 1)) {
+    .no-location .step-2 {
+      background: transparent;
+      min-height: 0;
+      p {
+        color: $brand3;
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 .legislator {
@@ -158,18 +182,5 @@ section.map {
 	text-align: right;
 	.col {
 		@include column(12);
-	}
-}
-
-// STEPS BOXES
-// 1 > 2 columns
-.step {
-	@include column(12);
-	margin-bottom: 1em;
-	padding-bottom: 1em;
-
-	@media (min-width: $set-steps-2-cols) {
-		@include column(6);
-		margin-bottom: 1em;
 	}
 }

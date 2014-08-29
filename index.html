@@ -92,13 +92,20 @@ layout: default
 
             <div class="postcode-steps">
                 <div class="step step-2">
+                  <div class="location-search">
                     <h4>Auto Lookup!</h4>
-					<a id="request-location"></a>
+                    <a id="request-location"></a>
 
                     <div class="actions">
                       <i class="fa fa-globe"></i>
                       <p>Accept the browser request to share your location.</p>
                     </div>
+                  </div>
+                  <div class="location-error">
+                    <p>
+                      Oh no! We couldn't find you. Try your postcode instead.
+                    </p>
+                  </div>
                 </div>
                 <div class="step step-1">
                     <h4>Postcode Lookup!</h4>
@@ -111,6 +118,7 @@ layout: default
                         </span>
                       </div>
                     </form>
+
                 </div>
             </div>
 
