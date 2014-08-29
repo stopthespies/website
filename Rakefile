@@ -52,7 +52,9 @@ namespace :site do
       system "git add ."
       message = "Site updated at #{Time.now.utc}"
       system "git commit -m #{message.inspect}"
-      system "git push origin gh-pages"
+
+      #system "git push origin gh-pages"
+      puts "Build completed. Please check the latest commit in _site directory and then push to github."
     end
   end
 
