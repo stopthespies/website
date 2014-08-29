@@ -51,8 +51,6 @@ $(function() {
         success: renderLegislators
       });
     }, onLocationError);
-
-    ScrollHandler.removeTrigger(askLocation);
   }
 
   window.ScrollHandler.addTrigger('#request-location', askLocation);

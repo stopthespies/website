@@ -71,6 +71,12 @@ setTimeout(function() {		// the easiest thing to do to ensure that all pending D
     for (i = 0; i < l; ++i) {
       if (wt > scroll_triggers[i].offset().top - scroll_offsets[i]) {
         scroll_bindings[i]();
+
+        scroll_triggers.splice(i, 1);
+        scroll_offsets.splice(i, 1);
+        scroll_bindings.splice(i, 1);
+        --i;
+        --l;
       }
     }
   }
