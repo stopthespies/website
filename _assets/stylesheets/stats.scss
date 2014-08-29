@@ -1,0 +1,20 @@
+.stats {
+  h2 {
+    text-align: center;
+  }
+}
+.metric {
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+.metric:hover {
+  background: darken($brand3, 1%);
+  cursor: pointer;
+}
+.metric .title {
+    font-weight: bold;
+}
+.metric .icon {
+    font-size: 40px;
+}

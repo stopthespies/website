@@ -2,64 +2,82 @@
   color: $brand3;
   background: $brand5;
 
-}
-.how .intro {
-  text-align: justify;
-  margin-bottom: 20px;
-}
-.how .legislators {
-  a {
-    color: darken($brand2, 20%);
+  .intro {
+    text-align: justify;
+    margin-bottom: 20px;
   }
-  img {
-    border: 2px solid darken($brand5, 2%);
-    border-radius: 8px;
-    width: 100%;
+  .legislators {
+    a {
+      color: darken($brand2, 20%);
+    }
+    img {
+      border: 2px solid darken($brand5, 2%);
+      border-radius: 8px;
+      width: 100%;
+    }
   }
-}
-.how h4 {
-  font-size: 26px;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 5px;
-}
+  h4 {
+    font-size: 26px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+  }
 
-.how .contact {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.how .contact li {
-  float: left;
-  margin-right: 10px;
-  font-size: 30px;
-  padding: 0 5px;
+  .contact {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .contact li {
+    float: left;
+    margin-right: 10px;
+    font-size: 30px;
+    padding: 0 5px;
 
-  cursor: pointer;
-}
-.how .contact li:hover {
-  background: $brand2;
-  color: $brand4;
-  border-radius: 8px;
-
-}
-.how .status {
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-  text-align: justify;
-}
-.how .postcode-steps {
-  p {
-    margin: 20% 10% 0 10%;
-    text-align: center;
+    cursor: pointer;
+  }
+  .contact li:hover {
+    background: $brand2;
     color: $brand4;
+    border-radius: 8px;
+
   }
-}
+  .status {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    text-align: justify;
+  }
+  .postcode-steps {
+    p {
+      margin: 20% 10% 0 10%;
+      text-align: center;
+      color: $brand4;
+    }
+  }
 
-
-.how  {
   .location-error {
     display: none;
   }
+}
+
+.postcode-steps {
+  overflow: hidden;
+
+  .actions .fa {
+    position: relative;
+    font-size: 2.5em;
+    color: $brand5;
+  }
+}
+
+.legislators {
+  display: none;
+  .legislator {
+    @include transform-origin(top center);
+  }
+}
+
+.legislator {
+  margin-bottom: 20px;
 }

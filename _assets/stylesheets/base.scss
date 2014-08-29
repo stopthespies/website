@@ -1,0 +1,74 @@
+html {
+  font-size: 100%;
+  *font-size: 16px;
+  line-height: $BASE_LINE_HEIGHT;
+}
+
+body {
+  font-size: ($BASE_FONT_SIZE / 16) * 100%;
+  font-family: 'Open Sans', sans-serif;
+  background: #f3f3f3;
+  color: darken($brand4, 10%);
+}
+
+a {
+  color: darken($brand4, 10%);
+}
+
+section {
+  padding: 40px 0;
+
+  h1 {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+    font-size: 90px;
+  }
+
+  h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: -1px;
+  }
+}
+
+.intro {
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.actions {
+  padding: 20px 20px 0 20px;
+  color: $brand4;
+  text-align: center;
+}
+.actions p {
+  text-align: justify;
+}
+
+
+
+.step h4 {
+  text-transform: uppercase;
+  color: $brand4;
+  text-align: center;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  padding-top: 20px;
+
+  background: $brand2;  // this is for legislator search globe drop-in from behind heading
+  position: relative;
+  z-index: 1;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+.step {
+  background: $brand2;
+  min-height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+}

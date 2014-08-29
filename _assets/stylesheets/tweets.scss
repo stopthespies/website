@@ -1,0 +1,54 @@
+.supporters {
+  background: #8FBE01;
+  color: $brand1;
+}
+.nav-tabs {
+  border-bottom: none;
+}
+.nav-tabs li a {
+  font-size: 22px;
+  padding: 10px 25px;
+  text-transform: uppercase;
+}
+.nav-tabs li.active:hover a {
+
+  background: $brand4;
+  border-color: $brand4;
+  color: $brand1;
+}
+.nav-tabs li.active a {
+  background: $brand4;
+  border-color: $brand4;
+  color: $brand1;
+}
+
+.nav-tabs li:hover a {
+  background: lighten($brand2, 5%);
+  border-color: lighten($brand2, 5%);
+  color: $brand4;
+}
+.tab-content {
+  padding: 20px 0;
+  background: $brand3;
+  padding: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.tab-content img {
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  border: 1px solid darken($brand3, 30%);
+  opacity: 0.7;
+}
+.tab-content img:hover {
+  opacity: 1;
+}
+
+
+.tweet {
+  width: 70px;
+  height: 70px;
+}
