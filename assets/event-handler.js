@@ -1,7 +1,7 @@
 // socket.io application object
 (function($, io) {
 
-	io = io.connect('http://stopthespies-api.herokuapp.com');
+	io = io.connect('http://stopthespies-api.herokuapp.com:80');
 
 	io.on('get_stats', function(stats) {
 		STS.events.onStatsLoad(stats[0]);	// :NOTE: array of records comes back from API
