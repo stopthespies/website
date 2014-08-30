@@ -208,31 +208,11 @@
                 <i class="fa fa-twitter"></i>
                 By tweeting "I support #stopthespies" you will automatically be added to the list below. Currently, <strong class="tweets-support-total number-spinner">0</strong> people have shown their support on Twitter.
             </p>
-            <div class="bs-example bs-example-tabs">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="active">
-                    	<a href="#legislators-tweets" role="tab" data-toggle="tab">Politicians</a>
-                    </li>
-                    <li>
-                    	<a href="#celebrities-tweets" role="tab" data-toggle="tab">Celebrities</a>
-                    </li>
-                    <li>
-                    	<a href="#public-tweets" role="tab" data-toggle="tab">People</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="legislators-tweets">
-                    </div>
-                    <div class="tab-pane fade" id="celebrities-tweets">
-                    </div>
-                    <div class="tab-pane fade" id="public-tweets">
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>
 </section>
+                    <div class="tab-pane fade in active" id="tweet-board"></div>
 
 <section class="extra">
     <div class="container">
@@ -291,7 +271,7 @@
     <div id="campaign-map"></div>
 </section>
 
-<!-- ------------------------------ MODALS --------------------------------- -->
+<!-- ################################ MODALS ################################ -->
 
 <!-- EMAIL MODAL -->
 <div id="email-modal-container"></div>
@@ -368,7 +348,7 @@
 </script>
 <!-- END CALL MODAL -->
 
-<!-- ------------------------------ TEMPLATES --------------------------------- -->
+<!-- ############################## TEMPLATES ############################## -->
 
 <!-- LEGISLATOR TEMPLATE -->
 <script type="text/template" id="legislator-template">
@@ -426,12 +406,9 @@
 </script>
 <!-- END TWEET -->
 
-      </div>
+
     
 
-
-      </div>
-      </div>
     <div class="footer">
 	<div class="container">
  		<div class="col">
@@ -441,11 +418,15 @@
 	</div>
 </div>
 
-    </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <!--[if gt IE 9]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.13.1/TweenMax.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>

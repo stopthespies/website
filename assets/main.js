@@ -91,6 +91,12 @@ $(function() {
 
   function onStatsLoaded(data)
   {
+    if (statsLoaded()) {
+      // update numbers if we've already shown the stats
+      $('.email-total').numberSpinner('set', data.emails || 0);
+      $('.call-total').numberSpinner('set', data.calls || 0);
+      $('.view-total').numberSpinner('set', data.views || 0);
+    }
     loadedStats = data;
   }
 
@@ -126,13 +132,13 @@ $(function() {
   {
     _.each(tweetdata.latest, function(tweets, type) {
       _.each(tweets, function(tweet) {
-        $('#' + type + '-tweets').append(_.template(tweetTemplate, tweet));
+        $('#tweet-board').append(_.template(tweetTemplate, tweet));
       });
     });
 
     $('.tweets-support-total').numberSpinner('set', tweetdata.total);
 
-    $('.support img').popover({
+    $('#tweet-board img').popover({
       trigger: 'hover',
       container: 'body',
       placement: 'top'
