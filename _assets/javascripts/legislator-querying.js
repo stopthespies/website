@@ -139,10 +139,10 @@ function setLegislatorCounts(stats)
     wrapper = $('.legislator[data-legislator-id="' + member._id + '"]');
 
     wrapper.find('.legislator-views').numberSpinner('set', member.views || 0).attr('data-views', member.views || 0);
-    wrapper.find('.legislator-calls').numberSpinner('set', member.calls || 0).attr('data-calls', member.views || 0);
-    wrapper.find('.legislator-emails').numberSpinner('set', member.emails || 0).attr('data-emails', member.views || 0);
-    wrapper.find('.legislator-tweets').numberSpinner('set', member.tweets || 0).attr('data-tweets', member.views || 0);
-    wrapper.find('.legislator-facebooks').numberSpinner('set', member.facebooks || 0).attr('data-facebooks', member.views || 0);
+    wrapper.find('.legislator-calls').numberSpinner('set', member.calls || 0).attr('data-calls', member.calls || 0);
+    wrapper.find('.legislator-emails').numberSpinner('set', member.emails || 0).attr('data-emails', member.emails || 0);
+    wrapper.find('.legislator-tweets').numberSpinner('set', member.tweets || 0).attr('data-tweets', member.tweets || 0);
+    wrapper.find('.legislator-facebooks').numberSpinner('set', member.facebooks || 0).attr('data-facebooks', member.facebooks || 0);
   });
 }
 function setLegislatorCountsIncrement(reps, eventName) {

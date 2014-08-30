@@ -41,20 +41,42 @@ $(function() {
   // ----------------- MODALS ----------------------------
 
   $('body').on('click', '.contact .call-action', function (e) {
+    /*
     var legislatorId = $(e.currentTarget).parents('.legislator').attr('data-legislator-id');
     var legislator = legislators[legislatorId];
     var callModalTemplate = $('#call-modal-template').html();
     $('#call-modal-container').html(_.template(callModalTemplate, legislator));
     $('#call-modal-container .modal').modal();
+    */
+    var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
+    io.emit('log', {'event' : 'emails', legislators: legislatorId});
+
   });
 
   $('body').on('click', '.contact .email-action', function (e) {
+    /*
     var legislatorId = $(e.currentTarget).parents('.legislator').attr('data-legislator-id');
     var legislator = legislators[legislatorId];
     var emailModalTemplate = $('#email-modal-template').html();
     $('#email-modal-container').html(_.template(emailModalTemplate, legislator));
     $('#email-modal-container .modal').modal();
-    $('#email-modal').modal();
+    */
+    //$('#email-modal').modal();
+    var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
+    io.emit('log', {'event' : 'emails', legislators: legislatorId});
+
+  });
+
+  $('body').on('click', '.contact .tweets-action', function (e) {
+    var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
+    io.emit('log', {'event' : 'tweets', legislators: legislatorId});
+
+  });
+
+  $('body').on('click', '.contact .facebooks-action', function (e) {
+    var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
+    io.emit('log', {'event' : 'facebooks', legislators: legislatorId});
+
   });
 
   // ---------- bring in metrics -----------
