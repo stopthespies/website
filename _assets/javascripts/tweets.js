@@ -21,11 +21,7 @@
 
     $('.tweets-support-total').numberSpinner('set', tweetdata.total);
 
-    $('#tweet-board img').popover({
-      trigger: 'hover',
-      container: 'body',
-      placement: 'top'
-    });
+    $('#tweet-board img').tooltipster();
 
     recenterTweetGrid();
   }
