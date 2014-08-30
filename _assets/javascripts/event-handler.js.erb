@@ -16,22 +16,27 @@
 	});
 
 	io.on('views', function(reps) {
-		console.log('views', reps);
+		STS.events.onLegislatorStatsIncrement(reps, 'views');
+
 	});
 
 	io.on('calls', function(reps) {
 		console.log('calls', reps);
+		STS.events.onLegislatorStatsIncrement(reps, 'calls');
 	});
 
 	io.on('emails', function(reps) {
 		console.log('emails', reps);
+		STS.events.onLegislatorStatsIncrement(reps, 'emails');
 	});
 
 	io.on('tweets', function(reps) {
 		console.log('tweets', reps);
+		STS.events.onLegislatorStatsIncrement(reps, 'tweets');
 	});
 
 	io.on('facebooks', function(reps) {
+		STS.events.onLegislatorStatsIncrement(reps, 'facebooks');
 		console.log('facebooks', reps);
 	});
 
