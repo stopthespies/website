@@ -4,3 +4,9 @@
 .leaflet-container {
 	background: #f1592a !important;
 }
+
+.leaflet-container.inactive {
+	.leaflet-control-container {
+		display: none;
+	}
+}
