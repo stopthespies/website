@@ -91,6 +91,12 @@ $(function() {
 
   function onStatsLoaded(data)
   {
+    if (statsLoaded()) {
+      // update numbers if we've already shown the stats
+      $('.email-total').numberSpinner('set', data.emails || 0);
+      $('.call-total').numberSpinner('set', data.calls || 0);
+      $('.view-total').numberSpinner('set', data.views || 0);
+    }
     loadedStats = data;
   }
 
