@@ -1,8 +1,8 @@
-(function($) {
+(function($, STS) {
 
 $(function() {
 	// load up map when page is ready
-	window.CampaignMap.init();
+	STS.CampaignMap.init();
 });
 
 var MAP_ELEMENT = '#campaign-map';
@@ -12,15 +12,20 @@ var DEFAULT_ZOOM = 4;
 //------------------------------------------------------------------------------
 // setup
 
+var mapEl;
 var map;
 var mapAreas;
 var featureSelect;
 
 function initMap(el)
 {
-	map = L.map($(MAP_ELEMENT)[0], {
+	mapEl = $(MAP_ELEMENT);
+
+	map = L.map(mapEl[0], {
 		scrollWheelZoom: false
 	}).setView(DEFAULT_COORDS, DEFAULT_ZOOM);
+
+	STS.CampaignMap.deactivateUI(true);
 
 	$.ajax({
 		url: '/map/electorates.json',
@@ -87,10 +92,133 @@ function onBlurWard(e, feature)
 }
 
 //------------------------------------------------------------------------------
+// high-level map behaviour
+
+function focusByWardName(electorate)
+{
+	var matched = findElectorate(electorate);
+
+	if (matched) {
+		focusGeoJSON(matched);
+	}
+}
+
+function focusByMembers(memberIds)
+{
+	var matched = findMembersElectorate(memberIds);
+
+	if (matched) {
+		focusGeoJSON(matched);
+	}
+}
+
+function focusLatLng(latlng)
+{
+	map.panTo(latlng, { animate: true });
+}
+
+function focusGeoJSON(layer)
+{
+	var feature = layer.feature;
+	var bounds = layer.getBounds();		// this will be bounds just for the first poly
+
+	var i = 1, coords = feature.geometry.coordinates[0], il = coords.length,
+		ring, latLngs;
+
+	// run through all following polys if this is a multipolygon shape
+	if (feature.geometry.type === "MultiPolygon") {
+		for (; i < il; i++) {
+			ring = coords[i];
+			latLngs = ring.map(function(pair) {
+				return new L.LatLng(pair[1], pair[0]);
+			});
+			bounds.extend(new L.LatLngBounds(latLngs));
+		}
+	}
+
+	map.fitBounds(bounds, {
+		pan : {
+			animate: true,
+			duration : 0.5
+		},
+		zoom : {
+			animate: true,
+			duration : 0.25
+		}
+	});
+}
+
+function findElectorate(wardName)
+{
+	var matched;
+
+	mapAreas.eachLayer(function(layer) {
+		if (!matched && layer.feature.properties.electorate === wardName) {
+			matched = layer;
+		}
+	});
+
+	return matched;
+}
+
+// :IMPORTANT:	the FIRST matching member is returned, since further members unrelated to
+// 				the user in question may be shown to fill the list.
+function findMembersElectorate(memberIds)
+{
+	var matched, i, l, thisId;
+
+	if (!$.isArray(memberIds)) {
+		memberIds = [memberIds];
+	}
+
+	l = memberIds.length;
+
+	mapAreas.eachLayer(function(layer) {
+		if (matched) {
+			return;
+		}
+
+		thisId = layer.feature.properties.member_id;
+
+		for (i = 0; i < l; ++i) {
+			if (thisId === memberIds[i]) {
+				matched = layer;
+			}
+		}
+	});
+
+	return matched;
+}
+
+//------------------------------------------------------------------------------
 // exports
 
-window.CampaignMap = {
-	init : initMap
+STS.CampaignMap = {
+	get : function() { return map; },
+
+	init : initMap,
+	focusPoint : focusLatLng,
+	focusArea : focusGeoJSON,
+
+	focusWard : focusByWardName,
+	focusMembersWard : focusByMembers,
+
+	activateUI : function() {
+		mapEl.removeClass('inactive');
+		map.scrollWheelZoom.enable();
+		map.doubleClickZoom.enable();
+		map.touchZoom.enable();
+		map.dragging.enable();
+	},
+	deactivateUI : function(stopDragging) {
+		mapEl.addClass('inactive');
+		map.scrollWheelZoom.disable();
+		map.doubleClickZoom.disable();
+		map.touchZoom.disable();
+		if (stopDragging) {
+			map.dragging.disable();
+		}
+	}
 };
 
-})(jQuery);
+})(jQuery, STS);
