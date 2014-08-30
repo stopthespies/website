@@ -135,15 +135,36 @@ function renderLegislators(reps) {
 function setLegislatorCounts(stats)
 {
   var wrapper;
-
   _.each(stats, function(member) {
     wrapper = $('.legislator[data-legislator-id="' + member._id + '"]');
 
-    wrapper.find('.legislator-views').numberSpinner('set', member.views || 0);
+    wrapper.find('.legislator-views').numberSpinner('set', member.views || 0).attr('data-views', member.views || 0);
+    wrapper.find('.legislator-calls').numberSpinner('set', member.calls || 0).attr('data-calls', member.views || 0);
+    wrapper.find('.legislator-emails').numberSpinner('set', member.emails || 0).attr('data-emails', member.views || 0);
+    wrapper.find('.legislator-tweets').numberSpinner('set', member.tweets || 0).attr('data-tweets', member.views || 0);
+    wrapper.find('.legislator-facebooks').numberSpinner('set', member.facebooks || 0).attr('data-facebooks', member.views || 0);
+  });
+}
+function setLegislatorCountsIncrement(reps, eventName) {
+  reps = reps.split(',');
+  var wrapper;
+  _.each(reps, function(member) {
+    wrapper = $('.legislator[data-legislator-id="' + member + '"]');
+
+
+    var newTotal = wrapper.find('.legislator-' + eventName).attr('data-' + eventName)*1+1 || 0;
+    wrapper.find('.legislator-' + eventName).numberSpinner('set', newTotal);
+    wrapper.find('.legislator-' +eventName).attr('data-' + eventName, newTotal || 0);
+
+
+
+
+    /*
     wrapper.find('.legislator-calls').numberSpinner('set', member.calls || 0);
     wrapper.find('.legislator-emails').numberSpinner('set', member.emails || 0);
     wrapper.find('.legislator-tweets').numberSpinner('set', member.tweets || 0);
     wrapper.find('.legislator-facebooks').numberSpinner('set', member.facebooks || 0);
+    */
   });
 }
 
@@ -176,5 +197,6 @@ function onLocationError()
 
 // EXPORTS
 STS.events.onLegislatorStats = setLegislatorCounts;
+STS.events.onLegislatorStatsIncrement = setLegislatorCountsIncrement;
 
 })(jQuery, STS.app, STS.anim);

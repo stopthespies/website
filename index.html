@@ -38,8 +38,8 @@
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,800,700,300' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
     <link href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type='text/css' />
-
-	<link rel="stylesheet" href="/assets/main.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/css/tooltipster.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/main.css">
 </head>
 
 
@@ -401,7 +401,7 @@
 <!-- TWEET -->
 <script type="text/template" id="tweet-template">
 
-    <img class="tweet" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %>" data-content="<%= tweet %> - <%= followers %>" />
+    <img class="tweet tooltip" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %> - <%= tweet %> - <%= followers %>" data-content="<%= tweet %> - <%= followers %>" />
 
 </script>
 <!-- END TWEET -->
@@ -430,6 +430,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.13.1/TweenMax.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/js/jquery.tooltipster.min.js"></script>
 
 <script src="/assets/polyfills.js"></script>
 <script src="/assets/helpers.js"></script>
@@ -439,6 +440,7 @@
 <script src="/assets/legislator-querying.js"></script>
 <script src="/assets/map.js"></script>
 <script src="/assets/scroll-handler.js"></script>
+<script src="/assets/tweets.js"></script>
 <script src="/assets/vendor/jquery.numberSpinner/src/jquery.numberSpinner.js"></script>
 <script src="/assets/main.js"></script>
 
