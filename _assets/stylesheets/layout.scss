@@ -9,7 +9,7 @@
 
 .introduction, .stats, .how, .support, .extra, .reading {
 	.col {
-		@include column(12);
+		@include column($one);
 	}
 }
 
@@ -17,16 +17,16 @@
 	// intro column is a bit wider
 	.introduction {
 		.col {
-			@include column(10);
-			@include push(1);
+			@include column($one-twelfth * 10);
+			@include push($one-twelfth);
 		}
 	}
 
 	// other content is 8/12 with 2/12 gutters
 	.stats, .how, .support, .extra, .reading {
 		.col {
-			@include column(8);
-			@include push(2);
+			@include column($one-twelfth * 8);
+			@include push($one-sixth);
 		}
 	}
 }
@@ -34,12 +34,12 @@
 // STEPS BOXES
 // 1 > 2 columns
 .step {
-  @include column(12);
+  @include column($one);
   margin-bottom: 1em;
   padding-bottom: 1em;
 
   @media (min-width: $set-steps-2-cols) {
-    @include column(6);
+    @include column($one-half);
     margin-bottom: 1em;
   }
 }
@@ -54,19 +54,19 @@
 		@include row();
 	}
 	.metric {
-		@include column(6);
+		@include column($one-half);
 		padding-bottom: 40px;
 	}
 
 	@media (min-width: $set-stats-3-cols) {
 		.metric {
-			@include column(4);
+			@include column($one-third);
 		}
 	}
 
 	@media (min-width: $set-stats-6-cols) {
 		.metric {
-			@include column(2);
+			@include column($one-sixth);
 		}
 	}
 }
@@ -86,12 +86,12 @@
 	.location-privacy {
 		font-size: 14px;
 		p {
-			@include column(12);
+			@include column($one);
 		}
 	}
 	.input-group {
-		@include column(8);
-		@include push(2);
+		@include column($one-twelfth * 8);
+		@include push($one-sixth);
 		margin-top: 2.5em;
 
 		.form-control, .input-group-btn {
@@ -127,32 +127,37 @@
   }
 }
 
+// LEGISLATOR RESULTS
+// 3 columns
+.legislators {
+  @include row();
+}
 .legislator {
-	@include row();
+	@include column($one-third);
 	margin-top: 1em;
 
 	.pic {
-		@include column(4);
+		@include column($one-third);
 	}
 	.details {
-		@include column(8);
+		@include column($one-twelfth * 8);
 	}
 
 	@media (min-width: $set-legislator-smaller-thumbs) {
 		.pic {
-			@include column(3);
+			@include column($one-quarter);
 		}
 		.details {
-			@include column(9);
+			@include column($one-twelfth * 9);
 		}
 	}
 
 	@media (min-width: $set-legislator-smallest-thumbs) {
 		.pic {
-			@include column(2);
+			@include column($one-sixth);
 		}
 		.details {
-			@include column(10);
+			@include column($one-twelfth * 10);
 		}
 	}
 }
@@ -166,7 +171,7 @@
 		padding: 20px 20px 0 20px;
 	}
 	.share {
-		@include column(6);
+		@include column($one-half);
 	}
 }
 
@@ -181,6 +186,6 @@ section.map {
 .footer {
 	text-align: right;
 	.col {
-		@include column(12);
+		@include column($one);
 	}
 }

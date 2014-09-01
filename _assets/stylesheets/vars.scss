@@ -14,6 +14,14 @@ $content-max-width: 1280px;
 /* Gridsystem overrides */
 
 $total-width: 100%;
+$columns: 12;
+
+$one: $columns;
+$one-half: $columns / 2;
+$one-third: $columns / 3;
+$one-quarter: $columns / 4;
+$one-sixth: $columns / 6;
+$one-twelfth: $columns / 12;
 
 // responsive breakpoints
 
