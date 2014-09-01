@@ -128,7 +128,7 @@ function renderLegislators(reps) {
   // log event to the server
   io.emit('log', {
     'event' : 'views',
-    'legislators' : legislatorIds.join(',')
+    'legislators' : legislatorIds
   });
 };
 
@@ -146,7 +146,7 @@ function setLegislatorCounts(stats)
   });
 }
 function setLegislatorCountsIncrement(reps, eventName) {
-  reps = reps.split(',');
+  reps = reps;
   var wrapper;
   _.each(reps, function(member) {
     wrapper = $('.legislator[data-legislator-id="' + member + '"]');
