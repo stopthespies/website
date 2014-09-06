@@ -109,7 +109,7 @@ function activateUI()
   map.keyboard.enable();
   map.dragging.enable();
 
-  map.on('clickoutside', deactivateUI);
+  mapEl.on('clickoutside', deactivateUI);
 }
 
 function deactivateUI()
