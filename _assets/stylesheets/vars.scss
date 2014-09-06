@@ -1,7 +1,53 @@
-$BASE_FONT_SIZE : 18;
-$BASE_LINE_HEIGHT : 1.5;
+$BASE_FONT_SIZE : 16;
+$BASE_LINE_HEIGHT : 1.2;
 
-$brand1:        #E7E8D1 !default;
+
+
+/* pallete */
+
+$primaryOrange: #ED5719;
+$bodyText:		#fff;
+
+$pageBg: 			#E7E7E7;
+$primaryBg:			#141828;	// old browsers
+$primaryBgLeft:		#141828;	// gradient pallete
+$primaryBgRight:	#231C2E;
+$secondaryBg:		#373943;
+$breakoutBg:		#fff;
+$tabChrome:			#F0F0F0;
+
+$textMid: #5F5967;
+$textSmall: #5F5A66;
+$textLight: #fff;
+
+// -------- apply pallete --------
+
+$color-body-bg: $pageBg;
+@mixin hero-gradient-bg() {
+	background: $primaryBg;
+	background-image: radial-gradient(ellipse farthest-corner at 100% 100%, $primaryBgRight 0%, $primaryBgLeft 95%);
+}
+
+$color-menu-bg: $secondaryBg;
+$color-info-bg: $secondaryBg;
+$color-breakout-block: $breakoutBg;
+$color-cta-block: $secondaryBg;
+
+$color-member-search-header: $tabChrome;
+$color-member-search-body: $breakoutBg;
+
+$color-member-card-header: $tabChrome;
+$color-member-card-body: $breakoutBg;
+
+$color-text: $textMid;
+$color-header-text: $textLight;
+$color-member-card-text: $textSmall;
+
+
+
+/* theming for bootstrap widgets */
+
+$brand1:        $primaryOrange !default;
 $brand2:        #D3CEAA !default;
 $brand3:        #FBF7E4 !default;
 $brand4:        #424242 !default;
@@ -24,6 +70,8 @@ $one-sixth: $columns / 6;
 $one-twelfth: $columns / 12;
 
 // responsive breakpoints
+
+$set-header-map-adjacent: 550px;
 
 $set-larger-content-margin: 760px;
 $set-stats-3-cols: 370px;

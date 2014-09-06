@@ -7,7 +7,7 @@
 	@include clearfix();
 }
 
-.introduction, .stats, .how, .support, .extra, .reading {
+.who, .introduction, .stats, .how, .support, .extra, .reading {
 	.col {
 		@include column($one);
 	}
@@ -41,6 +41,17 @@
   @media (min-width: $set-steps-2-cols) {
     @include column($one-half);
     margin-bottom: 1em;
+  }
+}
+
+// HEADER
+// half-width > 1 col
+
+.who {
+  @media (min-width: $set-header-map-adjacent) {
+    .col {
+      @include column($one-half);
+    }
   }
 }
 

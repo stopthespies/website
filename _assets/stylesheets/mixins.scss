@@ -1,9 +1,13 @@
+@function strip-units($value) {
+  @return $value / ($value * 0 + 1);
+}
+
 // translate units by parent element ratio
-@mixin emsize($property, $desired, $base : $BASE_FONT_SIZE) {
-	#{property}: 1em * (unit($desired) / unit($base));
+@function emsize($desired, $base : $BASE_FONT_SIZE) {
+	@return 1em * (strip-units($desired) / strip-units($base));
 }
 
 // a wrapper for setting font size
 @mixin emfz($desired, $base : $BASE_FONT_SIZE) {
-	@include emsize(font-size, $desired, $base);
+	font-size: emsize($desired, $base);
 }

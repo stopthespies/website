@@ -7,42 +7,49 @@ html {
 body {
   font-size: ($BASE_FONT_SIZE / 16) * 100%;
   font-family: 'Open Sans', sans-serif;
-  background: #f3f3f3;
-  color: darken($brand4, 10%);
+  background: $color-body-bg;
+  color: $color-text;
 }
 
 a {
-  color: darken($brand4, 10%);
+  text-decoration: none;
+  border-bottom: $color-text;
+  &:hover {
+    border-bottom: $primaryOrange;
+  }
+}
+
+h1 {
+  @include emfz(36px);
+  font-weight: 700;
+}
+
+h2 {
+  @include emfz(24px);
 }
 
 section {
   padding: 40px 0;
-
-  h1 {
-    font-weight: 700;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 30px;
-    font-size: 90px;
-  }
-
   h2 {
-    font-size: 30px;
-    text-transform: uppercase;
-    margin-bottom: 25px;
     text-align: center;
-    letter-spacing: -1px;
   }
 }
 
-.intro {
+.intro {    // section introductory lines
   margin-bottom: 30px;
   text-align: justify;
 }
 
-.actions {
+
+
+
+//-----------------------------------------------------------------
+//                \/ these may not be global \/
+
+
+
+.actions {  // two-column action cards
   padding: 20px 20px 0 20px;
-  color: $brand4;
   text-align: center;
 }
 .actions p {
@@ -51,7 +58,7 @@ section {
 
 
 
-.step h4 {
+.step h4 {  // two-column action steps
   text-transform: uppercase;
   color: $brand4;
   text-align: center;
@@ -60,14 +67,14 @@ section {
   margin: 0;
   padding-top: 20px;
 
-  background: $brand2;  // this is for legislator search globe drop-in from behind heading
+  background: $color-member-search-header;  // this is for legislator search globe drop-in from behind heading
   position: relative;
   z-index: 1;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 }
 .step {
-  background: $brand2;
+  background: $color-member-search-body;
   min-height: 200px;
   border-radius: 8px;
   overflow: hidden;

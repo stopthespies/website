@@ -31,10 +31,23 @@
 }
 
 .who {
-  background: $brand5;
-  color: $brand1;
-  text-align: center;
-}
-.who p {
-  text-align: justify;
+  @include hero-gradient-bg();
+  color: $color-header-text;
+
+  h1, h2 {
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+  h1 {
+    color: $primaryOrange;
+    @include emfz(100px);
+    line-height: 1;
+    margin-bottom: emsize(20px, 100px);
+  }
+  h2 {
+    margin-bottom: emsize(20px, 24px);
+    letter-spacing: emsize(-1px, 24px);
+  }
 }
