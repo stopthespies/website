@@ -27,3 +27,16 @@ window.cancelAnimationFrame = function(id) {
 clearTimeout(id);
 };
 }());
+
+
+// auto SVG -> PNG replacement
+// http://www.karwana.com/2013/09/polyfilling-svg/
+if (document.body.attachEvent) {
+	document.body.attachEvent('onerror', function(event) {
+	    var img = event.target;
+
+	    if (img.src) {
+	        img.src = img.src.replace(/\.svg$/, '.png');
+	    }
+	}, true);
+}
