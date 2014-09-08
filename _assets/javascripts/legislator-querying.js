@@ -31,6 +31,8 @@ $(function() {
 
   function askLocation()
   {
+    ScrollHandler.removeTrigger(askLocation);
+
     if (!("geolocation" in navigator)) {
       return;
     }
