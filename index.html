@@ -21,19 +21,122 @@ layout: default
           </div>
         </div>
     </div>
-</section>
-
-<section class="introduction">
-    <div class="container">
-        <p class="col">
-            Who are the spies? The Anti-Terrorism laws which are currently being developed contain some questionable clauses about your digital privacy. This website hopes to provide you with the information you need to be informed and tools to contact your representatives to let them know how you feel about the issue.
-        </p>
+    <div id="campaign-map" class="inactive">
+      <div class="map-blocker"></div>
     </div>
 </section>
 
 <section class="video">
     <div class="container">
         <div class="video-container">Video<br />Placeholder<br /><i class="fa fa-play-circle-o"></i></div>
+    </div>
+</section>
+
+<section class="introduction people">
+  <div class="container">
+    <div class="col">
+      <h2>Your privacy is under attack</h2>
+      <h3>Your personal life, exposed</h3>
+      <p>
+        Under the new data retention laws, everything you do on the 'net or on your phone would be compulsorily collected and stored.
+      </p>
+      <p>
+        The apps you use, the emails you send, and even the places you go and who you talk with &mdash; all of this data will be collected.
+      </p>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</section>
+<section class="introduction countries">
+  <div class="container">
+    <div class="col">
+      <p>Consectetur curae taciti quisque viverra per. Scelerisque est pretium. Nostra maecenas ad malesuada pulvinar pellentesque. Vehicula dictum et do.</p>
+    </div>
+    <div class="col">
+      <h2>Why you should be worried</h2>
+      <h3>It's only data, right?</h3>
+      <p>
+        Per voluptate aptent fugiat. Augue anim scelerisque accumsan aute. Bibendum massa volutpat minim sollicitudin etiam. Lectus felis ipsum nibh tempus qui. Nostra accumsan quis.
+      </p>
+      <p>
+        Aliquam ultricies posuere pede curabitur. Vehicula class montes pharetra. Non imperdiet parturient. Feugiat duis eros.
+      </p>
+    </div>
+  </div>
+</section>
+<section class="introduction cost">
+  <div class="container">
+    <div class="col">
+      <h2>Who's paying for all this?</h2>
+      <h3>The Australian public</h3>
+      <p>
+        Nec eros morbi nostra fringilla. Magnis aptent venenatis. Irure integer egestas blandit. Facilisis ullamco cursus quam. Fringilla occaecat sed eleifend.
+      </p>
+    </div>
+    <div class="col">
+      <p class="bigdollars"><span>$500,000,000</span> per year</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="col">
+      <h2>You can stop the spies</h2>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+    <div class="container">
+        <div class="col">
+            <h2>Take Action</h2>
+            <h3>Contact your Representative</h3>
+
+            <p class="intro">
+              By contacting your representative, you'll show that you're part of a movement that knows mass surveillance is a violation of international human rights law.
+            </p>
+
+            <div class="postcode-steps">
+                <div class="step step-2">
+                  <div class="location-search">
+                    <h4>Auto Lookup!</h4>
+                    <!-- TRIGGER --><a id="request-location"></a><!-- /TRIGGER -->
+
+                    <div class="actions">
+                      <i class="fa fa-globe"></i>
+                      <p>Accept the browser request to share your location.</p>
+                    </div>
+                  </div>
+                  <div class="location-error">
+                    <p>
+                      Oh no! We couldn't find you. Try your postcode instead.
+                    </p>
+                  </div>
+                </div>
+                <div class="step step-1">
+                    <h4>Postcode Lookup!</h4>
+
+                    <form class="postcode-lookup">
+                      <div class="input-group">
+                        <input type="text" class="form-control" pattern="[0-9]{4}" required>
+                        <span class="input-group-btn">
+                          <button class="btn btn-primary" type="submit">Lookup!</button>
+                        </span>
+                      </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="location-privacy">
+                <p>We use your postcode/address to find legislators that represent you. We don't store this data and we use encrypted requests.</p>
+            </div>
+
+            <div class="legislators"></div>
+
+        </div>
     </div>
 </section>
 
@@ -94,55 +197,6 @@ layout: default
                     <div class="total google-total number-spinner">0</div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="how">
-    <div class="container">
-        <div class="col">
-            <h2>How am I represented?</h2>
-
-            <p class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi porttitor ipsum vel mauris imperdiet, sed dapibus purus lacinia. Phasellus eu risus nibh. Duis nec libero orci.</p>
-
-            <div class="postcode-steps">
-                <div class="step step-2">
-                  <div class="location-search">
-                    <h4>Auto Lookup!</h4>
-                    <!-- TRIGGER --><a id="request-location"></a><!-- /TRIGGER -->
-
-                    <div class="actions">
-                      <i class="fa fa-globe"></i>
-                      <p>Accept the browser request to share your location.</p>
-                    </div>
-                  </div>
-                  <div class="location-error">
-                    <p>
-                      Oh no! We couldn't find you. Try your postcode instead.
-                    </p>
-                  </div>
-                </div>
-                <div class="step step-1">
-                    <h4>Postcode Lookup!</h4>
-
-                    <form class="postcode-lookup">
-                      <div class="input-group">
-                        <input type="text" class="form-control" pattern="[0-9]{4}" required>
-                        <span class="input-group-btn">
-                          <button class="btn btn-primary" type="submit">Lookup!</button>
-                        </span>
-                      </div>
-                    </form>
-
-                </div>
-            </div>
-
-            <div class="location-privacy">
-                <p>We use your postcode/address to find legislators that represent you. We don't store this data and we use encrypted requests.</p>
-            </div>
-
-            <div class="legislators"></div>
-
         </div>
     </div>
 </section>
@@ -215,13 +269,8 @@ layout: default
     </div>
 </section>
 
-<section class="map">
-    <div id="campaign-map" class="inactive">
-      <div class="map-blocker"></div>
-    </div>
-</section>
-
-<!-- ################################ MODALS ################################ -->
+<!-- ################################################################ MODALS ########################################################### -->
+<!-- ################################################################################################################################### -->
 
 <!-- EMAIL MODAL -->
 <div id="email-modal-container"></div>
@@ -298,7 +347,8 @@ layout: default
 </script>
 <!-- END CALL MODAL -->
 
-<!-- ############################## TEMPLATES ############################## -->
+<!-- ############################################################ TEMPLATES ############################################################ -->
+<!-- ################################################################################################################################### -->
 
 <!-- LEGISLATOR TEMPLATE -->
 <script type="text/template" id="legislator-template">
