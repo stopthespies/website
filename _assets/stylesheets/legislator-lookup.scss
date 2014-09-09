@@ -1,11 +1,18 @@
 .how {
-  color: $brand3;
-  background: $brand5;
+  color: $color-member-card-text;
+  background: $dimBreakoutBg;
 
-  .intro {
-    text-align: justify;
-    margin-bottom: 20px;
+  h2, h3 {
+    text-transform: uppercase;
+    color: $primaryOrange;
   }
+  h2 {
+    @include emfz(14px);
+  }
+  h3 {
+    @include emfz(24px);
+  }
+
   .legislators {
     a {
       color: darken($brand2, 20%);
@@ -52,7 +59,6 @@
     p {
       margin: 20% 10% 0 10%;
       text-align: center;
-      color: $brand4;
     }
   }
 
@@ -67,7 +73,7 @@
   .actions .fa {
     position: relative;
     font-size: 2.5em;
-    color: $brand5;
+    color: black;
   }
 }
 

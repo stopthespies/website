@@ -1,9 +1,30 @@
+// these sections need to be relatively positioned because they will have the map in them
+
+section {
+  &.who, &.stats, &.how {
+    position: relative;
+    .container {
+      position: relative;
+      pointer-events: none;
+      z-index: 1;
+    }
+  }
+}
+
+// map base
+
 #campaign-map {
-	height: 500px;
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 .leaflet-container {
-	background: #f1592a !important;
   position: relative;
+  background: transparent;
 }
 
 .map-blocker {
@@ -15,9 +36,12 @@
   width: 100%;
   height: 100%;
   background: black;
-  opacity: 0.2;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  opacity: 0;
+  cursor: pointer;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
+
+// map controls
 
 .leaflet-container.inactive {
 	.leaflet-control-container {

@@ -9,6 +9,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background: $color-body-bg;
   color: $color-text;
+  line-height: 1.36;
 }
 
 a {
@@ -19,20 +20,37 @@ a {
   }
 }
 
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  color: $color-header-text;
+  margin-top: 0;
+  font-weight: bold;
+}
+
+h1, h2, h5 {
+  text-transform: uppercase;
+}
+
 h1 {
   @include emfz(36px);
-  font-weight: 700;
+  font-family: 'League Gothic', sans-serif;
+  font-weight: normal;
 }
 
 h2 {
   @include emfz(24px);
 }
 
+h3 {
+  @include emfz(20px);
+}
+
+h4 {
+  @include emfz(18px);
+}
+
 section {
-  padding: emsize(40px) 0;
-  h2 {
-    text-align: center;
-  }
+  padding: emsize(80px) 0;
 }
 
 .intro {    // section introductory lines

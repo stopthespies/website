@@ -1,6 +1,3 @@
-// CONTENT
-// outer margins, decreased at small res
-
 .container {
 	max-width: $content-max-width;
 	margin: 0 auto;
@@ -13,15 +10,32 @@
 	}
 }
 
-@media (min-width: $set-larger-content-margin) {
-	// intro column is a bit wider
-	.introduction {
-		.col {
-			@include column($one-twelfth * 10);
-			@include push($one-twelfth);
-		}
-	}
+// MAP FITS TO SIDE ON DESKTOP
 
+@media (min-width: $set-header-map-adjacent) {
+  .who {
+    .col {
+      @include column($one-half);
+    }
+  }
+  #campaign-map {
+    width: 50%;
+    left: 50%;
+  }
+}
+
+// INFORMATION INTRO
+// 1 > 2 columns
+
+.introduction {
+  @media (min-width: $set-info-2-cols) {
+    .col {
+      @include column($one-half);
+    }
+  }
+}
+
+@media (min-width: $set-larger-content-margin) {
 	// other content is 8/12 with 2/12 gutters
 	.stats, .how, .support, .extra, .reading {
 		.col {
@@ -33,6 +47,7 @@
 
 // STEPS BOXES
 // 1 > 2 columns
+
 .step {
   @include column($one);
   margin-bottom: 1em;
@@ -41,17 +56,6 @@
   @media (min-width: $set-steps-2-cols) {
     @include column($one-half);
     margin-bottom: 1em;
-  }
-}
-
-// HEADER
-// half-width > 1 col
-
-.who {
-  @media (min-width: $set-header-map-adjacent) {
-    .col {
-      @include column($one-half);
-    }
   }
 }
 

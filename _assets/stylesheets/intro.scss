@@ -1,7 +1,40 @@
 .introduction {
-  font-size: 30px;
-  line-height: 56px;
-  color: #949494;
-  padding: 150px 0;
-  font-family: 'Source Sans Pro', sans-serif;
+  h2 {
+    margin-bottom: 0;
+  }
+  h3 {
+    @include emfz(24px);
+    color: #54555A;
+    text-transform: uppercase;
+  }
+
+  &.cost {
+    background: $color-breakout-block;
+    text-align: center;
+    h2 {
+      color: $primaryOrange;
+    }
+    p {
+      text-align: left;
+    }
+  }
+  p.bigdollars {
+    text-transform: uppercase;
+    text-align: center;
+    span {
+      @include emfz(86px);
+      color: $primaryOrange;
+      display: block;
+    }
+  }
+}
+
+.cta {
+  text-align: center;
+  h2 {
+    font-family: 'League Gothic', sans-serif;
+    @include emfz(72px);
+    color: $primaryOrange;
+    margin: 1.5em 0;
+  }
 }
