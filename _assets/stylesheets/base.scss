@@ -6,7 +6,7 @@ html {
 
 body {
   font-size: ($BASE_FONT_SIZE / 16) * 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: $color-body-bg;
   color: $color-text;
 }
@@ -29,15 +29,19 @@ h2 {
 }
 
 section {
-  padding: 40px 0;
+  padding: emsize(40px) 0;
   h2 {
     text-align: center;
   }
 }
 
 .intro {    // section introductory lines
-  margin-bottom: 30px;
+  margin-bottom: emsize(30px);
   text-align: justify;
+}
+
+pre, code, tt {
+  font-family: 'Droid Sans Mono', monospace;
 }
 
 
@@ -49,7 +53,7 @@ section {
 
 
 .actions {  // two-column action cards
-  padding: 20px 20px 0 20px;
+  padding: emsize(20px) emsize(20px) 0 emsize(20px);
   text-align: center;
 }
 .actions p {
@@ -65,7 +69,7 @@ section {
   font-weight: 700;
   padding: 0;
   margin: 0;
-  padding-top: 20px;
+  padding-top: emsize(20px);
 
   background: $color-member-search-header;  // this is for legislator search globe drop-in from behind heading
   position: relative;
@@ -75,7 +79,7 @@ section {
 }
 .step {
   background: $color-member-search-body;
-  min-height: 200px;
+  min-height: emsize(200px);
   border-radius: 8px;
   overflow: hidden;
 }

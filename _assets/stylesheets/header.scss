@@ -42,11 +42,13 @@
   }
   h1 {
     color: $primaryOrange;
+    font-family: 'League Gothic', sans-serif;
     @include emfz(100px);
     line-height: 1;
     margin-bottom: emsize(20px, 100px);
   }
   h2 {
+    font-weight: bold;
     margin-bottom: emsize(20px, 24px);
     letter-spacing: emsize(-1px, 24px);
   }
