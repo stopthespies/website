@@ -59,7 +59,7 @@ setTimeout(function() {		// the easiest thing to do to ensure that all pending D
     wb = wt + whOffset;
     l = scroll_triggers.length;
 
-    for (i = 0; i < l; ++i) {
+    for (i = 0; i < l && scroll_triggers[i]; ++i) {
       triggerPos = scroll_triggers[i].offset().top - scroll_offsets[i];
 
       if (upward_callbacks[i] && wt < triggerPos) {
