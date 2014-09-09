@@ -10,7 +10,7 @@ var DEFAULT_COORDS = [-28.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
 
 // used to force leaflet to make the whole map visible
-var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-46.445930, 157.060547), L.latLng(-7.263668, 110.302734));
+var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-43.660984, 157.060547), L.latLng(-10.469086, 110.302734));
 
 //------------------------------------------------------------------------------
 // setup
