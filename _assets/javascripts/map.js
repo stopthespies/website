@@ -9,6 +9,9 @@ var MAP_ELEMENT = '#campaign-map';
 var DEFAULT_COORDS = [-28.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
 
+// used to force leaflet to make the whole map visible
+var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-46.445930, 157.060547), L.latLng(-7.263668, 110.302734));
+
 //------------------------------------------------------------------------------
 // setup
 
@@ -41,6 +44,8 @@ function initMap(el)
 
 function showElectorates(geojson)
 {
+  map.fitBounds(COUNTRY_BOUNDS);
+
   mapAreas = L.geoJson(geojson, {
     style : function(feature) {
       // :TODO: finalise pallete and hookup to legislator data
