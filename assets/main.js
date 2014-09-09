@@ -12,6 +12,7 @@
 
 
 
+
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
 
 (function($, io) {
@@ -93,6 +94,8 @@ $(function() {
     } else {
       animateStats();
     }
+
+    ScrollHandler.removeTrigger(bringInStats);
   }
 
   function animateStats()

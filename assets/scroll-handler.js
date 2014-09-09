@@ -5,7 +5,8 @@
  * Scroll is computed against things appearing at the bottom of the window.
  * Thus, it is best used when combined with dom elements appearing either
  * immediately before things you want to enter animating; or immediately
- * after things you want to be completely visible before starting.
+ * after things you want to be completely visible before starting. The same applies
+ * in reverse with regard to the top of the window.
  */
 
 
@@ -14,49 +15,36 @@ window.ScrollHandler || (window.ScrollHandler = {});
 (function($) {
 
 var $window;
-var wt, whOffset, i, l;
-var scroll_triggers;
-var scroll_bindings;
-var scroll_offsets;
-var configured_callbacks = {};
+var wt, wb, whOffset, i, l;
+var scroll_triggers = [];
+var scroll_bindings = [];
+var scroll_offsets = [];
+var upward_callbacks = [];
 
-function setCallbacks(callbacks)
+function addCallback(selector, callback, upwards)
 {
-  scroll_triggers = [];
-  scroll_bindings = [];
+  var el = $(selector);
 
-  for (i in callbacks) {
-    if (!callbacks.hasOwnProperty(i) || !callbacks[i]) continue;
-    scroll_triggers.push($(i));
-    scroll_bindings.push(callbacks[i]);
-  }
-
-  scroll_offsets = scroll_triggers.map(function(el) { return el.data('offset') || 0; });
-
-  configured_callbacks = $.extend({}, configured_callbacks);
-}
-
-function addCallback(selector, callback)
-{
-  configured_callbacks[selector] = callback;
-
-  setCallbacks(configured_callbacks);
+  scroll_triggers.push(el);
+  scroll_bindings.push(callback);
+  upward_callbacks.push(upwards || false);
+  scroll_offsets.push(parseInt(el.data('offset')) || 0);
 }
 
 function removeCallback(callback)
 {
-  for (var cb in configured_callbacks) {
-    if (configured_callbacks[cb] === callback) {
-      configured_callbacks[cb] = undefined;
-      return;
+  for (var i = 0, l = scroll_bindings.length; i < l; ++i) {
+    if (scroll_bindings[i] === callback) {
+      scroll_triggers.splice(i, 1);
+      scroll_bindings.splice(i, 1);
+      upward_callbacks.splice(i, 1);
+      scroll_offsets.splice(i, 1);
+      break;
     }
   }
-
-  setCallbacks(configured_callbacks);
 }
 
 window.ScrollHandler = {
-  setTriggers: setCallbacks,
   addTrigger: addCallback,
   removeTrigger: removeCallback
 };
@@ -66,18 +54,19 @@ $(function() {
 setTimeout(function() {		// the easiest thing to do to ensure that all pending DOMReady callbacks have fired & bound Scrollhandler events
   function checkScroll(e)
   {
-    wt = $window.scrollTop() + whOffset;
+    var triggerPos;
+
+    wt = $window.scrollTop(),
+    wb = wt + whOffset;
     l = scroll_triggers.length;
 
-    for (i = 0; i < l; ++i) {
-      if (wt > scroll_triggers[i].offset().top - scroll_offsets[i]) {
-        scroll_bindings[i]();
+    for (i = 0; i < l && scroll_triggers[i]; ++i) {
+      triggerPos = scroll_triggers[i].offset().top - scroll_offsets[i];
 
-        scroll_triggers.splice(i, 1);
-        scroll_offsets.splice(i, 1);
-        scroll_bindings.splice(i, 1);
-        --i;
-        --l;
+      if (upward_callbacks[i] && wt < triggerPos) {
+        scroll_bindings[i]();
+      } else if (!upward_callbacks[i] && wb > triggerPos) {
+        scroll_bindings[i]();
       }
     }
   }

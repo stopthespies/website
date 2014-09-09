@@ -31,6 +31,8 @@ $(function() {
 
   function askLocation()
   {
+    ScrollHandler.removeTrigger(askLocation);
+
     if (!("geolocation" in navigator)) {
       return;
     }
@@ -95,10 +97,6 @@ function renderLegislators(reps) {
 
   container.append(_.template(retryTemplate, {}));
 
-  // transition in
-  anim.appearVSlide(container, 0.8);
-  TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
-
   // bind tooltips
   $('.contact li').popover({
     trigger: 'hover',
@@ -121,15 +119,19 @@ function renderLegislators(reps) {
   // init counters
   container.find('.number-spinner').numberSpinner();
 
-  // request legislator counts
-  var legislatorIds = _.map(reps, function(r) { return r.member_id; });
-  io.emit('stats', {legislators: legislatorIds})
+  // transition in
+  anim.appearVSlide(container, 0.8, function() {
+    // request legislator counts
+    var legislatorIds = _.map(reps, function(r) { return r.member_id; });
+    io.emit('stats', {legislators: legislatorIds})
 
-  // log event to the server
-  io.emit('log', {
-    'event' : 'views',
-    'legislators' : legislatorIds.join(',')
+    // log event to the server
+    io.emit('log', {
+      'event' : 'views',
+      'legislators' : legislatorIds
+    });
   });
+  TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 };
 
 function setLegislatorCounts(stats)
@@ -146,18 +148,12 @@ function setLegislatorCounts(stats)
   });
 }
 function setLegislatorCountsIncrement(reps, eventName) {
-  reps = reps.split(',');
-  var wrapper;
   _.each(reps, function(member) {
-    wrapper = $('.legislator[data-legislator-id="' + member + '"]');
-
+    var wrapper = $('.legislator[data-legislator-id="' + member + '"]');
 
     var newTotal = wrapper.find('.legislator-' + eventName).attr('data-' + eventName)*1+1 || 0;
     wrapper.find('.legislator-' + eventName).numberSpinner('set', newTotal);
     wrapper.find('.legislator-' +eventName).attr('data-' + eventName, newTotal || 0);
-
-
-
 
     /*
     wrapper.find('.legislator-calls').numberSpinner('set', member.calls || 0);

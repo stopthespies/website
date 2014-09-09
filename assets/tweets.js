@@ -7,6 +7,7 @@
   function bringInTweets()
   {
     io.emit('tweets');
+    ScrollHandler.removeTrigger(bringInTweets);
   }
 
   var tweetTemplate = $('#tweet-template').html();

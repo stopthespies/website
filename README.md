@@ -17,7 +17,7 @@ Just using this repo to also prototype some website ideas
 
 ```
 rvm use 2.1.2		# probably works with other ruby versions
-gem install jekyll jekyll-assets sass uglifier
+bundle install
 npm install -g bower
 bower update
 ```

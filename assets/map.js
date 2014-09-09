@@ -9,6 +9,9 @@ var MAP_ELEMENT = '#campaign-map';
 var DEFAULT_COORDS = [-28.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
 
+// used to force leaflet to make the whole map visible
+var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-43.660984, 157.060547), L.latLng(-10.469086, 110.302734));
+
 //------------------------------------------------------------------------------
 // setup
 
@@ -25,7 +28,7 @@ function initMap(el)
     scrollWheelZoom: false
   }).setView(DEFAULT_COORDS, DEFAULT_ZOOM);
 
-  STS.CampaignMap.deactivateUI(true);
+  STS.CampaignMap.deactivateUI();
 
   $.ajax({
     url: '/map/electorates.json',
@@ -35,10 +38,14 @@ function initMap(el)
       showElectorates(geojson);
     }
   });
+
+  mapEl.find('.map-blocker').on('click', activateUI);
 }
 
 function showElectorates(geojson)
 {
+  map.fitBounds(COUNTRY_BOUNDS, {animate:true});
+
   mapAreas = L.geoJson(geojson, {
     style : function(feature) {
       // :TODO: finalise pallete and hookup to legislator data
@@ -93,6 +100,32 @@ function onBlurWard(e, feature)
 
 //------------------------------------------------------------------------------
 // high-level map behaviour
+
+function activateUI()
+{
+  if (!mapEl.hasClass('inactive')) {
+    return;
+  }
+
+  mapEl.removeClass('inactive');
+  map.scrollWheelZoom.enable();
+  map.doubleClickZoom.enable();
+  map.touchZoom.enable();
+  map.keyboard.enable();
+  map.dragging.enable();
+
+  mapEl.on('clickoutside', deactivateUI);
+}
+
+function deactivateUI()
+{
+  mapEl.addClass('inactive');
+  map.scrollWheelZoom.disable();
+  map.doubleClickZoom.disable();
+  map.touchZoom.disable();
+  map.keyboard.disable();
+  map.dragging.disable();
+}
 
 function focusByWardName(electorate)
 {
@@ -203,24 +236,8 @@ STS.CampaignMap = {
   focusWard : focusByWardName,
   focusMembersWard : focusByMembers,
 
-  activateUI : function() {
-    mapEl.removeClass('inactive');
-    map.scrollWheelZoom.enable();
-    map.doubleClickZoom.enable();
-    map.touchZoom.enable();
-    map.keyboard.enable();
-    map.dragging.enable();
-  },
-  deactivateUI : function(stopDragging) {
-    mapEl.addClass('inactive');
-    map.scrollWheelZoom.disable();
-    map.doubleClickZoom.disable();
-    map.touchZoom.disable();
-    map.keyboard.disable();
-    if (stopDragging) {
-      map.dragging.disable();
-    }
-  }
+  activateUI : activateUI,
+  deactivateUI : deactivateUI
 };
 
 })(jQuery, STS);
