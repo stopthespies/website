@@ -14,10 +14,13 @@
 
   function onTweetsLoaded(tweetdata)
   {
+    console.log('hey', tweetdata);
     _.each(tweetdata.latest, function(tweets, type) {
-      _.each(tweets, function(tweet) {
-        $('#tweet-board').append(_.template(tweetTemplate, tweet));
-      });
+      if(type === 'celebrities') {
+        _.each(tweets, function(tweet) {
+          $('#tweet-board').append(_.template(tweetTemplate, tweet));
+        });
+      };
     });
 
     $('.tweets-support-total').numberSpinner('set', tweetdata.total);
