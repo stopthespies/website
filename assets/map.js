@@ -44,7 +44,7 @@ function initMap(el)
 
 function showElectorates(geojson)
 {
-  map.fitBounds(COUNTRY_BOUNDS, {animate:true});
+  map.fitBounds(COUNTRY_BOUNDS);
 
   mapAreas = L.geoJson(geojson, {
     style : function(feature) {
