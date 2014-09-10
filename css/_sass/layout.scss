@@ -1,0 +1,206 @@
+.container {
+	max-width: $content-max-width;
+	margin: 0 auto;
+	@include clearfix();
+}
+
+.who, .introduction, .stats, .how, .support, .extra, .reading {
+	.col {
+		@include column($one);
+	}
+}
+
+// MAP FITS TO SIDE ON DESKTOP
+
+@media (min-width: $set-header-map-adjacent) {
+  .who {
+    .col {
+      @include column($one-half);
+    }
+  }
+  #campaign-map {
+    width: 50%;
+    left: 50%;
+  }
+}
+
+// INFORMATION INTRO
+// 1 > 2 columns
+
+.introduction {
+  @media (min-width: $set-info-2-cols) {
+    .col {
+      @include column($one-half);
+    }
+  }
+}
+
+@media (min-width: $set-larger-content-margin) {
+	// other content is 8/12 with 2/12 gutters
+	.stats, .how, .support, .extra, .reading {
+		.col {
+			@include column($one-twelfth * 8);
+			@include push($one-sixth);
+		}
+	}
+}
+
+// STEPS BOXES
+// 1 > 2 columns
+
+.step {
+  @include column($one);
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+
+  @media (min-width: $set-steps-2-cols) {
+    @include column($one-half);
+    margin-bottom: 1em;
+  }
+}
+
+// STATS
+// 2 > 3 > 6 cols
+
+.stats {
+	padding-bottom: 0;
+
+	.metrics {
+		@include row();
+	}
+	.metric {
+		@include column($one-half);
+		padding-bottom: 40px;
+	}
+
+	@media (min-width: $set-stats-3-cols) {
+		.metric {
+			@include column($one-third);
+		}
+	}
+
+	@media (min-width: $set-stats-6-cols) {
+		.metric {
+			@include column($one-sixth);
+		}
+	}
+}
+
+// LEGISLATOR SEARCH
+// 2 columns for location lookup boxes
+
+.how {
+	.step {
+		h4 {
+			padding: 0.5em 1em;
+		}
+	}
+	.postcode-steps, .location-privacy, .postcode-lookup {
+		@include row();
+	}
+	.location-privacy {
+		font-size: 14px;
+		p {
+			@include column($one);
+		}
+	}
+	.input-group {
+		@include column($one-twelfth * 8);
+		@include push($one-sixth);
+		margin-top: 2.5em;
+
+		.form-control, .input-group-btn {
+			display: block;
+			float: left;
+		}
+		.form-control {
+			width: 60%;
+		}
+		.input-group-btn {
+			width: 40%;
+		}
+	}
+
+	@media (min-width: $set-steps-2-cols) {
+		.step-2 {	// swap rows on desktop
+			float: right;
+    }
+    .step-1 {
+      float: left;
+		}
+	}
+
+  @media (max-width: ($set-steps-2-cols - 1)) {
+    .no-location .step-2 {
+      background: transparent;
+      min-height: 0;
+      p {
+        color: $brand3;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+// LEGISLATOR RESULTS
+// 3 columns
+.legislators {
+  @include row();
+}
+.legislator {
+	@include column($one-third);
+	margin-top: 1em;
+
+	.pic {
+		@include column($one-third);
+	}
+	.details {
+		@include column($one-twelfth * 8);
+	}
+
+	@media (min-width: $set-legislator-smaller-thumbs) {
+		.pic {
+			@include column($one-quarter);
+		}
+		.details {
+			@include column($one-twelfth * 9);
+		}
+	}
+
+	@media (min-width: $set-legislator-smallest-thumbs) {
+		.pic {
+			@include column($one-sixth);
+		}
+		.details {
+			@include column($one-twelfth * 10);
+		}
+	}
+}
+
+// SHARE BUTTONS
+// 2 columns for what else section, 2 columns for sharing
+
+.extra {
+	.sharing-buttons {
+		@include row();
+		padding: 20px 20px 0 20px;
+	}
+	.share {
+		@include column($one-half);
+	}
+}
+
+// MAP
+
+section.map {
+	padding: 0;
+}
+
+// FOOTER
+
+.footer {
+	text-align: right;
+	.col {
+		@include column($one);
+	}
+}

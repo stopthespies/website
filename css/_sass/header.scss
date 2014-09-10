@@ -1,0 +1,20 @@
+.who {
+  @include hero-gradient-bg();
+
+  h1, h2 {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+  h1 {
+    color: $primaryOrange;
+    @include emfz(100px);
+    line-height: 1;
+    margin: emsize(20px, 100px) 0;
+  }
+  h2 {
+    font-weight: bold;
+    margin-bottom: emsize(20px, 24px);
+    letter-spacing: emsize(-1px, 24px);
+  }
+}

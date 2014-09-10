@@ -44,6 +44,8 @@ share_image_gplus: http://dummyimage.com/800x600/900/fff
 markdown: kramdown
 permalink: pretty
 
+sass:
+    sass_dir: css/_sass
 assets:
   dirname: assets
   baseurl: /assets/

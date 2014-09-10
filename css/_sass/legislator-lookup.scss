@@ -1,0 +1,89 @@
+.how {
+  color: $color-member-card-text;
+  background: $dimBreakoutBg;
+
+  h2, h3 {
+    text-transform: uppercase;
+    color: $primaryOrange;
+  }
+  h2 {
+    @include emfz(14px);
+  }
+  h3 {
+    @include emfz(24px);
+  }
+
+  .legislators {
+    a {
+      color: darken($brand2, 20%);
+    }
+    img {
+      border: 2px solid darken($brand5, 2%);
+      border-radius: 8px;
+      width: 100%;
+    }
+  }
+  h4 {
+    font-size: 26px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+  }
+
+  .contact {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .contact li {
+    float: left;
+    margin-right: 10px;
+    font-size: 30px;
+    padding: 0 5px;
+
+    cursor: pointer;
+  }
+  .contact li:hover {
+    background: $brand2;
+    color: $brand4;
+    border-radius: 8px;
+
+  }
+  .status {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    text-align: justify;
+  }
+  .postcode-steps {
+    p {
+      margin: 20% 10% 0 10%;
+      text-align: center;
+    }
+  }
+
+  .location-error {
+    display: none;
+  }
+}
+
+.postcode-steps {
+  overflow: hidden;
+
+  .actions .fa {
+    position: relative;
+    font-size: 2.5em;
+    color: black;
+  }
+}
+
+.legislators {
+  display: none;
+  .legislator {
+    @include transform-origin(top center);
+  }
+}
+
+.legislator {
+  margin-bottom: 20px;
+}

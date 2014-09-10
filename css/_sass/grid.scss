@@ -1,0 +1,79 @@
+/////////////////
+// Semantic.gs // for SCSS: http://sass-lang.com/
+/////////////////
+
+// Defaults which you can freely override
+$column-width: 60px;
+$gutter-width: 20px;
+$columns: 12;
+
+// Utility function — you should never need to modify this
+@function gridsystem-width($columns:$columns) {
+	@return ($column-width * $columns) + ($gutter-width * $columns);
+}
+
+// Set $total-width to 100% for a fluid layout
+$total-width: gridsystem-width($columns);
+
+// Some notes on fluid grid gutters:
+//
+// By default, the column gutters are computed against the total width. When using
+// a percentage as total width, this leads to flexible gutters which may not always
+// be desirable.
+// To setup a fluid grid with fixed-width gutters, do the following:
+// 	- set $gutter-width : 0;
+// 	- wrap your column content in an inner div and apply fixed left/right padding to it
+
+// Sets default attribute used for column gutters. May be either margin (default) or padding.
+$grid-gutter-attribute: margin;
+
+// Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+// $min-width: 999999;
+// $correction: 0.5 / $min-width * 100;
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix() {
+	*zoom:1;
+
+	&:before,
+	&:after {
+	    content:"";
+	    display:table;
+	}
+	&:after {
+	    clear:both;
+	}
+}
+
+
+//////////
+// GRID //
+//////////
+
+body {
+	width: 100%;
+	@include clearfix();
+}
+
+@mixin row($columns:$columns,$attribute:$grid-gutter-attribute) {
+	display: block;
+	width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns));
+	#{$attribute}: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1);
+	// *width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns))-$correction;
+	// *#{$attribute}: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1)-$correction;
+	@include clearfix();
+}
+@mixin column($x,$columns:$columns,$attribute:$grid-gutter-attribute) {
+	display: inline;
+	float: left;
+	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns));
+	#{$attribute}: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+	// *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns))-$correction;
+	// *#{$attribute}: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns))-$correction;
+}
+@mixin push($offset:1,$attribute:$grid-gutter-attribute) {
+	#{$attribute}-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
+@mixin pull($offset:1,$attribute:$grid-gutter-attribute) {
+	#{$attribute}-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
