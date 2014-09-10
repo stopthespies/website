@@ -17,6 +17,8 @@
     console.log('hey', tweetdata);
     _.each(tweetdata.latest, function(tweets, type) {
       if(type === 'celebrities') {
+        tweets = _.uniq(tweets, 'handle');
+
         _.each(tweets, function(tweet) {
           $('#tweet-board').append(_.template(tweetTemplate, tweet));
         });
