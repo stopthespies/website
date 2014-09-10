@@ -51,15 +51,13 @@ assets:
   baseurl: /assets/
   sources:
     - _assets/javascripts
-    - _assets/stylesheets
-    - _assets/images
   cache: false
   # --- DEV ---
   js_compressor:  ~
-  css_compressor: sass
+  css_compressor: ~
   cachebust: none
   debug: true
   # --- PROD :TODO: enable for launch ---
   # js_compressor: uglifier
-  # css_compressor: sass
+  # css_compressor: ~
   # cachebust: hard
