@@ -1,6 +1,14 @@
+section.how.search {
+  padding-bottom: 0;
+}
+section.how.results {
+  padding-top: 0;
+}
+
 .how {
   color: $color-member-card-text;
   background: $dimBreakoutBg;
+  text-align: center;
 
   h2, h3 {
     text-transform: uppercase;
@@ -8,58 +16,10 @@
   }
   h2 {
     @include emfz(14px);
+    margin-top: emsize(15px);
   }
   h3 {
     @include emfz(24px);
-  }
-
-  .legislators {
-    a {
-      color: darken($brand2, 20%);
-    }
-    img {
-      border: 2px solid darken($brand5, 2%);
-      border-radius: 8px;
-      width: 100%;
-    }
-  }
-  h4 {
-    font-size: 26px;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 5px;
-  }
-
-  .contact {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .contact li {
-    float: left;
-    margin-right: 10px;
-    font-size: 30px;
-    padding: 0 5px;
-
-    cursor: pointer;
-  }
-  .contact li:hover {
-    background: $brand2;
-    color: $brand4;
-    border-radius: 8px;
-
-  }
-  .status {
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    text-align: justify;
-  }
-  .postcode-steps {
-    p {
-      margin: 20% 10% 0 10%;
-      text-align: center;
-    }
   }
 
   .location-error {
@@ -70,6 +30,11 @@
 .postcode-steps {
   overflow: hidden;
 
+  p {
+    margin: 1em 10%;
+    text-align: center;
+  }
+
   .actions .fa {
     position: relative;
     font-size: 2.5em;
@@ -79,11 +44,87 @@
 
 .legislators {
   display: none;
-  .legislator {
-    @include transform-origin(top center);
-  }
+  margin: emsize(30px) 0;
 }
 
 .legislator {
-  margin-bottom: 20px;
+  padding: 0 0 1em 0;
+  position: relative;
+  @include transform-origin(top center);
+  background: $color-member-card-body;
+  border-radius: $member-card-corners;
+
+  h3, h4, p, li {
+    color: $color-member-card-text;
+  }
+  h3, h4 {
+    font-weight: normal;
+    text-transform: none;
+  }
+  h3 {
+    @include emfz(24px);
+    margin-bottom: 0;
+  }
+  h4 {
+    @include emfz(12px);
+    font-style: italic;
+    margin: 0;
+    color: black;
+  }
+  p {
+    @include emfz(14px);
+    margin: 1em;
+  }
+
+  .pic {
+    height: emsize(80px);
+    padding: 1em 1em 0 1em;
+    overflow: visible;
+    margin-bottom: emsize(45px);
+    border-top-left-radius: $member-card-corners;
+    border-top-right-radius: $member-card-corners;
+    background: $color-member-card-header;
+
+    img {
+      border-radius: $member-card-corners;
+      max-width: 100%;
+    }
+  }
+
+  .details {
+    padding: 0 1em;
+  }
+
+  .contact {
+    list-style: none;
+    padding: 0;
+    margin: 2em;
+
+    li {
+      cursor: pointer;
+    }
+
+    .wrap {
+      border: 1px solid $member-card-button-borders;
+      border-right: 0;
+      padding: 1em 0;
+    }
+    li:last-child .wrap {
+      border-right: 1px solid $member-card-button-borders;
+    }
+
+    .fa {
+      font-size: 1.4em;
+    }
+    .number-spinner {
+      display: block;
+      @include emfz(18px);
+      font-weight: bold;
+      color: $member-card-button-counters;
+    }
+  }
+}
+
+.retry-legislators {
+  clear: left;
 }

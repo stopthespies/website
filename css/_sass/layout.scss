@@ -43,6 +43,11 @@
 			@include push($one-sixth);
 		}
 	}
+  .how.results {
+    .col {
+      @include column($one);
+    }
+  }
 }
 
 // STEPS BOXES
@@ -99,7 +104,6 @@
 		@include row();
 	}
 	.location-privacy {
-		font-size: 14px;
 		p {
 			@include column($one);
 		}
@@ -120,6 +124,14 @@
 			width: 40%;
 		}
 	}
+
+  @media (min-width: $set-larger-content-margin) {
+    .intro {
+      @include column($one-twelfth * 10);
+      @include push($one-twelfth);
+      margin-bottom: emsize(30px);
+    }
+  }
 
 	@media (min-width: $set-steps-2-cols) {
 		.step-2 {	// swap rows on desktop
@@ -149,32 +161,14 @@
 }
 .legislator {
 	@include column($one-third);
-	margin-top: 1em;
 
-	.pic {
-		@include column($one-third);
-	}
-	.details {
-		@include column($one-twelfth * 8);
-	}
-
-	@media (min-width: $set-legislator-smaller-thumbs) {
-		.pic {
-			@include column($one-quarter);
-		}
-		.details {
-			@include column($one-twelfth * 9);
-		}
-	}
-
-	@media (min-width: $set-legislator-smallest-thumbs) {
-		.pic {
-			@include column($one-sixth);
-		}
-		.details {
-			@include column($one-twelfth * 10);
-		}
-	}
+  .contact {
+    @include clearfix();
+    li {
+      float: left;
+      width: 25%;
+    }
+  }
 }
 
 // SHARE BUTTONS

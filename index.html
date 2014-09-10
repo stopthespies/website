@@ -88,9 +88,10 @@ layout: default
   </div>
 </section>
 
-<section class="how">
+<section class="how search">
     <div class="container">
         <div class="col">
+            <img src="/img/stslogo-o.svg" />
             <h2>Take Action</h2>
             <h3>Contact your Representative</h3>
 
@@ -130,11 +131,18 @@ layout: default
                 </div>
             </div>
 
+        </div>
+    </div>
+</section>
+<section class="how results">
+    <div class="container">
+        <div class="col">
+
+            <div class="legislators"></div>
+
             <div class="location-privacy">
                 <p>We use your postcode/address to find legislators that represent you. We don't store this data and we use encrypted requests.</p>
             </div>
-
-            <div class="legislators"></div>
 
         </div>
     </div>
@@ -357,28 +365,39 @@ layout: default
             <img class="" src="http://data.openaustralia.org/members<%= image %>" />
         </div>
         <div class="details">
-            <h4>Senator <%= full_name %></h4>
+            <h3><%= full_name %></h3>
+            <h4><%= party %> <% if (house == 1) print('member'); else print('senator'); %> for <%= constituency %></h4>
             <p class="status">This legislator has not put out an official statement. Lets encourage them to not vote in favor of the new proposals.</p>
             <ul class="contact">
-                <li class="call-action">
-		            <i class="fa fa-eye"></i>
-		            <div class="number-spinner legislator-views">0</div>
-              	</li>
-                <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
-                	<i class="fa fa-phone"></i>
-                	<div class="number-spinner legislator-calls">0</div>
-              	</li>
-                <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
-                	<i class="fa fa-envelope-o"></i>
-                	<div class="number-spinner legislator-emails">0</div>
-                </li>
+                <!--<li class="view-action">
+                  <div class="wrap">
+    		            <i class="fa fa-eye"></i>
+    		            <div class="number-spinner legislator-views">0</div>
+                  </div>
+              	</li>-->
                 <li class="tweets-action" data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
-                	<i class="fa fa-twitter"></i>
-                	<div class="number-spinner legislator-tweets">0</div>
+                  <div class="wrap">
+                  	<i class="fa fa-twitter"></i>
+                  	<div class="number-spinner legislator-tweets">0</div>
+                  </div>
                 </li>
                 <li class="facebooks-action" data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">
-                	<i class="fa fa-facebook"></i>
-                	<div class="number-spinner legislator-facebooks">0</div>
+                  <div class="wrap">
+                  	<i class="fa fa-facebook"></i>
+                  	<div class="number-spinner legislator-facebooks">0</div>
+                  </div>
+                </li>
+                <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
+                  <div class="wrap">
+                    <i class="fa fa-envelope-o"></i>
+                    <div class="number-spinner legislator-emails">0</div>
+                  </div>
+                </li>
+                <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
+                  <div class="wrap">
+                    <i class="fa fa-phone"></i>
+                    <div class="number-spinner legislator-calls">0</div>
+                  </div>
                 </li>
             </ul>
         </div>
