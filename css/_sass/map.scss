@@ -5,8 +5,11 @@ section {
     position: relative;
     .container {
       position: relative;
-      pointer-events: none;
       z-index: 1;
+      pointer-events: none;
+      > * {
+        pointer-events: auto;
+      }
     }
   }
 }
@@ -44,9 +47,9 @@ section {
 // map controls
 
 .leaflet-container.inactive {
-	.leaflet-control-container {
-		display: none;
-	}
+  .leaflet-control-container {
+    display: none;
+  }
 
   .map-blocker {
     display: block;
