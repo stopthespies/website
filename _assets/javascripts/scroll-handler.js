@@ -68,6 +68,12 @@ function removeCallback(callback)
 function bindInput(callback)
 {
   scroll_listeners.push(callback);
+
+  // fire immediately to init whatever is binding
+  onScrollUpdate(wt, $doc.height() - $window.height(), {
+    height: whOffset,
+    width: wwOffset
+  });
 }
 
 function removeInput(callback)
