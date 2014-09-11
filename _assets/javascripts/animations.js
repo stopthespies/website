@@ -4,9 +4,9 @@
   {
     time || (time = 0.4);
 
-    TweenLite.set(container[0], { overflow: 'hidden', display: 'block', height: 0 });
+    TL.set(container[0], { overflow: 'hidden', display: 'block', height: 0 });
 
-    TweenLite.to(container[0], time, {height: measureH(container), opacity: 1, onComplete: function(e) {
+    TL.to(container[0], time, {height: measureH(container), opacity: 1, onComplete: function(e) {
       container.css({
         height: ''
       });
@@ -20,15 +20,24 @@
   {
     time || (time = 0.4);
 
-    TweenLite.set(container[0], { overflow: 'hidden', display: 'block', height: container.height() });
+    TL.set(container[0], { overflow: 'hidden', display: 'block', height: container.height() });
 
-    TweenLite.to(container[0], time, {opacity: 0, height: 0});
+    TL.to(container[0], time, {opacity: 0, height: 0});
+  }
+
+  function scrollToEl(el, time, completedCB)
+  {
+    TM.to(window, time || 0.3, {
+      scrollTo : { y: el.offset().top, autoKill:true },
+      ease: Power1.easeOut
+    });
   }
 
   // export our anims into app namespace
   STS.anim = {
     appearVSlide : appearVSlide,
-    hideVSlide : hideVSlide
+    hideVSlide : hideVSlide,
+    scrollTo : scrollToEl
   };
 
 })(TweenLite, TweenMax, STS);

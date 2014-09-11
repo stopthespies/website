@@ -80,6 +80,13 @@ $(function() {
 
   });
 
+  // ----------------- SMOOTH SCROLL ----------------------------
+
+  $('body').on('click', 'a[href^="#"]', function(e) {
+    STS.anim.scrollToEl($($(this).attr('href')));
+    e.preventDefault();
+  });
+
   // ---------- bring in metrics -----------
 
   var loadedStats, socialStats;
