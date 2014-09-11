@@ -1,24 +1,36 @@
 /**
  * Scroll event handler
- * Triggers whatever actions at whatever scroll offsets, based on DOM element visibility
+ * Triggers whatever actions at whatever scroll offsets, based on DOM element visibility.
+ *
+ * Based on vertical scroll position only for now.
  *
  * Scroll is computed against things appearing at the bottom of the window.
  * Thus, it is best used when combined with dom elements appearing either
  * immediately before things you want to enter animating; or immediately
  * after things you want to be completely visible before starting. The same applies
  * in reverse with regard to the top of the window.
+ *
+ * @package  StopTheSpies Website
+ * @depends  requestAnimationFrame()
+ * @author   Sam Pospischil <pospi@spadgos.com>
+ * @since    2014-08-26
  */
 
 window.ScrollHandler || (window.ScrollHandler = {});
 
-(function($) {
+(function($, exports) {
 
-var $window;
-var wt, wb, whOffset, i, l;
+var $window, $doc;
+var wt, wb, whOffset, i, l, timer;
 var scroll_triggers = [];
 var scroll_bindings = [];
 var scroll_offsets = [];
 var upward_callbacks = [];
+
+var scroll_listeners = [];
+
+//------------------------------------------------------------------------------
+// scroll position triggering. Used for firing singular events.
 
 function addCallback(selector, callback, upwards)
 {
@@ -43,10 +55,47 @@ function removeCallback(callback)
   }
 }
 
-window.ScrollHandler = {
-  addTrigger: addCallback,
-  removeTrigger: removeCallback
-};
+//------------------------------------------------------------------------------
+// Scroll position binding. Used to receive periodical updates.
+// Requires a requestAnimationFrame polyfill if oldbrowser support is required.
+
+/**
+ * Callback takes the following arguments:
+ *  - current scroll value
+ *  - maxiumum scroll value
+ *  - window height (if you need bottom position, just add to current scroll val)
+ */
+function bindInput(callback)
+{
+  scroll_listeners.push(callback);
+}
+
+function removeInput(callback)
+{
+  for (var i = 0, l = scroll_listeners.length; i < l; ++i) {
+    if (scroll_listeners[i] === callback) {
+      scroll_listeners.splice(i, 1);
+      break;
+    }
+  }
+}
+
+function onScrollUpdate(scroll, maxScroll, windowH)
+{
+  function doTheThing() {
+    for (var i = 0, l = scroll_listeners.length; i < l; ++i) {
+      scroll_listeners[i](scroll, maxScroll, windowH);
+    }
+    timer = null;
+  }
+
+  if (!timer) {
+    timer = requestAnimationFrame(doTheThing);
+  }
+}
+
+//------------------------------------------------------------------------------
+// initialise on DOMReady
 
 $(function() {
 
@@ -68,6 +117,8 @@ setTimeout(function() {		// the easiest thing to do to ensure that all pending D
         scroll_bindings[i]();
       }
     }
+
+    onScrollUpdate(wt, $doc.height() - $window.height(), whOffset);
   }
 
   function checkSize()
@@ -75,6 +126,7 @@ setTimeout(function() {		// the easiest thing to do to ensure that all pending D
     whOffset = $window.innerHeight();
   }
 
+  $doc = $(document);
   $window = $(window);
   $window.on('scroll', checkScroll);
   $window.on('resize', checkSize);
@@ -84,4 +136,14 @@ setTimeout(function() {		// the easiest thing to do to ensure that all pending D
 
 });
 
-})(jQuery);
+//------------------------------------------------------------------------------
+// EXPORTS
+
+exports.ScrollHandler = {
+  addTrigger: addCallback,
+  removeTrigger: removeCallback,
+  bindHandler: bindInput,
+  unbindHandler: removeInput
+};
+
+})(jQuery, window);
