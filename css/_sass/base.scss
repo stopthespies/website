@@ -69,6 +69,14 @@ pre, code, tt {
   }
 }
 
+a {
+  color: $linkColor;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 
 //-----------------------------------------------------------------
 //                \/ these may not be global \/
