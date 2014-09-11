@@ -45,7 +45,9 @@ $member-card-corners: 8px;
 $member-card-button-borders: #E4E4E4;
 $member-card-button-counters: #787878;
 
-
+$btn-primary-color: white;
+$btn-primary-bg: $primaryOrange;
+$btn-primary-border: $textMid;
 
 /* theming for bootstrap widgets */
 
@@ -53,7 +55,7 @@ $brand1:        $primaryOrange !default;
 $brand2:        #D3CEAA !default;
 $brand3:        #FBF7E4 !default;
 $brand4:        #424242 !default;
-$brand5:        #f1592a !default;
+$brand5:        $primaryOrange !default;
 
 /* These variables are included after bootstrap's, so you can add overrides here */
 
