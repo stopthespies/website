@@ -21,6 +21,7 @@
   p.bigdollars {
     text-transform: uppercase;
     text-align: center;
+    overflow: hidden;
     span {
       @include emfz(86px);
       color: $primaryOrange;
