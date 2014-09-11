@@ -18,6 +18,15 @@
     color:#fff;
     font-weight: bold;
     font-size: 15px;
+    position: relative;
+
+    a {
+      display: block;
+      position: absolute;
+      top: 0; height: 100%;
+      left: 0; width: 100%;
+      z-index: 1;
+    }
 }
 
 .sharing-buttons .share:hover {
@@ -26,14 +35,14 @@
 
 .sharing-buttons span.light {font-weight: normal;}
 
-.sharing-buttons .share.twitter {
+.sharing-buttons .share.abpt {
     background: #59adeb;
     &:hover {
       background: darken(#59adeb, 10%);
     }
 }
 
-.sharing-buttons .share.tumblr {
+.sharing-buttons .share.abptum {
     background: rgb(50,80,110);
 
     &:hover {
@@ -41,7 +50,7 @@
     }
 }
 
-.sharing-buttons .share.facebook {
+.sharing-buttons .share.abpf {
     background: #3c5a96;
 
     &:hover {
@@ -49,9 +58,9 @@
     }
 }
 
-    .sharing-buttons .share.facebook img {margin-top:-3px;}
+.sharing-buttons .share.abpf img {margin-top:-3px;}
 
-.sharing-buttons .share.googleplus {
+.sharing-buttons .share.abpg {
     background: #db585a;
 
     &:hover {
