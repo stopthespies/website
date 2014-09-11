@@ -21,7 +21,7 @@ window.ScrollHandler || (window.ScrollHandler = {});
 (function($, exports) {
 
 var $window, $doc;
-var wt, wb, whOffset, i, l, timer;
+var wt, wb, whOffset, wwOffset, i, l, timer;
 var scroll_triggers = [];
 var scroll_bindings = [];
 var scroll_offsets = [];
@@ -63,7 +63,7 @@ function removeCallback(callback)
  * Callback takes the following arguments:
  *  - current scroll value
  *  - maxiumum scroll value
- *  - window height (if you need bottom position, just add to current scroll val)
+ *  - window dimensions- hash of 'width' and 'height'
  */
 function bindInput(callback)
 {
@@ -118,12 +118,16 @@ setTimeout(function() {		// the easiest thing to do to ensure that all pending D
       }
     }
 
-    onScrollUpdate(wt, $doc.height() - $window.height(), whOffset);
+    onScrollUpdate(wt, $doc.height() - $window.height(), {
+      height: whOffset,
+      width: wwOffset
+    });
   }
 
   function checkSize()
   {
     whOffset = $window.innerHeight();
+    wwOffset = $window.innerWidth();
   }
 
   $doc = $(document);
