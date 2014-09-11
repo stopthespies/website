@@ -1,17 +1,19 @@
-// these sections need to be relatively positioned because they will have the map in them
+// map goes between base wrapper layers and container contents for most sections...
 
-section {
-  &.who, &.stats, &.how {
-    position: relative;
-    .container {
-      position: relative;
-      z-index: 1;
-      pointer-events: none;
-      > * {
-        pointer-events: auto;
-      }
-    }
+.container {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  > * {
+    pointer-events: auto;
   }
+}
+
+// ...others pop their backgrounds above as well
+
+.video, .introduction.cost, .cta {
+  position: relative;
+  z-index: 1;
 }
 
 // map base
@@ -20,10 +22,16 @@ section {
   display: block;
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 0;
+}
+
+#campaign-map, #campaign-map .leaflet-objects-pane {
+  -webkit-transform-origin: right top;
+  -moz-transform-origin: right top;
+  transform-origin: right top;
 }
 .leaflet-container {
   position: relative;

@@ -15,6 +15,8 @@ var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-43.660984, 157.060547), L.latLng(-
 //------------------------------------------------------------------------------
 // setup
 
+STS.MAP_ELEMENT = MAP_ELEMENT;  // for use in map-movement.js
+
 var mapEl;
 var map;
 var mapAreas;
@@ -44,7 +46,7 @@ function initMap(el)
 
 function showElectorates(geojson)
 {
-  map.fitBounds(COUNTRY_BOUNDS);
+  map.fitBounds(COUNTRY_BOUNDS).zoomIn();
 
   mapAreas = L.geoJson(geojson, {
     style : function(feature) {
@@ -81,6 +83,8 @@ function showElectorates(geojson)
       });
     }
   }).addTo(map);
+
+  STS.anim.map.intro(mapEl);
 }
 
 //------------------------------------------------------------------------------
