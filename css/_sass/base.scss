@@ -61,7 +61,21 @@ pre, code, tt {
   font-family: 'Droid Sans Mono', monospace;
 }
 
+.btn {
+  &.btn-primary {
+    color: $btn-primary-color;
+    background-color: $btn-primary-bg;
+    border: 1px solid $btn-primary-border;
+  }
+}
 
+a {
+  color: $linkColor;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 
 //-----------------------------------------------------------------
@@ -96,7 +110,7 @@ pre, code, tt {
 }
 .step {
   background: $color-member-search-body;
-  min-height: emsize(200px);
+  min-height: emsize(210px);
   border-radius: 8px;
   overflow: hidden;
 }

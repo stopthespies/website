@@ -35,10 +35,20 @@ section.how.results {
     text-align: center;
   }
 
+  h4 {
+    font-family: 'League Gothic', sans-serif;
+    font-weight: normal;
+    @include emfz(32px);
+  }
+
   .actions .fa {
     position: relative;
     font-size: 2.5em;
-    color: black;
+    color: $primaryOrange;
+  }
+
+  .input-group {
+    margin-top: 3.5em;
   }
 }
 
@@ -114,7 +124,7 @@ section.how.results {
     }
 
     .fa {
-      font-size: 1.4em;
+      font-size: 1.5em;
     }
     .number-spinner {
       display: block;

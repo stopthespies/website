@@ -8,3 +8,18 @@
   font-weight: normal;
   font-style: normal;
 }
+
+
+// Adblock plus social filter list is pretty severe.
+.fa-abpt:before {
+  content: $fa-var-twitter;
+}
+.fa-abpf:before {
+  content: $fa-var-facebook;
+}
+.fa-abpg:before {
+  content: $fa-var-google-plus;
+}
+.fa-abptum:before {
+  content: $fa-var-tumblr;
+}

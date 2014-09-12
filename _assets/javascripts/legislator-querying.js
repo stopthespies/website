@@ -148,19 +148,12 @@ function setLegislatorCounts(stats)
   });
 }
 function setLegislatorCountsIncrement(reps, eventName) {
-  _.each(reps, function(member) {
+  _.each(reps, function(increment, member) {
     var wrapper = $('.legislator[data-legislator-id="' + member + '"]');
 
-    var newTotal = wrapper.find('.legislator-' + eventName).attr('data-' + eventName)*1+1 || 0;
+    var newTotal = wrapper.find('.legislator-' + eventName).attr('data-' + eventName)*1 + (increment || 0);
     wrapper.find('.legislator-' + eventName).numberSpinner('set', newTotal);
     wrapper.find('.legislator-' +eventName).attr('data-' + eventName, newTotal || 0);
-
-    /*
-    wrapper.find('.legislator-calls').numberSpinner('set', member.calls || 0);
-    wrapper.find('.legislator-emails').numberSpinner('set', member.emails || 0);
-    wrapper.find('.legislator-tweets').numberSpinner('set', member.tweets || 0);
-    wrapper.find('.legislator-facebooks').numberSpinner('set', member.facebooks || 0);
-    */
   });
 }
 
