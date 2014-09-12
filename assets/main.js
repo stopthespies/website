@@ -13,6 +13,7 @@
 
 
 
+
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
 
 (function($, io) {
@@ -78,6 +79,13 @@ $(function() {
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
     io.emit('log', {'event' : 'facebooks', legislators: legislatorId});
 
+  });
+
+  // ----------------- SMOOTH SCROLL ----------------------------
+
+  $('body').on('click', 'a[href^="#"]', function(e) {
+    STS.anim.scrollToEl($($(this).attr('href')));
+    e.preventDefault();
   });
 
   // ---------- bring in metrics -----------

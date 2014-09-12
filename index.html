@@ -35,7 +35,6 @@
 
     <!-- Custom CSS -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,700,400italic|Droid+Sans+Mono' rel='stylesheet' type='text/css' />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type='text/css' />
     <link href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type='text/css' />
     <link href="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/css/tooltipster.min.css" rel="stylesheet" type="text/css" />
 
@@ -89,10 +88,11 @@
           </div>
         </div>
     </div>
-    <div id="campaign-map" class="inactive">
-      <div class="map-blocker"></div>
-    </div>
 </section>
+
+<div id="campaign-map" class="inactive">
+  <div class="map-blocker"></div>
+</div>
 
 <section class="video">
     <div class="container">
@@ -156,9 +156,10 @@
   </div>
 </section>
 
-<section class="how">
+<section class="how search">
     <div class="container">
         <div class="col">
+            <img src="/img/stslogo-o.svg" />
             <h2>Take Action</h2>
             <h3>Contact your Representative</h3>
 
@@ -169,7 +170,7 @@
             <div class="postcode-steps">
                 <div class="step step-2">
                   <div class="location-search">
-                    <h4>Auto Lookup!</h4>
+                    <h4>Auto Lookup</h4>
                     <!-- TRIGGER --><a id="request-location"></a><!-- /TRIGGER -->
 
                     <div class="actions">
@@ -184,7 +185,7 @@
                   </div>
                 </div>
                 <div class="step step-1">
-                    <h4>Postcode Lookup!</h4>
+                    <h4>Postcode Lookup</h4>
 
                     <form class="postcode-lookup">
                       <div class="input-group">
@@ -198,11 +199,18 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</section>
+<section class="how results">
+    <div class="container">
+        <div class="col">
+
+            <div class="legislators"></div>
+
             <div class="location-privacy">
                 <p>We use your postcode/address to find legislators that represent you. We don't store this data and we use encrypted requests.</p>
             </div>
-
-            <div class="legislators"></div>
 
         </div>
     </div>
@@ -243,7 +251,7 @@
                 <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <div class="title">Tweets</div>
                     <div class="icon">
-                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-abpt"></i>
 
                     </div>
                     <div class="total twitter-total number-spinner">0</div>
@@ -251,7 +259,7 @@
                 <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <div class="title">Shares</div>
                     <div class="icon">
-                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-abpf"></i>
 
                     </div>
                     <div class="total facebook-total number-spinner">0</div>
@@ -259,7 +267,7 @@
                 <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <div class="title">Google+</div>
                     <div class="icon">
-                        <i class="fa fa-google-plus"></i>
+                        <i class="fa fa-abpg"></i>
 
                     </div>
                     <div class="total google-total number-spinner">0</div>
@@ -275,7 +283,7 @@
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
             <h2>Who supports us?</h2>
             <p class="intro">
-                <i class="fa fa-twitter"></i>
+                <i class="fa fa-abpt"></i>
                 By tweeting "I support #stopthespies" you will automatically be added to the list below. Currently, <strong class="tweets-support-total number-spinner">0</strong> people have shown their support on Twitter.
             </p>
 
@@ -301,20 +309,24 @@
                 <div class="step step-2">
                     <h4>Spread the word!</h4>
                     <div class="sharing-buttons">
-                        <a class="share twitter" href="https://twitter.com/intent/tweet?hashtags=ResetTheNet&amp;related=fightfortheftr&amp;text=This+just+lays+it+out+so+simply.+The+%23NSA+has+a+weakness+--+it's+up+to+us+what+we+do+now.&amp;url=http%3A%2F%2Fwww.resetthenet.org%2F" target="_blank">
-                            <span class="text"><i class="fa fa-twitter"></i>&nbsp; Share <span class="light">on</span> Twitter</span>
-                        </a>
-                        <a class="share tumblr" href="http://www.tumblr.com/share?u=http%3A%2F%2Fwww.resetthenet.org%2F&amp;t=Don%27t+ask+for+your+privacy.+Take+it+back.+On+June+5th%3A+Reset+the+Net.&amp;v=3" target="_blank">
-                            <span class="text"><i class="fa fa-tumblr"></i>&nbsp; Share <span class="light">on</span> Tumblr</span>
-                        </a>
+                        <span class="share abpt">
+                            <span class="text"><i class="fa fa-abpt"></i>&nbsp;Share <span class="light">on</span> Twitter</span>
+                            <a target="_blank" href="https://twitter.com/intent/tweet?hashtags=ResetTheNet&amp;related=fightfortheftr&amp;text=This+just+lays+it+out+so+simply.+The+%23NSA+has+a+weakness+--+it's+up+to+us+what+we+do+now.&amp;url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+                        </span>
+                        <span class="share abptum">
+                            <span class="text"><i class="fa fa-abptum"></i>&nbsp; Share <span class="light">on</span> Tumblr</span>
+                            <a target="_blank" href="http://www.tumblr.com/share?u=http%3A%2F%2Fwww.resetthenet.org%2F&amp;t=Don%27t+ask+for+your+privacy.+Take+it+back.+On+June+5th%3A+Reset+the+Net.&amp;v=3"></a>
+                        </span>
                     </div>
                     <div class="sharing-buttons">
-                        <a class="share facebook desktop" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.resetthenet.org%2F" target="_blank">
-                            <span class="text"><i class="fa fa-facebook"></i>&nbsp; Share <span class="light">on</span> Facebook</span>
-                        </a>
-                        <a class="share googleplus desktop" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.resetthenet.org%2F" target="_blank">
-                            <span class="text"><i class="fa fa-google-plus"></i>&nbsp; Share <span class="light">on</span> Google+</span>
-                        </a>
+                        <span class="share abpf desktop">
+                            <span class="text"><i class="fa fa-abpf"></i>&nbsp; Share <span class="light">on</span> Facebook</span>
+                            <a target="_blank" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+                        </span>
+                        <span class="share abpg desktop">
+                            <span class="text"><i class="fa fa-abpg"></i>&nbsp; Share <span class="light">on</span> Google+</span>
+                            <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -425,28 +437,39 @@
             <img class="" src="http://data.openaustralia.org/members<%= image %>" />
         </div>
         <div class="details">
-            <h4>Senator <%= full_name %></h4>
+            <h3><%= full_name %></h3>
+            <h4><%= party %> <% if (house == 1) print('member'); else print('senator'); %> for <%= constituency %></h4>
             <p class="status">This legislator has not put out an official statement. Lets encourage them to not vote in favor of the new proposals.</p>
             <ul class="contact">
-                <li class="call-action">
-		            <i class="fa fa-eye"></i>
-		            <div class="number-spinner legislator-views">0</div>
-              	</li>
-                <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
-                	<i class="fa fa-phone"></i>
-                	<div class="number-spinner legislator-calls">0</div>
-              	</li>
-                <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
-                	<i class="fa fa-envelope-o"></i>
-                	<div class="number-spinner legislator-emails">0</div>
-                </li>
+                <!--<li class="view-action">
+                  <div class="wrap">
+    		            <i class="fa fa-eye"></i>
+    		            <div class="number-spinner legislator-views">0</div>
+                  </div>
+              	</li>-->
                 <li class="tweets-action" data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
-                	<i class="fa fa-twitter"></i>
-                	<div class="number-spinner legislator-tweets">0</div>
+                  <div class="wrap">
+                  	<i class="fa fa-abpt"></i>
+                  	<div class="number-spinner legislator-tweets">0</div>
+                  </div>
                 </li>
                 <li class="facebooks-action" data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">
-                	<i class="fa fa-facebook"></i>
-                	<div class="number-spinner legislator-facebooks">0</div>
+                  <div class="wrap">
+                  	<i class="fa fa-abpf"></i>
+                  	<div class="number-spinner legislator-facebooks">0</div>
+                  </div>
+                </li>
+                <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
+                  <div class="wrap">
+                    <i class="fa fa-envelope-o"></i>
+                    <div class="number-spinner legislator-emails">0</div>
+                  </div>
+                </li>
+                <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
+                  <div class="wrap">
+                    <i class="fa fa-phone"></i>
+                    <div class="number-spinner legislator-calls">0</div>
+                  </div>
                 </li>
             </ul>
         </div>
@@ -499,6 +522,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.13.1/TweenMax.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/plugins/ScrollToPlugin.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/js/jquery.tooltipster.min.js"></script>
@@ -508,9 +532,10 @@
 <script src="/assets/env.js"></script>
 <script src="/assets/animations.js"></script>
 <script src="/assets/event-handler.js"></script>
-<script src="/assets/legislator-querying.js"></script>
-<script src="/assets/map.js"></script>
 <script src="/assets/scroll-handler.js"></script>
+<script src="/assets/map.js"></script>
+<script src="/assets/map-movement.js"></script>
+<script src="/assets/legislator-querying.js"></script>
 <script src="/assets/tweets.js"></script>
 <script src="/assets/vendor/jquery.clickoutside.js"></script>
 <script src="/assets/vendor/jquery.numberSpinner/src/jquery.numberSpinner.js"></script>
