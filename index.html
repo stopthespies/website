@@ -291,9 +291,6 @@ layout: default
 <div id="email-modal-container"></div>
 <script type="text/template" id="email-modal-template">
 
-    <div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title" id="myModalLabel">Modal <%= full_name %></h4>
@@ -315,9 +312,6 @@ layout: default
           <div class="modal-footer">
             <button type="button" class="btn btn-primary">Send Email</button>
           </div>
-        </div>
-      </div>
-    </div>
 
 </script>
 <!-- END EMAIL MODAL -->
@@ -326,15 +320,6 @@ layout: default
 <!-- CALL MODAL -->
 <div id="call-modal-container"></div>
 <script type="text/template" id="call-modal-template">
-
-<div class="modal fade" id="call-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-phone"></i>Call Tool for <%= full_name %></h4>
-      </div>
-      <div class="modal-body">
 
             <aside>
                 <ol>
@@ -351,13 +336,7 @@ layout: default
             <a class="cta-button" href="thank-you.html?called=true">Click here once you&apos;re done  &rarr;</a>
 
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Send Email</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 </script>
 <!-- END CALL MODAL -->
@@ -435,30 +414,5 @@ layout: default
 
 <div class="takeover overlay overlay-scale">
   <button type="button" class="overlay-close">Close</button>
-  <nav>
-  <div class="container">
-   <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal <%= full_name %></h4>
-          </div>
-          <div class="modal-body">
-           <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Subject</label>
-        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Subject"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Message</label>
-        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Message goes here"></textarea>
-      </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Send Email</button>
-          </div>
-        </div>
-
-  </nav>
+  <div class="takeover-container container"></div>
 </div>

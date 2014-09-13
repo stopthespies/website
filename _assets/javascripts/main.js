@@ -43,13 +43,15 @@ $(function() {
   // ----------------- MODALS ----------------------------
 
   $('body').on('click', '.contact .call-action', function (e) {
-    /*
+
     var legislatorId = $(e.currentTarget).parents('.legislator').attr('data-legislator-id');
     var legislator = legislators[legislatorId];
     var callModalTemplate = $('#call-modal-template').html();
-    $('#call-modal-container').html(_.template(callModalTemplate, legislator));
-    $('#call-modal-container .modal').modal();
-    */
+    //$('#call-modal-container').html(_.template(callModalTemplate, legislator));
+    //$('#call-modal-container .modal').modal();
+    var takeoverContent = _.template(callModalTemplate, legislator);
+    takeover(takeoverContent);
+
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
     io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'calls', legislators: legislatorId}, function(d) {
       if (d.message) {
@@ -66,10 +68,13 @@ $(function() {
     var legislatorId = $(e.currentTarget).parents('.legislator').attr('data-legislator-id');
     var legislator = legislators[legislatorId];
     var emailModalTemplate = $('#email-modal-template').html();
-    $('#email-modal-container').html(_.template(emailModalTemplate, legislator));
-    $('#email-modal-container .modal').modal();
+    //$('#email-modal-container').html(_.template(emailModalTemplate, legislator));
+    //$('#email-modal-container .modal').modal();
 
-    //$('#email-modal').modal();
+    var takeoverContent = _.template(emailModalTemplate, legislator);
+    takeover(takeoverContent);
+
+
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
     io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'emails', legislators: legislatorId}, function(d) {
       if (d.message) {
