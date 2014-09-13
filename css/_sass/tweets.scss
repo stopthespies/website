@@ -1,13 +1,70 @@
 .tweet {
-  width: 70px;
-  height: 70px;
+  width: 200px;
+  height: 200px;
   display: block;
   float: left;
+  position:relative;
+}
+.twitter-support {
+	font-size: 52px;
+	text-align: center;
+}
+.tweet.bigger {
+	width: 400px;
+	height: 400px;
 }
 
+.tweet.bigger {
+	width: 400px;
+	height: 400px;
+}
+.tweet img {
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	-webkit-filter: blur(3px) grayscale(.8) opacity(0.8);
+}
+@-webkit-keyframes testAnim {
+	0% {
+		-webkit-filter: blur(3px) grayscale(.8) opacity(0.8);
 
+	}
+	100% {
+		-webkit-filter: blur(0px) grayscale(0) opacity(1);
+
+	}
+}
+
+/* the photo to be animated via filters */
+.tweet img:hover {
+	-webkit-animation-name: testAnim;
+	 -webkit-animation-duration: 0.5s;
+	 -webkit-animation-iteration-count: 1;
+	 -webkit-animation-direction: alternate;
+	 -webkit-animation-timing-function: ease-out;
+	 -webkit-animation-fill-mode: forwards;
+	 -webkit-animation-delay: 0s;
+}
+.tweet.bigger .tweet-text,
+.tweet.biggest .tweet-text {
+	font-size: 14px;
+}
+.tweet-text {
+	font-size: 11px;
+
+	position: absolute;
+top: 20px;
+left: 20px;
+right: 30px;
+color: #fff;
+}
 #tweet-board {
   position: relative;
-  margin: 0 auto;
+  margin: 0;
+  width: 110%;
+  padding: 0;
   @include clearfix();
 }

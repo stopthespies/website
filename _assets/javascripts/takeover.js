@@ -114,7 +114,6 @@ if ( typeof define === 'function' && define.amd ) {
       classie.add( overlay, 'open' );
     }
   }
-  triggerBttn.addEventListener( 'click', toggleOverlay );
   closeBttn.addEventListener( 'click', toggleOverlay );
   var takeover = function(content) {
     $('.takeover-container').html(content);

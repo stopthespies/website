@@ -19,18 +19,38 @@
     console.log('tweets:', tweetdata);
     _.each(tweetdata.latest, function(tweets, type) {
       if(type === 'celebrities') {
+        tweets = tweets.slice(0,30);
         tweets = _.uniq(tweets, 'handle');
-
+        var i = 0;
         _.each(tweets, function(tweet) {
+          tweet.avatar = tweet.avatar.replace('_normal', '');
+          if(i % 7 == 0) {
+            tweet.sizeClass = 'bigger';
+          } else if(i % 12 === 0) {
+            tweet.sizeClass = 'biggest';
+          } else {
+            tweet.sizeClass = '';
+
+          }
           $('#tweet-board').append(_.template(tweetTemplate, tweet));
+          i++;
         });
       };
     });
 
     $('.tweets-support-total').numberSpinner('set', tweetdata.total);
 
-    $('#tweet-board img').tooltipster();
-
+    //$('#tweet-board img').tooltipster();
+    /*var container = document.querySelector('#tweet-board');
+    var msnry = new Masonry( container, {
+      columnWidth: 200,
+      itemSelector: '.tweet'
+    });*/
+    $('#tweet-board').isotope({
+    layoutMode: 'packery',
+    itemSelector: '.tweet',
+    stamp: '.stamp'
+    });
     recenterTweetGrid();
   }
 

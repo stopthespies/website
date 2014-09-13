@@ -18,7 +18,6 @@ layout: default
               be informed and tools to contact your representatives to let them
               know how you feel about the issue.
             </p>
-  <p><button id="trigger-overlay" type="button">Open Overlay</button></p>
 
           </div>
         </div>
@@ -217,7 +216,8 @@ layout: default
     <div class="container">
         <div class="col">
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
-            <h2>Who supports us?</h2>
+            <h2 class="twitter-support"><strong class="tweets-support-total number-spinner">0</strong> people supporting #stopthespies</h2>
+
             <p class="intro">
                 <i class="fa fa-abpt"></i>
                 By tweeting "I support #stopthespies" you will automatically be added to the list below. Currently, <strong class="tweets-support-total number-spinner">0</strong> people have shown their support on Twitter.
@@ -226,7 +226,7 @@ layout: default
         </div>
     </div>
 </section>
-                    <div class="tab-pane fade in active" id="tweet-board"></div>
+                    <div class="" id="tweet-board"></div>
 
 <section class="extra">
     <div class="container">
@@ -408,9 +408,10 @@ layout: default
 
 <!-- TWEET -->
 <script type="text/template" id="tweet-template">
-
-    <img class="tweet tooltip" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %> - <%= tweet %> - <%= followers %>" data-content="<%= tweet %> - <%= followers %>" />
-
+    <div class="tweet tooltip <%= sizeClass %>">
+    <img class="" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %> - <%= tweet %> - <%= followers %>" data-content="<%= tweet %> - <%= followers %>" />
+      <p class="tweet-text"><%= tweet %></p>
+    </div>
 </script>
 
 <div class="takeover overlay overlay-scale">
