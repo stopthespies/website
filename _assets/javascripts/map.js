@@ -46,7 +46,10 @@ function initMap(el)
 
 function showElectorates(geojson)
 {
-  map.fitBounds(COUNTRY_BOUNDS);
+  var scaleFactor = fitToArea(COUNTRY_BOUNDS);
+  $(window).on('resize', debounce(function(e) {
+    fitToArea(COUNTRY_BOUNDS);
+  }));
 
   mapAreas = L.geoJson(geojson, {
     style : function(feature) {
@@ -84,7 +87,42 @@ function showElectorates(geojson)
     }
   }).addTo(map);
 
-  STS.anim.map.intro(mapEl);
+  STS.anim.map.intro(mapEl, scaleFactor);
+}
+
+// :TODO: make this animated (will need to fix leaflet fitBounds() method)
+function fitToArea(bounds)
+{
+  // first, zoom the map as appropriate
+  map.fitBounds(bounds, { reset: true });
+
+  var mapDims = [ mapEl.width(), mapEl.height() ];
+
+  // now, measure the actual pixel bounds we've ended up at since zoom is very coarse
+  var ne = map.project(bounds.getNorthEast());
+  var sw = map.project(bounds.getSouthWest());
+
+  var topBounds = map.getPixelOrigin();
+
+  var projectionCoords = {
+    top: ne.y - topBounds.y,
+    left: sw.x - topBounds.x,
+    bottom: sw.y - topBounds.y,
+    right: ne.x - topBounds.x
+  };
+
+  // now that we have projected screenspace coords we can determine our scale mutiplier to exactly fit..
+  var projectionSize = [ projectionCoords.right - projectionCoords.left, projectionCoords.bottom - projectionCoords.top ];
+  var scaleAdjust = Math.min(mapDims[0] / projectionSize[0], mapDims[1] / projectionSize[1]);
+
+  //... and apply it!
+
+  mapEl.css({
+    transform: "scale(" + scaleAdjust + ")",
+    right: (projectionCoords.left * -scaleAdjust)
+  });
+
+  return scaleAdjust;
 }
 
 //------------------------------------------------------------------------------
@@ -178,18 +216,7 @@ function getGeoJSONBounds(layer)
 
 function focusGeoJSON(layer)
 {
-  var bounds = getGeoJSONBounds(layer);
-
-  map.fitBounds(bounds, {
-    pan : {
-      animate: true,
-      duration : 0.5
-    },
-    zoom : {
-      animate: true,
-      duration : 0.25
-    }
-  });
+  fitToArea(getGeoJSONBounds(layer));
 }
 
 function findElectorate(wardName)
@@ -243,6 +270,8 @@ STS.CampaignMap = {
   init : initMap,
   focusPoint : focusLatLng,
   focusArea : focusGeoJSON,
+
+  exactFitBounds : fitToArea,
 
   focusWard : focusByWardName,
   focusMembersWard : focusByMembers,

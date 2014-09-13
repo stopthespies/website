@@ -17,8 +17,7 @@
 }
 
 // map base
-
-#campaign-map {
+section.map {
   display: block;
   height: 100%;
   width: 100%;
@@ -28,26 +27,15 @@
   z-index: 0;
 }
 
-#campaign-map, #campaign-map .leaflet-objects-pane {
-  -webkit-transform-origin: right top;
-  -moz-transform-origin: right top;
-  transform-origin: right top;
+#campaign-map {
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+  @include transform-origin(100% 50%);
 }
 .leaflet-container {
   position: relative;
   background: transparent;
-}
-
-.map-blocker {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  cursor: default;
 }
 
 // map controls
