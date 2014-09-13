@@ -19,7 +19,7 @@
     console.log('tweets:', tweetdata);
     _.each(tweetdata.latest, function(tweets, type) {
       if(type === 'celebrities') {
-
+        tweets = tweets.slice(0,30);
         tweets = _.uniq(tweets, 'handle');
         var i = 0;
         _.each(tweets, function(tweet) {
