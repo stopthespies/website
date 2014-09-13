@@ -224,7 +224,7 @@ layout: default
         </div>
     </div>
 </section>
-                    <div class="tab-pane fade in active" id="tweet-board"></div>
+                    <div class="" id="tweet-board"></div>
 
 <section class="extra">
     <div class="container">
@@ -406,9 +406,10 @@ layout: default
 
 <!-- TWEET -->
 <script type="text/template" id="tweet-template">
-
-    <img class="tweet tooltip" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %> - <%= tweet %> - <%= followers %>" data-content="<%= tweet %> - <%= followers %>" />
-
+    <div class="tweet tooltip <%= sizeClass %>">
+    <img class="" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %> - <%= tweet %> - <%= followers %>" data-content="<%= tweet %> - <%= followers %>" />
+      <p class="tweet-text"><%= tweet %></p>
+    </div>
 </script>
 
 <div class="takeover overlay overlay-scale">
