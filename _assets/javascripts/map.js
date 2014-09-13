@@ -41,7 +41,7 @@ function initMap(el)
     }
   });
 
-  mapEl.find('.map-blocker').on('click', activateUI);
+  // mapEl.find('.map-blocker').on('click', activateUI);
 }
 
 function showElectorates(geojson)
