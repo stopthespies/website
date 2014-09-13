@@ -7,7 +7,6 @@
 //= require event-handler
 //= require scroll-handler
 //= require map
-//= require map-movement
 //= require legislator-querying
 //= require tweets
 //= require takeover

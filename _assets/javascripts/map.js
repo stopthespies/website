@@ -1,3 +1,27 @@
+/**
+ * Notes on the map animation:
+ *
+ * - Placing the map in the correct screen location is a pain, because map zoom is very coarse.
+ *   We measure the bounds of what we want to fit, then set the map to contain that. From there
+ *   we transform the map as a whole to increase its size to the exact dimensions needed.
+ * - The map has to be animated by transforming the root map element or others above it.
+ *   Otherwise leaflet internally tries to adjust its layer positions and messes everything up.
+ * - The map position is controlled by GSAP tweens, and can't be modified by directly manipulating
+ *   its CSS. Not sure of a better way to do this.
+ * - I've had to place all map transforming on the map node itself, which basically means we have
+ *   to deal with the coordinate system ourselves.
+ * - When you apply more than one GSAP tween to an element at once, it gets pretty weird about it.
+ *   There must be a way to make it work, or we could just avoid their documentation and work around it.
+ *
+ * It would be great to rethink this whole thing and find a more elegant solution, the complexity
+ * is getting a bit out of control.
+ *
+ * :TODO: create dom markers and measure offsets, then recompute tween based on their positions
+ * :TODO: use different tweens for different width screens as needed
+ * :TODO: resizing the window doesn't put the map in the correct place for some weird reason, you have
+ *        to scroll before it's placed correctly.
+ */
+
 (function($, STS) {
 
 $(function() {
@@ -22,11 +46,21 @@ var map;
 var mapAreas;
 var featureSelect;
 
+var winW = $(window).width();
+var winH = $(window).height();
+
+var mapScrollTween;  // TimelineMax instance linked to scoll pos
+var mapEnterTween;
+
+var mapFitScale, mapProjectionBounds;    // base scale to apply to map
+
+
 function initMap(el)
 {
   mapEl = $(MAP_ELEMENT);
+  mapDOM = mapEl[0];
 
-  map = L.map(mapEl[0], {
+  map = L.map(mapDOM, {
     scrollWheelZoom: false
   }).setView(DEFAULT_COORDS, DEFAULT_ZOOM);
 
@@ -46,10 +80,7 @@ function initMap(el)
 
 function showElectorates(geojson)
 {
-  var scaleFactor = fitToArea(COUNTRY_BOUNDS);
-  $(window).on('resize', debounce(function(e) {
-    fitToArea(COUNTRY_BOUNDS);
-  }));
+  recalculateMapTransforms(COUNTRY_BOUNDS);
 
   mapAreas = L.geoJson(geojson, {
     style : function(feature) {
@@ -87,11 +118,12 @@ function showElectorates(geojson)
     }
   }).addTo(map);
 
-  STS.anim.map.intro(mapEl, scaleFactor);
+  mapEnterTween.play();
 }
 
 // :TODO: make this animated (will need to fix leaflet fitBounds() method)
-function fitToArea(bounds)
+// :TODO: restore original position after the bounds have been projected (not yet necessary)
+function recalculateMapTransforms(bounds)
 {
   // first, zoom the map as appropriate
   map.fitBounds(bounds, { reset: true });
@@ -115,14 +147,24 @@ function fitToArea(bounds)
   var projectionSize = [ projectionCoords.right - projectionCoords.left, projectionCoords.bottom - projectionCoords.top ];
   var scaleAdjust = Math.min(mapDims[0] / projectionSize[0], mapDims[1] / projectionSize[1]);
 
-  //... and apply it!
+  mapProjectionBounds = projectionCoords;
+  mapFitScale = scaleAdjust;
 
-  mapEl.css({
-    transform: "scale(" + scaleAdjust + ")",
-    right: (projectionCoords.left * -scaleAdjust)
-  });
+  regenerateMapTweens();
+}
 
-  return scaleAdjust;
+// percentage offsets are relative to the window
+function getMapScalingCoords(scale, leftPercOffset, topPercOffset)
+{
+  var newScale = scale * mapFitScale;
+  leftPercOffset || (leftPercOffset = 0);
+  topPercOffset || (topPercOffset = 0);
+
+  return {
+    scale : newScale,
+    right : (mapProjectionBounds.left * -newScale) - (leftPercOffset * winW),
+    top : (topPercOffset * winH)
+  };
 }
 
 //------------------------------------------------------------------------------
@@ -214,9 +256,10 @@ function getGeoJSONBounds(layer)
   return bounds;
 }
 
+// :TODO: window resize will have to be updated to deal with active bounds state to make this work
 function focusGeoJSON(layer)
 {
-  fitToArea(getGeoJSONBounds(layer));
+  recalculateMapTransforms(getGeoJSONBounds(layer));
 }
 
 function findElectorate(wardName)
@@ -262,6 +305,45 @@ function findMembersElectorate(memberIds)
 }
 
 //------------------------------------------------------------------------------
+
+function updateMapTween(scroll, maxScroll, wSize)
+{
+  // console.log('scroll tween', scroll, maxScroll, wSize);
+  mapScrollTween.progress(scroll / maxScroll);
+}
+
+function regenerateMapTweens()
+{
+  var scale_1x = getMapScalingCoords(1);
+  var scale_halfx = getMapScalingCoords(0.5);
+  var scale_1halfx = getMapScalingCoords(1.5);
+
+  // ENTRY ANIMATION
+  if (!mapEnterTween) {
+    mapEnterTween = new TimelineMax({pause: true})
+      .to(mapDOM, 0, {opacity: 0, transform: "rotateY(-90deg)"})
+      .to(mapDOM, 1.25, {opacity: 1, transform: "rotateY(0) scale(" + scale_halfx.scale + ")", right: scale_halfx.right, onComplete : function() {
+        ScrollHandler.bindHandler(updateMapTween);
+      }});
+  }
+
+  // SCROLLING FOLLOWER
+  mapScrollTween = new TimelineMax({paused: true/*, smoothChildTiming: false*/})
+    .to(mapDOM, 0, {opacity: 1, transform:"scale(" + scale_halfx.scale + ")", right: scale_halfx.right})
+    .to(mapDOM, 1, {opacity: 0.5, transform:"scale(" + scale_1x.scale + ")"})
+    .to(mapDOM, 4, {opacity: 0.1})
+    .to(mapDOM, 2, {transform:"scale(" + scale_1halfx.scale + ")", right: scale_1halfx.right})
+    .to(mapDOM, 2, {opacity: 0.5, transform: "scale(" + scale_1x.scale + ")"});
+}
+
+$(window).on('resize', debounce(function(e) {
+  recalculateMapTransforms(COUNTRY_BOUNDS);
+
+  var scrollState = ScrollHandler.getCurrent();
+  updateMapTween(scrollState.current, scrollState.max, scrollState.win);
+}));
+
+//------------------------------------------------------------------------------
 // exports
 
 STS.CampaignMap = {
@@ -270,8 +352,6 @@ STS.CampaignMap = {
   init : initMap,
   focusPoint : focusLatLng,
   focusArea : focusGeoJSON,
-
-  exactFitBounds : fitToArea,
 
   focusWard : focusByWardName,
   focusMembersWard : focusByMembers,
