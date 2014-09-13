@@ -123,12 +123,17 @@ function renderLegislators(reps) {
   anim.appearVSlide(container, 0.8, function() {
     // request legislator counts
     var legislatorIds = _.map(reps, function(r) { return r.member_id; });
-    io.emit('stats', {legislators: legislatorIds})
+    io.api('stats', STS.options.STATS_READ_URL, {legislators: legislatorIds}, function(stats) {
+      STS.events.onLegislatorStats(stats);
+    });
 
     // log event to the server
-    io.emit('log', {
-      'event' : 'views',
-      'legislators' : legislatorIds
+    io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds}, function(d) {
+      if (d.message) {
+        console.log('Logged legislator views');
+      } else {
+        console.log('Error logging legislator views');
+      }
     });
   });
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
