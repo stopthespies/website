@@ -71,16 +71,16 @@ function showElectorates(geojson)
       return style;
     },
     onEachFeature: function(feature, layer) {
-      layer.on("mouseover touchstart", function (e) {
-        onFocusWard.call(layer, e, feature);
-      });
-      layer.on("mouseout touchend", function (e) {
-        onBlurWard.call(layer, e, feature);
-      });
-      layer.on("dblclick", function(e) {
-        map.setZoomAround(e.latlng);
-        map.zoomIn(1);
-      });
+      // layer.on("mouseover touchstart", function (e) {
+      //   onFocusWard.call(layer, e, feature);
+      // });
+      // layer.on("mouseout touchend", function (e) {
+      //   onBlurWard.call(layer, e, feature);
+      // });
+      // layer.on("dblclick", function(e) {
+      //   map.setZoomAround(e.latlng);
+      //   map.zoomIn(1);
+      // });
     }
   }).addTo(map);
 
@@ -90,17 +90,17 @@ function showElectorates(geojson)
 //------------------------------------------------------------------------------
 // layer event callbacks (context is leaflet layer object)
 
-function onFocusWard(e, feature)
-{
-  var style = $.extend({}, feature.__defaultStyle);
-  style.color = style.fillColor = '#F0F';
-  this.setStyle(style);
-}
+// function onFocusWard(e, feature)
+// {
+//   var style = $.extend({}, feature.__defaultStyle);
+//   style.color = style.fillColor = '#F0F';
+//   this.setStyle(style);
+// }
 
-function onBlurWard(e, feature)
-{
-  this.setStyle(feature.__defaultStyle);
-}
+// function onBlurWard(e, feature)
+// {
+//   this.setStyle(feature.__defaultStyle);
+// }
 
 //------------------------------------------------------------------------------
 // high-level map behaviour
