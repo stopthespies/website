@@ -1,46 +1,129 @@
-// socket.io application object
+/**
+ * socket.io application object & request wrapper
+ *
+ * The first few requests when hitting the site will be pre-cached, as the socket won't
+ * have had time to connect yet. Socket.io already does this, but we want to fallback to
+ * AJAX instead of waiting however long for a socket to become available. If there's no
+ * response from the socket server in a given time then AJAX will be run to load the initial
+ * page content instead.
+ *
+ * This kind of mechanism should respond better under high load (if/when open socket connections
+ * limits start to become a problem). It also allows us to easily disable the socket server
+ * if we're experiencing any unforseen load issues.
+ *
+ * @package  StopTheSpies Website
+ * @author   Sam Pospischil <pospi@spadgos.com>
+ * @since    2014-08-24
+ */
+
 (function($, io) {
 
-	io = io.connect('http://stopthespies-api.herokuapp.com:80');
+  var __CONNECTED__ = false,
+      __LOADING__ = setTimeout(runBufferedRequests, STS.options.SOCKET_CONNECT_TIMEOUT),
+      PRE_LOAD_CALLS = [],
+      START = new Date();
 
-	io.on('get_stats', function(stats) {
-		STS.events.onStatsLoad(stats[0]);	// :NOTE: array of records comes back from API
-	});
+  function runBufferedRequests()
+  {
+    clearTimeout(__LOADING__);
+    __LOADING__ = false;
+    if (!PRE_LOAD_CALLS.length) {
+      return;
+    }
 
-	io.on('get_tweets', function(tweets) {
-		STS.events.onTweetsLoad(tweets);
-	});
+    if (!__CONNECTED__) {
+      console.log('Took too long to connect, use AJAX');
+    }
+    console.log('Running ' + PRE_LOAD_CALLS.length + ' precached requests...');
 
-	io.on('legislator_stats', function(stats) {
-		STS.events.onLegislatorStats(stats);
-	});
+    for (var i = 0, l = PRE_LOAD_CALLS.length; i < l; ++i) {
+      STS.app.api.apply(PRE_LOAD_CALLS[i][0], PRE_LOAD_CALLS[i][1]);
+    }
 
-	io.on('views', function(reps) {
+    PRE_LOAD_CALLS = [];
+  }
+
+  if (STS.options.ENABLE_REALTIME) {
+  	io = io.connect(STS.options.API_BASE_URL);
+  }
+
+  io.on('connect', function() {
+    console.log('Socket connection established, took ' + (new Date() - START) + 'ms.');
+    __CONNECTED__ = true;
+    runBufferedRequests();
+  });
+
+  io.on('disconnect', function() {
+    console.error('Socket connection terminated!');
+    __CONNECTED__ = false;
+  });
+
+  //----------------------------------------------------------------------------
+
+  io.on('stats:update', function(stats) {
+    console.log('Global stats updated', stats);
+    STS.events.onStatsLoad(stats);
+  });
+
+	io.on('l:views', function(reps) {
+    console.log('Legislators viewed', reps);
 		STS.events.onLegislatorStatsIncrement(reps, 'views');
-
 	});
 
-	io.on('calls', function(reps) {
-		console.log('calls', reps);
+	io.on('l:calls', function(reps) {
+		console.log('Legislators called', reps);
 		STS.events.onLegislatorStatsIncrement(reps, 'calls');
 	});
 
-	io.on('emails', function(reps) {
-		console.log('emails', reps);
+	io.on('l:emails', function(reps) {
+    console.log('Legislators emailed', reps);
 		STS.events.onLegislatorStatsIncrement(reps, 'emails');
 	});
 
-	io.on('tweets', function(reps) {
-		console.log('tweets', reps);
+	io.on('l:tweets', function(reps) {
+    console.log('Legislators tweeted', reps);
 		STS.events.onLegislatorStatsIncrement(reps, 'tweets');
 	});
 
-	io.on('facebooks', function(reps) {
+	io.on('l:facebooks', function(reps) {
+    console.log('Legislators facebooked', reps);
 		STS.events.onLegislatorStatsIncrement(reps, 'facebooks');
-		console.log('facebooks', reps);
 	});
 
+  //----------------------------------------------------------------------------
 	// EXPORTS
+
 	STS.app = io;
+
+  STS.app.api = function(ioEvent, ajaxUrl, data, onComplete, onError)
+  {
+    data || (data = {});
+
+    if (!__CONNECTED__ && __LOADING__) {
+      PRE_LOAD_CALLS.push([this, arguments]);
+      return;
+    }
+
+    if (__CONNECTED__ && ioEvent) {
+      console.log('Socket request for ' + ioEvent + '...');
+      io.emit(ioEvent, data, onComplete);
+    } else if (ajaxUrl) {
+      var method = "GET";
+      if (ajaxUrl.url) {
+        method = ajaxUrl.method;
+        ajaxUrl = ajaxUrl.url;
+      }
+
+      console.log(method + ' request for ' + ajaxUrl + '...');
+
+      $.ajax(ajaxUrl, {
+        method: method,
+        data: data,
+        success: onComplete || function() {},
+        error: onError || function() {},
+        cache : true      // :NOTE: we'll always cache AJAX requests, and never cache socket ones. If the socket server is having issues then stale info is probably better to avoid load.
+      });
+    }
+  };
 
 })(jQuery, io);

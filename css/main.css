@@ -3374,7 +3374,10 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
   color: white;
   margin-top: 0;
-  font-weight: bold; }
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased; }
 
 h1, h2, h5 {
   text-transform: uppercase; }
@@ -3735,10 +3738,7 @@ section.how.results {
 
 .container {
   position: relative;
-  z-index: 1;
-  pointer-events: none; }
-  .container > * {
-    pointer-events: auto; }
+  z-index: 1; }
 
 .video, .introduction.cost, .cta {
   position: relative;
@@ -3763,17 +3763,15 @@ section.how.results {
   background: transparent; }
 
 .map-blocker {
-  display: none;
+  display: block;
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: black;
-  opacity: 0;
-  cursor: pointer;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
+  background: transparent;
+  cursor: default; }
 
 .leaflet-container.inactive .leaflet-control-container {
   display: none; }

@@ -6,7 +6,9 @@
 
   function bringInTweets()
   {
-    io.emit('tweets');
+    io.api('tweets', STS.options.TWEETS_READ_URL, null, function(tweets) {
+      STS.events.onTweetsLoad(tweets);
+    });
     ScrollHandler.removeTrigger(bringInTweets);
   }
 
@@ -14,7 +16,7 @@
 
   function onTweetsLoaded(tweetdata)
   {
-    console.log('hey', tweetdata);
+    console.log('tweets:', tweetdata);
     _.each(tweetdata.latest, function(tweets, type) {
       if(type === 'celebrities') {
         tweets = _.uniq(tweets, 'handle');
