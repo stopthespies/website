@@ -3653,6 +3653,10 @@ section.how.results {
   float: left;
   position: relative; }
 
+.twitter-support {
+  font-size: 52px;
+  text-align: center; }
+
 .tweet.bigger {
   width: 400px;
   height: 400px; }
