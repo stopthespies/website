@@ -19,15 +19,14 @@ var legislators = {}; // Too lazy to pass this variable around to modals ATM - T
 (function($, io) {
 
 var
-  LEGISLATORS_LOCATOR_URL = '<%= site.config['legislators_locator_url'] %>',
-  SOCIAL_STATS_URL    = '<%= site.config['social_stats_url'] %>',
+  LEGISLATORS_LOCATOR_URL = STS.options.LEGISLATORS_LOCATOR_URL,
+  SOCIAL_STATS_URL    = STS.options.SOCIAL_STATS_URL,
 
-  TWEETS_READ_URL     = '<%= site.config['api_url'] + site.config['tweets_read_path'] %>',
-  STATS_READ_URL      = '<%= site.config['api_url'] + site.config['stats_read_path'] %>',
+  TWEETS_READ_URL     = STS.options.TWEETS_READ_URL,
+  STATS_READ_URL      = STS.options.STATS_READ_URL,
 
-  SEND_EMAIL_URL      = '<%= site.config['api_url'] + site.config['send_email_path'] %>',
-  LOG_URL_BASE      = '<%= site.config['api_url'] + site.config['log_path'] %>'
-;
+  SEND_EMAIL_URL      = STS.options.SEND_EMAIL_URL,
+  LOG_URL_BASE      = STS.options.LOG_URL_BASE;
 
 // Start up scripts
 $(function() {
@@ -51,7 +50,13 @@ $(function() {
     $('#call-modal-container .modal').modal();
 
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.emit('log', {'event' : 'emails', legislators: legislatorId});
+    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'calls', legislators: legislatorId}, function(d) {
+      if (d.message) {
+        console.log('Logged legislator call');
+      } else {
+        console.log('Error logging legislator call');
+      }
+    });
 
   });
 
@@ -65,19 +70,37 @@ $(function() {
 
     //$('#email-modal').modal();
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.emit('log', {'event' : 'emails', legislators: legislatorId});
+    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'emails', legislators: legislatorId}, function(d) {
+      if (d.message) {
+        console.log('Logged legislator email');
+      } else {
+        console.log('Error logging legislator email');
+      }
+    });
 
   });
 
   $('body').on('click', '.contact .tweets-action', function (e) {
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.emit('log', {'event' : 'tweets', legislators: legislatorId});
+    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'tweets', legislators: legislatorId}, function(d) {
+      if (d.message) {
+        console.log('Logged legislator tweet');
+      } else {
+        console.log('Error logging legislator tweet');
+      }
+    });
 
   });
 
   $('body').on('click', '.contact .facebooks-action', function (e) {
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.emit('log', {'event' : 'facebooks', legislators: legislatorId});
+    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'facebooks', legislators: legislatorId}, function(d) {
+      if (d.message) {
+        console.log('Logged legislator facebook');
+      } else {
+        console.log('Error logging legislator facebook');
+      }
+    });
 
   });
 
@@ -125,6 +148,8 @@ $(function() {
 
   function onStatsLoaded(data)
   {
+    data = data[0];   // comes back as an array from API and global stats is only 1 record
+
     if (statsLoaded()) {
       // update numbers if we've already shown the stats
       $('.email-total').numberSpinner('set', data.emails || 0);
@@ -138,7 +163,9 @@ $(function() {
 
   // GET AGGREGATE TOTALS
 
-  io.emit('stats');
+  io.api('stats', STATS_READ_URL, null, function(stats) {
+    STS.events.onStatsLoad(stats);
+  });
 
   // GET SOCIAL TOTALS
 
@@ -153,20 +180,20 @@ $(function() {
 
   // SEND AN EMAIL (TEST ONLY)
 
-  $.ajax({
-    url: SEND_EMAIL_URL,
-    type: "POST",
+  // $.ajax({
+  //   url: SEND_EMAIL_URL,
+  //   type: "POST",
 
-    contentType: "application/json",
-    crossDomain: true,
-    dataType: 'json',
+  //   contentType: "application/json",
+  //   crossDomain: true,
+  //   dataType: 'json',
 
-    data: '{"some":"json"}',
-    // work with the response
-    success: function( res ) {
-      console.log(res)
-    }
-  });
+  //   data: '{"some":"json"}',
+  //   // work with the response
+  //   success: function( res ) {
+  //     console.log(res)
+  //   }
+  // });
 
   // init live counter widgets
 
@@ -175,7 +202,13 @@ $(function() {
 
   // LOG INITIAL VIEW
 
-  io.emit('log', {'event' : 'views'});
+  io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'views'}, function(d) {
+    if (d.message) {
+      console.log('Logged pageview');
+    } else {
+      console.log('Error logging pageview');
+    }
+  });
 
   // -------------------------------- EXPORTS ----------------------------------
 

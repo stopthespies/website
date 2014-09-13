@@ -41,12 +41,12 @@ function initMap(el)
     }
   });
 
-  mapEl.find('.map-blocker').on('click', activateUI);
+  // mapEl.find('.map-blocker').on('click', activateUI);
 }
 
 function showElectorates(geojson)
 {
-  map.fitBounds(COUNTRY_BOUNDS).zoomIn();
+  map.fitBounds(COUNTRY_BOUNDS);
 
   mapAreas = L.geoJson(geojson, {
     style : function(feature) {
@@ -154,7 +154,7 @@ function focusLatLng(latlng)
   map.panTo(latlng, { animate: true });
 }
 
-function focusGeoJSON(layer)
+function getGeoJSONBounds(layer)
 {
   var feature = layer.feature;
   var bounds = layer.getBounds();   // this will be bounds just for the first poly
@@ -172,6 +172,13 @@ function focusGeoJSON(layer)
       bounds.extend(new L.LatLngBounds(latLngs));
     }
   }
+
+  return bounds;
+}
+
+function focusGeoJSON(layer)
+{
+  var bounds = getGeoJSONBounds(layer);
 
   map.fitBounds(bounds, {
     pan : {
