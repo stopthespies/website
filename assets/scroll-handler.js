@@ -71,10 +71,7 @@ function bindInput(callback)
   scroll_listeners.push(callback);
 
   // fire immediately to init whatever is binding
-  onScrollUpdate(wt, $doc.height() - $window.height(), {
-    height: whOffset,
-    width: wwOffset
-  });
+  checkScroll();
 }
 
 function removeInput(callback)
@@ -101,50 +98,61 @@ function onScrollUpdate(scroll, maxScroll, windowH)
   }
 }
 
+function getScrollInfo()
+{
+  return {
+    current : wt,
+    max : $doc.height() - $window.height(),
+    win : {
+      height: whOffset,
+      width: wwOffset
+    }
+  };
+}
+
 //------------------------------------------------------------------------------
 // initialise on DOMReady
 
-$(function() {
+$doc = $(document);
+$window = $(window);
 
-setTimeout(function() {		// the easiest thing to do to ensure that all pending DOMReady callbacks have fired & bound Scrollhandler events
-  function checkScroll(e)
-  {
-    var triggerPos;
+function checkScroll(e)
+{
+  var triggerPos;
 
-    wt = $window.scrollTop(),
-    wb = wt + whOffset;
-    l = scroll_triggers.length;
+  wt = $window.scrollTop(),
+  wb = wt + whOffset;
+  l = scroll_triggers.length;
 
-    for (i = 0; i < l && scroll_triggers[i]; ++i) {
-      triggerPos = scroll_triggers[i].offset().top - scroll_offsets[i];
+  for (i = 0; i < l && scroll_triggers[i]; ++i) {
+    triggerPos = scroll_triggers[i].offset().top - scroll_offsets[i];
 
-      if (upward_callbacks[i] && wt < triggerPos) {
-        scroll_bindings[i]();
-      } else if (!upward_callbacks[i] && wb > triggerPos) {
-        scroll_bindings[i]();
-      }
+    if (upward_callbacks[i] && wt < triggerPos) {
+      scroll_bindings[i]();
+    } else if (!upward_callbacks[i] && wb > triggerPos) {
+      scroll_bindings[i]();
     }
-
-    onScrollUpdate(wt, $doc.height() - $window.height(), {
-      height: whOffset,
-      width: wwOffset
-    });
   }
 
-  function checkSize()
-  {
-    whOffset = $window.innerHeight();
-    wwOffset = $window.innerWidth();
-  }
+  onScrollUpdate(wt, $doc.height() - $window.height(), {
+    height: whOffset,
+    width: wwOffset
+  });
+}
 
-  $doc = $(document);
-  $window = $(window);
+function checkSize()
+{
+  whOffset = $window.innerHeight();
+  wwOffset = $window.innerWidth();
+}
+
+$(function() {
+setTimeout(function() {		// the easiest thing to do to ensure that all pending DOMReady callbacks have fired & bound Scrollhandler events
   $window.on('scroll', checkScroll);
   $window.on('resize', checkSize);
   checkSize();
   checkScroll();
 }, 250);
-
 });
 
 //------------------------------------------------------------------------------
@@ -154,7 +162,8 @@ exports.ScrollHandler = {
   addTrigger: addCallback,
   removeTrigger: removeCallback,
   bindHandler: bindInput,
-  unbindHandler: removeInput
+  unbindHandler: removeInput,
+  getCurrent: getScrollInfo
 };
 
 })(jQuery, window);
