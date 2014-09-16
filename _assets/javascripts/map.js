@@ -24,11 +24,6 @@
 
 (function($, STS) {
 
-$(function() {
-  // load up map when page is ready
-  STS.CampaignMap.init();
-});
-
 var MAP_ELEMENT = '#campaign-map';
 var DEFAULT_COORDS = [-28.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
@@ -36,8 +31,26 @@ var DEFAULT_ZOOM = 4;
 // used to force leaflet to make the whole map visible
 var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-43.660984, 157.060547), L.latLng(-10.469086, 110.302734));
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+// init
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// load up map when page is ready
+$(function() {
+  STS.CampaignMap.init();
+});
+
+// watch resize for map positioning
+$(window).on('resize', debounce(function(e) {
+  recalculateMapTransforms(COUNTRY_BOUNDS);
+
+  var scrollState = ScrollHandler.getCurrent();
+  updateMapTween(scrollState.current, scrollState.max, scrollState.win);
+}));
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 // setup
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 STS.MAP_ELEMENT = MAP_ELEMENT;  // for use in map-movement.js
 
@@ -121,7 +134,11 @@ function showElectorates(geojson)
   mapEnterTween.play();
 }
 
-// :TODO: make this animated (will need to fix leaflet fitBounds() method)
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+// precision positioning
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// :TODO: make this animated (will need to fix leaflet fitBounds() method if we end up zooming to electorates)
 // :TODO: restore original position after the bounds have been projected (not yet necessary)
 function recalculateMapTransforms(bounds)
 {
@@ -167,8 +184,43 @@ function getMapScalingCoords(scale, leftPercOffset, topPercOffset)
   };
 }
 
-//------------------------------------------------------------------------------
-// layer event callbacks (context is leaflet layer object)
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Map scroll animation
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function updateMapTween(scroll, maxScroll, wSize)
+{
+  // console.log('scroll tween', scroll, maxScroll, wSize);
+  mapScrollTween.progress(scroll / maxScroll);
+}
+
+function regenerateMapTweens()
+{
+  var scale_1x = getMapScalingCoords(1);
+  var scale_halfx = getMapScalingCoords(0.5);
+  var scale_1halfx = getMapScalingCoords(1.5);
+
+  // ENTRY ANIMATION
+  if (!mapEnterTween) {
+    mapEnterTween = new TimelineMax({pause: true})
+      .to(mapDOM, 0, {opacity: 0, transform: "rotateY(-90deg)"})
+      .to(mapDOM, 1.25, {opacity: 1, transform: "rotateY(0) scale(" + scale_halfx.scale + ")", right: scale_halfx.right, onComplete : function() {
+        ScrollHandler.bindHandler(updateMapTween);
+      }});
+  }
+
+  // SCROLLING FOLLOWER
+  mapScrollTween = new TimelineMax({paused: true/*, smoothChildTiming: false*/})
+    .to(mapDOM, 0, {opacity: 1, transform:"scale(" + scale_halfx.scale + ")", right: scale_halfx.right})
+    .to(mapDOM, 1, {opacity: 0.5, transform:"scale(" + scale_1x.scale + ")"})
+    .to(mapDOM, 4, {opacity: 0.1})
+    .to(mapDOM, 2, {transform:"scale(" + scale_1halfx.scale + ")", right: scale_1halfx.right})
+    .to(mapDOM, 2, {opacity: 0.5, transform: "scale(" + scale_1x.scale + ")"});
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+// UI events
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // function onFocusWard(e, feature)
 // {
@@ -182,8 +234,11 @@ function getMapScalingCoords(scale, leftPercOffset, topPercOffset)
 //   this.setStyle(feature.__defaultStyle);
 // }
 
-//------------------------------------------------------------------------------
-// high-level map behaviour
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+// state modifiers
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// interaction toggling
 
 function activateUI()
 {
@@ -211,6 +266,8 @@ function deactivateUI()
   map.dragging.disable();
 }
 
+// map focusing
+
 function focusByWardName(electorate)
 {
   var matched = findElectorate(electorate);
@@ -232,6 +289,12 @@ function focusByMembers(memberIds)
 function focusLatLng(latlng)
 {
   map.panTo(latlng, { animate: true });
+}
+
+// :TODO: window resize will have to be updated to deal with active bounds state to make this work
+function focusGeoJSON(layer)
+{
+  recalculateMapTransforms(getGeoJSONBounds(layer));
 }
 
 function getGeoJSONBounds(layer)
@@ -256,11 +319,9 @@ function getGeoJSONBounds(layer)
   return bounds;
 }
 
-// :TODO: window resize will have to be updated to deal with active bounds state to make this work
-function focusGeoJSON(layer)
-{
-  recalculateMapTransforms(getGeoJSONBounds(layer));
-}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+// map shape search helpers
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function findElectorate(wardName)
 {
@@ -303,45 +364,6 @@ function findMembersElectorate(memberIds)
 
   return matched;
 }
-
-//------------------------------------------------------------------------------
-
-function updateMapTween(scroll, maxScroll, wSize)
-{
-  // console.log('scroll tween', scroll, maxScroll, wSize);
-  mapScrollTween.progress(scroll / maxScroll);
-}
-
-function regenerateMapTweens()
-{
-  var scale_1x = getMapScalingCoords(1);
-  var scale_halfx = getMapScalingCoords(0.5);
-  var scale_1halfx = getMapScalingCoords(1.5);
-
-  // ENTRY ANIMATION
-  if (!mapEnterTween) {
-    mapEnterTween = new TimelineMax({pause: true})
-      .to(mapDOM, 0, {opacity: 0, transform: "rotateY(-90deg)"})
-      .to(mapDOM, 1.25, {opacity: 1, transform: "rotateY(0) scale(" + scale_halfx.scale + ")", right: scale_halfx.right, onComplete : function() {
-        ScrollHandler.bindHandler(updateMapTween);
-      }});
-  }
-
-  // SCROLLING FOLLOWER
-  mapScrollTween = new TimelineMax({paused: true/*, smoothChildTiming: false*/})
-    .to(mapDOM, 0, {opacity: 1, transform:"scale(" + scale_halfx.scale + ")", right: scale_halfx.right})
-    .to(mapDOM, 1, {opacity: 0.5, transform:"scale(" + scale_1x.scale + ")"})
-    .to(mapDOM, 4, {opacity: 0.1})
-    .to(mapDOM, 2, {transform:"scale(" + scale_1halfx.scale + ")", right: scale_1halfx.right})
-    .to(mapDOM, 2, {opacity: 0.5, transform: "scale(" + scale_1x.scale + ")"});
-}
-
-$(window).on('resize', debounce(function(e) {
-  recalculateMapTransforms(COUNTRY_BOUNDS);
-
-  var scrollState = ScrollHandler.getCurrent();
-  updateMapTween(scrollState.current, scrollState.max, scrollState.win);
-}));
 
 //------------------------------------------------------------------------------
 // exports
