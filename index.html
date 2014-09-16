@@ -409,8 +409,13 @@ layout: default
 <!-- TWEET -->
 <script type="text/template" id="tweet-template">
     <div class="tweet tooltip <%= sizeClass %>">
-    <img class="" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %> - <%= tweet %> - <%= followers %>" data-content="<%= tweet %> - <%= followers %>" />
-      <p class="tweet-text"><%= tweet %></p>
+      <a href="<%= retweet_link %>" target="_blank">
+        <div class="tweet-overlay"></div>
+        <img class="" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %> - <%= tweet %> - <%= followers %>" data-content="<%= tweet %> - <%= followers %>" />
+        <p class="tweet-text"><%= tweet %></p>
+        <p class="tweet-name"><%= name %></p>
+        <p class="tweet-handle">@<%= handle %></p>
+      </a>
     </div>
 </script>
 
