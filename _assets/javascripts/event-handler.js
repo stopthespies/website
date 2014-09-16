@@ -43,7 +43,7 @@
   }
 
   if (STS.options.ENABLE_REALTIME) {
-  	io = io.connect(STS.options.API_BASE_URL);
+    io = io.connect(STS.options.API_BASE_URL);
   }
 
   io.on('connect', function() {
@@ -64,35 +64,35 @@
     STS.events.onStatsLoad(stats);
   });
 
-	io.on('l:views', function(reps) {
+  io.on('l:views', function(reps) {
     console.log('Legislators viewed', reps);
-		STS.events.onLegislatorStatsIncrement(reps, 'views');
+    STS.events.onLegislatorStatsIncrement(reps, 'views');
     notifyLegislatorMap(reps, 'views');
-	});
+  });
 
-	io.on('l:calls', function(reps) {
-		console.log('Legislators called', reps);
-		STS.events.onLegislatorStatsIncrement(reps, 'calls');
+  io.on('l:calls', function(reps) {
+    console.log('Legislators called', reps);
+    STS.events.onLegislatorStatsIncrement(reps, 'calls');
     notifyLegislatorMap(reps, 'calls');
-	});
+  });
 
-	io.on('l:emails', function(reps) {
+  io.on('l:emails', function(reps) {
     console.log('Legislators emailed', reps);
-		STS.events.onLegislatorStatsIncrement(reps, 'emails');
+    STS.events.onLegislatorStatsIncrement(reps, 'emails');
     notifyLegislatorMap(reps, 'emails');
-	});
+  });
 
-	io.on('l:tweets', function(reps) {
+  io.on('l:tweets', function(reps) {
     console.log('Legislators tweeted', reps);
-		STS.events.onLegislatorStatsIncrement(reps, 'tweets');
+    STS.events.onLegislatorStatsIncrement(reps, 'tweets');
     notifyLegislatorMap(reps, 'tweets');
-	});
+  });
 
-	io.on('l:facebooks', function(reps) {
+  io.on('l:facebooks', function(reps) {
     console.log('Legislators facebooked', reps);
-		STS.events.onLegislatorStatsIncrement(reps, 'facebooks');
+    STS.events.onLegislatorStatsIncrement(reps, 'facebooks');
     notifyLegislatorMap(reps, 'facebooks');
-	});
+  });
 
   //----------------------------------------------------------------------------
   // reusable event handlers
@@ -117,9 +117,9 @@
 window._testMapPing = notifyLegislatorMap;
 
   //----------------------------------------------------------------------------
-	// EXPORTS
+  // EXPORTS
 
-	STS.app = io;
+  STS.app = io;
 
   STS.app.api = function(ioEvent, ajaxUrl, data, onComplete, onError)
   {
