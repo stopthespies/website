@@ -37,6 +37,10 @@
 	cursor: pointer;
 	z-index: 10000;
 }
+
+.tweet:hover .tweet-overlay {
+	opacity:0.3;
+}
 /*
 @-webkit-keyframes testAnim {
 	0% {
