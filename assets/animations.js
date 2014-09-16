@@ -37,12 +37,76 @@
   }
 
   //----------------------------------------------------------------------------
+  // map
+
+  var runningMapTweens = [];
+
+  function pingElectorate(layer, color, intensity, completedCB)
+  {
+    intensity = Math.max(intensity, 10) / 10;  // clamp size of pulses
+
+    // bring to front
+    layer.bringToFront();
+
+    // grab SVG elements to animate
+    var i, g, $g = $(), layers;
+    if (layers = layer.getLayers()) {
+      g = layers[0]._container;
+      for (i = 0; i < layers.length; ++i) {
+        $g = $g.add(layers[i]._container);
+      }
+    } else {
+      g = layer._container;
+      $g = $(g);
+    }
+
+    var $paths = $('path', $g);
+    var currentAttrs;
+
+    // abort any running animations on this electorate and read stateless attributes to finish on
+    for (var i = 0, l = runningMapTweens.length, running; i < l && (running = runningMapTweens[i]); ++i) {
+      if (running[0] === g) {
+        running[1].kill();
+        currentAttrs = running[2];
+        runningMapTweens.splice(i, 1);
+        break;
+      }
+    }
+
+    // read current attributes if we're not doing anything yet
+    if (!currentAttrs) {
+      currentAttrs = [
+        'stroke-width', 'stroke', 'fill', 'fill-opacity',
+      ].reduce(function(attrs, at) {
+        attrs[at] = $paths.attr(at);
+        return attrs;
+      }, {});
+    }
+
+    var newTimeline = new TLM({ onComplete: completedCB || function() {} });
+
+    newTimeline.to($paths, 0.1, {
+      'stroke-width': '5px',
+      'stroke': color,
+      'fill': color,
+      'fill-opacity': 0.2 + (0.8 * intensity),
+      ease: Power1.easeOut
+    }).to($paths, 0.5, currentAttrs);
+
+    runningMapTweens.push([g, newTimeline, currentAttrs]);
+  }
+
+  //----------------------------------------------------------------------------
 
   // export our anims into app namespace
   STS.anim = {
     appearVSlide : appearVSlide,
     hideVSlide : hideVSlide,
-    scrollTo : scrollToEl
+    scrollTo : scrollToEl,
+
+    map : {
+      notifyElectorate: pingElectorate
+    }
   };
 
 })(TweenLite, TweenMax, TimelineMax, STS);
