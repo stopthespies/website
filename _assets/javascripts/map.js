@@ -353,6 +353,7 @@ STS.CampaignMap = {
   focusPoint : focusLatLng,
   focusArea : focusGeoJSON,
 
+  getWardForMember : findMembersElectorate,
   focusWard : focusByWardName,
   focusMembersWard : focusByMembers,
 
