@@ -31,6 +31,13 @@ var DEFAULT_ZOOM = 4;
 // used to force leaflet to make the whole map visible
 var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-43.660984, 157.060547), L.latLng(-10.469086, 110.302734));
 
+var mapEl;
+var map;
+var mapAreas;
+
+var winW = $(window).width();
+var winH = $(window).height();
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 // init
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -42,25 +49,15 @@ $(function() {
 
 // watch resize for map positioning
 $(window).on('resize', debounce(function(e) {
-  recalculateMapTransforms(COUNTRY_BOUNDS);
+  winW = $(window).width();
+  winH = $(window).height();
 
-  var scrollState = ScrollHandler.getCurrent();
-  updateMapTween(scrollState.current, scrollState.max, scrollState.win);
+  recalculateMapTransforms(COUNTRY_BOUNDS);
 }));
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 // setup
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-STS.MAP_ELEMENT = MAP_ELEMENT;  // for use in map-movement.js
-
-var mapEl;
-var map;
-var mapAreas;
-var featureSelect;
-
-var winW = $(window).width();
-var winH = $(window).height();
 
 var mapScrollTween;  // TimelineMax instance linked to scoll pos
 var mapEnterTween;
@@ -200,15 +197,6 @@ function regenerateMapTweens()
   var scale_halfx = getMapScalingCoords(0.5);
   var scale_1halfx = getMapScalingCoords(1.5);
 
-  // ENTRY ANIMATION
-  if (!mapEnterTween) {
-    mapEnterTween = new TimelineMax({pause: true})
-      .to(mapDOM, 0, {opacity: 0, transform: "rotateY(-90deg)"})
-      .to(mapDOM, 1.25, {opacity: 1, transform: "rotateY(0) scale(" + scale_halfx.scale + ")", right: scale_halfx.right, onComplete : function() {
-        ScrollHandler.bindHandler(updateMapTween);
-      }});
-  }
-
   // SCROLLING FOLLOWER
   mapScrollTween = new TimelineMax({paused: true/*, smoothChildTiming: false*/})
     .to(mapDOM, 0, {opacity: 1, transform:"scale(" + scale_halfx.scale + ")", right: scale_halfx.right})
@@ -216,6 +204,18 @@ function regenerateMapTweens()
     .to(mapDOM, 4, {opacity: 0.1})
     .to(mapDOM, 2, {transform:"scale(" + scale_1halfx.scale + ")", right: scale_1halfx.right})
     .to(mapDOM, 2, {opacity: 0.5, transform: "scale(" + scale_1x.scale + ")"});
+
+  // ENTRY ANIMATION
+  if (!mapEnterTween) {
+    mapEnterTween = new TimelineMax({pause: true})
+      .to(mapDOM, 0, {opacity: 0, transform: "rotateY(-90deg)"})
+      .to(mapDOM, 1.25, {opacity: 1, transform: "rotateY(0) scale(" + scale_halfx.scale + ")", right: scale_halfx.right, onComplete : function() {
+        ScrollHandler.bindHandler(updateMapTween);
+      }});
+  } else {
+    var scrollState = ScrollHandler.getCurrent();
+    updateMapTween(scrollState.current, scrollState.max, scrollState.wSize);
+  }
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -235,10 +235,8 @@ function regenerateMapTweens()
 // }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
-// state modifiers
+// UI state
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// interaction toggling
 
 function activateUI()
 {
@@ -266,7 +264,9 @@ function deactivateUI()
   map.dragging.disable();
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 // map focusing
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function focusByWardName(electorate)
 {
@@ -365,8 +365,9 @@ function findMembersElectorate(memberIds)
   return matched;
 }
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 // exports
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 STS.CampaignMap = {
   get : function() { return map; },
@@ -382,5 +383,7 @@ STS.CampaignMap = {
   activateUI : activateUI,
   deactivateUI : deactivateUI
 };
+
+STS.MAP_ELEMENT = MAP_ELEMENT;  // for use in map-movement.js
 
 })(jQuery, STS);
