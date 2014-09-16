@@ -19,15 +19,17 @@
     console.log('tweets:', tweetdata);
     _.each(tweetdata.latest, function(tweets, type) {
       if(type === 'celebrities') {
-        tweets = tweets.slice(0,30);
+        tweets = tweets.slice(0,40);
         tweets = _.uniq(tweets, 'handle');
         var i = 0;
         _.each(tweets, function(tweet) {
           tweet.avatar = tweet.avatar.replace('_normal', '');
           if(i % 7 == 0) {
-            tweet.sizeClass = 'bigger';
+            tweet.sizeClass = '';
+            //tweet.sizeClass = 'bigger';
           } else if(i % 12 === 0) {
-            tweet.sizeClass = 'biggest';
+            tweet.sizeClass = '';
+            //tweet.sizeClass = 'biggest';
           } else {
             tweet.sizeClass = '';
 

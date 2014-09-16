@@ -61,7 +61,7 @@
 }*/
 .tweet.bigger .tweet-text,
 .tweet.biggest .tweet-text {
-	font-size: 14px;
+	font-size: 16px;
 }
 .tweet-text {
 	font-size: 11px;
@@ -73,10 +73,32 @@
 	color: #fff;
 	z-index: 20000;
 }
+.tweet-handle {
+	font-size: 12px;
+
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	right: 30px;
+	color: #45caa0;
+	z-index: 20000;
+	font-weight: bold;
+}
+.tweet-name {
+	font-size: 12px;
+
+	position: absolute;
+	bottom: 25px;
+	left: 20px;
+	right: 30px;
+	color: #fff;
+	z-index: 20000;
+	font-weight: bold;
+}
 #tweet-board {
   position: relative;
-  margin: 0;
   width: 110%;
+  margin: 0;
   padding: 0;
   @include clearfix();
 }
