@@ -3671,28 +3671,44 @@ section.how.results {
   position: absolute;
   top: 0;
   left: 0;
+  cursor: pointer; }
+
+.tweet-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #302344;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
   cursor: pointer;
-  -webkit-filter: blur(3px) grayscale(0.8) opacity(0.8); }
+  z-index: 10000; }
 
+/*
 @-webkit-keyframes testAnim {
-  0% {
-    -webkit-filter: blur(3px) grayscale(0.8) opacity(0.8); }
+	0% {
+		-webkit-filter: blur(3px) grayscale(.8) opacity(0.8);
 
-  100% {
-    -webkit-filter: blur(0px) grayscale(0) opacity(1); } }
-/* the photo to be animated via filters */
+	}
+	100% {
+		-webkit-filter: blur(0px) grayscale(0) opacity(1);
+
+	}
+}
+
+ the photo to be animated via filters 
 .tweet img:hover {
-  -webkit-animation-name: testAnim;
-  -webkit-animation-duration: 0.5s;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-direction: alternate;
-  -webkit-animation-timing-function: ease-out;
-  -webkit-animation-fill-mode: forwards;
-  -webkit-animation-delay: 0s; }
-
+	-webkit-animation-name: testAnim;
+	 -webkit-animation-duration: 0.5s;
+	 -webkit-animation-iteration-count: 1;
+	 -webkit-animation-direction: alternate;
+	 -webkit-animation-timing-function: ease-out;
+	 -webkit-animation-fill-mode: forwards;
+	 -webkit-animation-delay: 0s;
+}*/
 .tweet.bigger .tweet-text,
 .tweet.biggest .tweet-text {
-  font-size: 14px; }
+  font-size: 16px; }
 
 .tweet-text {
   font-size: 11px;
@@ -3700,12 +3716,33 @@ section.how.results {
   top: 20px;
   left: 20px;
   right: 30px;
-  color: #fff; }
+  color: #fff;
+  z-index: 20000; }
+
+.tweet-handle {
+  font-size: 12px;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  right: 30px;
+  color: #45caa0;
+  z-index: 20000;
+  font-weight: bold; }
+
+.tweet-name {
+  font-size: 12px;
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+  right: 30px;
+  color: #fff;
+  z-index: 20000;
+  font-weight: bold; }
 
 #tweet-board {
   position: relative;
-  margin: 0;
   width: 110%;
+  margin: 0;
   padding: 0;
   *zoom: 1; }
   #tweet-board:before, #tweet-board:after {
