@@ -50,7 +50,7 @@
 
     // grab SVG elements to animate
     var i, g, $g = $(), layers;
-    if (layers = layer.getLayers()) {
+    if (layer.getLayers && (layers = layer.getLayers())) {
       g = layers[0]._container;
       for (i = 0; i < layers.length; ++i) {
         $g = $g.add(layers[i]._container);
