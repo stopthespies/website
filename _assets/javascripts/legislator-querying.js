@@ -86,12 +86,13 @@ var retryTemplate = $('#legislator-retry-template').html();
 
 function renderLegislators(reps) {
   var container = $('.legislators').empty();
+  console.log('reps', reps);
 
   legislators = reps;
 
   // build DOM
   _.each(legislators, function (legislator) {
-  	legislator.image || (legislator.image = '');	// avoid template errors with missing data :TODO: fallback image
+  	legislator.image || (legislator.image = '/images/mpsL/' + legislator.member_id + '.jpg');	// avoid template errors with missing data :TODO: fallback image
     container.append(_.template(legislatorTemplate, legislator));
   });
 

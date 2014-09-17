@@ -336,21 +336,28 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
 <div id="call-modal-container"></div>
 <script type="text/template" id="call-modal-template">
 
-            <aside>
-                <ol>
-                    <h3>What to say</h3>
-                    <li>
-                        <p>I am one of your constituents, and I’m calling to ask you to take action against mass surveillance by the NSA.</p>
-                        <p>I’d like Senator/Representative ____ to support and co-sponsor the <strong>USA Freedom Act</strong>. I would also like you to oppose S. 1631, the so-called <strong>FISA Improvements Act</strong>. Moreover, I’d like you to work to prevent the NSA from <strong>undermining encryption standards</strong> and to <strong>protect the privacy rights of non-Americans</strong>.</p>
-                    </li>
-                </ol>
+  <div class="takeover-header">
+        <div class="takeover-col">
+          <span class="takeover-header-title"><i class="fa fa-phone"></i>CALL YOUR LEGISLATOR</span>
+        </div>
+      </div>
+      <div class="takeover-col">
 
-            </aside>
+      <div class="takeover-inputs">
+     
+        <div class="form-group">
+          <label for="exampleInputPassword1">Message</label>
+          <p>
+I am writing to you as your constituent. In the aftermath of the Snowden revelations, I’ve become increasingly concerned about overreach by the National Security Agency and the secrecy that prevents us from getting honest answers about what our intelligence agencies are doing.  And I’m not alone:  a recent Defense Appropriation amendment that passed the House showed that there is broad, bipartisan support for NSA reform. 
+
+I urge you to take immediate action to rein in the NSA by supporting S. 2685, the new Senate version of the USA FREEDOM Act, and amendments that will strengthen the bill.  While this bill is not a comprehensive solution, it is a concrete first step towards NSA reform. 
 
 
-            <a class="cta-button" href="thank-you.html?called=true">Click here once you&apos;re done  &rarr;</a>
-
-
+          </p>
+        </div>
+      </div>
+              <button type="button" class="btn takeover-submit">I have made the call!</button>
+      </div>
 
 
 </script>
@@ -378,24 +385,32 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
     		            <div class="number-spinner legislator-views">0</div>
                   </div>
               	</li>-->
+                <% if(contact_details && contact_details.twitter !== 'null') { %>
                 <li class="tweets-action" data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
                   <div class="wrap">
                   	<i class="fa fa-abpt"></i>
                   	<div class="number-spinner legislator-tweets">0</div>
                   </div>
                 </li>
+                <% }; %>
+                <% if(contact_details && contact_details.facebook !== 'null') { %>
                 <li class="facebooks-action" data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">
                   <div class="wrap">
-                  	<i class="fa fa-abpf"></i>
-                  	<div class="number-spinner legislator-facebooks">0</div>
+                    <a href="<%= contact_details.facebook %>" target="_blank">
+                    	<i class="fa fa-abpf"></i>
+                    	<div class="number-spinner legislator-facebooks">0</div>
+                    </a>
                   </div>
                 </li>
+                <% }; %>
+                <% if(contact_details && contact_details.email !== 'null') { %>
                 <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
                   <div class="wrap">
                     <i class="fa fa-envelope-o"></i>
                     <div class="number-spinner legislator-emails">0</div>
                   </div>
                 </li>
+                <% }; %>
                 <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
                   <div class="wrap">
                     <i class="fa fa-phone"></i>
