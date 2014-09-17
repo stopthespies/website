@@ -203,7 +203,9 @@ $(function() {
   // init live counter widgets
 
   $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total, \
-    .tweets-support-total').addClass('number-spinner').numberSpinner();
+    .tweets-support-total').addClass('number-spinner').numberSpinner({
+      min_digits: 6
+    });
 
   // LOG INITIAL VIEW
 
