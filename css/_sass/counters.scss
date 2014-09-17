@@ -16,12 +16,10 @@
 }
 
 .number-spinner .tiles {
-	padding: 0.1em;
 	white-space: nowrap;
 }
 
 .number-spinner .tile {
-	margin-right: 0.1em;
 	overflow: hidden;
 }
 .number-spinner .tile:last-child {
@@ -35,7 +33,6 @@
 
 .number-spinner .digit {
 	display: block;
-	padding: 0 0.1em;
 }
 
 /**
@@ -43,6 +40,7 @@
  */
 
 .number-spinner {
+  letter-spacing: 0.1em;
   height: 1.2em;
   padding: 0.1em;
   // border-radius: 0.15em;
