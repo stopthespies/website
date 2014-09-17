@@ -39,6 +39,18 @@
   //----------------------------------------------------------------------------
   // map
 
+  function mapEnter(mapDOM)
+  {
+    mapEnterTween = new TimelineMax({pause: true})
+      .to(mapDOM, 0, {opacity: 0, transform: "rotateY(-90deg)"})
+      .to(mapDOM, 1.25, {opacity: 1, transform: "rotateY(0) scale(" + STS.CampaignMap.getContainerScale(mapDOM) + ")"});
+
+    return mapEnterTween;
+  }
+
+  //----------------------------------------------------------------------------
+  // map electorates
+
   var runningMapTweens = [];
 
   function pingElectorate(layer, color, intensity, completedCB)
@@ -105,6 +117,7 @@
     scrollTo : scrollToEl,
 
     map : {
+      enter : mapEnter,
       notifyElectorate: pingElectorate
     }
   };

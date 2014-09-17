@@ -33,6 +33,10 @@
 				};
 				$this.data(plugin.namespace, data);
 
+				// Get properties
+				var min_digits = $this.data('min-digits');
+				if (min_digits !== undefined) data.options.min_digits = min_digits;
+
 				// Initialise elements
 				_private.initialiseElements.call($this);
 
@@ -132,7 +136,7 @@
 				data = $this.data(plugin.namespace);
 
 				// Get spinner length and current width
-				var length = number.toString().length,
+				var length = Math.max(data.options.min_digits, number.toString().length),
 				from_width = $this.width();
 
 				// Prepend tiles to fill spinner
@@ -236,7 +240,10 @@
 		// Animation settings
 		spin_duration: 1.5,
 		spin_ease: 'Quad.easeInOut',
-		resize_duration: 300
+		resize_duration: 300,
+
+		// Display settings
+		min_digits: 0
 
 	};
 
