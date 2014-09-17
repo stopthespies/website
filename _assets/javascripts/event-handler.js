@@ -105,12 +105,15 @@
 
     for (rep in reps) {
       if (!reps.hasOwnProperty(rep)) continue;
-      ward = STS.CampaignMap.getWardForMember(rep);
-      if (!ward) {
-        continue;  // senators :TODO: show some other way
+
+      for (var i = 0, l = STS.TOTAL_MAPS_COUNT; i < l; ++i) {
+        ward = STS.CampaignMap.getWardForMember(i, rep);
+        if (!ward) {
+          continue;  // senators :TODO: show some other way
+        }
+        count = reps[rep];
+        STS.anim.map.notifyElectorate(ward, color, count);
       }
-      count = reps[rep];
-      STS.anim.map.notifyElectorate(ward, color, count);
     }
   }
 
