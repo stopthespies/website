@@ -193,3 +193,8 @@ section.map {
 		@include column($one);
 	}
 }
+
+.takeover-col {
+  @include column($one-third);
+  @include push($one-third);
+}
