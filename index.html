@@ -292,27 +292,41 @@ layout: default
 <div id="email-modal-container"></div>
 <script type="text/template" id="email-modal-template">
 
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal <%= full_name %></h4>
-          </div>
-          <div class="modal-body">
-           <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      <div class="takeover-header">
+        <div class="takeover-col">
+          <span class="takeover-header-title"><i class="fa fa-phone"></i>EMAIL YOUR LEGISLATOR</span>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Subject</label>
-        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Subject"></textarea>
+      <div class="takeover-col">
+
+      <div class="takeover-inputs">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="input-block-level form-control" id="exampleInputEmail1" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Subject</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Don't implement the mass surveillance">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Message</label>
+          <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Message goes here">
+I am writing to you as your constituent. In the aftermath of the Snowden revelations, I’ve become increasingly concerned about overreach by the National Security Agency and the secrecy that prevents us from getting honest answers about what our intelligence agencies are doing.  And I’m not alone:  a recent Defense Appropriation amendment that passed the House showed that there is broad, bipartisan support for NSA reform. 
+
+I urge you to take immediate action to rein in the NSA by supporting S. 2685, the new Senate version of the USA FREEDOM Act, and amendments that will strengthen the bill.  While this bill is not a comprehensive solution, it is a concrete first step towards NSA reform. 
+
+The House's version of the USA FREEDOM Act, H.R. 3361, has been gutted. The Senate version is the best way to take action right now. That’s why I’m urging you to support S. 2685, the USA FREEDOM Act of 2014.  
+
+Additionally, I urge you to support any amendments to the USA FREEDOM Act that would further strengthen the bill. The time is ripe to shut the backdoors to Americans’ private information, ensure privacy protections for innocent people inside and outside of the United States and stop the NSA’s efforts to undermine encryption standards.
+
+Thank you for opposing unconstitutional surveillance and for supporting a free Internet.
+
+
+          </textarea>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Message</label>
-        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Message goes here"></textarea>
+              <button type="button" class="btn takeover-submit">Send Email</button>
       </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Send Email</button>
-          </div>
 
 </script>
 <!-- END EMAIL MODAL -->
@@ -421,5 +435,5 @@ layout: default
 
 <div class="takeover overlay overlay-scale">
   <button type="button" class="overlay-close">Close</button>
-  <div class="takeover-container container"></div>
+  <div class="takeover-container"></div>
 </div>

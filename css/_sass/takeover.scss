@@ -1,3 +1,65 @@
+.takeover-header {
+  background: #3e404a;
+  height: 120px;
+}
+
+.takeover-header-title {
+  font-size: 34px;
+  line-height: 120px;
+  font-family: 'Roboto', sans-serif;
+
+  i {
+    margin-right: 20px;
+  }
+}
+
+.takeover textarea,
+.takeover input {
+  background: #3e404a;
+  border: 0;
+  color: #e7e7e7;
+  width: 100%; 
+  box-sizing: border-box; 
+  padding: 25px 20px;
+}
+
+::-webkit-input-placeholder {
+   color: #e7e7e7;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #e7e7e7;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #e7e7e7;  
+}
+
+:-ms-input-placeholder {  
+   color: #e7e7e7;  
+}
+
+.takeover-inputs {
+  margin-top: 20px;
+}
+.takeover label {
+  color: #45cba1;
+  font-weight:normal;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+.takeover textarea {
+  height: 300px;
+  border: 1px solid #45cba1;
+}
+.takeover-submit {
+  background: #45cba1;
+  color: #e7e7e7;
+  font-weight: bold;
+  width: 100%;
+  height: 75px;
+  margin-top: 15px;
+}
 /* Overlay style */
 .overlay {
   position: fixed;
@@ -5,10 +67,11 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: #141828;
+  background: #373943;
   opacity: 0.8;
   z-index: 10000;
 }
+
 
 /* Overlay closing cross */
 .overlay .overlay-close {
