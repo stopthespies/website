@@ -350,7 +350,7 @@ STS.CampaignMap = {
   focusArea : focusGeoJSON,
 
   getWardForMember : function(mapId, rep) {
-    findMembersElectorate(maps[mapId], rep);
+    return findMembersElectorate(maps[mapId], rep);
   },
   focusWard : focusByWardName,
   focusMembersWard : focusByMembers,

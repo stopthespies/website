@@ -101,7 +101,7 @@
   {
     // :TODO: colourize per event type?
     var color = '#f1592a',
-        count;
+        count, ward, rep;
 
     for (rep in reps) {
       if (!reps.hasOwnProperty(rep)) continue;
