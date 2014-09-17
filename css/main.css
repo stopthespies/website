@@ -3360,7 +3360,7 @@ html {
 body {
   font-size: 100%;
   font-family: 'Roboto', sans-serif;
-  background: #373943;
+  background: #322546;
   color: #c7c7c7;
   line-height: 1.36; }
 
@@ -3444,8 +3444,8 @@ a {
   overflow: hidden; }
 
 .who {
-  background: #141828;
-  background-image: radial-gradient(ellipse farthest-corner at 100% 100%, #231c2e 0%, #141828 95%); }
+  background: #231735;
+  background-image: radial-gradient(ellipse farthest-corner at 100% 100%, #251938 0%, #322446 95%); }
   .who h1, .who h2 {
     margin: 0;
     padding: 0;
@@ -3684,6 +3684,9 @@ section.how.results {
   cursor: pointer;
   z-index: 10000; }
 
+.tweet:hover .tweet-overlay {
+  opacity: 0.85; }
+
 /*
 @-webkit-keyframes testAnim {
 	0% {
@@ -3819,6 +3822,61 @@ section.how.results {
   .footer, .footer a {
     color: #f1592a; }
 
+.takeover-header {
+  background: #3e404a;
+  height: 120px; }
+
+.takeover-header-title {
+  font-size: 34px;
+  line-height: 120px;
+  font-family: 'Roboto', sans-serif; }
+  .takeover-header-title i {
+    margin-right: 20px; }
+
+.takeover textarea,
+.takeover input {
+  background: #3e404a;
+  border: 0;
+  color: #e7e7e7;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 25px 20px; }
+
+::-webkit-input-placeholder {
+  color: #e7e7e7; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #e7e7e7; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #e7e7e7; }
+
+:-ms-input-placeholder {
+  color: #e7e7e7; }
+
+.takeover-inputs {
+  margin-top: 20px; }
+
+.takeover label {
+  color: #45cba1;
+  font-weight: normal;
+  margin-left: 20px;
+  margin-bottom: 15px; }
+
+.takeover textarea {
+  height: 300px;
+  border: 1px solid #45cba1; }
+
+.takeover-submit {
+  background: #45cba1;
+  color: #e7e7e7;
+  font-weight: bold;
+  width: 100%;
+  height: 75px;
+  margin-top: 15px; }
+
 /* Overlay style */
 .overlay {
   position: fixed;
@@ -3826,7 +3884,7 @@ section.how.results {
   height: 100%;
   top: 0;
   left: 0;
-  background: #141828;
+  background: #373943;
   opacity: 0.8;
   z-index: 10000; }
 
@@ -4205,3 +4263,11 @@ section.map {
     width: 97.91667%;
     margin-left: 1.04167%;
     margin-right: 1.04167%; }
+
+.takeover-col {
+  display: inline;
+  float: left;
+  width: 31.25%;
+  margin-left: 1.04167%;
+  margin-right: 1.04167%;
+  margin-left: 34.375%; }
