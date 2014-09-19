@@ -3396,6 +3396,10 @@ h3 {
 h4 {
   font-size: 1.125em; }
 
+.bg-wrap {
+  background: #322446;
+  background-image: linear-gradient(-127deg, #322446 3%, #231735 88%); }
+
 section {
   padding: 5em 0; }
 
@@ -3443,22 +3447,19 @@ a {
   border-radius: 8px;
   overflow: hidden; }
 
-.who {
-  background: #231735;
-  background-image: radial-gradient(ellipse farthest-corner at 100% 100%, #251938 0%, #322446 95%); }
-  .who h1, .who h2 {
-    margin: 0;
-    padding: 0;
-    text-align: left; }
-  .who h1 {
-    color: #f1592a;
-    font-size: 6.25em;
-    line-height: 1;
-    margin: 0.2em 0; }
-  .who h2 {
-    font-weight: bold;
-    margin-bottom: 0.83333em;
-    letter-spacing: -0.04167em; }
+.who h1, .who h2 {
+  margin: 0;
+  padding: 0;
+  text-align: left; }
+.who h1 {
+  color: #f1592a;
+  font-size: 6.25em;
+  line-height: 1;
+  margin: 0.2em 0; }
+.who h2 {
+  font-weight: bold;
+  margin-bottom: 0.83333em;
+  letter-spacing: -0.04167em; }
 
 .introduction h2 {
   margin-bottom: 0; }
@@ -3526,25 +3527,48 @@ section.video {
   background: #292929;
   cursor: pointer; }
 
-.stats h2 {
-  text-align: center; }
-.stats .campaign-map {
-  opacity: 0.2; }
+.stats {
+  text-align: left; }
+  .stats .campaign-map {
+    opacity: 0.2; }
+
+.metrics {
+  margin-top: 2em;
+  text-align: left; }
 
 .metric {
-  text-align: center;
-  margin-bottom: 20px;
-  border-radius: 8px; }
-
-.metric:hover {
-  background: #faf6e0;
-  cursor: pointer; }
+  *zoom: 1;
+  height: 3.6em;
+  float: left;
+  clear: left;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 0; }
+  .metric:before, .metric:after {
+    content: "";
+    display: table; }
+  .metric:after {
+    clear: both; }
+  .metric:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.4); }
+  .metric .number-spinner {
+    font-size: 2em;
+    font-family: 'League Gothic', sans-serif; }
+    .metric .number-spinner, .metric .number-spinner .tiles, .metric .number-spinner .tile, .metric .number-spinner .digit {
+      height: 1.7em; }
+    .metric .number-spinner .digit {
+      line-height: 1.7; }
+  .metric .tile {
+    padding: 0 0.2em;
+    border-left: 1px solid rgba(255, 255, 255, 0.2); }
+  .metric .title, .metric .total {
+    float: left; }
 
 .metric .title {
-  font-weight: bold; }
-
-.metric .icon {
-  font-size: 40px; }
+  width: 5.3125em;
+  padding-left: 0.8em;
+  font-weight: normal;
+  line-height: 3.8;
+  font-size: 0.875em; }
 
 section.how.search {
   padding-bottom: 0; }
@@ -3648,6 +3672,18 @@ section.how.results {
 .retry-legislators {
   clear: left; }
 
+.support h2 {
+  text-transform: none;
+  font-family: 'League Gothic', sans-serif;
+  font-size: 4.5em;
+  color: #c7c7c7; }
+  .support h2, .support h2 strong {
+    font-weight: normal; }
+  .support h2 strong {
+    color: white; }
+.support .intro {
+  text-align: center; }
+
 .tweet {
   width: 200px;
   height: 200px;
@@ -3658,6 +3694,9 @@ section.how.results {
 .twitter-support {
   font-size: 52px;
   text-align: center; }
+  .twitter-support .number-spinner {
+    position: relative;
+    top: 0.14em; }
 
 .tweet.bigger {
   width: 400px;
@@ -3701,7 +3740,7 @@ section.how.results {
 	}
 }
 
- the photo to be animated via filters 
+ the photo to be animated via filters
 .tweet img:hover {
 	-webkit-animation-name: testAnim;
 	 -webkit-animation-duration: 0.5s;
@@ -4023,7 +4062,6 @@ section.how.results {
 .number-spinner {
   letter-spacing: 0.1em;
   height: 1.2em;
-  padding: 0.1em;
   line-height: 1;
   text-align: center; }
   .number-spinner .tiles {
@@ -4042,63 +4080,87 @@ section.how.results {
 .who .col, .introduction .col, .stats .col, .how .col, .support .col, .extra .col, .reading .col {
   display: inline;
   float: left;
-  width: 97.91667%;
-  margin-left: 1.04167%;
-  margin-right: 1.04167%; }
+  width: 97.22222%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%; }
 
-@media (min-width: 550px) {
+.who {
+  position: relative; }
+  .who .campaign-map {
+    position: absolute;
+    width: 100%%;
+    height: 100%;
+    left: 0;
+    top: 0; }
+  .who .leaflet-map-pane {
+    opacity: 0.1; }
+
+@media (min-width: 769px) {
   .who .col {
     display: inline;
     float: left;
-    width: 47.91667%;
-    margin-left: 1.04167%;
-    margin-right: 1.04167%; }
+    width: 47.22222%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%; }
   .who .campaign-map {
-    display: inline;
-    float: left;
-    width: 47.91667%;
-    margin-left: 1.04167%;
-    margin-right: 1.04167%;
-    height: 37.5em; } }
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    left: 40%;
+    top: 0; }
+  .who .leaflet-map-pane {
+    opacity: 0.7; } }
 @media (min-width: 550px) {
   .introduction .col {
     display: inline;
     float: left;
-    width: 47.91667%;
-    margin-left: 1.04167%;
-    margin-right: 1.04167%; } }
-
-@media (min-width: 760px) {
-  .stats .col, .how .col, .support .col, .extra .col, .reading .col {
+    width: 80.55556%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%;
+    margin-left: 9.72222%; } }
+@media (min-width: 769px) {
+  .introduction .col {
     display: inline;
     float: left;
-    width: 64.58333%;
-    margin-left: 1.04167%;
-    margin-right: 1.04167%;
-    margin-left: 17.70833%; }
+    width: 47.22222%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%; } }
+
+@media (min-width: 760px) {
+  .extra .col, .reading .col {
+    display: inline;
+    float: left;
+    width: 63.88889%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%;
+    margin-left: 18.05556%; }
 
   .how.results .col {
     display: inline;
     float: left;
-    width: 97.91667%;
-    margin-left: 1.04167%;
-    margin-right: 1.04167%; } }
+    width: 97.22222%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%; } }
 .step {
   display: inline;
   float: left;
-  width: 97.91667%;
-  margin-left: 1.04167%;
-  margin-right: 1.04167%;
+  width: 97.22222%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%;
   margin-bottom: 1em;
   padding-bottom: 1em; }
   @media (min-width: 530px) {
     .step {
       display: inline;
       float: left;
-      width: 47.91667%;
-      margin-left: 1.04167%;
-      margin-right: 1.04167%;
+      width: 47.22222%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%;
       margin-bottom: 1em; } }
+
+.stats .col, .support .col, .how .col {
+  z-index: 1;
+  position: relative; }
 
 .stats {
   padding-bottom: 0;
@@ -4106,49 +4168,33 @@ section.how.results {
   .stats .campaign-map {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
-    height: 200%; }
+    height: 150%;
+    z-index: 0; }
   .stats .metrics {
-    display: block;
-    width: 102.08333%;
-    margin-left: -1.04167%;
-    margin-right: -1.04167%;
-    *zoom: 1; }
-    .stats .metrics:before, .stats .metrics:after {
-      content: "";
-      display: table; }
-    .stats .metrics:after {
-      clear: both; }
-  .stats .metric {
     display: inline;
     float: left;
-    width: 47.91667%;
-    margin-left: 1.04167%;
-    margin-right: 1.04167%;
-    padding-bottom: 40px; }
-  @media (min-width: 370px) {
-    .stats .metric {
+    width: 97.22222%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%; }
+  @media (min-width: 801px) {
+    .stats .col {
       display: inline;
       float: left;
-      width: 31.25%;
-      margin-left: 1.04167%;
-      margin-right: 1.04167%; } }
-  @media (min-width: 600px) {
-    .stats .metric {
-      display: inline;
-      float: left;
-      width: 14.58333%;
-      margin-left: 1.04167%;
-      margin-right: 1.04167%; } }
+      width: 47.22222%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%; }
+    .stats .campaign-map {
+      width: 80%; } }
 
 .how .step h4 {
   padding: 0.5em 1em; }
 .how .postcode-steps, .how .location-privacy, .how .postcode-lookup {
   display: block;
-  width: 102.08333%;
-  margin-left: -1.04167%;
-  margin-right: -1.04167%;
+  width: 102.77778%;
+  margin-left: -1.38889%;
+  margin-right: -1.38889%;
   *zoom: 1; }
   .how .postcode-steps:before, .how .postcode-steps:after, .how .location-privacy:before, .how .location-privacy:after, .how .postcode-lookup:before, .how .postcode-lookup:after {
     content: "";
@@ -4158,16 +4204,16 @@ section.how.results {
 .how .location-privacy p {
   display: inline;
   float: left;
-  width: 97.91667%;
-  margin-left: 1.04167%;
-  margin-right: 1.04167%; }
+  width: 97.22222%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%; }
 .how .input-group {
   display: inline;
   float: left;
-  width: 64.58333%;
-  margin-left: 1.04167%;
-  margin-right: 1.04167%;
-  margin-left: 17.70833%; }
+  width: 80.55556%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%;
+  margin-left: 9.72222%; }
   .how .input-group .form-control {
     display: block;
     float: left;
@@ -4176,14 +4222,22 @@ section.how.results {
   .how .input-group .input-group-btn {
     display: block;
     width: 40%; }
+  @media (min-width: 780px) {
+    .how .input-group {
+      display: inline;
+      float: left;
+      width: 63.88889%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%;
+      margin-left: 18.05556%; } }
 @media (min-width: 760px) {
-  .how .intro {
+  .how .col {
     display: inline;
     float: left;
-    width: 81.25%;
-    margin-left: 1.04167%;
-    margin-right: 1.04167%;
-    margin-left: 9.375%;
+    width: 80.55556%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%;
+    margin-left: 9.72222%;
     margin-bottom: 1.875em; } }
 @media (min-width: 530px) {
   .how .step-2 {
@@ -4200,9 +4254,9 @@ section.how.results {
 
 .legislators {
   display: block;
-  width: 102.08333%;
-  margin-left: -1.04167%;
-  margin-right: -1.04167%;
+  width: 102.77778%;
+  margin-left: -1.38889%;
+  margin-right: -1.38889%;
   *zoom: 1; }
   .legislators:before, .legislators:after {
     content: "";
@@ -4211,11 +4265,25 @@ section.how.results {
     clear: both; }
 
 .legislator {
-  display: inline;
-  float: left;
-  width: 31.25%;
-  margin-left: 1.04167%;
-  margin-right: 1.04167%; }
+  max-width: 350px;
+  margin: 0 auto 1em auto; }
+  @media (min-width: 600px) {
+    .legislator {
+      max-width: none;
+      display: inline;
+      float: left;
+      width: 47.22222%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%; }
+      .legislator.l3 {
+        margin-left: 26.38889%; } }
+  @media (min-width: 1000px) {
+    .legislator, .legislator.l3 {
+      display: inline;
+      float: left;
+      width: 30.55556%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%; } }
   .legislator .contact {
     *zoom: 1; }
     .legislator .contact:before, .legislator .contact:after {
@@ -4229,9 +4297,9 @@ section.how.results {
 
 .extra .sharing-buttons {
   display: block;
-  width: 102.08333%;
-  margin-left: -1.04167%;
-  margin-right: -1.04167%;
+  width: 102.77778%;
+  margin-left: -1.38889%;
+  margin-right: -1.38889%;
   *zoom: 1;
   padding: 20px 20px 0 20px; }
   .extra .sharing-buttons:before, .extra .sharing-buttons:after {
@@ -4242,9 +4310,9 @@ section.how.results {
 .extra .share {
   display: inline;
   float: left;
-  width: 47.91667%;
-  margin-left: 1.04167%;
-  margin-right: 1.04167%; }
+  width: 47.22222%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%; }
 
 section.map {
   padding: 0; }
@@ -4254,14 +4322,14 @@ section.map {
   .footer .col {
     display: inline;
     float: left;
-    width: 97.91667%;
-    margin-left: 1.04167%;
-    margin-right: 1.04167%; }
+    width: 97.22222%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%; }
 
 .takeover-col {
   display: inline;
   float: left;
-  width: 31.25%;
-  margin-left: 1.04167%;
-  margin-right: 1.04167%;
-  margin-left: 34.375%; }
+  width: 30.55556%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%;
+  margin-left: 34.72222%; }

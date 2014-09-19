@@ -68,7 +68,7 @@
 -->
 
 
-      <section class="who">
+      <section class="who bg-wrap">
     <div class="container">
         <div class="col">
           <img src="/img/stslogo.svg" />
@@ -97,6 +97,9 @@
         <div class="video-container">Video<br />Placeholder<br /><i class="fa fa-play-circle-o"></i></div>
     </div>
 </section>
+
+<!-- START INTRO BACKGROUND BLOCK -->
+<div class="bg-wrap">
 
 <section class="introduction people">
   <div class="container">
@@ -146,7 +149,10 @@
   </div>
 </section>
 
-<section class="cta">
+</div>
+<!-- END INTRO BACKGROUND BLOCK -->
+
+<section class="cta bg-wrap">
   <div class="container">
     <div class="col">
       <h2>You can stop the spies</h2>
@@ -214,61 +220,41 @@
     </div>
 </section>
 
+<!-- START STATS BG WRAPPER -->
+<div class="bg-wrap">
+
 <section class="stats">
     <div class="container">
         <div class="col">
       			<!-- TRIGGER --><a id="load-stats"></a><!-- /TRIGGER -->
-            <h2>
-              How are we doing?
-            </h2>
+
+            <h2>Campaign Progress</h2>
+            <p>Irure integer egestas blandit. Facilisis ullamco cursus quam. Fringilla occaecat sed eleifend.</p>
+
             <div class="metrics">
-                <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-                    <div class="title">Calls</div>
-                    <div class="icon">
-                        <i class="fa fa-phone"></i>
-
-                    </div>
-                    <div class="total call-total number-spinner">0</div>
+                <div class="metric">
+                    <div class="title views">Views</div>
+                    <div class="total"><div class="view-total number-spinner">0</div></div>
                 </div>
-                <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-                    <div class="title">Emails</div>
-                    <div class="icon">
-                        <i class="fa fa-envelope-o"></i>
-
-                    </div>
-                    <div class="total email-total number-spinner">0</div>
+                <div class="metric">
+                    <div class="title emails">Emails</div>
+                    <div class="total"><div class="email-total number-spinner">0</div></div>
                 </div>
-                <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-                    <div class="title">Views</div>
-                    <div class="icon">
-                        <i class="fa fa-eye"></i>
-
-                    </div>
-                    <div class="total view-total number-spinner">0</div>
+                <div class="metric">
+                    <div class="title calls">Calls</div>
+                    <div class="total"><div class="call-total number-spinner">0</div></div>
                 </div>
-                <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-                    <div class="title">Tweets</div>
-                    <div class="icon">
-                        <i class="fa fa-abpt"></i>
-
-                    </div>
-                    <div class="total twitter-total number-spinner">0</div>
+                <div class="metric">
+                    <div class="title abpt">Tweets</div>
+                    <div class="total"><div class="twitter-total number-spinner">0</div></div>
                 </div>
-                <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-                    <div class="title">Shares</div>
-                    <div class="icon">
-                        <i class="fa fa-abpf"></i>
-
-                    </div>
-                    <div class="total facebook-total number-spinner">0</div>
+                <div class="metric">
+                    <div class="title abpf">Shares</div>
+                    <div class="total"><div class="facebook-total number-spinner">0</div></div>
                 </div>
-                <div class="metric" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-                    <div class="title">Google+</div>
-                    <div class="icon">
-                        <i class="fa fa-abpg"></i>
-
-                    </div>
-                    <div class="total google-total number-spinner">0</div>
+                <div class="metric">
+                    <div class="title abpg">Google+</div>
+                    <div class="total"><div class="google-total number-spinner">0</div></div>
                 </div>
             </div>
         </div>
@@ -282,17 +268,21 @@
     <div class="container">
         <div class="col">
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
-            <h2 class="twitter-support"><strong class="tweets-support-total number-spinner">0</strong> people supporting #stopthespies</h2>
+            <h2 class="twitter-support"><strong class="tweets-support-total number-spinner">0</strong> people supporting <strong>#stopthespies</strong></h2>
 
             <p class="intro">
                 <i class="fa fa-abpt"></i>
-                By tweeting "I support #stopthespies" you will automatically be added to the list below. Currently, <strong class="tweets-support-total number-spinner">0</strong> people have shown their support on Twitter.
+                By tweeting "I support #stopthespies" you will automatically be added to the list below.
             </p>
 
         </div>
     </div>
 </section>
-                    <div class="" id="tweet-board"></div>
+
+<div class="" id="tweet-board"></div>
+
+<!-- END STATS BG WRAPPER -->
+</div>
 
 <section class="extra">
     <div class="container">
@@ -377,11 +367,11 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Message</label>
           <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Message goes here">
-I am writing to you as your constituent. In the aftermath of the Snowden revelations, I’ve become increasingly concerned about overreach by the National Security Agency and the secrecy that prevents us from getting honest answers about what our intelligence agencies are doing.  And I’m not alone:  a recent Defense Appropriation amendment that passed the House showed that there is broad, bipartisan support for NSA reform. 
+I am writing to you as your constituent. In the aftermath of the Snowden revelations, I’ve become increasingly concerned about overreach by the National Security Agency and the secrecy that prevents us from getting honest answers about what our intelligence agencies are doing.  And I’m not alone:  a recent Defense Appropriation amendment that passed the House showed that there is broad, bipartisan support for NSA reform.
 
-I urge you to take immediate action to rein in the NSA by supporting S. 2685, the new Senate version of the USA FREEDOM Act, and amendments that will strengthen the bill.  While this bill is not a comprehensive solution, it is a concrete first step towards NSA reform. 
+I urge you to take immediate action to rein in the NSA by supporting S. 2685, the new Senate version of the USA FREEDOM Act, and amendments that will strengthen the bill.  While this bill is not a comprehensive solution, it is a concrete first step towards NSA reform.
 
-The House's version of the USA FREEDOM Act, H.R. 3361, has been gutted. The Senate version is the best way to take action right now. That’s why I’m urging you to support S. 2685, the USA FREEDOM Act of 2014.  
+The House's version of the USA FREEDOM Act, H.R. 3361, has been gutted. The Senate version is the best way to take action right now. That’s why I’m urging you to support S. 2685, the USA FREEDOM Act of 2014.
 
 Additionally, I urge you to support any amendments to the USA FREEDOM Act that would further strengthen the bill. The time is ripe to shut the backdoors to Americans’ private information, ensure privacy protections for innocent people inside and outside of the United States and stop the NSA’s efforts to undermine encryption standards.
 
@@ -427,7 +417,7 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
 
 <!-- LEGISLATOR TEMPLATE -->
 <script type="text/template" id="legislator-template">
-   <div class="legislator" data-legislator-id="<%= member_id %>">
+   <div class="legislator l<%= counter %>" data-legislator-id="<%= member_id %>">
         <div class="pic">
             <img class="" src="http://data.openaustralia.org/members<%= image %>" />
         </div>
