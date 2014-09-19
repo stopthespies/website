@@ -202,10 +202,10 @@ $(function() {
 
   // init live counter widgets
 
-  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total, \
-    .tweets-support-total').addClass('number-spinner').numberSpinner({
+  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner({
       min_digits: 6
     });
+  $('.tweets-support-total').addClass('number-spinner').numberSpinner();
 
   // LOG INITIAL VIEW
 
