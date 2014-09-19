@@ -72,13 +72,19 @@ $one-twelfth: $columns / 12;
 
 // responsive breakpoints
 
-$set-header-map-adjacent: 550px;
+$set-header-map-adjacent: 769px;
 
-$set-info-2-cols: 550px;
+$set-info-margin: 550px;
+$set-info-2-cols: 769px;
+
+$set-search-pad-postcode: 780px;
 
 $set-larger-content-margin: 760px;
 $set-steps-2-cols: 530px;
-$set-legislator-smaller-thumbs: 480px;
-$set-legislator-smallest-thumbs: 600px;
+$set-legislator-smaller-thumbs: 481px;
+$set-legislator-smallest-thumbs: 601px;
 
-$set-stats-map-adjacent: 800px;
+$set-legislator-results-2col: 600px;
+$set-legislator-results-3col: 1000px;
+
+$set-stats-map-adjacent: 801px;

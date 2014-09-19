@@ -12,14 +12,33 @@
 
 // MAP FITS TO SIDE ON DESKTOP
 // :NOTE: map position controlled by TweenMax
+.who {
+  position: relative;
+  .campaign-map {
+    position: absolute;
+    width: 100%%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  .leaflet-map-pane {
+    opacity: 0.1;   // keep separate from toplevel anim-driven opacity
+  }
+}
 @media (min-width: $set-header-map-adjacent) {
   .who {
     .col {
       @include column($one-half);
     }
     .campaign-map {
-      @include column($one-half);
-      height: emsize(600px);
+      position: absolute;
+      width: 60%;
+      height: 100%;
+      left: 40%;
+      top: 0;
+    }
+    .leaflet-map-pane {
+      opacity: 0.7;
     }
   }
 }
@@ -28,6 +47,12 @@
 // 1 > 2 columns
 
 .introduction {
+  @media (min-width: $set-info-margin) {
+    .col {
+      @include column($one-twelfth * 10);
+      @include push($one-twelfth);
+    }
+  }
   @media (min-width: $set-info-2-cols) {
     .col {
       @include column($one-half);
@@ -37,7 +62,7 @@
 
 @media (min-width: $set-larger-content-margin) {
 	// other content is 8/12 with 2/12 gutters
-	.how, .extra, .reading {
+	.extra, .reading {
 		.col {
 			@include column($one-twelfth * 8);
 			@include push($one-sixth);
@@ -119,8 +144,8 @@
 		}
 	}
 	.input-group {
-		@include column($one-twelfth * 8);
-		@include push($one-sixth);
+      @include column($one-twelfth * 10);
+      @include push($one-twelfth);
 
 		.form-control {
       display: block;
@@ -132,10 +157,15 @@
       display: block;
 			width: 40%;
 		}
+
+    @media (min-width: $set-search-pad-postcode) {
+      @include column($one-twelfth * 8);
+      @include push($one-twelfth * 2);
+    }
 	}
 
   @media (min-width: $set-larger-content-margin) {
-    .intro {
+    .col {
       @include column($one-twelfth * 10);
       @include push($one-twelfth);
       margin-bottom: emsize(30px);
@@ -169,7 +199,22 @@
   @include row();
 }
 .legislator {
-	@include column($one-third);
+  max-width: 350px;
+  margin: 0 auto 1em auto;
+
+  @media (min-width: $set-legislator-results-2col) {
+    max-width: none;
+    @include column($one-half);
+    &.l3 {
+      @include push($one-quarter);
+    }
+  }
+
+  @media (min-width: $set-legislator-results-3col) {
+    &, &.l3 {
+    	@include column($one-third);
+    }
+  }
 
   .contact {
     @include clearfix();
