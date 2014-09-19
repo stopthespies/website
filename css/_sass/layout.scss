@@ -37,7 +37,7 @@
 
 @media (min-width: $set-larger-content-margin) {
 	// other content is 8/12 with 2/12 gutters
-	.stats, .how, .support, .extra, .reading {
+	.how, .extra, .reading {
 		.col {
 			@include column($one-twelfth * 8);
 			@include push($one-sixth);
@@ -67,37 +67,38 @@
 // STATS
 // 2 > 3 > 6 cols
 
+.stats, .support, .how {
+  .col {
+    z-index: 1;
+    position: relative;
+  }
+}
+
 .stats {
-	padding-bottom: 0;
+  padding-bottom: 0;
   position: relative;
 
   .campaign-map {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
-    height: 200%; // this block is unstyled/short right now
+    height: 150%; // this block is unstyled/short right now
+    z-index: 0;
   }
 
 	.metrics {
-		@include row();
-	}
-	.metric {
-		@include column($one-half);
-		padding-bottom: 40px;
+		@include column($one);
 	}
 
-	@media (min-width: $set-stats-3-cols) {
-		.metric {
-			@include column($one-third);
-		}
-	}
-
-	@media (min-width: $set-stats-6-cols) {
-		.metric {
-			@include column($one-sixth);
-		}
-	}
+  @media (min-width: $set-stats-map-adjacent) {
+    .col {
+      @include column($one-half);
+    }
+    .campaign-map {
+      width: 80%;
+    }
+  }
 }
 
 // LEGISLATOR SEARCH

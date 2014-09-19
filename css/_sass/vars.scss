@@ -6,9 +6,9 @@ $BASE_LINE_HEIGHT : 1.2;
 $primaryOrange: #f1592a;
 $bodyText:		#fff;
 
-$primaryBg:     #231735;  // old browsers
+$primaryBg:     #322446;  // old browsers
 $primaryBgLeft:   #322446;  // gradient pallete
-$primaryBgRight:  #251938;
+$primaryBgRight:  #231735;
 $secondaryBg:   #322546;
 $breakoutBg:    #fff;
 $dimBreakoutBg:	#E7E7E7;
@@ -23,11 +23,6 @@ $linkColor: #45CBA1;
 // -------- apply pallete --------
 
 $color-body-bg: $secondaryBg;
-@mixin hero-gradient-bg() {
-	background: $primaryBg;
-	background-image: radial-gradient(ellipse farthest-corner at 100% 100%, $primaryBgRight 0%, $primaryBgLeft 95%);
-}
-
 $color-menu-bg: $secondaryBg;
 $color-info-bg: $secondaryBg;
 $color-breakout-block: $breakoutBg;
@@ -66,7 +61,7 @@ $content-max-width: 1280px;
 /* Gridsystem overrides */
 
 $total-width: 100%;
-$columns: 12;
+$columns: 9;
 
 $one: $columns;
 $one-half: $columns / 2;
@@ -82,8 +77,8 @@ $set-header-map-adjacent: 550px;
 $set-info-2-cols: 550px;
 
 $set-larger-content-margin: 760px;
-$set-stats-3-cols: 370px;
-$set-stats-6-cols: 600px;
 $set-steps-2-cols: 530px;
 $set-legislator-smaller-thumbs: 480px;
 $set-legislator-smallest-thumbs: 600px;
+
+$set-stats-map-adjacent: 800px;

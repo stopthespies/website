@@ -1,23 +1,82 @@
+$stats-digit-height: 1.7;
+$stats-row-height: 3.6em;
+$stats-label-vadjust: 0.4;
+
 .stats {
-  h2 {
-    text-align: center;
-  }
+  text-align: left;
   .campaign-map {
     opacity: 0.2;
   }
 }
+.metrics {
+  margin-top: 2em;
+  text-align: left;
+}
 .metric {
-    text-align: center;
-    margin-bottom: 20px;
-    border-radius: 8px;
+  @include clearfix();
+
+  height: $stats-row-height;
+  float: left;
+  clear: left;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 0;
+  &:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  // i {
+  //   text-align: center;
+  //   width: 1em;
+  //   margin-right: 0.4em;
+  // }
+
+  .number-spinner {
+    font-size: 2em;
+    font-family: 'League Gothic', sans-serif;
+
+    &, .tiles, .tile, .digit {
+      height: $stats-digit-height * 1em;       // :TODO: this really freaks out the animation engine right now
+    }
+    .digit {
+      line-height: $stats-digit-height;
+    }
+  }
+  .tiles {
+  }
+  .tile {
+    padding: 0 0.2em;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .title, .total {
+    float: left;
+  }
 }
-.metric:hover {
-  background: darken($brand3, 1%);
-  cursor: pointer;
-}
+
 .metric .title {
-    font-weight: bold;
-}
-.metric .icon {
-    font-size: 40px;
+  width: emsize(85px);
+  padding-left: 0.8em;
+  font-weight: normal;
+  line-height: ($stats-digit-height * 2) + $stats-label-vadjust;
+  @include emfz(14px);
+
+  &.views {
+    // :TODO: colours
+  }
+  &.emails {
+
+  }
+  &.calls {
+
+  }
+  &.apbt {
+
+  }
+  &.apbf {
+
+  }
+  &.abpg {
+
+  }
 }
