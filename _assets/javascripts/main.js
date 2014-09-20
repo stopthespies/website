@@ -12,7 +12,6 @@
 //= require tweets
 //= require takeover
 
-//= require vendor/jquery.clickoutside.js
 //= require vendor/jquery.numberSpinner/src/jquery.numberSpinner.js
 
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
