@@ -268,6 +268,31 @@ function getGeoJSONBounds(layer)
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
+// stats map area activity intensity shading
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function shadeWardsByActivity(totalEvents, reps)
+{
+  var i, l, rep, shape, reptotal,
+    map = maps[1];    // :SHONK: magic number indexing
+
+  for (i = 0, l = reps.length; i < l && (rep = reps[i]); ++i) {
+    reptotal = STS.getTotal(rep);
+    shape = findMembersElectorate(map, rep._id);
+
+    if (!shape) {
+      continue;   // senator
+    }
+
+    var shapeData = STS.CampaignMap.getGeoJSONShape(shape);
+    var g = shapeData[0];
+    var $paths = shapeData[1];
+
+    $paths.css('fill-opacity', reptotal / totalEvents);
+  }
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 // map shape search helpers
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -351,10 +376,29 @@ STS.CampaignMap = {
   focusWard : focusByWardName,
   focusMembersWard : focusByMembers,
 
+  shadeWardStats : shadeWardsByActivity,
+
   redraw : exactFitMap,
   getContainerScale : function(dom, bounds) {
     var m = findMapByDOM(dom, bounds);
     return getMapFitScale(m);
+  },
+
+  // grab layer SVG elements to directly manipulate
+  getGeoJSONShape : function(layer)
+  {
+    var i, g, $g = $(), layers;
+    if (layer.getLayers && (layers = layer.getLayers())) {
+      g = layers[0]._container;
+      for (i = 0; i < layers.length; ++i) {
+        $g = $g.add(layers[i]._container);
+      }
+    } else {
+      g = layer._container;
+      $g = $(g);
+    }
+
+    return [g, $('path', $g)];
   },
 
   activateUI : activateUI,

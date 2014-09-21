@@ -60,19 +60,10 @@
     // bring to front
     layer.bringToFront();
 
-    // grab SVG elements to animate
-    var i, g, $g = $(), layers;
-    if (layer.getLayers && (layers = layer.getLayers())) {
-      g = layers[0]._container;
-      for (i = 0; i < layers.length; ++i) {
-        $g = $g.add(layers[i]._container);
-      }
-    } else {
-      g = layer._container;
-      $g = $(g);
-    }
+    var shapeData = STS.CampaignMap.getGeoJSONShape(layer);
+    var g = shapeData[0];
+    var $paths = shapeData[1];
 
-    var $paths = $('path', $g);
     var currentAttrs;
 
     // abort any running animations on this electorate and read stateless attributes to finish on

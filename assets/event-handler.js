@@ -61,7 +61,7 @@
   //----------------------------------------------------------------------------
 
   io.on('stats:update', function(stats) {
-    console.log('Global stats updated', stats);
+    console.log('Global stats updated');
     STS.events.onStatsLoad(stats);
   });
 

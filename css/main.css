@@ -2111,15 +2111,13 @@ section.video {
   .metric .title.views {
     color: #ee574a; }
   .metric .title.emails {
-    color: #e1e1e1; }
+    color: #e58231; }
   .metric .title.calls {
     color: #36c48f; }
   .metric .title.abpt {
     color: #45cba1; }
   .metric .title.abpf {
     color: #4fb9e3; }
-  .metric .title.abpg {
-    color: #e58231; }
 
 section.how.search {
   padding-bottom: 0; }
