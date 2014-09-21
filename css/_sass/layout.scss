@@ -257,3 +257,20 @@ section.map {
   @include column($one-third);
   @include push($one-third);
 }
+
+
+// VERTICAL SPACING SCALE FOR SECTIONS
+
+section {
+  padding: emsize(40px) 0;
+  @media (min-height: 801px) {
+    padding: emsize(80px) 0;
+  }
+
+  &.who {
+    padding: emsize(60px) 0;
+    @media (min-height: 801px) {
+      padding: emsize(160px) 0;
+    }
+  }
+}
