@@ -25,6 +25,7 @@
     span {
       @include emfz(86px);
       color: $primaryOrange;
+      font-family: 'League Gothic', sans-serif;
       display: block;
     }
   }
