@@ -356,6 +356,23 @@ STS.CampaignMap = {
     return getMapFitScale(m);
   },
 
+  // grab layer SVG elements to directly manipulate
+  getGeoJSONShape : function(layer)
+  {
+    var i, g, $g = $(), layers;
+    if (layer.getLayers && (layers = layer.getLayers())) {
+      g = layers[0]._container;
+      for (i = 0; i < layers.length; ++i) {
+        $g = $g.add(layers[i]._container);
+      }
+    } else {
+      g = layer._container;
+      $g = $(g);
+    }
+
+    return [g, $('path', $g)];
+  },
+
   activateUI : activateUI,
   deactivateUI : deactivateUI
 };
