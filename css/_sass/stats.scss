@@ -57,26 +57,26 @@ $stats-label-vadjust: 0.4;
 .metric .title {
   width: emsize(85px);
   padding-left: 0.8em;
-  font-weight: normal;
+  font-weight: bold;
   line-height: ($stats-digit-height * 2) + $stats-label-vadjust;
   @include emfz(14px);
 
   &.views {
-    // :TODO: colours
+    color: $statRed;
   }
   &.emails {
-
+    color: $statWhite;
   }
   &.calls {
-
+    color: $statGreenD;
   }
-  &.apbt {
-
+  &.abpt {
+    color: $statGreenL;
   }
-  &.apbf {
-
+  &.abpf {
+    color: $statBlue;
   }
   &.abpg {
-
+    color: $statOrange;
   }
 }
