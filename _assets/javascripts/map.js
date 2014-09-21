@@ -66,19 +66,14 @@ function showElectorates(geojson)
   var wardOptions = {
     style : function(feature) {
       // :TODO: finalise pallete and hookup to legislator data
-      var colors = [
-        '#fff',
-        '#fff',
-        '#fff'
-      ];
-      var picked = colors[Math.floor(Math.random() * colors.length)];
+      var color = '#fff';
 
       var style = {
         weight: 1,
-        opacity: 1,
-        fillOpacity: Math.min(1, 0.1 + Math.random()),
-        color: picked,
-        fillColor: picked
+        opacity: 0.3,
+        fillOpacity: 0.05,
+        color: color,
+        fillColor: color
       };
 
       feature.__defaultStyle = style; // reference here for use in callbacks
