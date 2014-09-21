@@ -4,7 +4,7 @@
 	@include clearfix();
 }
 
-.who, .introduction, .stats, .how, .support, .extra, .reading {
+.who, .menu, .introduction, .stats, .how, .support, .extra, .reading {
 	.col {
 		@include column($one);
 	}
