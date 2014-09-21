@@ -17,7 +17,7 @@ var DEFAULT_COORDS = [-28.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
 
 // used to force leaflet to make the whole map visible
-var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-44.205835, 154.841309), L.latLng(-9.795678, 111.708984));
+var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-44.205835, 154.841309), L.latLng(-8.795678, 111.708984));
 
 // all maps are the same, just add more things to this selector & adjust after creating
 var mapEls = '.campaign-map';
