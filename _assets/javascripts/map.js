@@ -267,6 +267,31 @@ function getGeoJSONBounds(layer)
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
+// stats map area activity intensity shading
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function shadeWardsByActivity(totalEvents, reps)
+{
+  var i, l, rep, shape, reptotal,
+    map = maps[1];    // :SHONK: magic number indexing
+
+  for (i = 0, l = reps.length; i < l && (rep = reps[i]); ++i) {
+    reptotal = STS.getTotal(rep);
+    shape = findMembersElectorate(map, rep._id);
+
+    if (!shape) {
+      continue;   // senator
+    }
+
+    var shapeData = STS.CampaignMap.getGeoJSONShape(shape);
+    var g = shapeData[0];
+    var $paths = shapeData[1];
+
+    $paths.css('fill-opacity', reptotal / totalEvents);
+  }
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 // map shape search helpers
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -349,6 +374,8 @@ STS.CampaignMap = {
   },
   focusWard : focusByWardName,
   focusMembersWard : focusByMembers,
+
+  shadeWardStats : shadeWardsByActivity,
 
   redraw : exactFitMap,
   getContainerScale : function(dom, bounds) {
