@@ -18,7 +18,7 @@ var DEFAULT_COORDS = [-28.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
 
 // used to force leaflet to make the whole map visible
-var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-44.205835, 154.841309), L.latLng(-9.795678, 111.708984));
+var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-44.205835, 154.841309), L.latLng(-8.795678, 111.708984));
 
 // all maps are the same, just add more things to this selector & adjust after creating
 var mapEls = '.campaign-map';
@@ -67,19 +67,14 @@ function showElectorates(geojson)
   var wardOptions = {
     style : function(feature) {
       // :TODO: finalise pallete and hookup to legislator data
-      var colors = [
-        '#fff',
-        '#fff',
-        '#fff'
-      ];
-      var picked = colors[Math.floor(Math.random() * colors.length)];
+      var color = '#fff';
 
       var style = {
         weight: 1,
-        opacity: 1,
-        fillOpacity: Math.min(1, 0.1 + Math.random()),
-        color: picked,
-        fillColor: picked
+        opacity: 0.3,
+        fillOpacity: 0.05,
+        color: color,
+        fillColor: color
       };
 
       feature.__defaultStyle = style; // reference here for use in callbacks
