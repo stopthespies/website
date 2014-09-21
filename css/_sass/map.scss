@@ -11,12 +11,14 @@
 // map controls
 
 .leaflet-container.inactive {
+  cursor: default;
+
   .leaflet-control-container {
     display: none;
   }
 
   .map-blocker {
     display: block;
-    cursor: pointer;
+    cursor: default;
   }
 }
