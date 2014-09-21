@@ -12,14 +12,6 @@ body {
   line-height: 1.36;
 }
 
-a {
-  text-decoration: none;
-  border-bottom: $color-text;
-  &:hover {
-    border-bottom: $primaryOrange;
-  }
-}
-
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
   color: $color-header-text;
