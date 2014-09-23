@@ -90,31 +90,16 @@ a {
   }
 }
 
-.cta .eyemarks {
-  .r11 { left: 320px; top: -20px; }
-  .r12 { left: 390px; top: 70px; }
-  .r13 { left: 450px; top: -7px; }
-  .r14 { left: 612px; top: 19px; }
-  .r15 { left: 790px; top: 5px; }
-  .r21 { left: 190px; top: 142px; }
-  .r22 { left: 930px; top: 200px; }
-  .r31 { left: 300px; top: 280px; }
-  .r32 { left: 430px; top: 300px; }
-  .r33 { left: 600px; top: 320px; }
-  .r34 { left: 690px; top: 240px; }
-  .r35 { left: 780px; top: 310px; }
+.cta, .introduction {
+  // :IMPORTANT: we can't do this for all, because of things (like the map) positioned outside of the page gutter
+  .container {
+    position: relative;
+  }
+  .col {
+    position: relative;
+    z-index: 1;
+  }
 }
-
-// sections and containers both need to be be offset parents so that position
-// can be calculated easily and so that eyes can wander outside the margin on animated
-// implementation
-section, .container {
-  position: relative;
-}
-.container {
-  z-index: 1;
-}
-
 
 //-----------------------------------------------------------------
 //                \/ these may not be global \/
