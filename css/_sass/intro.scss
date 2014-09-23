@@ -35,7 +35,8 @@
   text-align: center;
   h2 {
     font-family: 'League Gothic', sans-serif;
-    @include emfz(72px);
+    font-weight: normal;
+    @include emfz(86px);
     color: $primaryOrange;
     margin: 1.5em 0;
   }
