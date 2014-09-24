@@ -1709,10 +1709,6 @@ h3 {
 h4 {
   font-size: 1.125em; }
 
-.bg-wrap {
-  background: #322446;
-  background-image: linear-gradient(-127deg, #322446 3%, #231735 88%); }
-
 .intro {
   margin-bottom: 1.875em; }
 
@@ -1779,9 +1775,14 @@ a {
   border-radius: 8px;
   overflow: hidden; }
 
+/* temporary */
 img.you-can-stop {
   width: 90%;
   max-width: 887px; }
+
+.bg-wrap {
+  background: #322446;
+  background-image: linear-gradient(-127deg, #322446 3%, #231735 88%); }
 
 .who h1, .who h2 {
   margin: 0;
@@ -1890,6 +1891,14 @@ img.you-can-stop {
     color: #f1592a;
     font-family: 'League Gothic', sans-serif;
     display: block; }
+.introduction .eyemarks img {
+  opacity: 1;
+  -webkit-transition: opacity 0.6s;
+  transition: opacity 0.6s; }
+  .introduction .eyemarks img:hover {
+    opacity: 0;
+    -webkit-transition: opacity 0.1s;
+    transition: opacity 0.1s; }
 .introduction .eyemarks .r11 {
   left: 55%;
   top: -1.25em; }
@@ -1902,6 +1911,22 @@ img.you-can-stop {
 .introduction .eyemarks .r14 {
   left: 90%;
   top: -2.5em; }
+.introduction.countries .eyecanvas, .introduction.countries .eyemarks {
+  margin-top: 10px; }
+  @media (min-width: 769px) {
+    .introduction.countries .eyecanvas, .introduction.countries .eyemarks {
+      margin-top: -90px;
+      margin-left: 0%;
+      transform: scale(-1);
+      -webkit-transform: scale(-1); } }
+.introduction.rights .eyecanvas, .introduction.rights .eyemarks {
+  margin-left: 10%;
+  margin-top: -20px;
+  width: 80%; }
+  @media (min-width: 769px) {
+    .introduction.rights .eyecanvas, .introduction.rights .eyemarks {
+      margin-left: 10%;
+      margin-top: 90px; } }
 
 .cta {
   text-align: center;
@@ -2164,6 +2189,7 @@ section.how.results {
   text-transform: none;
   font-family: 'League Gothic', sans-serif;
   font-size: 4.5em;
+  margin: -2em 0 0.5em 0;
   color: #c7c7c7; }
   .support h2, .support h2 strong {
     font-weight: normal; }
@@ -2171,6 +2197,14 @@ section.how.results {
     color: white; }
 .support .intro {
   text-align: center; }
+  .support .intro em {
+    color: #45cba1; }
+.support .fa-abpt {
+  display: block;
+  font-size: 9.5em;
+  margin-top: -0.3em;
+  opacity: 0.1;
+  color: white; }
 
 .tweet {
   width: 200px;
@@ -2180,7 +2214,6 @@ section.how.results {
   position: relative; }
 
 .twitter-support {
-  font-size: 52px;
   text-align: center; }
   .twitter-support .number-spinner {
     position: relative;
@@ -2282,6 +2315,18 @@ section.how.results {
   #tweet-board:after {
     clear: both; }
 
+.twitter-support {
+  font-size: 0.4em; }
+  @media (min-width: 400px) {
+    .twitter-support {
+      font-size: 0.6em; } }
+  @media (min-width: 600px) {
+    .twitter-support {
+      font-size: 0.8; } }
+  @media (min-width: 769px) {
+    .twitter-support {
+      font-size: 1em; } }
+
 .extra {
   background: #e7e7e7;
   color: #5f5a66;
@@ -2336,6 +2381,8 @@ section.how.results {
   .sharing-buttons .share.abpg:hover {
     background: #d22e31; }
 
+.extra .step-1 {
+  color: white; }
 .extra .share {
   margin: 10px 20px; }
 .extra .actions {
@@ -2796,7 +2843,7 @@ section.map {
   margin-left: 34.72222%; }
 
 section {
-  padding: 2.5em 0; }
+  padding: 5em 0; }
   @media (min-height: 801px) {
     section {
       padding: 5em 0; } }

@@ -5,8 +5,8 @@
     <description>Stop The Spies is an Australian campaign to raise awareness about new data retention laws.</description>
     <link>http://stage.stopthespies.org/</link>
     <atom:link href="http://stage.stopthespies.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 25 Sep 2014 11:53:52 +1000</pubDate>
-    <lastBuildDate>Thu, 25 Sep 2014 11:53:52 +1000</lastBuildDate>
+    <pubDate>Wed, 24 Sep 2014 14:55:00 -0700</pubDate>
+    <lastBuildDate>Wed, 24 Sep 2014 14:55:00 -0700</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -25,9 +25,9 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Thu, 07 Aug 2014 08:16:58 +1000</pubDate>
-        <link>http://stage.stopthespies.org/jekyll/update/2014/08/07/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://stage.stopthespies.org/jekyll/update/2014/08/07/welcome-to-jekyll/</guid>
+        <pubDate>Wed, 06 Aug 2014 15:16:58 -0700</pubDate>
+        <link>http://stage.stopthespies.org/jekyll/update/2014/08/06/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://stage.stopthespies.org/jekyll/update/2014/08/06/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>
