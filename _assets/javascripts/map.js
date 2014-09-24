@@ -23,6 +23,7 @@ var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-44.205835, 154.841309), L.latLng(-
 var mapEls = '.campaign-map';
 var maps = [];
 var mapShapes = [];
+var MAPS_DISABLED = false;
 
 var winW = $(window).width();
 var winH = $(window).height();
@@ -51,6 +52,12 @@ $(window).on('resize', debounce(function(e) {
 
 function initMaps()
 {
+  // disabled for first launch
+  if (!$(mapEls).length) {
+    MAPS_DISABLED = true;
+    return;
+  }
+
   $.ajax({
     url: '/map/electorates.json',
     dataType: "json",
@@ -336,6 +343,10 @@ function findElectorate(map, wardName)
 //        the user in question may be shown to fill the list.
 function findMembersElectorate(map, memberIds)
 {
+  if (MAPS_DISABLED) {
+    return null;
+  }
+
   var matched, i, l, thisId;
 
   if (!$.isArray(memberIds)) {
