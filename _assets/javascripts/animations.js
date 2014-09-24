@@ -106,7 +106,7 @@
   STS.anim = {
     appearVSlide : appearVSlide,
     hideVSlide : hideVSlide,
-    scrollTo : scrollToEl,
+    scrollToEl : scrollToEl,
 
     map : {
       enter : mapEnter,
