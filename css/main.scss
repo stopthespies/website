@@ -1,19 +1,19 @@
----
----
-
+/**
+ * Bootstrap
+ */
 @import "bootstrap";
-
 @import "animations";
-
 @import "grid";
 @import "vars";
-
 @import "mixins";
-
 @import "fonts";
 @import "base";
 @import "header";
 @import "menu";
+
+/**
+ * Website
+ */
 @import "intro";
 @import "video";
 @import "stats";
@@ -22,9 +22,16 @@
 @import "social-box";
 @import "further-reading";
 @import "footer";
-@import "takeover";
 
+@import "takeover";
 @import "modals";
+
 @import "map";
 @import "counters";
+
 @import "layout";
+
+/**
+ * Vendors Folder
+ */
+@import "vendor/*";
