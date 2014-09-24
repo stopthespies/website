@@ -19,7 +19,7 @@ Just using this repo to also prototype some website ideas
 rvm use 2.1.2		# probably works with other ruby versions
 bundle install
 npm install -g bower
-bower update
+bower install
 ```
 
 ##### To develop
