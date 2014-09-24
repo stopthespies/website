@@ -1,6 +1,6 @@
 window.LegislatorQuery || (window.LegislatorQuery = {});
 
-(function($, io, anim) {
+(function($, io, anim, opts) {
 
 $(function() {
 
@@ -199,12 +199,15 @@ function onSearchError()
 
 function onSearchComplete()
 {
-  // focus response area
-  // STS.anim.scrollToEl($('#take-action'));
+  // focus response area if we haven't previously viewed the site
+  if (!Cookie.has('already-viewed')) {
+    STS.anim.scrollToEl($('#take-action'));
+    Cookie.set('already-viewed', 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+  }
 }
 
 // EXPORTS
 STS.events.onLegislatorStats = setLegislatorCounts;
 STS.events.onLegislatorStatsIncrement = setLegislatorCountsIncrement;
 
-})(jQuery, STS.app, STS.anim);
+})(jQuery, STS.app, STS.anim, STS.options);

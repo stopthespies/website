@@ -1,5 +1,6 @@
 //= require polyfills
 //= require helpers
+//= require cookies
 
 //= require env
 
