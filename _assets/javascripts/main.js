@@ -1,5 +1,6 @@
 //= require polyfills
 //= require helpers
+//= require cookies
 
 //= require env
 
@@ -7,11 +8,11 @@
 //= require event-handler
 //= require scroll-handler
 //= require map
+//= require randoms
 //= require legislator-querying
 //= require tweets
 //= require takeover
 
-//= require vendor/jquery.clickoutside.js
 //= require vendor/jquery.numberSpinner/src/jquery.numberSpinner.js
 
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
@@ -26,7 +27,9 @@ var
   STATS_READ_URL      = STS.options.STATS_READ_URL,
 
   SEND_EMAIL_URL      = STS.options.SEND_EMAIL_URL,
-  LOG_URL_BASE      = STS.options.LOG_URL_BASE;
+  LOG_URL_BASE      = STS.options.LOG_URL_BASE,
+
+  MAP_START_SHADING = 100;   // this many actions to occur before we begin weighted shading of the campaign stats map
 
 // Start up scripts
 $(function() {
@@ -118,7 +121,7 @@ $(function() {
 
   // ---------- bring in metrics -----------
 
-  var loadedStats, socialStats;
+  var loadedGlobals, loadedStats, socialStats;
 
   ScrollHandler.addTrigger('#load-stats', bringInStats);
   TweenLite.set(".stats .metric", { transform: "scaleX(0)", opacity: 0 });
@@ -138,30 +141,51 @@ $(function() {
   {
     TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
 
-    $('.email-total').numberSpinner('set', loadedStats.emails || 0);
-    $('.call-total').numberSpinner('set', loadedStats.calls || 0);
-    $('.view-total').numberSpinner('set', loadedStats.views || 0);
+    $('.email-total').numberSpinner('set', loadedGlobals.emails || 0);
+    $('.call-total').numberSpinner('set', loadedGlobals.calls || 0);
+    $('.view-total').numberSpinner('set', loadedGlobals.views || 0);
     $('.facebook-total').numberSpinner('set', socialStats.facebook || 0);
     $('.google-total').numberSpinner('set', socialStats.googleplus || 0);
     $('.twitter-total').numberSpinner('set', socialStats.twitter || 0);
+
+    // shade the stats map if we have enough stats for it to say something
+    var grandtotal = STS.getTotal(loadedGlobals);
+    if (grandtotal > MAP_START_SHADING) {
+      STS.CampaignMap.shadeWardStats(grandtotal, loadedStats);
+    }
   }
 
   function statsLoaded()
   {
-    return loadedStats !== undefined && socialStats !== undefined;
+    return loadedGlobals !== undefined && loadedStats !== undefined && socialStats !== undefined;
   }
 
   function onStatsLoaded(data)
   {
-    data = data[0];   // comes back as an array from API and global stats is only 1 record
+    var globals, i, l, rep;
 
-    if (statsLoaded()) {
-      // update numbers if we've already shown the stats
-      $('.email-total').numberSpinner('set', data.emails || 0);
-      $('.call-total').numberSpinner('set', data.calls || 0);
-      $('.view-total').numberSpinner('set', data.views || 0);
+    for (i = 0, l = data.length; i < l && (rep = data[i]); ++i) {
+      if (rep._id === 'overall_totals') {
+        globals = rep;
+        break;
+      }
     }
+
+    // update numbers if we've already shown the stats
+    if (statsLoaded()) {
+      $('.email-total').numberSpinner('set', globals.emails || 0);
+      $('.call-total').numberSpinner('set', globals.calls || 0);
+      $('.view-total').numberSpinner('set', globals.views || 0);
+
+      // shade the stats map if we have enough stats for it to say something
+      var grandtotal = STS.getTotal(globals);
+      if (grandtotal > MAP_START_SHADING) {
+        STS.CampaignMap.shadeWardStats(grandtotal, data);
+      }
+    }
+
     loadedStats = data;
+    loadedGlobals = globals;
   }
 
   // ------------------------------ LOAD DATA ----------------------------------
@@ -202,10 +226,10 @@ $(function() {
 
   // init live counter widgets
 
-  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total, \
-    .tweets-support-total').addClass('number-spinner').numberSpinner({
+  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner({
       min_digits: 6
     });
+  $('.tweets-support-total').addClass('number-spinner').numberSpinner();
 
   // LOG INITIAL VIEW
 
@@ -220,6 +244,11 @@ $(function() {
   // -------------------------------- EXPORTS ----------------------------------
 
   STS.events.onStatsLoad = onStatsLoaded;
+
+  STS.getTotal = function(stats)
+  {
+    return (stats.emails || 0) + (stats.calls || 0) + (stats.views || 0) + (stats.tweets || 0) + (stats.facebooks || 0);
+  };
 
 });
 

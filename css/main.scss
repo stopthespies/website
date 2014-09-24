@@ -3,13 +3,7 @@
 
 @import "bootstrap";
 
-$fa-font-path : "../fonts";
-@import "fontawesome/_variables";
-@import "fontawesome/_mixins";
-@import "fontawesome/_path";
-@import "fontawesome/_core";
-@import "fontawesome/_spinning";
-@import "fontawesome/_icons";
+@import "animations";
 
 @import "grid";
 @import "vars";
@@ -19,6 +13,7 @@ $fa-font-path : "../fonts";
 @import "fonts";
 @import "base";
 @import "header";
+@import "menu";
 @import "intro";
 @import "video";
 @import "stats";

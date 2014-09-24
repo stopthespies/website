@@ -60,7 +60,7 @@
   //----------------------------------------------------------------------------
 
   io.on('stats:update', function(stats) {
-    console.log('Global stats updated', stats);
+    console.log('Global stats updated');
     STS.events.onStatsLoad(stats);
   });
 
@@ -99,8 +99,15 @@
 
   function notifyLegislatorMap(reps, event)
   {
-    // :TODO: colourize per event type?
-    var color = '#f1592a',
+    var colors = {
+      tweets : '#45CBA1',
+      calls : '#36C48F',
+      views : '#EE574A',
+      emails : '#E58231',
+      facebooks : '#4FB9E3'
+    };
+
+    var color = colors[event],
         count, ward, rep;
 
     for (rep in reps) {

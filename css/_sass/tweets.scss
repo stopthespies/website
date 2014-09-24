@@ -1,3 +1,22 @@
+.support {
+  h2 {
+    text-transform: none;
+    font-family: 'League Gothic', sans-serif;
+    @include emfz(72px);
+    color: $textNormal;
+    &, strong {
+      font-weight: normal;
+    }
+    strong {
+      color: white;
+    }
+  }
+
+  .intro {
+    text-align: center;
+  }
+}
+
 .tweet {
   width: 200px;
   height: 200px;
@@ -8,6 +27,11 @@
 .twitter-support {
 	font-size: 52px;
 	text-align: center;
+
+  .number-spinner {
+    position: relative;
+    top: 0.14em;
+  }
 }
 .tweet.bigger {
 	width: 400px;
@@ -53,7 +77,7 @@
 	}
 }
 
- the photo to be animated via filters 
+ the photo to be animated via filters
 .tweet img:hover {
 	-webkit-animation-name: testAnim;
 	 -webkit-animation-duration: 0.5s;

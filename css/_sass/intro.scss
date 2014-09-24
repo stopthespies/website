@@ -25,8 +25,17 @@
     span {
       @include emfz(86px);
       color: $primaryOrange;
+      font-family: 'League Gothic', sans-serif;
       display: block;
     }
+  }
+
+  // these ones are positioned against columns and so their left offsets are percentages
+  .eyemarks {
+    .r11 { left: 55%; top: emsize(-20px); }
+    .r12 { left: 65%; top: emsize(-40px); }
+    .r13 { left: 78%; top: emsize(60px); }
+    .r14 { left: 90%; top: emsize(-40px); }
   }
 }
 
@@ -34,8 +43,42 @@
   text-align: center;
   h2 {
     font-family: 'League Gothic', sans-serif;
-    @include emfz(72px);
+    font-weight: normal;
+    @include emfz(86px);
     color: $primaryOrange;
     margin: 1.5em 0;
+  }
+
+  // totally arbitrary, just what size my window was at
+  $xMeasure: 1181 / 2;
+  $yMeasured: 190;
+
+  // these ones are positioned around the text- aligned to the center of the block and positioned in ems
+  .eyemarks {
+    top: 50%;
+    left: 50%;
+    .r11 { left: emsize(320px - $xMeasure); top: emsize(-20px - $yMeasured); }
+    .r12 { left: emsize(390px - $xMeasure); top: emsize(70px - $yMeasured); }
+    .r13 { left: emsize(450px - $xMeasure); top: emsize(-7px - $yMeasured); }
+    .r14 { left: emsize(612px - $xMeasure); top: emsize(19px - $yMeasured); }
+    .r15 { left: emsize(790px - $xMeasure); top: emsize(5px - $yMeasured); }
+    .r21 { left: emsize(190px - $xMeasure); top: emsize(142px - $yMeasured); }
+    .r22 { left: emsize(930px - $xMeasure); top: emsize(200px - $yMeasured); }
+    .r31 { left: emsize(300px - $xMeasure); top: emsize(280px - $yMeasured); }
+    .r32 { left: emsize(430px - $xMeasure); top: emsize(300px - $yMeasured); }
+    .r33 { left: emsize(600px - $xMeasure); top: emsize(320px - $yMeasured); }
+    .r34 { left: emsize(690px - $xMeasure); top: emsize(240px - $yMeasured); }
+    .r35 { left: emsize(780px - $xMeasure); top: emsize(310px - $yMeasured); }
+  }
+
+  font-size: 0.4em;
+  @media (min-width: $set-cta-fontstep-1) {
+    font-size: 0.6em;
+  }
+  @media (min-width: $set-cta-fontstep-2) {
+    font-size: 0.8;
+  }
+  @media (min-width: $set-cta-fontstep-3) {
+    font-size: 1em;
   }
 }

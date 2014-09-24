@@ -1,6 +1,6 @@
 window.LegislatorQuery || (window.LegislatorQuery = {});
 
-(function($, io, anim) {
+(function($, io, anim, opts) {
 
 $(function() {
 
@@ -34,6 +34,7 @@ $(function() {
     ScrollHandler.removeTrigger(askLocation);
 
     if (!("geolocation" in navigator)) {
+      onLocationError();
       return;
     }
 
@@ -50,7 +51,9 @@ $(function() {
           lng: position.coords.longitude
         },
         // work with the response
-        success: renderLegislators
+        success: renderLegislators,
+        error: onSearchError,
+        complete: onSearchComplete
       });
     }, onLocationError);
   }
@@ -70,10 +73,9 @@ $(function() {
           postcode: postcode
       },
       // work with the response
-      success: function( response ) {
-          renderLegislators(response);
-          console.log( response ); // server response
-      }
+      success: renderLegislators,
+      error: onSearchError,
+      complete: onSearchComplete
     });
     return false;
   });
@@ -85,8 +87,8 @@ var legislatorTemplate = $('#legislator-template').html();
 var retryTemplate = $('#legislator-retry-template').html();
 
 function renderLegislators(reps) {
-  var container = $('.legislators').empty();
-  console.log('reps', reps);
+
+  var container = $('.legislators').empty(), idx = 0;
 
   legislators = reps;
 
@@ -94,6 +96,7 @@ function renderLegislators(reps) {
   _.each(legislators, function (legislator) {
   	legislator.image || (legislator.image = '/images/mpsL/' + legislator.member_id + '.jpg');	// avoid template errors with missing data :TODO: fallback image
     legislator.contact_details && legislator.contact_details.twitter && legislator.contact_details.twitter.replace('http://twitter.com/', '');
+
     container.append(_.template(legislatorTemplate, legislator));
   });
 
@@ -191,8 +194,22 @@ function onLocationError()
   anim.appearVSlide($('.how .location-error'), 0.4);
 }
 
+function onSearchError()
+{
+
+}
+
+function onSearchComplete()
+{
+  // focus response area if we haven't previously viewed the site
+  if (!Cookie.has('already-viewed')) {
+    STS.anim.scrollToEl($('#take-action'));
+    Cookie.set('already-viewed', 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+  }
+}
+
 // EXPORTS
 STS.events.onLegislatorStats = setLegislatorCounts;
 STS.events.onLegislatorStatsIncrement = setLegislatorCountsIncrement;
 
-})(jQuery, STS.app, STS.anim);
+})(jQuery, STS.app, STS.anim, STS.options);
