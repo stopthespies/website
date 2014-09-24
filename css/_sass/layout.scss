@@ -2,6 +2,7 @@
 	max-width: $content-max-width;
 	margin: 0 auto;
 	@include clearfix();
+  padding: 0 10px;
 }
 
 .who, .menu, .introduction, .stats, .how, .support, .extra, .reading {
