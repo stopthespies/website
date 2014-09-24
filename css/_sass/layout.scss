@@ -130,7 +130,7 @@
 // LEGISLATOR SEARCH
 // 2 columns for location lookup boxes
 
-.how {
+.how, .extra {
 	.step {
 		h4 {
 			padding: 0.5em 1em;
@@ -236,7 +236,28 @@
 	}
 	.share {
 		@include column($one-half);
+    margin-right: auto;
+    margin-left: 21%;
+    margin-bottom: 10px;
+    border-radius: 10px;
 	}
+  .btn.btn-primary {
+    @include column($one-half);
+    font-size: 20px;
+    margin-right: auto;
+    margin-left: 21%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  .actions {
+    padding-top: 0.75em;
+  }
+  h3 {
+    text-transform: none;
+    color: #2B1E3E;
+    margin-bottom: 40px;
+    font-size: 1.8em;
+  }
 }
 
 // MAP
