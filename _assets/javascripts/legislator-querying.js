@@ -34,6 +34,7 @@ $(function() {
     ScrollHandler.removeTrigger(askLocation);
 
     if (!("geolocation" in navigator)) {
+      onLocationError();
       return;
     }
 
@@ -50,7 +51,9 @@ $(function() {
           lng: position.coords.longitude
         },
         // work with the response
-        success: renderLegislators
+        success: renderLegislators,
+        error: onSearchError,
+        complete: onSearchComplete
       });
     }, onLocationError);
   }
@@ -70,10 +73,9 @@ $(function() {
           postcode: postcode
       },
       // work with the response
-      success: function( response ) {
-          renderLegislators(response);
-          console.log( response ); // server response
-      }
+      success: renderLegislators,
+      error: onSearchError,
+      complete: onSearchComplete
     });
     return false;
   });
@@ -188,6 +190,17 @@ function onLocationError()
   $('.postcode-steps').addClass('no-location');
   anim.hideVSlide($('.how .location-search'), 0.4);
   anim.appearVSlide($('.how .location-error'), 0.4);
+}
+
+function onSearchError()
+{
+
+}
+
+function onSearchComplete()
+{
+  // focus response area
+  // STS.anim.scrollToEl($('#take-action'));
 }
 
 // EXPORTS
