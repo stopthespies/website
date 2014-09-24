@@ -15,7 +15,7 @@
 // :NOTE: map position controlled by TweenMax
 .who {
   position: relative;
-  .campaign-map {
+  .australia-map {
     position: absolute;
     width: 100%%;
     height: 100%;
@@ -31,7 +31,7 @@
     .col {
       @include column($one-half);
     }
-    .campaign-map {
+    .australia-map {
       position: absolute;
       width: 60%;
       height: 100%;
@@ -104,7 +104,7 @@
   padding-bottom: 0;
   position: relative;
 
-  .campaign-map {
+  .australia-map {
     position: absolute;
     top: 0;
     right: 0;
@@ -121,7 +121,7 @@
     .col {
       @include column($one-half);
     }
-    .campaign-map {
+    .australia-map {
       width: 80%;
     }
   }
