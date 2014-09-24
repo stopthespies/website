@@ -70,6 +70,7 @@
           <img src="/img/stslogo.svg" />
           <h1>Stop The Spies</h1>
           <h2>Take a stand against online surveillance</h2>
+          <a href="#take-action" class="btn btn-info btn-lg">Take Action Now</a>
           <div class="about">
             <p>
               The Australian Anti-Terrorism laws which are currently being
@@ -81,8 +82,6 @@
               be informed and tools to contact your representatives to let them
               know how you feel about the issue.
             </p>
-
-            <a href="#take-action" class="btn btn-primary btn-lg">Take Action</a>
           </div>
         </div>
         <div class="australia-map header inactive">
@@ -128,7 +127,6 @@
       <img class="r13" src="/img/eyes/eye-small-down.svg" />
       <img class="r14" src="/img/eyes/eye-large-down-l.svg" />
     </div>
-    <div class="eyecanvas"></div>
   </div>
 </section>
 <section class="introduction countries">
@@ -404,13 +402,13 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
       <div class="takeover-col">
 
       <div class="takeover-inputs">
-     
+
         <div class="form-group">
           <label for="exampleInputPassword1">Message</label>
           <p>
-I am writing to you as your constituent. In the aftermath of the Snowden revelations, I’ve become increasingly concerned about overreach by the National Security Agency and the secrecy that prevents us from getting honest answers about what our intelligence agencies are doing.  And I’m not alone:  a recent Defense Appropriation amendment that passed the House showed that there is broad, bipartisan support for NSA reform. 
+I am writing to you as your constituent. In the aftermath of the Snowden revelations, I’ve become increasingly concerned about overreach by the National Security Agency and the secrecy that prevents us from getting honest answers about what our intelligence agencies are doing.  And I’m not alone:  a recent Defense Appropriation amendment that passed the House showed that there is broad, bipartisan support for NSA reform.
 
-I urge you to take immediate action to rein in the NSA by supporting S. 2685, the new Senate version of the USA FREEDOM Act, and amendments that will strengthen the bill.  While this bill is not a comprehensive solution, it is a concrete first step towards NSA reform. 
+I urge you to take immediate action to rein in the NSA by supporting S. 2685, the new Senate version of the USA FREEDOM Act, and amendments that will strengthen the bill.  While this bill is not a comprehensive solution, it is a concrete first step towards NSA reform.
 
 
           </p>
@@ -434,7 +432,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
         </div>
         <div class="details">
             <h3><%= full_name %></h3>
-            <h4><%= party %> <% if (house == 1) print('member'); else print('senator'); %> for <%= constituency %></h4>
+            <h4><%= party %> <%= typeString %> for <%= constituency %></h4>
             <!--
             <p class="status">This legislator has not put out an official statement. Lets encourage them to not vote in favor of the new proposals.</p>
             -->
@@ -442,51 +440,52 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                 <!--<li class="view-action">
                   <div class="wrap">
     		            <i class="fa fa-eye"></i>
-    		            <div class="number-spinner legislator-views">0</div>
+    		            <span class="number-spinner legislator-views">0</span>
                   </div>
               	</li>-->
-                <% if(contact_details && contact_details.twitter !== 'null') { %>
 
-                <li class="tweets-action" data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
-                  <a href="https://twitter.com/intent/tweet?text=Dear%20%40<%= contact_details.twitter %>" target="_blank">
-
+                <!-- :TODO: hookup to email service after confirming legalities -->
+                <% if(contact_details && contact_details.contact_page && contact_details.contact_page !== 'null') { %>
+                <li class="email-action" title="Contact this <%= typeString %> directly">
                   <div class="wrap">
-                  	<i class="fa fa-abpt"></i>
-                  	<div class="number-spinner legislator-tweets">0</div>
+                    <a href="<%= contact_details.contact_page %>">
+                      <i class="fa fa-envelope-o"></i>
+                      <span class="number-spinner legislator-emails">0</span>
+                    </a>
                   </div>
-                  </a>
                 </li>
+                <% } %>
 
-                <% }; %>
-                <% if(contact_details && contact_details.facebook !== 'null') { %>
-
-                <li class="facebooks-action" data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">
+                <!-- :TODO: need script signed off by legal
+                <li class="call-action" title="Call this <%= typeString %>">
                   <div class="wrap">
-                    <a href="<%= contact_details.facebook %>" target="_blank">
-                    	<i class="fa fa-abpf"></i>
-                    	<div class="number-spinner legislator-facebooks">0</div>
+                    <i class="fa fa-phone"></i>
+                    <span class="number-spinner legislator-calls">0</span>
+                  </div>
+                </li>
+                -->
+
+                <% if(contact_details && contact_details.twitter && contact_details.twitter !== 'null') { %>
+                <li class="tweets-action" title="Tweet this <%= typeString %>">
+                  <div class="wrap">
+                    <a href="https://twitter.com/intent/tweet?text=Dear%20%40<%= contact_details.twitter %>" target="_blank">
+                    	<i class="fa fa-abpt"></i>
+                    	<span class="number-spinner legislator-tweets">0</span>
                     </a>
                   </div>
                 </li>
                 <% }; %>
-                <% if(contact_details && contact_details.email !== 'null') { %>
 
-                <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
+                <% if(contact_details && contact_details.facebook && contact_details.facebook !== 'null') { %>
+                <li class="facebooks-action" title="Post to this <%= typeString %>'s Facebook page">
                   <div class="wrap">
-                    <i class="fa fa-envelope-o"></i>
-                    <div class="number-spinner legislator-emails">0</div>
+                    <a href="<%= contact_details.facebook %>" target="_blank">
+                    	<i class="fa fa-abpf"></i>
+                    	<span class="number-spinner legislator-facebooks">0</span>
+                    </a>
                   </div>
                 </li>
-
-                <% } %>
-                <!--
-                <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
-                  <div class="wrap">
-                    <i class="fa fa-phone"></i>
-                    <div class="number-spinner legislator-calls">0</div>
-                  </div>
-                </li>
-                -->
+                <% }; %>
             </ul>
         </div>
     </div>
@@ -509,7 +508,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
     <div class="tweet tooltip <%= sizeClass %>">
       <a href="<%= retweet_link %>" target="_blank">
         <div class="tweet-overlay"></div>
-        <img class="" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %> - <%= tweet %> - <%= followers %>" data-content="<%= tweet %> - <%= followers %>" />
+        <img class="" src="<%= avatar %>" title="@<%= handle %> - <%= tweet %> - <%= followers %>" />
         <p class="tweet-text"><%= tweet %></p>
         <p class="tweet-name"><%= name %></p>
         <p class="tweet-handle">@<%= handle %></p>
@@ -548,6 +547,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script src="/assets/vendor/lodash.min.js"></script>
 <script src="/assets/vendor/TweenMax.min.js"></script>
 <script src="/assets/vendor/ScrollToPlugin.min.js"></script>
+<script src="/assets/sockets.js"></script>
 <script src="/assets/vendor/jquery.tooltipster.min.js"></script>
 <script src="/assets/vendor/packery.pkgd.min.js"></script>
 <script src="/assets/polyfills.js"></script>
@@ -561,6 +561,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script src="/assets/legislator-querying.js"></script>
 <script src="/assets/tweets.js"></script>
 <script src="/assets/takeover.js"></script>
+<script src="/assets/eyes.js"></script>
 <script src="/assets/vendor/jquery.numberSpinner/src/jquery.numberSpinner.js"></script>
 <script src="/assets/main.js"></script>
 
