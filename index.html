@@ -425,24 +425,30 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
     		            <div class="number-spinner legislator-views">0</div>
                   </div>
               	</li>-->
+                <% if (contact_details.twitter) { %>
                 <li class="tweets-action" data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
                   <div class="wrap">
                   	<i class="fa fa-abpt"></i>
                   	<div class="number-spinner legislator-tweets">0</div>
                   </div>
                 </li>
+                <% } %>
+                <% if (contact_details.facebook) { %>
                 <li class="facebooks-action" data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">
                   <div class="wrap">
                   	<i class="fa fa-abpf"></i>
                   	<div class="number-spinner legislator-facebooks">0</div>
                   </div>
                 </li>
+                <% } %>
+                <% if (contact_details.email) { %>
                 <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
                   <div class="wrap">
                     <i class="fa fa-envelope-o"></i>
                     <div class="number-spinner legislator-emails">0</div>
                   </div>
                 </li>
+                <% } %>
                 <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
                   <div class="wrap">
                     <i class="fa fa-phone"></i>
