@@ -208,7 +208,6 @@ layout: default
 
 <!-- START STATS BG WRAPPER -->
 <div class="bg-wrap">
-
 <section class="stats">
   <a id="progress"></a>
     <div class="container">
@@ -231,10 +230,12 @@ layout: default
                     <div class="title abpf">Posts</div>
                     <div class="total"><div class="facebook-total number-spinner">0</div></div>
                 </div>
+                <!--
                 <div class="metric">
                     <div class="title calls">Calls</div>
                     <div class="total"><div class="call-total number-spinner">0</div></div>
                 </div>
+                -->
                 <div class="metric">
                     <div class="title emails">Emails</div>
                     <div class="total"><div class="email-total number-spinner">0</div></div>
@@ -246,7 +247,6 @@ layout: default
         </div>
     </div>
 </section>
-
 <section class="support">
   <a id="supporters"></a>
     <div class="container">
@@ -310,7 +310,7 @@ layout: default
         </div>
     </div>
 </section>
-
+<!--
 <section class="reading">
     <div class="container">
         <div class="col">
@@ -325,7 +325,7 @@ layout: default
         </div>
     </div>
 </section>
-
+-->
 <!-- ################################################################ MODALS ########################################################### -->
 <!-- ################################################################################################################################### -->
 
@@ -426,11 +426,8 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
     		            <div class="number-spinner legislator-views">0</div>
                   </div>
               	</li>-->
-<<<<<<< HEAD
                 <% if(contact_details && contact_details.twitter !== 'null') { %>
-=======
-                <% if (contact_details.twitter) { %>
->>>>>>> 237979b3309a6daa8e3681fe3f97cfe462db9b73
+
                 <li class="tweets-action" data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
                   <a href="https://twitter.com/intent/tweet?text=Dear%20%40<%= contact_details.twitter %>" target="_blank">
 
@@ -440,14 +437,10 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                   </div>
                   </a>
                 </li>
-<<<<<<< HEAD
                 
                 <% }; %>
                 <% if(contact_details && contact_details.facebook !== 'null') { %>
-=======
-                <% } %>
-                <% if (contact_details.facebook) { %>
->>>>>>> 237979b3309a6daa8e3681fe3f97cfe462db9b73
+
                 <li class="facebooks-action" data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">
                   <div class="wrap">
                     <a href="<%= contact_details.facebook %>" target="_blank">
@@ -456,30 +449,25 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                     </a>
                   </div>
                 </li>
-<<<<<<< HEAD
                 <% }; %>
                 <% if(contact_details && contact_details.email !== 'null') { %>
-=======
-                <% } %>
-                <% if (contact_details.email) { %>
->>>>>>> 237979b3309a6daa8e3681fe3f97cfe462db9b73
+
                 <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
                   <div class="wrap">
                     <i class="fa fa-envelope-o"></i>
                     <div class="number-spinner legislator-emails">0</div>
                   </div>
                 </li>
-<<<<<<< HEAD
-                <% }; %>
-=======
+
                 <% } %>
->>>>>>> 237979b3309a6daa8e3681fe3f97cfe462db9b73
+                <!--
                 <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
                   <div class="wrap">
                     <i class="fa fa-phone"></i>
                     <div class="number-spinner legislator-calls">0</div>
                   </div>
                 </li>
+                -->
             </ul>
         </div>
     </div>
