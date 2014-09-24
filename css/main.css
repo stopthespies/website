@@ -2314,6 +2314,8 @@ section.how.results {
     margin: 2em; }
     .legislator .contact li {
       cursor: pointer; }
+    .legislator .contact a {
+      color: #5f5a66; }
     .legislator .contact .wrap {
       border: 1px solid #e4e4e4;
       border-right: 0;

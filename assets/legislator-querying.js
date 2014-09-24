@@ -87,14 +87,16 @@ var legislatorTemplate = $('#legislator-template').html();
 var retryTemplate = $('#legislator-retry-template').html();
 
 function renderLegislators(reps) {
+
   var container = $('.legislators').empty(), idx = 0;
 
   legislators = reps;
 
   // build DOM
   _.each(legislators, function (legislator) {
-    legislator.counter = ++idx;
-  	legislator.image || (legislator.image = '');	// avoid template errors with missing data :TODO: fallback image
+  	legislator.image || (legislator.image = '/images/mpsL/' + legislator.member_id + '.jpg');	// avoid template errors with missing data :TODO: fallback image
+    legislator.contact_details && legislator.contact_details.twitter && legislator.contact_details.twitter.replace('http://twitter.com/', '');
+
     container.append(_.template(legislatorTemplate, legislator));
   });
 
