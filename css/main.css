@@ -1960,11 +1960,13 @@ a {
 .eyemarks img {
   position: absolute; }
 
-.cta .container, .introduction .container {
-  position: relative; }
-.cta .col, .introduction .col {
-  position: relative;
-  z-index: 1; }
+.cta, .introduction {
+  overflow: hidden; }
+  .cta .container, .introduction .container {
+    position: relative; }
+  .cta .col, .introduction .col {
+    position: relative;
+    z-index: 1; }
 
 .actions {
   padding: 1.25em 1.25em 0 1.25em;
@@ -1992,6 +1994,10 @@ a {
   min-height: 13.125em;
   border-radius: 8px;
   overflow: hidden; }
+
+img.you-can-stop {
+  width: 90%;
+  max-width: 887px; }
 
 .who h1, .who h2 {
   margin: 0;
@@ -2235,35 +2241,35 @@ section.how.search {
 section.how.results {
   padding-top: 0; }
 
-.how {
+.how, .extra {
   color: #5f5a66;
   background: #e7e7e7;
   text-align: center; }
-  .how h2, .how h3 {
+  .how h2, .how h3, .extra h2, .extra h3 {
     text-transform: uppercase;
     color: #f1592a; }
-  .how h2 {
+  .how h2, .extra h2 {
     font-size: 0.875em;
     margin-top: 0.9375em; }
-  .how h3 {
+  .how h3, .extra h3 {
     font-size: 1.5em; }
-  .how .location-error {
+  .how .location-error, .extra .location-error {
     display: none; }
 
-.postcode-steps {
+.postcode-steps, .extra-steps {
   overflow: hidden; }
-  .postcode-steps p {
+  .postcode-steps p, .extra-steps p {
     margin: 1em 10%;
     text-align: center; }
-  .postcode-steps h4 {
+  .postcode-steps h4, .extra-steps h4 {
     font-family: 'League Gothic', sans-serif;
     font-weight: normal;
     font-size: 2em; }
-  .postcode-steps .actions .fa {
+  .postcode-steps .actions .fa, .extra-steps .actions .fa {
     position: relative;
     font-size: 2.5em;
     color: #f1592a; }
-  .postcode-steps .input-group {
+  .postcode-steps .input-group, .extra-steps .input-group {
     margin-top: 3.5em; }
 
 .legislators {
@@ -2457,12 +2463,9 @@ section.how.results {
     clear: both; }
 
 .extra {
-  background: #f1592a;
-  color: #f1592a; }
-
-.extra .intro {
-  margin-bottom: 20px;
-  text-align: justify; }
+  background: #e7e7e7;
+  color: #5f5a66;
+  padding-top: 80px; }
 
 .sharing-buttons .share {
   display: block;
@@ -2518,10 +2521,11 @@ section.how.results {
 
 .footer {
   line-height: 15px;
-  padding: 20px 0;
+  padding: 60px 0;
   font-size: 14px;
-  background: #424242; }
-  .footer, .footer a {
+  background: #424242;
+  color: #c7c7c7; }
+  .footer a {
     color: #f1592a; }
 
 .takeover-header {
@@ -2852,42 +2856,42 @@ section.how.results {
     .stats .campaign-map {
       width: 80%; } }
 
-.how .step h4 {
+.how .step h4, .extra .step h4 {
   padding: 0.5em 1em; }
-.how .postcode-steps, .how .location-privacy, .how .postcode-lookup {
+.how .postcode-steps, .how .location-privacy, .how .postcode-lookup, .extra .postcode-steps, .extra .location-privacy, .extra .postcode-lookup {
   display: block;
   width: 102.77778%;
   margin-left: -1.38889%;
   margin-right: -1.38889%;
   *zoom: 1; }
-  .how .postcode-steps:before, .how .postcode-steps:after, .how .location-privacy:before, .how .location-privacy:after, .how .postcode-lookup:before, .how .postcode-lookup:after {
+  .how .postcode-steps:before, .how .postcode-steps:after, .how .location-privacy:before, .how .location-privacy:after, .how .postcode-lookup:before, .how .postcode-lookup:after, .extra .postcode-steps:before, .extra .postcode-steps:after, .extra .location-privacy:before, .extra .location-privacy:after, .extra .postcode-lookup:before, .extra .postcode-lookup:after {
     content: "";
     display: table; }
-  .how .postcode-steps:after, .how .location-privacy:after, .how .postcode-lookup:after {
+  .how .postcode-steps:after, .how .location-privacy:after, .how .postcode-lookup:after, .extra .postcode-steps:after, .extra .location-privacy:after, .extra .postcode-lookup:after {
     clear: both; }
-.how .location-privacy p {
+.how .location-privacy p, .extra .location-privacy p {
   display: inline;
   float: left;
   width: 97.22222%;
   margin-left: 1.38889%;
   margin-right: 1.38889%; }
-.how .input-group {
+.how .input-group, .extra .input-group {
   display: inline;
   float: left;
   width: 80.55556%;
   margin-left: 1.38889%;
   margin-right: 1.38889%;
   margin-left: 9.72222%; }
-  .how .input-group .form-control {
+  .how .input-group .form-control, .extra .input-group .form-control {
     display: block;
     float: left;
     width: 60%;
     height: auto; }
-  .how .input-group .input-group-btn {
+  .how .input-group .input-group-btn, .extra .input-group .input-group-btn {
     display: block;
     width: 40%; }
   @media (min-width: 780px) {
-    .how .input-group {
+    .how .input-group, .extra .input-group {
       display: inline;
       float: left;
       width: 63.88889%;
@@ -2895,7 +2899,7 @@ section.how.results {
       margin-right: 1.38889%;
       margin-left: 18.05556%; } }
 @media (min-width: 760px) {
-  .how .col {
+  .how .col, .extra .col {
     display: inline;
     float: left;
     width: 80.55556%;
@@ -2904,15 +2908,15 @@ section.how.results {
     margin-left: 9.72222%;
     margin-bottom: 1.875em; } }
 @media (min-width: 530px) {
-  .how .step-2 {
+  .how .step-2, .extra .step-2 {
     float: right; }
-  .how .step-1 {
+  .how .step-1, .extra .step-1 {
     float: left; } }
 @media (max-width: 529px) {
-  .how .no-location .step-2 {
+  .how .no-location .step-2, .extra .no-location .step-2 {
     background: transparent;
     min-height: 0; }
-    .how .no-location .step-2 p {
+    .how .no-location .step-2 p, .extra .no-location .step-2 p {
       color: #fbf7e4;
       margin-top: 0; } }
 
@@ -2976,7 +2980,29 @@ section.how.results {
   float: left;
   width: 47.22222%;
   margin-left: 1.38889%;
-  margin-right: 1.38889%; }
+  margin-right: 1.38889%;
+  margin-right: auto;
+  margin-left: 21%;
+  margin-bottom: 10px;
+  border-radius: 10px; }
+.extra .btn.btn-primary {
+  display: inline;
+  float: left;
+  width: 47.22222%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%;
+  font-size: 20px;
+  margin-right: auto;
+  margin-left: 21%;
+  margin-bottom: 10px;
+  border-radius: 10px; }
+.extra .actions {
+  padding-top: 0.75em; }
+.extra h3 {
+  text-transform: none;
+  color: #2B1E3E;
+  margin-bottom: 40px;
+  font-size: 1.8em; }
 
 section.map {
   padding: 0; }
@@ -3004,7 +3030,8 @@ section {
     section {
       padding: 5em 0; } }
   section.who {
-    padding: 3.75em 0; }
+    padding: 3.75em 0;
+    overflow: hidden; }
     @media (min-height: 801px) {
       section.who {
         padding: 10em 0; } }

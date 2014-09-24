@@ -134,6 +134,11 @@ function renderLegislators(reps) {
 
     // log event to the server
     io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds}, function(d) {
+      if (d.message) {
+        console.log('Logged legislator views');
+      } else {
+        console.log('Error logging legislator views');
+      }
     });
   });
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);

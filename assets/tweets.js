@@ -16,6 +16,7 @@
 
   function onTweetsLoaded(tweetdata)
   {
+    console.log('tweets:', tweetdata);
     _.each(tweetdata.latest, function(tweets, type) {
       if(type === 'celebrities') {
         tweets = tweets.slice(0,40);
