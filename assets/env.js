@@ -13,7 +13,9 @@ var STS = {
     STATS_READ_URL          : 'http://stopthespies-api.herokuapp.com:80/stats',
 
     SEND_EMAIL_URL          : 'http://stopthespies-api.herokuapp.com:80/email',
-    LOG_URL_BASE            : 'http://stopthespies-api.herokuapp.com:80/log'
+    LOG_URL_BASE            : 'http://stopthespies-api.herokuapp.com:80/log',
+
+    USER_PROGRESS_COOKIE_LIFETIME : 28 * 24 * 3600 // ~1 month
   },
   events: {}
 };

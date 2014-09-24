@@ -79,9 +79,9 @@
     // read current attributes if we're not doing anything yet
     if (!currentAttrs) {
       currentAttrs = [
-        'stroke-width', 'stroke', 'fill', 'fill-opacity',
+        ['stroke-width', 'strokeWidth'], ['stroke', 'stroke'], ['stroke-opacity', 'strokeOpacity'], ['fill', 'fill'], ['fill-opacity', 'fillOpacity']
       ].reduce(function(attrs, at) {
-        attrs[at] = $paths.attr(at);
+        attrs[at[1]] = $paths.attr(at[0]);
         return attrs;
       }, {});
     }
@@ -89,10 +89,11 @@
     var newTimeline = new TLM({ onComplete: completedCB || function() {} });
 
     newTimeline.to($paths, 0.1, {
-      'stroke-width': '5px',
+      'strokeWidth': '5px',
       'stroke': color,
       'fill': color,
-      'fill-opacity': 0.2 + (0.8 * intensity),
+      'fillOpacity': 0.2 + (0.8 * intensity),
+      'strokeOpacity': 0.2 + (0.8 * intensity),
       ease: Power1.easeOut
     }).to($paths, 0.5, currentAttrs);
 
@@ -105,7 +106,7 @@
   STS.anim = {
     appearVSlide : appearVSlide,
     hideVSlide : hideVSlide,
-    scrollTo : scrollToEl,
+    scrollToEl : scrollToEl,
 
     map : {
       enter : mapEnter,

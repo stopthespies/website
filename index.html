@@ -86,13 +86,30 @@
               know how you feel about the issue.
             </p>
 
+            <a href="#take-action" class="btn btn-primary">Take Action</a>
           </div>
         </div>
         <div class="campaign-map header inactive"></div>
     </div>
 </section>
 
+<section class="menu">
+  <div class="container">
+    <div class="col">
+      <div class="menuimg"><img src="/img/stsmenu.svg" /></div>
+      <ul>
+        <li><a href="#video">What it's about</a></li>
+        <li><a href="#take-action">My representatives</a></li>
+        <li><a href="#progress">Progress</a></li>
+        <li><a href="#supporters">#stopthespies</a></li>
+        <li><a href="#further-reading">What else can I do?</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="video">
+  <a id="video"></a>
     <div class="container">
         <div class="video-container">Video<br />Placeholder<br /><i class="fa fa-play-circle-o"></i></div>
     </div>
@@ -115,6 +132,13 @@
     </div>
     <div class="col">
     </div>
+    <div class="eyemarks">
+      <img class="r11" src="/img/eyes/eye-small-down.svg" />
+      <img class="r12" src="/img/eyes/eye-large-down-l.svg" />
+      <img class="r13" src="/img/eyes/eye-small-down.svg" />
+      <img class="r14" src="/img/eyes/eye-large-down-l.svg" />
+    </div>
+    <div class="eyecanvas"></div>
   </div>
 </section>
 <section class="introduction countries">
@@ -173,10 +197,29 @@
     <div class="col">
       <h2>You can stop the spies</h2>
     </div>
+    <div class="eyemarks">
+      <img class="r11" src="/img/eyes/eye-small-down.svg" />
+      <img class="r12" src="/img/eyes/eye-small-down.svg" />
+      <img class="r13" src="/img/eyes/eye-large-down-r.svg" />
+      <img class="r14" src="/img/eyes/eye-small-down.svg" />
+      <img class="r15" src="/img/eyes/eye-large-down-l.svg" />
+
+      <img class="r21" src="/img/eyes/eye-small-down.svg" />
+      <!-- title shows here -->
+      <img class="r22" src="/img/eyes/eye-large-up-l.png" />
+
+      <img class="r31" src="/img/eyes/eye-small-up.png" />
+      <img class="r32" src="/img/eyes/eye-large-up-r.png" />
+      <img class="r33" src="/img/eyes/eye-small-up.png" />
+      <img class="r34" src="/img/eyes/eye-small-up.png" />
+      <img class="r35" src="/img/eyes/eye-large-up-l.png" />
+    </div>
+    <div class="eyecanvas"></div>
   </div>
 </section>
 
 <section class="how search">
+  <a id="take-action"></a>
     <div class="container">
         <div class="col">
             <img src="/img/stslogo-o.svg" />
@@ -240,6 +283,7 @@
 <div class="bg-wrap">
 
 <section class="stats">
+  <a id="progress"></a>
     <div class="container">
         <div class="col">
       			<!-- TRIGGER --><a id="load-stats"></a><!-- /TRIGGER -->
@@ -257,7 +301,7 @@
                     <div class="total"><div class="twitter-total number-spinner">0</div></div>
                 </div>
                 <div class="metric">
-                    <div class="title abpf">Shares</div>
+                    <div class="title abpf">Posts</div>
                     <div class="total"><div class="facebook-total number-spinner">0</div></div>
                 </div>
                 <div class="metric">
@@ -277,6 +321,7 @@
 </section>
 
 <section class="support">
+  <a id="supporters"></a>
     <div class="container">
         <div class="col">
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
@@ -297,6 +342,7 @@
 </div>
 
 <section class="extra">
+  <a id="further-reading"></a>
     <div class="container">
         <div class="col">
             <h2>What else can I do?</h2>
@@ -446,24 +492,30 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
     		            <div class="number-spinner legislator-views">0</div>
                   </div>
               	</li>-->
+                <% if (contact_details.twitter) { %>
                 <li class="tweets-action" data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
                   <div class="wrap">
                   	<i class="fa fa-abpt"></i>
                   	<div class="number-spinner legislator-tweets">0</div>
                   </div>
                 </li>
+                <% } %>
+                <% if (contact_details.facebook) { %>
                 <li class="facebooks-action" data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">
                   <div class="wrap">
                   	<i class="fa fa-abpf"></i>
                   	<div class="number-spinner legislator-facebooks">0</div>
                   </div>
                 </li>
+                <% } %>
+                <% if (contact_details.email) { %>
                 <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
                   <div class="wrap">
                     <i class="fa fa-envelope-o"></i>
                     <div class="number-spinner legislator-emails">0</div>
                   </div>
                 </li>
+                <% } %>
                 <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
                   <div class="wrap">
                     <i class="fa fa-phone"></i>
@@ -481,7 +533,7 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
 
 	<div class="retry-legislators">
 		<p>Not your representatives?</p>
-		<p class="postcode"><a href="#">Search again</a></p>
+		<p class="postcode"><a href="#take-action">Search again</a></p>
 	</div>
 
 </script>
@@ -501,7 +553,7 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
 </script>
 
 <div class="takeover overlay overlay-scale">
-  <button type="button" class="overlay-close">Close</button>
+  <button type="button" class="overlay-close"><i class="fa fa-ui-close"></i></button>
   <div class="takeover-container"></div>
 </div>
 
@@ -547,6 +599,7 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
 </script>
 <script src="/assets/polyfills.js"></script>
 <script src="/assets/helpers.js"></script>
+<script src="/assets/cookies.js"></script>
 <script src="/assets/env.js"></script>
 <script src="/assets/animations.js"></script>
 <script src="/assets/event-handler.js"></script>
