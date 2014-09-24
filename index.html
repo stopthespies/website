@@ -386,11 +386,15 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
               	</li>-->
                 <% if(contact_details && contact_details.twitter !== 'null') { %>
                 <li class="tweets-action" data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
+                  <a href="https://twitter.com/intent/tweet?text=Dear%20%40<%= contact_details.twitter %>" target="_blank">
+
                   <div class="wrap">
                   	<i class="fa fa-abpt"></i>
                   	<div class="number-spinner legislator-tweets">0</div>
                   </div>
+                  </a>
                 </li>
+                
                 <% }; %>
                 <% if(contact_details && contact_details.facebook !== 'null') { %>
                 <li class="facebooks-action" data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">

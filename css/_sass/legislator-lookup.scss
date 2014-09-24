@@ -113,7 +113,9 @@ section.how.results {
     li {
       cursor: pointer;
     }
-
+    a {
+      color: #5f5a66;
+    }
     .wrap {
       border: 1px solid $member-card-button-borders;
       border-right: 0;
