@@ -1,3 +1,13 @@
+//= require vendor/bootstrap
+//= require vendor/tweenmax
+//= require vendor/scrollto
+//= require vendor/leaflet
+//= require vendor/socketio
+//= require vendor/jquery.tooltipster
+//= require vendor/masonry.pkgd
+//= require vendor/isotope.pkgd
+//= require vendor/packery.pkgd
+
 //= require polyfills
 //= require helpers
 //= require cookies
@@ -55,13 +65,7 @@ $(function() {
     takeover(takeoverContent);
 
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'calls', legislators: legislatorId}, function(d) {
-      if (d.message) {
-        console.log('Logged legislator call');
-      } else {
-        console.log('Error logging legislator call');
-      }
-    });
+    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'calls', legislators: legislatorId}, function(d) {});
 
   });
 
@@ -78,37 +82,19 @@ $(function() {
 
 
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'emails', legislators: legislatorId}, function(d) {
-      if (d.message) {
-        console.log('Logged legislator email');
-      } else {
-        console.log('Error logging legislator email');
-      }
-    });
+    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'emails', legislators: legislatorId}, function(d) {});
 
   });
 
   $('body').on('click', '.contact .tweets-action', function (e) {
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'tweets', legislators: legislatorId}, function(d) {
-      if (d.message) {
-        console.log('Logged legislator tweet');
-      } else {
-        console.log('Error logging legislator tweet');
-      }
-    });
+    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'tweets', legislators: legislatorId}, function(d) {});
 
   });
 
   $('body').on('click', '.contact .facebooks-action', function (e) {
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'facebooks', legislators: legislatorId}, function(d) {
-      if (d.message) {
-        console.log('Logged legislator facebook');
-      } else {
-        console.log('Error logging legislator facebook');
-      }
-    });
+    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'facebooks', legislators: legislatorId}, function(d) {});
 
   });
 
@@ -233,13 +219,7 @@ $(function() {
 
   // LOG INITIAL VIEW
 
-  io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'views'}, function(d) {
-    if (d.message) {
-      console.log('Logged pageview');
-    } else {
-      console.log('Error logging pageview');
-    }
-  });
+  io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'views'}, function(d) {});
 
   // -------------------------------- EXPORTS ----------------------------------
 

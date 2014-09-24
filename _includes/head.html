@@ -31,10 +31,10 @@
 	{% if site.facebook_admin_userid %}<meta property="fb:admins" content="{{ facebook_admin_userid }}" />{% endif %}
 
     <!-- Custom CSS -->
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,400italic|Droid+Sans+Mono' rel='stylesheet' type='text/css' />
-    <link href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type='text/css' />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.0.5/css/tooltipster.min.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,700,400italic|Droid+Sans+Mono" rel="stylesheet"/>
+    <link href="{{ "/css/leaflet.css" | prepend: site.baseurl }}" rel="stylesheet" />
+    <link href="{{ "/css/tooltipster.css" | prepend: site.baseurl }}" rel="stylesheet" />
+    <script type="text/javascript" src="{{ "/assets/vendor/modernizr.min.js" | prepend: site.baseurl }}"></script>
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 
 </head>
