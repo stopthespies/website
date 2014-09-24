@@ -85,6 +85,8 @@ a {
 }
 
 .eyemarks {
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   img {
     position: absolute;
   }
