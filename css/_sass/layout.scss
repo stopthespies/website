@@ -291,6 +291,7 @@ section {
 
   &.who {
     padding: emsize(60px) 0;
+    overflow:hidden;
     @media (min-height: 801px) {
       padding: emsize(160px) 0;
     }
