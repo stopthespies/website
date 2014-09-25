@@ -28,7 +28,7 @@
 
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
 
-(function($, io) {
+(function($, io, opts) {
 
 var
   LEGISLATORS_LOCATOR_URL = STS.options.LEGISLATORS_LOCATOR_URL,
@@ -79,17 +79,29 @@ $(function() {
 */
 
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'emails', legislators: legislatorId}, function(d) {});
+
+    if (!Cookie.has('emailed-' + legislatorId)) {
+      io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'emails', legislators: legislatorId}, function(d) {});
+      Cookie.set('emailed-' + legislatorId, 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+    }
   });
 
   $('body').on('click', '.contact .tweets-action', function (e) {
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'tweets', legislators: legislatorId}, function(d) {});
+
+    if (!Cookie.has('tweeted-' + legislatorId)) {
+      io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'tweets', legislators: legislatorId}, function(d) {});
+      Cookie.set('tweeted-' + legislatorId, 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+    }
   });
 
   $('body').on('click', '.contact .facebooks-action', function (e) {
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
-    io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'facebooks', legislators: legislatorId}, function(d) {});
+
+    if (!Cookie.has('facebooked-' + legislatorId)) {
+      io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'facebooks', legislators: legislatorId}, function(d) {});
+      Cookie.set('facebooked-' + legislatorId, 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+    }
   });
 
   // ----------------- SMOOTH SCROLL ----------------------------
@@ -219,4 +231,19 @@ $(function() {
 
 });
 
-})(jQuery, STS.app);
+// window resize
+
+$(window).on('resize', debounce(function(e) {
+  var $this, val, opts;
+
+  // redraw spinners
+  $('.number-spinner').each(function() {
+    $this = $(this);
+    val = $this.numberSpinner('get');
+    opts = $this.numberSpinner('options');
+    $this.numberSpinner('destroy');
+    $this.numberSpinner(opts).numberSpinner('set', val);
+  });
+}));
+
+})(jQuery, STS.app, STS.options);

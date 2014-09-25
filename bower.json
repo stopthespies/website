@@ -16,7 +16,6 @@
     "tests"
   ],
   "dependencies": {
-  	"jquery.numberSpinner" : "moles1/jquery.numberSpinner#6fcb9d8f89101b335a4851dbf4daf5d68523fc57",
   	"semantic.gs" : "pospi/semantic.gs"
   },
   "devDependencies": {

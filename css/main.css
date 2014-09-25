@@ -2284,7 +2284,7 @@ section.how.results {
   text-align: center; }
   .twitter-support .number-spinner {
     position: relative;
-    top: 0.14em; }
+    top: 0.17em; }
 
 .tweet.bigger {
   width: 400px;
@@ -2483,13 +2483,13 @@ section.how.results {
     .sharbx span.share:last-child {
       border-bottom-left-radius: 3px; }
   .sharbx .number-spinner {
-    font-size: 1.5em;
+    font-size: 12px;
     margin: 0;
     position: relative;
     display: block;
     top: -0.4em;
     left: -1em;
-    height: 1.1em;
+    height: 1em;
     opacity: 1;
     color: white; }
   .sharbx .share {
@@ -2526,13 +2526,28 @@ section.how.results {
   .sharbx {
     font-size: 0.7em; }
     .sharbx .number-spinner {
+      font-size: 16px;
       top: 0.3em;
       left: 0; }
     .sharbx span.share:hover .text {
       visibility: visible; } }
 @media (min-width: 1025px) {
   .sharbx {
-    font-size: 1em; } }
+    font-size: 1em; }
+    .sharbx .number-spinner {
+      font-size: 22px; } }
+@media (min-width: 1400px) {
+  .sharbx {
+    right: 0; }
+    .sharbx .text {
+      visibility: visible; }
+    .sharbx span.share:hover {
+      left: 0;
+      border-radius: 0; }
+      .sharbx span.share:hover:first-child {
+        border-top-left-radius: 3px; }
+      .sharbx span.share:hover:last-child {
+        border-bottom-left-radius: 3px; } }
 .extra .step-1 {
   color: white; }
 .extra .share {
