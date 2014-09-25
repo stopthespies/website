@@ -25,6 +25,10 @@ section.how.results {
 
   .location-error {
     display: none;
+    font-style: italic;
+  }
+  .location-error, .location-search {
+    @include emfz(14px);
   }
 }
 

@@ -140,6 +140,18 @@
 			padding: 0.5em 1em;
 		}
 	}
+
+  @media (min-width: $set-steps-2-cols) {
+    .step-2 { // swap rows on desktop
+      float: right;
+    }
+    .step-1 {
+      float: left;
+    }
+  }
+}
+
+.how {
 	.postcode-steps, .location-privacy, .postcode-lookup {
 		@include row();
 	}
@@ -177,23 +189,18 @@
     }
   }
 
-	@media (min-width: $set-steps-2-cols) {
-		.step-2 {	// swap rows on desktop
-			float: right;
+  @media (min-width: $set-steps-2-cols) {
+    .location-error {
+      p {
+        margin-top: 6.5em;
+      }
     }
-    .step-1 {
-      float: left;
-		}
-	}
+  }
 
   @media (max-width: ($set-steps-2-cols - 1)) {
     .no-location .step-2 {
       background: transparent;
       min-height: 0;
-      p {
-        color: $brand3;
-        margin-top: 0;
-      }
     }
   }
 }
