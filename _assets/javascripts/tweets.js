@@ -51,6 +51,7 @@
       itemSelector: '.tweet',
       stamp: '.stamp'
     }).on('layoutComplete', recenterTweetGrid);
+    recenterTweetGrid();
   }
 
   //----------------------------------------------------------------------------
