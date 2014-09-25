@@ -16,6 +16,9 @@
  * @since    2014-08-24
  */
 
+
+window.io || (io = {});
+
 (function($, io) {
 
   var __CONNECTED__ = false,
@@ -31,11 +34,6 @@
       return;
     }
 
-    if (!__CONNECTED__) {
-      console.log('Took too long to connect, use AJAX');
-    }
-    console.log('Running ' + PRE_LOAD_CALLS.length + ' precached requests...');
-
     for (var i = 0, l = PRE_LOAD_CALLS.length; i < l; ++i) {
       STS.app.api.apply(PRE_LOAD_CALLS[i][0], PRE_LOAD_CALLS[i][1]);
     }
@@ -45,55 +43,47 @@
 
   if (STS.options.ENABLE_REALTIME) {
     io = io.connect(STS.options.API_BASE_URL);
+
+    io.on('connect', function() {
+      __CONNECTED__ = true;
+      runBufferedRequests();
+    });
+
+    io.on('disconnect', function() {
+      __CONNECTED__ = false;
+    });
+
+    //----------------------------------------------------------------------------
+
+    io.on('stats:update', function(stats) {
+      STS.events.onStatsLoad(stats);
+    });
+
+    io.on('l:views', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'views');
+      notifyLegislatorMap(reps, 'views');
+    });
+
+    io.on('l:calls', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'calls');
+      notifyLegislatorMap(reps, 'calls');
+    });
+
+    io.on('l:emails', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'emails');
+      notifyLegislatorMap(reps, 'emails');
+    });
+
+    io.on('l:tweets', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'tweets');
+      notifyLegislatorMap(reps, 'tweets');
+    });
+
+    io.on('l:facebooks', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'facebooks');
+      notifyLegislatorMap(reps, 'facebooks');
+    });
   }
-
-  io.on('connect', function() {
-    console.log('Socket connection established, took ' + (new Date() - START) + 'ms.');
-    __CONNECTED__ = true;
-    runBufferedRequests();
-  });
-
-  io.on('disconnect', function() {
-    console.error('Socket connection terminated!');
-    __CONNECTED__ = false;
-  });
-
-  //----------------------------------------------------------------------------
-
-  io.on('stats:update', function(stats) {
-    console.log('Global stats updated');
-    STS.events.onStatsLoad(stats);
-  });
-
-  io.on('l:views', function(reps) {
-    console.log('Legislators viewed', reps);
-    STS.events.onLegislatorStatsIncrement(reps, 'views');
-    notifyLegislatorMap(reps, 'views');
-  });
-
-  io.on('l:calls', function(reps) {
-    console.log('Legislators called', reps);
-    STS.events.onLegislatorStatsIncrement(reps, 'calls');
-    notifyLegislatorMap(reps, 'calls');
-  });
-
-  io.on('l:emails', function(reps) {
-    console.log('Legislators emailed', reps);
-    STS.events.onLegislatorStatsIncrement(reps, 'emails');
-    notifyLegislatorMap(reps, 'emails');
-  });
-
-  io.on('l:tweets', function(reps) {
-    console.log('Legislators tweeted', reps);
-    STS.events.onLegislatorStatsIncrement(reps, 'tweets');
-    notifyLegislatorMap(reps, 'tweets');
-  });
-
-  io.on('l:facebooks', function(reps) {
-    console.log('Legislators facebooked', reps);
-    STS.events.onLegislatorStatsIncrement(reps, 'facebooks');
-    notifyLegislatorMap(reps, 'facebooks');
-  });
 
   //----------------------------------------------------------------------------
   // reusable event handlers
@@ -142,7 +132,6 @@ window._testMapPing = notifyLegislatorMap;
     }
 
     if (__CONNECTED__ && ioEvent) {
-      console.log('Socket request for ' + ioEvent + '...');
       io.emit(ioEvent, data, onComplete);
     } else if (ajaxUrl) {
       var method = "GET";
@@ -150,8 +139,6 @@ window._testMapPing = notifyLegislatorMap;
         method = ajaxUrl.method;
         ajaxUrl = ajaxUrl.url;
       }
-
-      console.log(method + ' request for ' + ajaxUrl + '...');
 
       $.ajax(ajaxUrl, {
         method: method,

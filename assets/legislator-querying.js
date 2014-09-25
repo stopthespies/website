@@ -102,12 +102,7 @@ function renderLegislators(reps) {
 
   container.append(_.template(retryTemplate, {}));
 
-  // bind tooltips
-  $('.contact li').popover({
-    trigger: 'hover',
-    container: 'body',
-    placement: 'top'
-  });
+  // :TODO: bind tooltips
 
   // bind postcode search retry
   $('.retry-legislators .postcode').on('click', function(e) {
@@ -133,13 +128,7 @@ function renderLegislators(reps) {
     });
 
     // log event to the server
-    io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds}, function(d) {
-      if (d.message) {
-        console.log('Logged legislator views');
-      } else {
-        console.log('Error logging legislator views');
-      }
-    });
+    io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds}, function(d) {});
   });
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 };

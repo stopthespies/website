@@ -1,7 +1,7 @@
 // Main application IoC container
 var STS = {
   options: {
-    ENABLE_REALTIME         : 1,
+    ENABLE_REALTIME         : 0,
     SOCKET_CONNECT_TIMEOUT  : 500,
 
     LEGISLATORS_LOCATOR_URL : 'http://legislators-locator.herokuapp.com/',

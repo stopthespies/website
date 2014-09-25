@@ -16,7 +16,6 @@
 
   function onTweetsLoaded(tweetdata)
   {
-    console.log('tweets:', tweetdata);
     _.each(tweetdata.latest, function(tweets, type) {
       if(type === 'celebrities') {
         tweets = tweets.slice(0,40);
@@ -48,8 +47,7 @@
       columnWidth: 200,
       itemSelector: '.tweet'
     });*/
-    $('#tweet-board').isotope({
-    layoutMode: 'packery',
+    $('#tweet-board').packery({
     itemSelector: '.tweet',
     stamp: '.stamp'
     });
