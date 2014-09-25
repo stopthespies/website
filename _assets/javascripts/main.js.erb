@@ -219,4 +219,19 @@ $(function() {
 
 });
 
+// window resize
+
+$(window).on('resize', debounce(function(e) {
+  var $this, val, opts;
+
+  // redraw spinners
+  $('.number-spinner').each(function() {
+    $this = $(this);
+    val = $this.numberSpinner('get');
+    opts = $this.numberSpinner('options');
+    $this.numberSpinner('destroy');
+    $this.numberSpinner(opts).numberSpinner('set', val);
+  });
+}));
+
 })(jQuery, STS.app);
