@@ -20,13 +20,13 @@ realtime_connection_timeout: 500    # ms to wait before giving up on socket conn
 #------------------------------------------------------------------------------#
 # API urls and endpoints
 
-api_url: http://stopthespies-api.herokuapp.com:80
+api_url: https://api.stopthespies.org:80
 tweets_read_path: /tweets
 stats_read_path: /stats
 send_email_path: /email
 log_path: /log
 
-legislators_locator_url : http://legislators-locator.herokuapp.com/
+legislators_locator_url : https://legislators.stopthespies.org
 social_stats_url    : 'https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net'
 
 #------------------------------------------------------------------------------#
