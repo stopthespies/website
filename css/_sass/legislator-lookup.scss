@@ -160,7 +160,16 @@ section.how.results {
     }
 
     li {
-      &:hover { margin: -4px -4px -2px -2px; top: 2px; z-index: 1; }
+      &:hover {
+        margin: -4px -4px -2px -2px;
+        top: 2px;
+        z-index: 1;
+
+        .wrap {
+          left: -1px;
+          top: -1px;
+        }
+      }
       &.email-action:hover { border: 4px solid $statOrange; }
       &.call-action:hover { border: 4px solid $statGreenD; }
       &.facebooks-action:hover { border: 4px solid $statBlue; }
