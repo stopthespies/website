@@ -191,3 +191,14 @@ section.how.results {
   font-size: emsize(13px);
   font-style: italic;
 }
+
+
+.legislator-search-states {
+  font-size: emsize(14px);
+  font-style: italic;
+
+  .state {
+    height: 0;
+    overflow: hidden;
+  }
+}
