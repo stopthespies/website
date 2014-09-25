@@ -125,8 +125,7 @@
 }
 #tweet-board {
   position: relative;
-  width: 110%;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   @include clearfix();
 }
