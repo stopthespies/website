@@ -180,7 +180,14 @@ $(function() {
 
   $.ajax(SOCIAL_STATS_URL, {
       success: function(res, err) {
+        // assign social stats for stats section (deferred until animated in)
         socialStats = res;
+
+        // apply to share panels immediately
+        var shares = $('.share');
+        $('.facebook-total', shares).numberSpinner('set', socialStats.facebook || 0);
+        $('.google-total', shares).numberSpinner('set', socialStats.googleplus || 0);
+        $('.twitter-total', shares).numberSpinner('set', socialStats.twitter || 0);
       },
       dataType: 'jsonp',
       cache         : true,
