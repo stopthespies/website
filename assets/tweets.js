@@ -23,6 +23,7 @@
         var i = 0;
         _.each(tweets, function(tweet) {
           tweet.avatar = tweet.avatar.replace('_normal', '');
+          tweet.avatar = tweet.avatar.replace('pbs.twimg.com', 'release.stopthespies.org');
           if(i % 7 == 0) {
             tweet.sizeClass = '';
             //tweet.sizeClass = 'bigger';
