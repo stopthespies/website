@@ -116,22 +116,37 @@ section.how.results {
       cursor: pointer;
       width: 4.5em;
       float: left;
+
+      &:first-child {
+        border-top-left-radius: 0.4em;
+        border-bottom-left-radius: 0.4em;
+      }
+      &:last-child {
+        border-top-right-radius: 0.4em;
+        border-bottom-right-radius: 0.4em;
+      }
+
+      position: relative;
+      border: 1px solid $member-card-button-borders;
+      border-right: 0;
+      &:last-child {
+        border-right: 1px solid $member-card-button-borders;
+      }
+
+      @include transition(all 0.3s linear);
     }
+
     a {
       color: #5f5a66;
     }
     .wrap {
-      border: 1px solid $member-card-button-borders;
-      border-right: 0;
+      position: relative;
       padding: 1em 0;
-    }
-    li:last-child .wrap {
-      border-right: 1px solid $member-card-button-borders;
     }
 
     .fa {
-      font-size: 1.2em;
-      &:before {
+      font-size: 1em;
+      &, &:before {
         width: auto;
       }
     }
@@ -140,6 +155,14 @@ section.how.results {
       @include emfz(18px);
       font-weight: bold;
       color: $member-card-button-counters;
+    }
+
+    li {
+      &:hover { margin: -4px -4px -2px -2px; top: 2px; z-index: 1; }
+      &.email-action:hover { border: 4px solid $statOrange; }
+      &.call-action:hover { border: 4px solid $statGreenD; }
+      &.facebooks-action:hover { border: 4px solid $statBlue; }
+      &.tweets-action:hover { border: 4px solid $statGreenL; }
     }
   }
 }
