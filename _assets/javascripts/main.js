@@ -1,5 +1,5 @@
 //= require vendor/modernizr
-//= require vendor/bootstrap.min
+// -- require vendor/bootstrap.min
 //= require vendor/lodash.min
 //= require vendor/TweenMax.min
 //= require vendor/ScrollToPlugin.min
