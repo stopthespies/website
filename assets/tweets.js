@@ -48,9 +48,9 @@
       itemSelector: '.tweet'
     });*/
     $('#tweet-board').packery({
-    itemSelector: '.tweet',
-    stamp: '.stamp'
-    });
+      itemSelector: '.tweet',
+      stamp: '.stamp'
+    }).on('layoutComplete', recenterTweetGrid);
     recenterTweetGrid();
   }
 
