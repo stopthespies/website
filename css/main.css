@@ -2245,6 +2245,13 @@ section.how.results {
   font-size: 0.8125em;
   font-style: italic; }
 
+.legislator-search-states {
+  font-size: 0.875em;
+  font-style: italic; }
+  .legislator-search-states .state {
+    height: 0;
+    overflow: hidden; }
+
 .support h2 {
   text-transform: none;
   font-family: 'League Gothic', sans-serif;
@@ -2304,7 +2311,7 @@ section.how.results {
   top: 0;
   left: 0;
   cursor: pointer;
-  z-index: 10000; }
+  z-index: 1; }
 
 .tweet:hover .tweet-overlay {
   opacity: 0.85; }
@@ -2342,7 +2349,7 @@ section.how.results {
   left: 20px;
   right: 30px;
   color: #fff;
-  z-index: 20000; }
+  z-index: 2; }
 
 .tweet-handle {
   font-size: 12px;
@@ -2351,7 +2358,7 @@ section.how.results {
   left: 20px;
   right: 30px;
   color: #45caa0;
-  z-index: 20000;
+  z-index: 2;
   font-weight: bold; }
 
 .tweet-name {
@@ -2361,7 +2368,7 @@ section.how.results {
   left: 20px;
   right: 30px;
   color: #fff;
-  z-index: 20000;
+  z-index: 2;
   font-weight: bold; }
 
 #tweet-board {
@@ -2458,6 +2465,74 @@ section.how.results {
   .sharing-buttons .share.abpg:hover {
     background: #d22e31; }
 
+.sharbx {
+  position: fixed;
+  display: none;
+  z-index: 10;
+  right: -9em;
+  top: 15%;
+  text-align: left;
+  font-size: 0.5em; }
+  .sharbx i {
+    width: 2.5em;
+    display: inline-block; }
+  .sharbx span.share {
+    border-radius: 0; }
+    .sharbx span.share:first-child {
+      border-top-left-radius: 3px; }
+    .sharbx span.share:last-child {
+      border-bottom-left-radius: 3px; }
+  .sharbx .number-spinner {
+    font-size: 1.5em;
+    margin: 0;
+    position: relative;
+    display: block;
+    top: -0.4em;
+    left: -1em;
+    height: 1.1em;
+    opacity: 1;
+    color: white; }
+  .sharbx .share {
+    text-align: left;
+    white-space: nowrap;
+    width: 11.7em;
+    left: 0;
+    overflow: visible;
+    -webkit-transition: left 0.3s ease-out;
+    -o-transition: left 0.3s ease-out;
+    transition: left 0.3s ease-out; }
+  .sharbx i {
+    display: block;
+    font-size: 1.5em;
+    line-height: 0;
+    margin-bottom: -1.1em;
+    position: relative;
+    top: 0.4em;
+    width: 7.7em; }
+  .sharbx .text {
+    display: block;
+    visibility: hidden; }
+  .sharbx .number-spinner, .sharbx .text {
+    text-align: right; }
+  .sharbx span.share:hover {
+    left: -9.6em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+
+@media (min-width: 430px) {
+  .sharbx {
+    display: block; } }
+@media (min-width: 769px) {
+  .sharbx {
+    font-size: 0.7em; }
+    .sharbx .number-spinner {
+      top: 0.3em;
+      left: 0; }
+    .sharbx span.share:hover .text {
+      visibility: visible; } }
+@media (min-width: 1025px) {
+  .sharbx {
+    font-size: 1em; } }
 .extra .step-1 {
   color: white; }
 .extra .share {

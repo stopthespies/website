@@ -39,6 +39,11 @@
     <link href="/css/vendor/tooltipster.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/main.css">
 
+<!--[if lte IE 8]>
+    <script src="/js/respond.min.js"></script>
+    <script src="/js/html5shiv.js"></script>
+<![endif]-->
+
 </head>
 
 
@@ -88,6 +93,35 @@
           <img src="/img/australia-outline.svg" />
         </div>
     </div>
+</section>
+
+<section class="sharbx">
+  <div class="sharing-buttons">
+      <span class="share abpt">
+          <i class="fa fa-abpt"></i>
+          <span class="text">
+            Share <span class="light">on</span> Twitter
+          </span>
+          <span class="tot twitter-total number-spinner">0</span>
+          <a target="_blank" href="https://twitter.com/intent/tweet?hashtags=ResetTheNet&amp;related=fightfortheftr&amp;text=This+just+lays+it+out+so+simply.+The+%23NSA+has+a+weakness+--+it's+up+to+us+what+we+do+now.&amp;url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+      </span>
+      <span class="share abpf">
+          <i class="fa fa-abpf"></i>
+          <span class="text">
+            Share <span class="light">on</span> Facebook
+          </span>
+          <span class="tot facebook-total number-spinner">0</span>
+          <a target="_blank" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+      </span>
+      <span class="share abpg">
+          <i class="fa fa-abpg"></i>
+          <span class="text">
+            Share <span class="light">on</span> Google+
+          </span>
+          <span class="tot google-total number-spinner">0</span>
+          <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+      </span>
+  </div>
 </section>
 
 <section class="menu">
@@ -268,6 +302,20 @@
         <div class="col">
 
             <div class="legislators"></div>
+
+            <div class="legislator-search-states">
+              <div class="state waiting">
+                <p>Searching for your representatives...</p>
+              </div>
+              <div class="state waiting-long">
+                <p>Just a bit longer...</p>
+              </div>
+              <div class="state problem">
+                <p>Oops! There was a problem loading your results, the servers might be very busy.</p>
+                <a class="btn btn-info btn-lg" href="#take-action">Try again</a>
+              </div>
+            </div>
+
             <div class="retry-legislators">
               <h4>Not your representatives?</h4>
               <p class="postcode"><a class="btn btn-default" href="#take-action">Search again</a></p>
@@ -335,21 +383,21 @@
                             <span class="text">
                               <i class="fa fa-abpt"></i>&nbsp;Share <span class="light">on</span> Twitter
                             </span>
-                            <span class="tot twitter-total">0</span>
+                            <span class="tot twitter-total number-spinner">0</span>
                             <a target="_blank" href="https://twitter.com/intent/tweet?hashtags=ResetTheNet&amp;related=fightfortheftr&amp;text=This+just+lays+it+out+so+simply.+The+%23NSA+has+a+weakness+--+it's+up+to+us+what+we+do+now.&amp;url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
                         </span>
                         <span class="share abpf">
                             <span class="text">
                               <i class="fa fa-abpf"></i>&nbsp; Share <span class="light">on</span> Facebook
                             </span>
-                            <span class="tot facebook-total">0</span>
+                            <span class="tot facebook-total number-spinner">0</span>
                             <a target="_blank" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
                         </span>
                         <span class="share abpg">
                             <span class="text">
                               <i class="fa fa-abpg"></i>&nbsp; Share <span class="light">on</span> Google+
                             </span>
-                            <span class="tot google-total">0</span>
+                            <span class="tot google-total number-spinner">0</span>
                             <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
                         </span>
                     </div>
@@ -559,9 +607,6 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <!--[if lte IE 9]>
     <script src="/js/jquery/1.11.1.min.js"></script>
 <![endif]-->
-<!--[if lte IE 8]>
-    <script src="/js/respond.min.js"></script>
-<![endif]-->
 <script src="/assets/vendor/modernizr.js"></script>
 <script src="/assets/vendor/lodash.min.js"></script>
 <script src="/assets/vendor/TweenMax.min.js"></script>
@@ -582,6 +627,20 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script src="/assets/eyes.js"></script>
 <script src="/assets/vendor/jquery.numberSpinner/src/jquery.numberSpinner.js"></script>
 <script src="/assets/main.js"></script>
+
+
+<!-- old browser check -->
+<script type="text/javascript">
+var $buoop = {vs:{i:8,f:10,o:12.1,s:5.1}};
+$buoop.ol = window.onload;
+window.onload=function(){
+ try {if ($buoop.ol) $buoop.ol();}catch (e) {}
+ var e = document.createElement("script");
+ e.setAttribute("type", "text/javascript");
+ e.setAttribute("src", "/js/browser-update.js");
+ document.body.appendChild(e);
+}
+</script>
 
     </body>
 </html>

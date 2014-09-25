@@ -39,6 +39,11 @@
     <link href="/css/vendor/tooltipster.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/main.css">
 
+<!--[if lte IE 8]>
+    <script src="/js/respond.min.js"></script>
+    <script src="/js/html5shiv.js"></script>
+<![endif]-->
+
 </head>
 
 
@@ -115,9 +120,6 @@
 <!--[if lte IE 9]>
     <script src="/js/jquery/1.11.1.min.js"></script>
 <![endif]-->
-<!--[if lte IE 8]>
-    <script src="/js/respond.min.js"></script>
-<![endif]-->
 <script src="/assets/vendor/modernizr.js"></script>
 <script src="/assets/vendor/lodash.min.js"></script>
 <script src="/assets/vendor/TweenMax.min.js"></script>
@@ -138,6 +140,20 @@
 <script src="/assets/eyes.js"></script>
 <script src="/assets/vendor/jquery.numberSpinner/src/jquery.numberSpinner.js"></script>
 <script src="/assets/main.js"></script>
+
+
+<!-- old browser check -->
+<script type="text/javascript">
+var $buoop = {vs:{i:8,f:10,o:12.1,s:5.1}};
+$buoop.ol = window.onload;
+window.onload=function(){
+ try {if ($buoop.ol) $buoop.ol();}catch (e) {}
+ var e = document.createElement("script");
+ e.setAttribute("type", "text/javascript");
+ e.setAttribute("src", "/js/browser-update.js");
+ document.body.appendChild(e);
+}
+</script>
 
     </body>
 </html>
