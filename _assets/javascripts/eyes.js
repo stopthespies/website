@@ -21,7 +21,7 @@
         return titles[index++];
     }
 
-    var $eyemarks = $('.eyemarks');
+    var $eyemarks = $('.introduction .eyemarks');
     // $eyemarks.on('mouseover', 'img', function () {
     //     $(this).attr('title', getTitle());
     // });
