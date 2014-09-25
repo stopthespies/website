@@ -243,7 +243,7 @@ section.map {
 // VERTICAL SPACING SCALE FOR SECTIONS
 
 section {
-  padding: emsize(40px) 0;
+  padding: 5em 0;
   @media (min-height: 801px) {
     padding: emsize(80px) 0;
   }
