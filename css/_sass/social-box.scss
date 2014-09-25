@@ -4,17 +4,21 @@
   padding-top: 80px;
 }
 
+.sharing-buttons {
+  max-width: emsize(250px);
+  margin: 0 auto;
+}
+
 .sharing-buttons .share {
     display: block;
-    background: #000;
+    position: relative;
     text-align: center;
     text-decoration: none;
     border-radius: 3px 3px 3px 3px;
     padding: 1em;
     color:#fff;
     font-weight: bold;
-    font-size: 15px;
-    position: relative;
+    font-size: emsize(15px);
 
     a {
       display: block;
