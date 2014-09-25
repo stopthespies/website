@@ -1,12 +1,12 @@
-//= require vendor/bootstrap
-//= require vendor/tweenmax
-//= require vendor/scrollto
-//= require vendor/leaflet
-//= require vendor/socketio
-//= require vendor/jquery.tooltipster
-//= require vendor/masonry.pkgd
-//= require vendor/isotope.pkgd
-//= require vendor/packery.pkgd
+//= require vendor/modernizr
+// -- require vendor/bootstrap.min
+//= require vendor/lodash.min
+//= require vendor/TweenMax.min
+//= require vendor/ScrollToPlugin.min
+// -- require vendor/leaflet
+// -- require vendor/socket.io.min
+//= require vendor/jquery.tooltipster.min
+//= require vendor/packery.pkgd.min
 
 //= require polyfills
 //= require helpers
@@ -18,7 +18,7 @@
 //= require event-handler
 //= require scroll-handler
 //= require map
-//= require randoms
+// -- require randoms
 //= require legislator-querying
 //= require tweets
 //= require takeover
@@ -46,11 +46,7 @@ $(function() {
 
   // ----------------- POP OVERS ----------------------------
 
-  $('.metric').popover({
-    trigger: 'hover',
-    container: 'body',
-    placement: 'top'
-  });
+  $('.metric').tooltipster();
 
   // ----------------- MODALS ----------------------------
 

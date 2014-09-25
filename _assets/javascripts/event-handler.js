@@ -15,6 +15,9 @@
  * @author   Sam Pospischil <pospi@spadgos.com>
  * @since    2014-08-24
  */
+
+window.io || (io = {});
+
 (function($, io) {
 
   var __CONNECTED__ = false,
@@ -39,47 +42,47 @@
 
   if (STS.options.ENABLE_REALTIME) {
     io = io.connect(STS.options.API_BASE_URL);
+
+    io.on('connect', function() {
+      __CONNECTED__ = true;
+      runBufferedRequests();
+    });
+
+    io.on('disconnect', function() {
+      __CONNECTED__ = false;
+    });
+
+    //----------------------------------------------------------------------------
+
+    io.on('stats:update', function(stats) {
+      STS.events.onStatsLoad(stats);
+    });
+
+    io.on('l:views', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'views');
+      notifyLegislatorMap(reps, 'views');
+    });
+
+    io.on('l:calls', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'calls');
+      notifyLegislatorMap(reps, 'calls');
+    });
+
+    io.on('l:emails', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'emails');
+      notifyLegislatorMap(reps, 'emails');
+    });
+
+    io.on('l:tweets', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'tweets');
+      notifyLegislatorMap(reps, 'tweets');
+    });
+
+    io.on('l:facebooks', function(reps) {
+      STS.events.onLegislatorStatsIncrement(reps, 'facebooks');
+      notifyLegislatorMap(reps, 'facebooks');
+    });
   }
-
-  io.on('connect', function() {
-    __CONNECTED__ = true;
-    runBufferedRequests();
-  });
-
-  io.on('disconnect', function() {
-    __CONNECTED__ = false;
-  });
-
-  //----------------------------------------------------------------------------
-
-  io.on('stats:update', function(stats) {
-    STS.events.onStatsLoad(stats);
-  });
-
-  io.on('l:views', function(reps) {
-    STS.events.onLegislatorStatsIncrement(reps, 'views');
-    notifyLegislatorMap(reps, 'views');
-  });
-
-  io.on('l:calls', function(reps) {
-    STS.events.onLegislatorStatsIncrement(reps, 'calls');
-    notifyLegislatorMap(reps, 'calls');
-  });
-
-  io.on('l:emails', function(reps) {
-    STS.events.onLegislatorStatsIncrement(reps, 'emails');
-    notifyLegislatorMap(reps, 'emails');
-  });
-
-  io.on('l:tweets', function(reps) {
-    STS.events.onLegislatorStatsIncrement(reps, 'tweets');
-    notifyLegislatorMap(reps, 'tweets');
-  });
-
-  io.on('l:facebooks', function(reps) {
-    STS.events.onLegislatorStatsIncrement(reps, 'facebooks');
-    notifyLegislatorMap(reps, 'facebooks');
-  });
 
   //----------------------------------------------------------------------------
   // reusable event handlers

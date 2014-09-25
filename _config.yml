@@ -14,7 +14,7 @@ domain: stage.stopthespies.org
 #------------------------------------------------------------------------------#
 # realtime server config
 
-enable_realtime_features: 1         # set to false to disable socket connections
+enable_realtime_features: 0         # set to false to disable socket connections
 realtime_connection_timeout: 500    # ms to wait before giving up on socket connection and falling back to AJAX. This does not necessarily mean the socket can't be connected, just that it's taking a while.
 
 #------------------------------------------------------------------------------#

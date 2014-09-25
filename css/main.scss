@@ -1,6 +1,6 @@
-/**
- * Bootstrap
- */
+---
+---
+
 @import "bootstrap";
 @import "animations";
 @import "grid";
@@ -34,4 +34,5 @@
 /**
  * Vendors Folder
  */
-@import "vendor/*";
+@import "vendor/leaflet.css";
+@import "vendor/tooltipster.css";
