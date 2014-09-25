@@ -17,6 +17,7 @@ section.how.results {
   h2 {
     @include emfz(14px);
     margin-top: emsize(15px);
+    margin-bottom: 0.1em;
   }
   h3 {
     @include emfz(24px);

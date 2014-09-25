@@ -80,13 +80,14 @@
 // 1 > 2 columns
 
 .step {
-  @include column($one);
-  margin-bottom: 1em;
   padding-bottom: 1em;
+  max-width: 350px;
+  margin: 0 auto 1em auto;
 
   @media (min-width: $set-steps-2-cols) {
     @include column($one-half);
     margin-bottom: 1em;
+    max-width: none;
   }
 }
 
@@ -215,40 +216,6 @@
     &, &.l3 {
     	@include column($one-third);
     }
-  }
-}
-
-// SHARE BUTTONS
-// 2 columns for what else section, 2 columns for sharing
-
-.extra {
-	.sharing-buttons {
-		@include row();
-		padding: 20px 20px 0 20px;
-	}
-	.share {
-		@include column($one-half);
-    margin-right: auto;
-    margin-left: 21%;
-    margin-bottom: 10px;
-    border-radius: 10px;
-	}
-  .btn.btn-primary {
-    @include column($one-half);
-    font-size: 20px;
-    margin-right: auto;
-    margin-left: 21%;
-    margin-bottom: 10px;
-    border-radius: 10px;
-  }
-  .actions {
-    padding-top: 0.75em;
-  }
-  h3 {
-    text-transform: none;
-    color: #2B1E3E;
-    margin-bottom: 40px;
-    font-size: 1.8em;
   }
 }
 
