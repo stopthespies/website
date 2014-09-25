@@ -14,19 +14,19 @@ domain: stage.stopthespies.org
 #------------------------------------------------------------------------------#
 # realtime server config
 
-enable_realtime_features: 0         # set to false to disable socket connections
+enable_realtime_features: 1         # set to false to disable socket connections
 realtime_connection_timeout: 500    # ms to wait before giving up on socket connection and falling back to AJAX. This does not necessarily mean the socket can't be connected, just that it's taking a while.
 
 #------------------------------------------------------------------------------#
 # API urls and endpoints
 
-api_url: https://api.stopthespies.org:80
+api_url: http://stopthespies-api.herokuapp.com:80
 tweets_read_path: /tweets
 stats_read_path: /stats
 send_email_path: /email
 log_path: /log
 
-legislators_locator_url : https://legislators.stopthespies.org
+legislators_locator_url : http://legislators-locator.herokuapp.com/
 social_stats_url    : 'https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net'
 
 #------------------------------------------------------------------------------#
