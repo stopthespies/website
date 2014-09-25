@@ -21,7 +21,7 @@
 // -- require randoms
 //= require legislator-querying
 //= require tweets
-//= require takeover
+// -- require takeover
 
 //= require vendor/jquery.numberSpinner/src/jquery.numberSpinner.js
 
@@ -51,7 +51,7 @@ $(function() {
   // ----------------- MODALS ----------------------------
 
   $('body').on('click', '.contact .call-action', function (e) {
-
+/* :TODO: need more data first
     var legislatorId = $(e.currentTarget).parents('.legislator').attr('data-legislator-id');
     var legislator = legislators[legislatorId];
     var callModalTemplate = $('#call-modal-template').html();
@@ -59,14 +59,14 @@ $(function() {
     //$('#call-modal-container .modal').modal();
     var takeoverContent = _.template(callModalTemplate, legislator);
     takeover(takeoverContent);
+*/
 
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
     io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'calls', legislators: legislatorId}, function(d) {});
-
   });
 
   $('body').on('click', '.contact .email-action', function (e) {
-
+/* :TODO: need confirmation of legality first
     var legislatorId = $(e.currentTarget).parents('.legislator').attr('data-legislator-id');
     var legislator = legislators[legislatorId];
     var emailModalTemplate = $('#email-modal-template').html();
@@ -75,23 +75,20 @@ $(function() {
 
     var takeoverContent = _.template(emailModalTemplate, legislator);
     takeover(takeoverContent);
-
+*/
 
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
     io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'emails', legislators: legislatorId}, function(d) {});
-
   });
 
   $('body').on('click', '.contact .tweets-action', function (e) {
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
     io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'tweets', legislators: legislatorId}, function(d) {});
-
   });
 
   $('body').on('click', '.contact .facebooks-action', function (e) {
     var legislatorId = $(e.currentTarget).parents('[data-legislator-id]').attr('data-legislator-id');
     io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'facebooks', legislators: legislatorId}, function(d) {});
-
   });
 
   // ----------------- SMOOTH SCROLL ----------------------------
