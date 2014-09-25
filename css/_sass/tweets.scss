@@ -3,6 +3,7 @@
     text-transform: none;
     font-family: 'League Gothic', sans-serif;
     @include emfz(72px);
+    margin-bottom: 0.3em;
     color: $textNormal;
     &, strong {
       font-weight: normal;
@@ -14,6 +15,18 @@
 
   .intro {
     text-align: center;
+
+    em {
+      color: $statGreenL;
+    }
+  }
+
+  .fa-abpt {
+    display: block;
+    font-size: 9.5em;
+    margin-top: -1.2em;
+    opacity: 0.1;
+    color: white;
   }
 }
 
