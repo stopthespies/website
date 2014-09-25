@@ -50,7 +50,7 @@
     $('#tweet-board').packery({
       itemSelector: '.tweet',
       stamp: '.stamp'
-    }).on('layoutComplete', recenterTweetGrid);
+    }).packery('on', 'layoutComplete', recenterTweetGrid);
     recenterTweetGrid();
   }
 

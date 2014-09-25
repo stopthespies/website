@@ -95,7 +95,10 @@ $(function() {
   // ----------------- SMOOTH SCROLL ----------------------------
 
   $('body').on('click', 'a[href^="#"]', function(e) {
-    STS.anim.scrollToEl($($(this).attr('href')));
+    var link = $(this).attr('href');
+    STS.anim.scrollToEl($(link), 0.3, function() {
+      window.location.hash = link;
+    });
     e.preventDefault();
   });
 
@@ -193,23 +196,6 @@ $(function() {
       cache         : true,
       jsonpCallback : 'myCallback'
   });
-
-  // SEND AN EMAIL (TEST ONLY)
-
-  // $.ajax({
-  //   url: SEND_EMAIL_URL,
-  //   type: "POST",
-
-  //   contentType: "application/json",
-  //   crossDomain: true,
-  //   dataType: 'json',
-
-  //   data: '{"some":"json"}',
-  //   // work with the response
-  //   success: function( res ) {
-  //     console.log(res)
-  //   }
-  // });
 
   // init live counter widgets
 

@@ -2,6 +2,10 @@ window.LegislatorQuery || (window.LegislatorQuery = {});
 
 (function($, io, anim, opts) {
 
+var WAIT_TIME_MESSAGE = 1000,
+    WAIT_TIME_SLOW_MESSAGE = 5000,
+    searchWait1, searchWait2;
+
 $(function() {
 
   // ----------------- GEO-BASED ----------------------
@@ -42,6 +46,7 @@ $(function() {
 
     navigator.geolocation.getCurrentPosition(function(position) {
       hideLegislatorSearch();
+      watchRequestTimes();
       $.ajax({
         url: 'http://legislators-locator.herokuapp.com/',
         jsonp: "callback",
@@ -64,6 +69,7 @@ $(function() {
 
   $('.postcode-lookup').on('submit', function(ev){
     hideLegislatorSearch();
+    watchRequestTimes();
     var postcode = $('input', $(ev.currentTarget)).val();
     $.ajax({
       url: 'http://legislators-locator.herokuapp.com/',
@@ -84,9 +90,12 @@ $(function() {
 // -------------------- RENDERING ----------------------
 
 var legislatorTemplate = $('#legislator-template').html();
-var retryTemplate = $('#legislator-retry-template').html();
 
 function renderLegislators(reps) {
+
+  clearTimeout(searchWait1);
+  clearTimeout(searchWait2);
+  setLegislatorsState(null);
 
   var container = $('.legislators').empty(), idx = 0;
 
@@ -106,8 +115,6 @@ function renderLegislators(reps) {
     container.append(_.template(legislatorTemplate, legislator));
   });
 
-  container.append(_.template(retryTemplate, {}));
-
   // tooltips
   $('.contact li', container).tooltipster({
       delay: 200,
@@ -116,14 +123,14 @@ function renderLegislators(reps) {
       theme: 'tooltipster-eyes'
   });
 
-  // bind postcode search retry
-  $('.retry-legislators .postcode').on('click', function(e) {
+  // bind postcode & failed search retry
+  $('.retry-legislators .postcode a, .legislator-search-states .btn').off('click').on('click', function(e) {
     e.preventDefault();
     resetLegislatorResults();
     showLegislatorSearch();
   });
 
-  $('.retry-legislators .map').on('click', function(e) {
+  $('.retry-legislators .map').off('click').on('click', function(e) {
     e.preventDefault();
     // :TODO: move to and activate map
   });
@@ -143,6 +150,8 @@ function renderLegislators(reps) {
     io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds}, function(d) {});
   });
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
+
+  anim.appearVSlide($('.retry-legislators'), 0.8);
 };
 
 function setLegislatorCounts(stats)
@@ -182,9 +191,43 @@ function resetLegislatorResults()
 {
   var container = $('.legislators');
 
-  anim.hideVSlide($('.legislators'), 0.8, function onComplete(e) {
+  anim.hideVSlide(container, 0.8, function onComplete(e) {
     container.empty().css('height', 'auto');
   });
+
+  anim.hideVSlide($('.retry-legislators'), 0.8);
+
+  setLegislatorsState(null);
+}
+
+function setLegislatorsState(state)
+{
+  var el = $('.legislator-search-states'),
+    states = $('.state:visible', el),
+    theState = state ? $('.state.' + state, el) : [];
+
+  if (theState.length) {
+    states = states.not(theState);
+  }
+
+  if (states.length) {
+    states.each(function() {
+      anim.hideVSlide($(this), 0.8);
+    });
+  }
+  if (theState.length) {
+    anim.appearVSlide(theState, 0.8);
+  }
+}
+
+function watchRequestTimes()
+{
+  searchWait1 = setTimeout(function() {
+    setLegislatorsState('waiting');
+  }, WAIT_TIME_MESSAGE);
+  searchWait1 = setTimeout(function() {
+    setLegislatorsState('waiting-long');
+  }, WAIT_TIME_SLOW_MESSAGE);
 }
 
 // Hide the geo query box in case of a location error and show a message
@@ -197,8 +240,10 @@ function onLocationError()
 
 function onSearchError()
 {
-
+  setLegislatorsState('problem');
 }
+
+window.setLegislatorsState = setLegislatorsState; // :DEBUG:
 
 function onSearchComplete()
 {

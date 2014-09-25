@@ -27,6 +27,35 @@ layout: default
     </div>
 </section>
 
+<section class="sharbx">
+  <div class="sharing-buttons">
+      <span class="share abpt">
+          <i class="fa fa-abpt"></i>
+          <span class="text">
+            Share <span class="light">on</span> Twitter
+          </span>
+          <span class="tot twitter-total number-spinner">0</span>
+          <a target="_blank" href="https://twitter.com/intent/tweet?hashtags=ResetTheNet&amp;related=fightfortheftr&amp;text=This+just+lays+it+out+so+simply.+The+%23NSA+has+a+weakness+--+it's+up+to+us+what+we+do+now.&amp;url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+      </span>
+      <span class="share abpf">
+          <i class="fa fa-abpf"></i>
+          <span class="text">
+            Share <span class="light">on</span> Facebook
+          </span>
+          <span class="tot facebook-total number-spinner">0</span>
+          <a target="_blank" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+      </span>
+      <span class="share abpg">
+          <i class="fa fa-abpg"></i>
+          <span class="text">
+            Share <span class="light">on</span> Google+
+          </span>
+          <span class="tot google-total number-spinner">0</span>
+          <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+      </span>
+  </div>
+</section>
+
 <section class="menu">
   <div class="container">
     <div class="col">
@@ -206,6 +235,24 @@ layout: default
 
             <div class="legislators"></div>
 
+            <div class="legislator-search-states">
+              <div class="state waiting">
+                <p>Searching for your representatives...</p>
+              </div>
+              <div class="state waiting-long">
+                <p>Just a bit longer...</p>
+              </div>
+              <div class="state problem">
+                <p>Oops! There was a problem loading your results, the servers might be very busy.</p>
+                <a class="btn btn-info btn-lg" href="#take-action">Try again</a>
+              </div>
+            </div>
+
+            <div class="retry-legislators">
+              <h4>Not your representatives?</h4>
+              <p class="postcode"><a class="btn btn-default" href="#take-action">Search again</a></p>
+            </div>
+
             <div class="location-privacy">
                 <p>We use your postcode/address to find legislators that represent you. We don't store this data and we use encrypted requests.</p>
             </div>
@@ -268,21 +315,21 @@ layout: default
                             <span class="text">
                               <i class="fa fa-abpt"></i>&nbsp;Share <span class="light">on</span> Twitter
                             </span>
-                            <span class="tot twitter-total">0</span>
+                            <span class="tot twitter-total number-spinner">0</span>
                             <a target="_blank" href="https://twitter.com/intent/tweet?hashtags=ResetTheNet&amp;related=fightfortheftr&amp;text=This+just+lays+it+out+so+simply.+The+%23NSA+has+a+weakness+--+it's+up+to+us+what+we+do+now.&amp;url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
                         </span>
                         <span class="share abpf">
                             <span class="text">
                               <i class="fa fa-abpf"></i>&nbsp; Share <span class="light">on</span> Facebook
                             </span>
-                            <span class="tot facebook-total">0</span>
+                            <span class="tot facebook-total number-spinner">0</span>
                             <a target="_blank" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
                         </span>
                         <span class="share abpg">
                             <span class="text">
                               <i class="fa fa-abpg"></i>&nbsp; Share <span class="light">on</span> Google+
                             </span>
-                            <span class="tot google-total">0</span>
+                            <span class="tot google-total number-spinner">0</span>
                             <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
                         </span>
                     </div>
@@ -303,22 +350,7 @@ layout: default
         </div>
     </div>
 </section>
-<!--
-<section class="reading">
-    <div class="container">
-        <div class="col">
-            <h2>Extra Reading</h2>
-            <p class="intro">
-                Lorem ipsum dolor sit amet, omnium virtute nusquam sit eu, et vide audire ancillae cum. Utroque periculis no per, sit aliquid disputationi ad, elitr ignota ea mei. Prodesset omittantur an qui. Suas etiam platonem quo no.
-            </p>
-            <ul>
-                <li><a href="#">Protecting your privacy: Our stand against ‘mandatory data retention’</a> - IInet</li>
-                <li><a href="#">Australian Proposal Would Require Suspicionless Domestic Spying by ISPs</a> - EFF</li>
-            </ul>
-        </div>
-    </div>
-</section>
--->
+
 <!-- ################################################################ MODALS ########################################################### -->
 <!-- ################################################################################################################################### -->
 
@@ -467,17 +499,6 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
     </div>
 </script>
 <!-- END LEGISLATOR -->
-
-<!-- LEGISLATOR RETRY -->
-<script type="text/template" id="legislator-retry-template">
-
-	<div class="retry-legislators">
-		<p>Not your representatives?</p>
-		<p class="postcode"><a href="#take-action">Search again</a></p>
-	</div>
-
-</script>
-<!-- END LEGISLATOR RETRY -->
 
 <!-- TWEET -->
 <script type="text/template" id="tweet-template">
