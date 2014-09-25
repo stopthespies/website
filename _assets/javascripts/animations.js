@@ -11,7 +11,7 @@
 
     TL.to(container[0], time, {height: measureH(container), opacity: 1, onComplete: function(e) {
       container.css({
-        height: ''
+        height: 'auto'
       });
       if (completeCB) {
         completeCB.apply(this, arguments);
@@ -25,7 +25,12 @@
 
     TL.set(container[0], { overflow: 'hidden', display: 'block', height: container.height() });
 
-    TL.to(container[0], time, {opacity: 0, height: 0});
+    TL.to(container[0], time, {opacity: 0, height: 0, onComplete: function(e) {
+      container.css({
+        display: 'none',
+        height: 0
+      });
+    }});
   }
 
   function scrollToEl(el, time, completedCB)
