@@ -32,10 +32,52 @@
 
   // these ones are positioned against columns and so their left offsets are percentages
   .eyemarks {
+    img {
+      opacity: 1;
+
+      -webkit-transition: opacity 0.6s;
+              transition: opacity 0.6s;
+      &:hover {
+        opacity: 0;
+
+        -webkit-transition: opacity 0.1s;
+                transition: opacity 0.1s;
+      }
+    }
+
     .r11 { left: 55%; top: emsize(-20px); }
     .r12 { left: 65%; top: emsize(-40px); }
     .r13 { left: 78%; top: emsize(60px); }
     .r14 { left: 90%; top: emsize(-40px); }
+  }
+
+  &.countries {
+    .eyecanvas, .eyemarks {
+      // transform: scale(-1);
+      // -webkit-transform: scale(-1);
+      margin-top: 10px;
+
+      @media (min-width: $set-info-2-cols) {
+        margin-top: -90px;
+        margin-left: 0%;
+
+        transform: scale(-1);
+        -webkit-transform: scale(-1);
+      }
+    }
+  }
+
+  &.rights {
+    .eyecanvas, .eyemarks {
+      margin-left: 10%;
+      margin-top: -20px;
+      width: 80%;
+
+      @media (min-width: $set-info-2-cols) {
+        margin-left: 10%;
+        margin-top: 90px;
+      }
+    }
   }
 }
 
