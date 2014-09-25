@@ -2065,7 +2065,8 @@ section.how.results {
     color: #f1592a; }
   .how h2, .extra h2 {
     font-size: 0.875em;
-    margin-top: 0.9375em; }
+    margin-top: 0.9375em;
+    margin-bottom: 0.1em; }
   .how h3, .extra h3 {
     font-size: 1.5em; }
   .how .location-error, .extra .location-error {
@@ -2335,8 +2336,10 @@ section.how.results {
   .sharing-buttons .share.abpg:hover {
     background: #d22e31; }
 
-.reading a {
-  color: #b0a767; }
+.extra .share {
+  margin: 10px 20px; }
+.extra .actions {
+  padding-top: 0; }
 
 .footer {
   line-height: 15px;
@@ -2616,7 +2619,7 @@ section.how.results {
     margin-left: 1.38889%;
     margin-right: 1.38889%; } }
 
-@media (min-width: 760px) {
+@media (min-width: 850px) {
   .extra .col, .reading .col {
     display: inline;
     float: left;
@@ -2632,21 +2635,18 @@ section.how.results {
     margin-left: 1.38889%;
     margin-right: 1.38889%; } }
 .step {
-  display: inline;
-  float: left;
-  width: 97.22222%;
-  margin-left: 1.38889%;
-  margin-right: 1.38889%;
-  margin-bottom: 1em;
-  padding-bottom: 1em; }
-  @media (min-width: 530px) {
+  padding-bottom: 1em;
+  max-width: 350px;
+  margin: 0 auto 1em auto; }
+  @media (min-width: 730px) {
     .step {
       display: inline;
       float: left;
       width: 47.22222%;
       margin-left: 1.38889%;
       margin-right: 1.38889%;
-      margin-bottom: 1em; } }
+      margin-bottom: 1em;
+      max-width: none; } }
 
 .stats .col, .support .col, .how .col {
   z-index: 1;
@@ -2720,7 +2720,7 @@ section.how.results {
       margin-left: 1.38889%;
       margin-right: 1.38889%;
       margin-left: 18.05556%; } }
-@media (min-width: 760px) {
+@media (min-width: 850px) {
   .how .col, .extra .col {
     display: inline;
     float: left;
@@ -2729,12 +2729,12 @@ section.how.results {
     margin-right: 1.38889%;
     margin-left: 9.72222%;
     margin-bottom: 1.875em; } }
-@media (min-width: 530px) {
+@media (min-width: 730px) {
   .how .step-2, .extra .step-2 {
     float: right; }
   .how .step-1, .extra .step-1 {
     float: left; } }
-@media (max-width: 529px) {
+@media (max-width: 729px) {
   .how .no-location .step-2, .extra .no-location .step-2 {
     background: transparent;
     min-height: 0; }
@@ -2774,47 +2774,6 @@ section.how.results {
       width: 30.55556%;
       margin-left: 1.38889%;
       margin-right: 1.38889%; } }
-
-.extra .sharing-buttons {
-  display: block;
-  width: 102.77778%;
-  margin-left: -1.38889%;
-  margin-right: -1.38889%;
-  *zoom: 1;
-  padding: 20px 20px 0 20px; }
-  .extra .sharing-buttons:before, .extra .sharing-buttons:after {
-    content: "";
-    display: table; }
-  .extra .sharing-buttons:after {
-    clear: both; }
-.extra .share {
-  display: inline;
-  float: left;
-  width: 47.22222%;
-  margin-left: 1.38889%;
-  margin-right: 1.38889%;
-  margin-right: auto;
-  margin-left: 21%;
-  margin-bottom: 10px;
-  border-radius: 10px; }
-.extra .btn.btn-primary {
-  display: inline;
-  float: left;
-  width: 47.22222%;
-  margin-left: 1.38889%;
-  margin-right: 1.38889%;
-  font-size: 20px;
-  margin-right: auto;
-  margin-left: 21%;
-  margin-bottom: 10px;
-  border-radius: 10px; }
-.extra .actions {
-  padding-top: 0.75em; }
-.extra h3 {
-  text-transform: none;
-  color: #2B1E3E;
-  margin-bottom: 40px;
-  font-size: 1.8em; }
 
 section.map {
   padding: 0; }
