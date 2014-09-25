@@ -15,17 +15,23 @@
 
   .menuimg {
     @include column($one-sixth);
+    display: none;
+
+    img {
+      max-width: 100%;
+    }
   }
   ul {
-    text-align: center;
     margin: 0;
     padding: 0;
-    line-height: emsize(62px, 14px);
     list-style: none;
-    @include column($one-sixth * 5);
+    @include column($one);
+    text-align: center;
   }
   li {
-    @include column($one-fifth);
+    @include column($one);
+    padding-top: 0.5em;
+    white-space: nowrap;
   }
 
   a {
@@ -34,6 +40,28 @@
     &:hover {
       color: $linkColor;
       text-decoration: none;
+    }
+  }
+
+  @media (min-width: $set-menu-show-small-logo) {
+    .menuimg {
+      display: inline;
+    }
+    ul {
+      @include column($one-sixth * 5);
+    }
+  }
+
+  @media (min-width: $set-menu-2-rows) {
+    li {
+      @include column($one-half);
+    }
+  }
+
+  @media (min-width: $set-menu-1-row) {
+    li {
+      @include column($one-quarter);
+      padding-top: emsize(25px, 14px);
     }
   }
 }
