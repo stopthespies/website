@@ -47,8 +47,7 @@
       columnWidth: 200,
       itemSelector: '.tweet'
     });*/
-    $('#tweet-board').isotope({
-    layoutMode: 'packery',
+    $('#tweet-board').packery({
     itemSelector: '.tweet',
     stamp: '.stamp'
     });
