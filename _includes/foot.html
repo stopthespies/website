@@ -5,3 +5,17 @@
     <script src="{{ "/js/jquery/1.11.1.min.js" | prepend: site.baseurl }}"></script>
 <![endif]-->
 {% javascript main %}
+
+
+<!-- old browser check -->
+<script type="text/javascript">
+var $buoop = {vs:{i:8,f:10,o:12.1,s:5.1}};
+$buoop.ol = window.onload;
+window.onload=function(){
+ try {if ($buoop.ol) $buoop.ol();}catch (e) {}
+ var e = document.createElement("script");
+ e.setAttribute("type", "text/javascript");
+ e.setAttribute("src", "{{ "/js/browser-update.js" | prepend: site.baseurl }}");
+ document.body.appendChild(e);
+}
+</script>
