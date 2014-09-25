@@ -86,3 +86,106 @@
       background: darken(#db585a, 10%);
     }
 }
+
+
+
+
+
+.sharbx {
+  position: fixed;
+  display: none;
+  z-index: 10;
+  right: -9em;
+  top: 15%;
+  text-align: left;
+  font-size: 0.5em;
+
+  i {
+    width: 2.5em;
+    display: inline-block;
+  }
+
+  span.share {
+    border-radius: 0;
+    &:first-child {
+      border-top-left-radius: 3px;
+    }
+    &:last-child {
+      border-bottom-left-radius: 3px;
+    }
+  }
+
+  .number-spinner {
+    font-size: 1.5em;
+    margin: 0;
+    position: relative;
+    display: block;
+    top: -0.4em;
+    left: -1em;
+    height: 1.1em;
+    opacity: 1;
+    color: white;
+  }
+
+  .share {
+    text-align: left;
+    white-space: nowrap;
+    width: 11.7em;
+    left: 0;
+    overflow: visible;
+
+    @include transition(left 0.3s ease-out);
+  }
+
+  i {
+    display: block;
+    font-size: 1.5em;
+    line-height: 0;
+    margin-bottom: -1.1em;
+    position: relative;
+    top: 0.4em;
+    width: 7.7em;
+  }
+
+  .text {
+    display: block;
+    visibility: hidden;
+  }
+
+  .number-spinner, .text {
+    text-align: right;
+  }
+
+  span.share:hover {
+    left: -9.6em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+}
+
+@media (min-width: $show-sharebox) {
+  .sharbx {
+    display: block;
+  }
+}
+
+@media (min-width: $set-sharebox-size-1) {
+  .sharbx {
+    font-size: 0.7em;
+
+    .number-spinner {
+      top: 0.3em;
+      left: 0;
+    }
+
+    span.share:hover .text {
+      visibility: visible;
+    }
+  }
+}
+
+@media (min-width: $set-sharebox-size-2) {
+  .sharbx {
+    font-size: 1em;
+  }
+}
