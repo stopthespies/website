@@ -117,7 +117,7 @@ function renderLegislators(reps) {
   });
 
   // bind postcode search retry
-  $('.retry-legislators .postcode').on('click', function(e) {
+  $('.retry-legislators .postcode a').on('click', function(e) {
     e.preventDefault();
     resetLegislatorResults();
     showLegislatorSearch();
