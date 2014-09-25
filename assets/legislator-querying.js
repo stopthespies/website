@@ -48,7 +48,7 @@ $(function() {
       hideLegislatorSearch();
       watchRequestTimes();
       $.ajax({
-        url: 'http://legislators-locator.herokuapp.com/',
+        url: 'https://legislators.stopthespies.org',
         jsonp: "callback",
         dataType: "jsonp",
         data: {
@@ -72,7 +72,7 @@ $(function() {
     watchRequestTimes();
     var postcode = $('input', $(ev.currentTarget)).val();
     $.ajax({
-      url: 'http://legislators-locator.herokuapp.com/',
+      url: 'https://legislators.stopthespies.org',
       jsonp: "callback",
       dataType: "jsonp",
       data: {
