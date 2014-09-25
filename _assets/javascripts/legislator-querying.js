@@ -2,8 +2,8 @@ window.LegislatorQuery || (window.LegislatorQuery = {});
 
 (function($, io, anim, opts) {
 
-var WAIT_TIME_MESSAGE = 1000,
-    WAIT_TIME_SLOW_MESSAGE = 5000,
+var WAIT_TIME_MESSAGE = 2000,
+    WAIT_TIME_SLOW_MESSAGE = 7000,
     searchWait1, searchWait2;
 
 $(function() {
