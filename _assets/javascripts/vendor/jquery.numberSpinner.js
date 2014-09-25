@@ -77,7 +77,16 @@
         // Render number
         _private.renderNumber.call($this, number, (animate !== false));
 
+        $this.data('val', number);
       });
+    },
+
+    get: function() {
+      return this.data('val');
+    },
+
+    options: function() {
+      return this.data(plugin.namespace).options;
     }
 
 
@@ -97,7 +106,12 @@
         data = $this.data(plugin.namespace);
 
         // Get initial value
-        var val = parseInt($this.text());
+        var val = 0;
+        try {
+          val = parseInt($this.text());
+        } catch (e) {}
+
+        $this.data('val', val);
 
         // Create and add tile wrapper
         data.elements.tile_wrapper = $('<span />', {'class': data.options.tile_wrapper_class}),
