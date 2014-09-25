@@ -46,11 +46,7 @@ $(function() {
 
   // ----------------- POP OVERS ----------------------------
 
-  $('.metric').popover({
-    trigger: 'hover',
-    container: 'body',
-    placement: 'top'
-  });
+  $('.metric').tooltipster();
 
   // ----------------- MODALS ----------------------------
 
