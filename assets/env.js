@@ -1,6 +1,8 @@
 // Main application IoC container
 var STS = {
   options: {
+    BASEURL                 : '',
+
     ENABLE_REALTIME         : 0,
     SOCKET_CONNECT_TIMEOUT  : 500,
 

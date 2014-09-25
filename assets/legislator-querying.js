@@ -96,7 +96,7 @@ function renderLegislators(reps) {
   _.each(legislators, function (legislator) {
     legislator.counter = ++idx;
 
-  	legislator.image || (legislator.image = '/images/mpsL/' + legislator.member_id + '.jpg');	// :TODO: fallback image via CSS
+  	legislator.image = STS.options.BASEURL + '/img/legislators/' + legislator.person_id + '.jpg';	// :TODO: fallback image via CSS
     legislator.typeString = legislator.house == 1 ? 'member' : 'senator';
 
     if (legislator.contact_details && legislator.contact_details.twitter) {
@@ -108,7 +108,13 @@ function renderLegislators(reps) {
 
   container.append(_.template(retryTemplate, {}));
 
-  // :TODO: bind tooltips
+  // tooltips
+  $('.contact li', container).tooltipster({
+      delay: 200,
+      maxWidth: 300,
+      position: 'bottom',
+      theme: 'tooltipster-eyes'
+  });
 
   // bind postcode search retry
   $('.retry-legislators .postcode').on('click', function(e) {
