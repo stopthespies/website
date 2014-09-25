@@ -96,7 +96,7 @@ function renderLegislators(reps) {
   _.each(legislators, function (legislator) {
     legislator.counter = ++idx;
 
-  	legislator.image || (legislator.image = '/images/mpsL/' + legislator.member_id + '.jpg');	// :TODO: fallback image via CSS
+  	legislator.image = STS.options.BASEURL + '/img/legislators/' + legislator.person_id + '.jpg';	// :TODO: fallback image via CSS
     legislator.typeString = legislator.house == 1 ? 'member' : 'senator';
 
     if (legislator.contact_details && legislator.contact_details.twitter) {
