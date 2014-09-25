@@ -58,12 +58,17 @@ assets:
   sources:
     - _assets/javascripts
   cache: false
+
   # --- DEV ---
+
   js_compressor:  ~
   css_compressor: ~
   cachebust: none
+  gzip: false
   debug: true
+
   # --- PROD :TODO: enable for launch ---
+
   # js_compressor: uglifier
   # css_compressor: ~
   # cachebust: hard

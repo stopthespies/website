@@ -1,0 +1,7 @@
+/**
+ * Wrapper since we need this configurable
+ */
+
+<% if site.config['enable_realtime_features'] %>
+  <%= File.read File.expand_path('_assets/javascripts/vendor/socket.io.min.js') %>
+<% end %>

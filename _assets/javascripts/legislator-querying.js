@@ -95,8 +95,13 @@ function renderLegislators(reps) {
   // build DOM
   _.each(legislators, function (legislator) {
     legislator.counter = ++idx;
-  	legislator.image || (legislator.image = '/images/mpsL/' + legislator.member_id + '.jpg');	// avoid template errors with missing data :TODO: fallback image
-    legislator.contact_details && legislator.contact_details.twitter && legislator.contact_details.twitter.replace('http://twitter.com/', '');
+
+  	legislator.image || (legislator.image = '/images/mpsL/' + legislator.member_id + '.jpg');	// :TODO: fallback image via CSS
+    legislator.typeString = legislator.house == 1 ? 'member' : 'senator';
+
+    if (legislator.contact_details && legislator.contact_details.twitter) {
+      legislator.contact_details.twitter = legislator.contact_details.twitter.replace(/^(https?:\/\/)(www\\.)?twitter\.com\//, '');
+    }
 
     container.append(_.template(legislatorTemplate, legislator));
   });
