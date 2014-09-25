@@ -44,11 +44,6 @@ h4 {
   @include emfz(18px);
 }
 
-.bg-wrap {  // wrap up background gradients over sections
-  background: $primaryBg;
-  background-image: linear-gradient(-127deg, $primaryBgLeft 3%, $primaryBgRight 88%);
-}
-
 .intro {    // section introductory lines
   margin-bottom: emsize(30px);
 }
@@ -141,7 +136,15 @@ a {
   overflow: hidden;
 }
 
+/* temporary */
   img.you-can-stop {
     width: 90%;
     max-width: 887px;
   }
+
+
+// :IMPORTANT: must go after step styles
+.bg-wrap {
+  background: $primaryBg;
+  background-image: linear-gradient(-127deg, $primaryBgLeft 3%, $primaryBgRight 88%);
+}
