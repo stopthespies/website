@@ -216,14 +216,6 @@
     	@include column($one-third);
     }
   }
-
-  .contact {
-    @include clearfix();
-    li {
-      float: left;
-      width: 25%;
-    }
-  }
 }
 
 // SHARE BUTTONS

@@ -108,10 +108,13 @@ section.how.results {
   .contact {
     list-style: none;
     padding: 0;
-    margin: 2em;
+    margin: 2em auto;
+    display: inline-block;
 
     li {
       cursor: pointer;
+      width: 4.5em;
+      float: left;
     }
     a {
       color: #5f5a66;
@@ -126,7 +129,10 @@ section.how.results {
     }
 
     .fa {
-      font-size: 1.5em;
+      font-size: 1.2em;
+      &:before {
+        width: auto;
+      }
     }
     .number-spinner {
       display: block;
