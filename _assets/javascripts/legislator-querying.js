@@ -108,7 +108,13 @@ function renderLegislators(reps) {
 
   container.append(_.template(retryTemplate, {}));
 
-  // :TODO: bind tooltips
+  // tooltips
+  $('.contact li', container).tooltipster({
+      delay: 200,
+      maxWidth: 300,
+      position: 'bottom',
+      theme: 'tooltipster-eyes'
+  });
 
   // bind postcode search retry
   $('.retry-legislators .postcode').on('click', function(e) {
