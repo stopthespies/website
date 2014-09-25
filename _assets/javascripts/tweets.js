@@ -47,11 +47,10 @@
       columnWidth: 200,
       itemSelector: '.tweet'
     });*/
-    $('#tweet-board').isotope({
-    layoutMode: 'packery',
-    itemSelector: '.tweet',
-    stamp: '.stamp'
-    });
+    $('#tweet-board').packery({
+      itemSelector: '.tweet',
+      stamp: '.stamp'
+    }).on('layoutComplete', recenterTweetGrid);
     recenterTweetGrid();
   }
 
