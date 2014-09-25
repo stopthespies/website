@@ -32,19 +32,6 @@
 
   // these ones are positioned against columns and so their left offsets are percentages
   .eyemarks {
-    img {
-      opacity: 1;
-
-      -webkit-transition: opacity 0.6s;
-              transition: opacity 0.6s;
-      &:hover {
-        opacity: 0.66;
-
-        -webkit-transition: opacity 0.1s;
-                transition: opacity 0.1s;
-      }
-    }
-
     .r11 { left: 55%; top: emsize(-20px); }
     .r12 { left: 65%; top: emsize(-40px); }
     .r13 { left: 78%; top: emsize(60px); }
@@ -99,6 +86,8 @@
   .eyemarks {
     top: 50%;
     left: 50%;
+    opacity: 1;
+    z-index: 2;
     .r11 { left: emsize(320px - $xMeasure); top: emsize(-20px - $yMeasured); }
     .r12 { left: emsize(390px - $xMeasure); top: emsize(70px - $yMeasured); }
     .r13 { left: emsize(450px - $xMeasure); top: emsize(-7px - $yMeasured); }
