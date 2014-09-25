@@ -194,23 +194,6 @@ $(function() {
       jsonpCallback : 'myCallback'
   });
 
-  // SEND AN EMAIL (TEST ONLY)
-
-  // $.ajax({
-  //   url: SEND_EMAIL_URL,
-  //   type: "POST",
-
-  //   contentType: "application/json",
-  //   crossDomain: true,
-  //   dataType: 'json',
-
-  //   data: '{"some":"json"}',
-  //   // work with the response
-  //   success: function( res ) {
-  //     console.log(res)
-  //   }
-  // });
-
   // init live counter widgets
 
   $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner({
