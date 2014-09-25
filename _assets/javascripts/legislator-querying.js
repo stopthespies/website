@@ -143,6 +143,8 @@ function renderLegislators(reps) {
     io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds}, function(d) {});
   });
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
+
+  anim.appearVSlide($('.retry-legislators'), 0.8);
 };
 
 function setLegislatorCounts(stats)
@@ -182,9 +184,11 @@ function resetLegislatorResults()
 {
   var container = $('.legislators');
 
-  anim.hideVSlide($('.legislators'), 0.8, function onComplete(e) {
+  anim.hideVSlide(container, 0.8, function onComplete(e) {
     container.empty().css('height', 'auto');
   });
+
+  anim.hideVSlide($('.retry-legislators'), 0.8);
 }
 
 // Hide the geo query box in case of a location error and show a message

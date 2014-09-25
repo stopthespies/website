@@ -22,14 +22,6 @@ section.how.results {
   h3 {
     @include emfz(24px);
   }
-
-  .location-error {
-    display: none;
-    font-style: italic;
-  }
-  .location-error, .location-search {
-    @include emfz(14px);
-  }
 }
 
 .postcode-steps, .extra-steps {
@@ -179,5 +171,23 @@ section.how.results {
 }
 
 .retry-legislators {
-  clear: left;
+  display: none;
+  h4 {
+    color: $textMid;
+    text-transform: uppercase;
+    margin-top: 2em;
+  }
+}
+
+.location-error {
+  display: none;
+  font-style: italic;
+}
+.location-error, .location-search {
+  @include emfz(14px);
+}
+
+.location-privacy {
+  font-size: emsize(13px);
+  font-style: italic;
 }
