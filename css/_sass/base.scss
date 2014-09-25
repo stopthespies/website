@@ -72,6 +72,10 @@ a {
 //-----------------------------------------------------------------
 //  Spying eyes (position indicators for animation & image fallbacks
 
+section {
+  overflow-x: hidden;
+}
+
 .eyecanvas, .eyemarks {
   position: absolute;
   z-index: 0;
@@ -84,6 +88,10 @@ a {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   img {
     position: absolute;
+
+    // scale in EMs so we can adjust with font-size
+    &.sm { width: emsize(50px); }
+    &.lg { width: emsize(76px); }
   }
 }
 
