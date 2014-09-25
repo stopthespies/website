@@ -95,7 +95,10 @@ $(function() {
   // ----------------- SMOOTH SCROLL ----------------------------
 
   $('body').on('click', 'a[href^="#"]', function(e) {
-    STS.anim.scrollToEl($($(this).attr('href')));
+    var link = $(this).attr('href');
+    STS.anim.scrollToEl($(link), 0.3, function() {
+      window.location.hash = link;
+    });
     e.preventDefault();
   });
 

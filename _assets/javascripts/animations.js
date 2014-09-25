@@ -37,7 +37,8 @@
   {
     TM.to(window, time || 0.3, {
       scrollTo : { y: el.offset().top, autoKill:true },
-      ease: Power1.easeOut
+      ease: Power1.easeOut,
+      onComplete : completedCB
     });
   }
 
