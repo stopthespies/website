@@ -4,9 +4,10 @@ layout: default
 <section class="who bg-wrap">
     <div class="container">
         <div class="col">
-          <img src="/img/stslogo.svg" />
+          <img height="64" src="/img/stslogo.svg" />
           <h1>Stop The Spies</h1>
           <h2>Take a stand against online surveillance</h2>
+          <a href="#take-action" class="btn btn-info btn-lg">Take Action Now</a>
           <div class="about">
             <p>
               The Australian Anti-Terrorism laws which are currently being
@@ -18,8 +19,6 @@ layout: default
               be informed and tools to contact your representatives to let them
               know how you feel about the issue.
             </p>
-
-            <a href="#take-action" class="btn btn-primary btn-lg">Take Action</a>
           </div>
         </div>
         <div class="australia-map header inactive">
@@ -61,18 +60,21 @@ layout: default
     <div class="col">
     </div>
     <div class="eyemarks">
-      <img class="r11" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
-      <img class="r12" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
-      <img class="r13" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
-      <img class="r14" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
+      <img class="r12 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
+      <img class="r13 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+      <img class="r14 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
     </div>
-    <div class="eyecanvas"></div>
   </div>
 </section>
 <section class="introduction countries">
   <div class="container">
     <div class="col">
       <p></p>
+    </div>
+    <div class="eyemarks">
+      <img class="r11 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+      <img class="r12 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
+      <img class="r13 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
     </div>
     <div class="col">
       <h2>Why you should be worried</h2>
@@ -86,7 +88,7 @@ layout: default
     </div>
   </div>
 </section>
-<section class="introduction people">
+<section class="introduction rights">
   <div class="container">
     <div class="col">
       <h2>DATA RETENTION AROUND THE WORLD</h2>
@@ -99,6 +101,11 @@ layout: default
       </p>
     </div>
     <div class="col">
+    </div>
+    <div class="eyemarks">
+      <img class="r11 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+      <img class="r12 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
+      <img class="r14 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
     </div>
   </div>
 </section>
@@ -122,8 +129,27 @@ layout: default
 
 <section class="cta bg-wrap">
   <div class="container">
+    <div class="col">
+      <h2>You can stop the spies</h2>
+    </div>
+    <div class="eyemarks">
+      <img class="r11 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+      <img class="r12 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+      <img class="r13 lg" src="{{ "/img/eyes/eye-large-down-r.svg" | prepend: site.baseurl }}" />
+      <img class="r14 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+      <img class="r15 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
 
-      <img class="you-can-stop" src="{{ "/img/stop-the-spies-eyes.svg" | prepend: site.baseurl }}" />
+      <img class="r21 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+      <!-- title shows here -->
+      <img class="r22 lg" src="{{ "/img/eyes/eye-large-up-l.svg" | prepend: site.baseurl }}" />
+
+      <img class="r31 sm" src="{{ "/img/eyes/eye-small-up.svg" | prepend: site.baseurl }}" />
+      <img class="r32 lg" src="{{ "/img/eyes/eye-large-up-r.svg" | prepend: site.baseurl }}" />
+      <img class="r33 sm" src="{{ "/img/eyes/eye-small-up.svg" | prepend: site.baseurl }}" />
+      <img class="r34 sm" src="{{ "/img/eyes/eye-small-up.svg" | prepend: site.baseurl }}" />
+      <img class="r35 lg" src="{{ "/img/eyes/eye-large-up-l.svg" | prepend: site.baseurl }}" />
+    </div>
+    <div class="eyecanvas"></div>
   </div>
 </section>
 
@@ -196,11 +222,13 @@ layout: default
     <div class="container">
         <div class="col">
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
-            <h2 class="twitter-support"><strong class="tweets-support-total number-spinner">0</strong> people supporting <strong>#stopthespies</strong></h2>
+            <div class="twitter-support">
+              <i class="fa fa-abpt"></i>
+              <h2><strong class="tweets-support-total number-spinner">0</strong> people supporting <strong>#stopthespies</strong></h2>
+            </div>
 
             <p class="intro">
-                <i class="fa fa-abpt"></i>
-                By tweeting "I support #stopthespies" you will automatically be added to the list below.
+                By tweeting &ldquo;<em>#stopthespies</em>&rdquo; you will automatically be added to the list below.
             </p>
 
         </div>
@@ -216,33 +244,61 @@ layout: default
   <a id="further-reading"></a>
     <div class="container">
         <div class="col">
+            <img src="/img/stslogo-o.svg" />
+            <h2>Take Action</h2>
             <h3>What else can I do?</h3>
 
             <div class="steps extra-steps">
-                <div class="step step-1">
-                    <h4>Take Action!</h4>
+                <div class="step step-1 bg-wrap">
+                    <h4>Sign a Petition</h4>
                     <div class="actions">
-                        <p>This section will give people another things to do plus a reminder to contact legislators.</p>
-                        <a href="" class="btn btn-primary">Sign the petition</a>
+                      <p>
+                        As citizens of the Internet, we believe that mass surveillance by the
+                        Australian government and its global partners infringes on our civil
+                        liberties, runs contrary to democratic principles, and chills free
+                        expression.
+                      </p>
+                      <a href="" class="btn btn-primary">Sign a petition now</a>
                     </div>
                 </div>
                 <div class="step step-2">
-                    <h4>Spread the word!</h4>
+                    <h4>Spread the Word</h4>
                     <div class="sharing-buttons">
                         <span class="share abpt">
-                            <span class="text"><i class="fa fa-abpt"></i>&nbsp;Share <span class="light">on</span> Twitter</span>
+                            <span class="text">
+                              <i class="fa fa-abpt"></i>&nbsp;Share <span class="light">on</span> Twitter
+                            </span>
+                            <span class="tot twitter-total">0</span>
                             <a target="_blank" href="https://twitter.com/intent/tweet?hashtags=ResetTheNet&amp;related=fightfortheftr&amp;text=This+just+lays+it+out+so+simply.+The+%23NSA+has+a+weakness+--+it's+up+to+us+what+we+do+now.&amp;url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
-                        </span><br>
-                    <span class="share abpf desktop">
-                        <span class="text"><i class="fa fa-abpf"></i>&nbsp; Share <span class="light">on</span> Facebook</span>
-                        <a target="_blank" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
-                    </span><br>
-                      <span class="share abpg desktop">
-                          <span class="text"><i class="fa fa-abpg"></i>&nbsp; Share <span class="light">on</span> Google+</span>
-                          <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+                        </span>
+                        <span class="share abpf">
+                            <span class="text">
+                              <i class="fa fa-abpf"></i>&nbsp; Share <span class="light">on</span> Facebook
+                            </span>
+                            <span class="tot facebook-total">0</span>
+                            <a target="_blank" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+                        </span>
+                        <span class="share abpg">
+                            <span class="text">
+                              <i class="fa fa-abpg"></i>&nbsp; Share <span class="light">on</span> Google+
+                            </span>
+                            <span class="tot google-total">0</span>
+                            <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.resetthenet.org%2F"></a>
+                        </span>
+                    </div>
+
+                    <h4>Keep in Touch</h4>
+                    <div class="sharing-buttons keep-in-touch">
+                      <span class="share abpt">
+                        <span class="text"><i class="fa fa-abpt"></i> <span>@stopthespies</span></span>
+                        <a href="https://twitter.com/stopthespies" target="_blank"></a>
+                      </span>
+                      <span class="share abpf">
+                          <span class="text"><i class="fa fa-abpf"></i> <span>/Stop-The-Spies</span></span>
+                          <a href="https://www.facebook.com/pages/Stop-The-Spies/354999514650401" target="_blank"></a>
                       </span>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
@@ -322,13 +378,13 @@ Thank you for opposing unconstitutional surveillance and for supporting a free I
       <div class="takeover-col">
 
       <div class="takeover-inputs">
-     
+
         <div class="form-group">
           <label for="exampleInputPassword1">Message</label>
           <p>
-I am writing to you as your constituent. In the aftermath of the Snowden revelations, I’ve become increasingly concerned about overreach by the National Security Agency and the secrecy that prevents us from getting honest answers about what our intelligence agencies are doing.  And I’m not alone:  a recent Defense Appropriation amendment that passed the House showed that there is broad, bipartisan support for NSA reform. 
+I am writing to you as your constituent. In the aftermath of the Snowden revelations, I’ve become increasingly concerned about overreach by the National Security Agency and the secrecy that prevents us from getting honest answers about what our intelligence agencies are doing.  And I’m not alone:  a recent Defense Appropriation amendment that passed the House showed that there is broad, bipartisan support for NSA reform.
 
-I urge you to take immediate action to rein in the NSA by supporting S. 2685, the new Senate version of the USA FREEDOM Act, and amendments that will strengthen the bill.  While this bill is not a comprehensive solution, it is a concrete first step towards NSA reform. 
+I urge you to take immediate action to rein in the NSA by supporting S. 2685, the new Senate version of the USA FREEDOM Act, and amendments that will strengthen the bill.  While this bill is not a comprehensive solution, it is a concrete first step towards NSA reform.
 
 
           </p>
@@ -348,11 +404,11 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script type="text/template" id="legislator-template">
    <div class="legislator l<%= counter %>" data-legislator-id="<%= member_id %>">
         <div class="pic">
-            <img class="" src="http://data.openaustralia.org/members<%= image %>" />
+            <img class="" src="<%= image %>" />
         </div>
         <div class="details">
             <h3><%= full_name %></h3>
-            <h4><%= party %> <% if (house == 1) print('member'); else print('senator'); %> for <%= constituency %></h4>
+            <h4><%= party %> <%= typeString %> for <%= constituency %></h4>
             <!--
             <p class="status">This legislator has not put out an official statement. Lets encourage them to not vote in favor of the new proposals.</p>
             -->
@@ -360,51 +416,52 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                 <!--<li class="view-action">
                   <div class="wrap">
     		            <i class="fa fa-eye"></i>
-    		            <div class="number-spinner legislator-views">0</div>
+    		            <span class="number-spinner legislator-views">0</span>
                   </div>
               	</li>-->
-                <% if(contact_details && contact_details.twitter !== 'null') { %>
 
-                <li class="tweets-action" data-toggle="popover" title="Click to start" data-content="We will automatically tag the legislator's twitter account for you!">
-                  <a href="https://twitter.com/intent/tweet?text=Dear%20%40<%= contact_details.twitter %>" target="_blank">
-
+                <!-- :TODO: hookup to email service after confirming legalities -->
+                <% if(contact_details && contact_details.contact_page && contact_details.contact_page !== 'null') { %>
+                <li class="email-action" title="Contact this <%= typeString %> directly">
                   <div class="wrap">
-                  	<i class="fa fa-abpt"></i>
-                  	<div class="number-spinner legislator-tweets">0</div>
+                    <a href="<%= contact_details.contact_page %>" target="_blank">
+                      <i class="fa fa-envelope-o"></i>
+                      <span class="number-spinner legislator-emails">0</span>
+                    </a>
                   </div>
-                  </a>
                 </li>
+                <% } %>
 
-                <% }; %>
-                <% if(contact_details && contact_details.facebook !== 'null') { %>
-
-                <li class="facebooks-action" data-toggle="popover" title="Click to start" data-content="Post directly to this legislators facebook page">
+                <!-- :TODO: need script signed off by legal
+                <li class="call-action" title="Call this <%= typeString %>">
                   <div class="wrap">
-                    <a href="<%= contact_details.facebook %>" target="_blank">
-                    	<i class="fa fa-abpf"></i>
-                    	<div class="number-spinner legislator-facebooks">0</div>
+                    <i class="fa fa-phone"></i>
+                    <span class="number-spinner legislator-calls">0</span>
+                  </div>
+                </li>
+                -->
+
+                <% if(contact_details && contact_details.twitter && contact_details.twitter !== 'null') { %>
+                <li class="tweets-action" title="Tweet this <%= typeString %>">
+                  <div class="wrap">
+                    <a href="https://twitter.com/intent/tweet?text=Dear%20%40<%= contact_details.twitter %>" target="_blank">
+                    	<i class="fa fa-abpt"></i>
+                    	<span class="number-spinner legislator-tweets">0</span>
                     </a>
                   </div>
                 </li>
                 <% }; %>
-                <% if(contact_details && contact_details.email !== 'null') { %>
 
-                <li class="email-action" data-toggle="popover" title="Click to start" data-content="We will provide you with an email template with what to say. NOBODY HAS EMAILED THIS LEGISLATOR YET">
+                <% if(contact_details && contact_details.facebook && contact_details.facebook !== 'null') { %>
+                <li class="facebooks-action" title="Post to this <%= typeString %>'s Facebook page">
                   <div class="wrap">
-                    <i class="fa fa-envelope-o"></i>
-                    <div class="number-spinner legislator-emails">0</div>
+                    <a href="<%= contact_details.facebook %>" target="_blank">
+                    	<i class="fa fa-abpf"></i>
+                    	<span class="number-spinner legislator-facebooks">0</span>
+                    </a>
                   </div>
                 </li>
-
-                <% } %>
-                <!--
-                <li class="call-action" data-toggle="popover" title="Click to start" data-content="We will provide you with some talking points and the legislators phone number. 10 people have taken this action.">
-                  <div class="wrap">
-                    <i class="fa fa-phone"></i>
-                    <div class="number-spinner legislator-calls">0</div>
-                  </div>
-                </li>
-                -->
+                <% }; %>
             </ul>
         </div>
     </div>
@@ -427,7 +484,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
     <div class="tweet tooltip <%= sizeClass %>">
       <a href="<%= retweet_link %>" target="_blank">
         <div class="tweet-overlay"></div>
-        <img class="" src="<%= avatar %>"  data-toggle="popover" title="@<%= handle %> - <%= tweet %> - <%= followers %>" data-content="<%= tweet %> - <%= followers %>" />
+        <img class="" src="<%= avatar %>" title="@<%= handle %> - <%= tweet %> - <%= followers %>" />
         <p class="tweet-text"><%= tweet %></p>
         <p class="tweet-name"><%= name %></p>
         <p class="tweet-handle">@<%= handle %></p>
@@ -435,7 +492,9 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
     </div>
 </script>
 
+<!--
 <div class="takeover overlay overlay-scale">
   <button type="button" class="overlay-close"><i class="fa fa-ui-close"></i></button>
   <div class="takeover-container"></div>
 </div>
+-->

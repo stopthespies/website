@@ -1,3 +1,16 @@
-.reading a {
-  color: darken($brand2, 20%);
+.extra {
+  .step-1 {
+    color: $textLight;
+  }
+  .share {
+    margin: 10px 20px;
+  }
+  .actions {
+    padding-top: 0;
+  }
+
+  h4 {
+    background: transparent;
+    color: inherit;
+  }
 }

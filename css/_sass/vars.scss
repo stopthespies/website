@@ -52,9 +52,8 @@ $member-card-corners: 8px;
 $member-card-button-borders: #E4E4E4;
 $member-card-button-counters: #787878;
 
-$btn-primary-color: white;
 $btn-primary-bg: $primaryOrange;
-$btn-primary-border: $textMid;
+$btn-info-bg: $statGreenL;
 
 /* theming for bootstrap widgets */
 
@@ -91,8 +90,8 @@ $set-info-2-cols: 769px;
 
 $set-search-pad-postcode: 780px;
 
-$set-larger-content-margin: 760px;
-$set-steps-2-cols: 530px;
+$set-larger-content-margin: 850px;
+$set-steps-2-cols: 730px;
 $set-legislator-smaller-thumbs: 481px;
 $set-legislator-smallest-thumbs: 601px;
 
@@ -108,3 +107,7 @@ $set-cta-fontstep-3: 660px;
 $set-menu-show-small-logo: 420px;
 $set-menu-1-row: 860px;
 $set-menu-2-rows: 420px;
+
+$set-tweet-fontstep-1: 400px;
+$set-tweet-fontstep-2: 600px;
+$set-tweet-fontstep-3: 769px;

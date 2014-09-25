@@ -18,8 +18,8 @@
   background: #3e404a;
   border: 0;
   color: #e7e7e7;
-  width: 100%; 
-  box-sizing: border-box; 
+  width: 100%;
+  box-sizing: border-box;
   padding: 25px 20px;
 }
 
@@ -28,15 +28,15 @@
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #e7e7e7;  
+   color: #e7e7e7;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #e7e7e7;  
+   color: #e7e7e7;
 }
 
-:-ms-input-placeholder {  
-   color: #e7e7e7;  
+:-ms-input-placeholder {
+   color: #e7e7e7;
 }
 
 .takeover-inputs {
@@ -82,7 +82,7 @@
   top: 20px;
   overflow: hidden;
   border: none;
-  background: url(../img/cross.png) no-repeat center center;
+  // background: url(../img/cross.png) no-repeat center center;
   text-indent: 200%;
   color: transparent;
   outline: none;

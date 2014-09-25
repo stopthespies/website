@@ -3,6 +3,7 @@
     text-transform: none;
     font-family: 'League Gothic', sans-serif;
     @include emfz(72px);
+    margin: -2em 0 0.5em 0;
     color: $textNormal;
     &, strong {
       font-weight: normal;
@@ -14,6 +15,18 @@
 
   .intro {
     text-align: center;
+
+    em {
+      color: $statGreenL;
+    }
+  }
+
+  .fa-abpt {
+    display: block;
+    font-size: 9.5em;
+    margin-top: -0.3em;
+    opacity: 0.1;
+    color: white;
   }
 }
 
@@ -25,7 +38,6 @@
   position:relative;
 }
 .twitter-support {
-	font-size: 52px;
 	text-align: center;
 
   .number-spinner {
@@ -128,4 +140,18 @@
   margin: 0 auto;
   padding: 0;
   @include clearfix();
+}
+
+
+.twitter-support {
+  font-size: 0.4em;
+  @media (min-width: $set-tweet-fontstep-1) {
+    font-size: 0.6em;
+  }
+  @media (min-width: $set-tweet-fontstep-2) {
+    font-size: 0.8;
+  }
+  @media (min-width: $set-tweet-fontstep-3) {
+    font-size: 1em;
+  }
 }

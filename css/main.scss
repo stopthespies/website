@@ -1,6 +1,7 @@
 ---
 ---
 
+@import "vars";
 @import "bootstrap";
 @import "animations";
 @import "grid";
@@ -15,6 +16,7 @@
  * Website
  */
 @import "intro";
+@import "tooltipster";
 @import "video";
 @import "stats";
 @import "legislator-lookup";
@@ -23,8 +25,7 @@
 @import "further-reading";
 @import "footer";
 
-@import "takeover";
-@import "modals";
+// @import "takeover";
 
 @import "map";
 @import "counters";

@@ -44,11 +44,6 @@ h4 {
   @include emfz(18px);
 }
 
-.bg-wrap {  // wrap up background gradients over sections
-  background: $primaryBg;
-  background-image: linear-gradient(-127deg, $primaryBgLeft 3%, $primaryBgRight 88%);
-}
-
 .intro {    // section introductory lines
   margin-bottom: emsize(30px);
 }
@@ -77,6 +72,10 @@ a {
 //-----------------------------------------------------------------
 //  Spying eyes (position indicators for animation & image fallbacks
 
+body {
+  overflow-x: hidden;
+}
+
 .eyecanvas, .eyemarks {
   position: absolute;
   z-index: 0;
@@ -89,6 +88,20 @@ a {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   img {
     position: absolute;
+    opacity: 1;
+
+    -webkit-transition: opacity 0.6s;
+            transition: opacity 0.6s;
+    &:hover {
+      opacity: 0.66;
+
+      -webkit-transition: opacity 0.1s;
+              transition: opacity 0.1s;
+    }
+
+    // scale in EMs so we can adjust with font-size
+    &.sm { width: emsize(50px); }
+    &.lg { width: emsize(76px); }
   }
 }
 
@@ -141,7 +154,15 @@ a {
   overflow: hidden;
 }
 
+/* temporary */
   img.you-can-stop {
     width: 90%;
     max-width: 887px;
   }
+
+
+// :IMPORTANT: must go after step styles
+.bg-wrap {
+  background: $primaryBg;
+  background-image: linear-gradient(-127deg, $primaryBgLeft 3%, $primaryBgRight 88%);
+}

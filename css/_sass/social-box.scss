@@ -4,17 +4,37 @@
   padding-top: 80px;
 }
 
+.sharing-buttons {
+  max-width: emsize(250px);
+  margin: 0 auto;
+
+  .tot {
+    display: block;
+    font-size: 3em;
+    margin-top: -1.15em;
+    opacity: 0.1;
+    position: relative;
+    top: 0.4em;
+    z-index: 0;
+    color: black;
+  }
+
+  .text {
+    position: relative;
+    z-index: 1;
+  }
+}
+
 .sharing-buttons .share {
     display: block;
-    background: #000;
+    position: relative;
     text-align: center;
     text-decoration: none;
     border-radius: 3px 3px 3px 3px;
     padding: 1em;
     color:#fff;
     font-weight: bold;
-    font-size: 15px;
-    position: relative;
+    font-size: emsize(15px);
 
     a {
       display: block;
@@ -48,6 +68,9 @@
 
 .sharing-buttons .share.abpf {
     background: #3c5a96;
+    .tot {
+      color: white;
+    }
 
     &:hover {
       background: darken(#3c5a96, 10%);

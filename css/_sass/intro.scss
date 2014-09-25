@@ -37,6 +37,35 @@
     .r13 { left: 78%; top: emsize(60px); }
     .r14 { left: 90%; top: emsize(-40px); }
   }
+
+  &.countries {
+    .eyecanvas, .eyemarks {
+      // transform: scale(-1);
+      // -webkit-transform: scale(-1);
+      margin-top: 10px;
+
+      @media (min-width: $set-info-2-cols) {
+        margin-top: -90px;
+        margin-left: 0%;
+
+        transform: scale(-1);
+        -webkit-transform: scale(-1);
+      }
+    }
+  }
+
+  &.rights {
+    .eyecanvas, .eyemarks {
+      margin-left: 10%;
+      margin-top: -20px;
+      width: 80%;
+
+      @media (min-width: $set-info-2-cols) {
+        margin-left: 10%;
+        margin-top: 90px;
+      }
+    }
+  }
 }
 
 .cta {
@@ -57,6 +86,8 @@
   .eyemarks {
     top: 50%;
     left: 50%;
+    opacity: 1;
+    z-index: 2;
     .r11 { left: emsize(320px - $xMeasure); top: emsize(-20px - $yMeasured); }
     .r12 { left: emsize(390px - $xMeasure); top: emsize(70px - $yMeasured); }
     .r13 { left: emsize(450px - $xMeasure); top: emsize(-7px - $yMeasured); }
