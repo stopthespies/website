@@ -29,15 +29,7 @@
     //     $(this).removeAttr('title');
     // });
 
-    $eyemarks.find('img')
-        .each(function () {
-            this.title = getTitle();
-        })
-        .tooltipster({
-            delay: 400,
-            maxWidth: 300,
-            theme: 'tooltipster-eyes'
-        });
+    
 })();
 // ;)
 ;
