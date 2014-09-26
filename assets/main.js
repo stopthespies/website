@@ -3,7 +3,7 @@
 
 
 
-// -- require vendor/leaflet
+
 
 
 
@@ -32,10 +32,10 @@ var legislators = {}; // Too lazy to pass this variable around to modals ATM - T
 
 var
   LEGISLATORS_LOCATOR_URL = STS.options.LEGISLATORS_LOCATOR_URL,
-  SOCIAL_STATS_URL    = STS.options.SOCIAL_STATS_URL,
 
   TWEETS_READ_URL     = STS.options.TWEETS_READ_URL,
   STATS_READ_URL      = STS.options.STATS_READ_URL,
+  SHARES_READ_URL     = STS.options.SHARES_READ_URL,
 
   SEND_EMAIL_URL      = STS.options.SEND_EMAIL_URL,
   LOG_URL_BASE      = STS.options.LOG_URL_BASE,
@@ -69,7 +69,7 @@ $(function() {
       legislators: legislatorId,
       repeat : Cookie.has('called-' + legislatorId)
     }, function(d) {});
-    Cookie.set('called-' + legislatorId, 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+    Cookie.set('called-' + legislatorId, 1);
   });
 
   $('body').on('click', '.contact .email-action', function (e) {
@@ -91,7 +91,7 @@ $(function() {
       legislators: legislatorId,
       repeat : Cookie.has('emailed-' + legislatorId)
     }, function(d) {});
-    Cookie.set('emailed-' + legislatorId, 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+    Cookie.set('emailed-' + legislatorId, 1);
   });
 
   $('body').on('click', '.contact .tweets-action', function (e) {
@@ -102,7 +102,7 @@ $(function() {
       legislators: legislatorId,
       repeat : Cookie.has('tweeted-' + legislatorId)
     }, function(d) {});
-    Cookie.set('tweeted-' + legislatorId, 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+    Cookie.set('tweeted-' + legislatorId, 1);
   });
 
   $('body').on('click', '.contact .facebooks-action', function (e) {
@@ -113,7 +113,7 @@ $(function() {
       legislators: legislatorId,
       repeat : Cookie.has('facebooked-' + legislatorId)
     }, function(d) {});
-    Cookie.set('facebooked-' + legislatorId, 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+    Cookie.set('facebooked-' + legislatorId, 1);
   });
 
   // ----------------- SMOOTH SCROLL ----------------------------
@@ -130,7 +130,7 @@ $(function() {
 
   var loadedGlobals, loadedStats, socialStats;
 
-  // ScrollHandler.addTrigger('#load-stats', bringInStats);
+  ScrollHandler.addTrigger('#load-stats', bringInStats);
   TweenLite.set(".stats .metric", { transform: "scaleX(0)", opacity: 0 });
 
   function bringInStats()
@@ -195,31 +195,27 @@ $(function() {
     loadedGlobals = globals;
   }
 
+  function onSharesLoaded(stats)
+  {
+    // assign social stats for stats section (deferred until animated in)
+    socialStats = stats;
+
+    // apply to share panels
+    var shares = $('.share');
+    $('.facebook-total', shares).numberSpinner('set', socialStats.facebook || 0);
+    $('.google-total', shares).numberSpinner('set', socialStats.googleplus || 0);
+    $('.twitter-total', shares).numberSpinner('set', socialStats.twitter || 0);
+  }
+
   // ------------------------------ LOAD DATA ----------------------------------
 
   // GET AGGREGATE TOTALS
 
-  io.api('stats', STATS_READ_URL, null, function(stats) {
-    STS.events.onStatsLoad(stats);
-  });
+  io.api('stats', STATS_READ_URL, null, onStatsLoaded);
 
   // GET SOCIAL TOTALS
 
-  $.ajax(SOCIAL_STATS_URL, {
-      success: function(res, err) {
-        // assign social stats for stats section (deferred until animated in)
-        socialStats = res;
-
-        // apply to share panels immediately
-        var shares = $('.share');
-        $('.facebook-total', shares).numberSpinner('set', socialStats.facebook || 0);
-        $('.google-total', shares).numberSpinner('set', socialStats.googleplus || 0);
-        $('.twitter-total', shares).numberSpinner('set', socialStats.twitter || 0);
-      },
-      dataType: 'jsonp',
-      cache         : true,
-      jsonpCallback : 'myCallback'
-  });
+  io.api('shares', SHARES_READ_URL, null, onSharesLoaded);
 
   // init live counter widgets
 
@@ -235,6 +231,7 @@ $(function() {
   // -------------------------------- EXPORTS ----------------------------------
 
   STS.events.onStatsLoad = onStatsLoaded;
+  STS.events.onSharesLoad = onSharesLoaded;
 
   STS.getTotal = function(stats)
   {

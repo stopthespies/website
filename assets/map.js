@@ -11,8 +11,7 @@
 
 (function($, STS) {
 
-// :IMPORTANT: indicates to other modules how many map lookups should be fired & run when sending electorate events
-STS.TOTAL_MAPS_COUNT = 2;
+STS.TOTAL_MAPS_COUNT = 0; // init, set after maps have loaded to DOM and used by electorate highlighting to fire across all maps
 
 var DEFAULT_COORDS = [-28.043981, 134.912109];
 var DEFAULT_ZOOM = 4;
@@ -23,7 +22,7 @@ if (window.L) {
 }
 
 // all maps are the same, just add more things to this selector & adjust after creating
-var mapEls = '.campaign-map';
+var mapEls = '.australia-map.status';
 var maps = [];
 var mapShapes = [];
 var MAPS_DISABLED = false;
@@ -35,6 +34,13 @@ var winH = $(window).height();
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 // init
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+var MAP_INIT_CALLBACKS = {
+  '.status' : function(el) {
+    $(el).find('img').remove();
+    STS.anim.map.enter(el);
+  }
+};
 
 // load up map when page is ready
 $(initMaps);
@@ -118,11 +124,12 @@ function showElectorates(geojson)
     mapShapes.push(layer);
   });
 
-  // :SHONK: apply these in a more robust way
-  STS.anim.map.enter(mapEls[0]);
-  mapEls.eq(1).find('.map-blocker').on('click', function() {
-    activateUI(maps[1]);
-  });
+  STS.TOTAL_MAPS_COUNT = maps.length;
+
+  // initialise the maps
+  for (var filter in MAP_INIT_CALLBACKS) {
+    MAP_INIT_CALLBACKS[filter](mapEls.filter(filter)[0]);
+  }
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -282,22 +289,23 @@ function getGeoJSONBounds(layer)
 
 function shadeWardsByActivity(totalEvents, reps)
 {
-  var i, l, rep, shape, reptotal,
-    map = maps[1];    // :SHONK: magic number indexing
+  var i, j, k, l, rep, shape, reptotal, map;
 
-  for (i = 0, l = reps.length; i < l && (rep = reps[i]); ++i) {
-    reptotal = STS.getTotal(rep);
-    shape = findMembersElectorate(map, rep._id);
+  for (j = 0, k = reps.length; j < k && (map = maps[j]); ++j) {
+    for (i = 0, l = reps.length; i < l && (rep = reps[i]); ++i) {
+      reptotal = STS.getTotal(rep);
+      shape = findMembersElectorate(map, rep._id);
 
-    if (!shape) {
-      continue;   // senator
+      if (!shape) {
+        continue;   // senator
+      }
+
+      var shapeData = STS.CampaignMap.getGeoJSONShape(shape);
+      var g = shapeData[0];
+      var $paths = shapeData[1];
+
+      $paths.css('fill-opacity', reptotal / totalEvents);
     }
-
-    var shapeData = STS.CampaignMap.getGeoJSONShape(shape);
-    var g = shapeData[0];
-    var $paths = shapeData[1];
-
-    $paths.css('fill-opacity', reptotal / totalEvents);
   }
 }
 

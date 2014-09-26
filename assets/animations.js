@@ -48,8 +48,8 @@
   function mapEnter(mapDOM)
   {
     mapEnterTween = new TimelineMax({pause: true})
-      .to(mapDOM, 0, {opacity: 0, transform: "rotateY(-90deg)"})
-      .to(mapDOM, 1.25, {opacity: 1, transform: "rotateY(0) scale(" + STS.CampaignMap.getContainerScale(mapDOM) + ")"});
+      .to(mapDOM, 0, {opacity: 0, transform: "rotateY(0) scale(" + STS.CampaignMap.getContainerScale(mapDOM) + ")"})
+      .to(mapDOM, 1.25, {opacity: 0.3});
 
     return mapEnterTween;
   }

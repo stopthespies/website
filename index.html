@@ -50,23 +50,13 @@
     <body>
     	
 
-    <!--
-<div class="header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <ul class="nav pull-right">
-                    <li class=""><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-    
-                <h3><i style="margin-right: 10px; font-size: 30px;" class="fa fa-eye-slash"></i>STOP THE SPIES</h3>
-            </div>
-        </div>
-    </div>
-</div>
--->
+    <!--[if lte IE 9]>
+  <div id="browser-fail">
+    <em>Internet Explorer 8!</em>
+    You must be having a laugh. This site may work for you, but it was not designed to.<br />
+    You should <a href="http://browser-update.org/update-browser.html#14@browser-update.org" target="_blank">update your browser</a> for more security, comfort and the best experience on this site.
+  </div>
+<![endif]-->
 
 
       <section class="who bg-wrap">
@@ -331,19 +321,57 @@
 
 <!-- START STATS BG WRAPPER -->
 <div class="bg-wrap">
+<section class="stats">
+  <a id="progress"></a>
+    <div class="container">
+        <div class="col">
+      			<!-- TRIGGER --><a id="load-stats"></a><!-- /TRIGGER -->
 
+            <h2>Campaign Progress</h2>
+
+            <div class="metrics">
+                <div class="metric">
+                    <div class="title views">Views</div>
+                    <div class="total"><div class="view-total number-spinner">0</div></div>
+                </div>
+                <div class="metric">
+                    <div class="title abpt">Tweets</div>
+                    <div class="total"><div class="twitter-total number-spinner">0</div></div>
+                </div>
+                <div class="metric">
+                    <div class="title emails">Emails</div>
+                    <div class="total"><div class="email-total number-spinner">0</div></div>
+                </div>
+                <div class="metric">
+                    <div class="title abpf">Posts</div>
+                    <div class="total"><div class="facebook-total number-spinner">0</div></div>
+                </div>
+                <!--
+                <div class="metric">
+                    <div class="title calls">Calls</div>
+                    <div class="total"><div class="call-total number-spinner">0</div></div>
+                </div>
+                -->
+            </div>
+        </div>
+        <div class="australia-map status inactive">
+          <div class="map-blocker"></div>
+          <img src="/img/australia-outline.svg" />
+        </div>
+    </div>
+</section>
 <section class="support">
   <a id="supporters"></a>
     <div class="container">
         <div class="col">
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
             <div class="twitter-support">
-              <i class="fa fa-abpt"></i>
               <h2><strong class="tweets-support-total number-spinner">0</strong> people supporting <strong>#stopthespies</strong></h2>
             </div>
 
             <p class="intro">
-                By tweeting &ldquo;<em>#stopthespies</em>&rdquo; you will automatically be added to the list below.
+              <i class="fa fa-abpt"></i>
+              By tweeting &ldquo;<em>#stopthespies</em>&rdquo; you will automatically be added to the list below.
             </p>
 
         </div>
@@ -368,10 +396,7 @@
                     <h4>Sign a Petition</h4>
                     <div class="actions">
                       <p>
-                        As citizens of the Internet, we believe that mass surveillance by the
-                        Australian government and its global partners infringes on our civil
-                        liberties, runs contrary to democratic principles, and chills free
-                        expression.
+                        Aside from contacting your representatives, you can also sign a petition that calls on the Federal Government to drop its proposed mandatory, indiscriminate data retention regime, and to treat ordinary, law-abiding Australians as citizens, not suspects.
                       </p>
                       <a href="" class="btn btn-primary">Sign a petition now</a>
                     </div>
@@ -611,6 +636,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script src="/assets/vendor/lodash.min.js"></script>
 <script src="/assets/vendor/TweenMax.min.js"></script>
 <script src="/assets/vendor/ScrollToPlugin.min.js"></script>
+<script src="/assets/vendor/leaflet.js"></script>
 <script src="/assets/sockets.js"></script>
 <script src="/assets/vendor/jquery.tooltipster.min.js"></script>
 <script src="/assets/vendor/packery.pkgd.min.js"></script>
@@ -627,20 +653,6 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script src="/assets/eyes.js"></script>
 <script src="/assets/vendor/jquery.numberSpinner.js"></script>
 <script src="/assets/main.js"></script>
-
-
-<!-- old browser check -->
-<script type="text/javascript">
-var $buoop = {vs:{i:8,f:10,o:12.1,s:5.1}};
-$buoop.ol = window.onload;
-window.onload=function(){
- try {if ($buoop.ol) $buoop.ol();}catch (e) {}
- var e = document.createElement("script");
- e.setAttribute("type", "text/javascript");
- e.setAttribute("src", "/js/browser-update.js");
- document.body.appendChild(e);
-}
-</script>
 
     </body>
 </html>

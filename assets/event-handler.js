@@ -59,6 +59,10 @@ window.io || (io = {});
       STS.events.onStatsLoad(stats);
     });
 
+    io.on('shares:update', function(shares) {
+      STS.events.onSharesLoad(shares);
+    });
+
     io.on('l:views', function(reps) {
       STS.events.onLegislatorStatsIncrement(reps, 'views');
       notifyLegislatorMap(reps, 'views');

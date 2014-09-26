@@ -53,23 +53,13 @@
     		<meta itemprop="url" content="/about/">
     	
 
-    <!--
-<div class="header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <ul class="nav pull-right">
-                    <li class=""><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-    
-                <h3><i style="margin-right: 10px; font-size: 30px;" class="fa fa-eye-slash"></i>STOP THE SPIES</h3>
-            </div>
-        </div>
-    </div>
-</div>
--->
+    <!--[if lte IE 9]>
+  <div id="browser-fail">
+    <em>Internet Explorer 8!</em>
+    You must be having a laugh. This site may work for you, but it was not designed to.<br />
+    You should <a href="http://browser-update.org/update-browser.html#14@browser-update.org" target="_blank">update your browser</a> for more security, comfort and the best experience on this site.
+  </div>
+<![endif]-->
 
 
        <div class="jumbotron">
@@ -124,6 +114,7 @@
 <script src="/assets/vendor/lodash.min.js"></script>
 <script src="/assets/vendor/TweenMax.min.js"></script>
 <script src="/assets/vendor/ScrollToPlugin.min.js"></script>
+<script src="/assets/vendor/leaflet.js"></script>
 <script src="/assets/sockets.js"></script>
 <script src="/assets/vendor/jquery.tooltipster.min.js"></script>
 <script src="/assets/vendor/packery.pkgd.min.js"></script>
@@ -140,20 +131,6 @@
 <script src="/assets/eyes.js"></script>
 <script src="/assets/vendor/jquery.numberSpinner.js"></script>
 <script src="/assets/main.js"></script>
-
-
-<!-- old browser check -->
-<script type="text/javascript">
-var $buoop = {vs:{i:8,f:10,o:12.1,s:5.1}};
-$buoop.ol = window.onload;
-window.onload=function(){
- try {if ($buoop.ol) $buoop.ol();}catch (e) {}
- var e = document.createElement("script");
- e.setAttribute("type", "text/javascript");
- e.setAttribute("src", "/js/browser-update.js");
- document.body.appendChild(e);
-}
-</script>
 
     </body>
 </html>
