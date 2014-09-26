@@ -23,11 +23,11 @@ realtime_connection_timeout: 500    # ms to wait before giving up on socket conn
 api_url: https://api.stopthespies.org:443
 tweets_read_path: /tweets
 stats_read_path: /stats
+shares_read_path: /shares
 send_email_path: /email
 log_path: /log
 
 legislators_locator_url : https://legislators.stopthespies.org
-social_stats_url    : 'https://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://shutthebackdoor.net'
 
 #------------------------------------------------------------------------------#
 # social metadata
