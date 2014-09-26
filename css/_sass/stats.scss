@@ -33,7 +33,7 @@ $stats-label-vadjust: 0.4;
     font-family: 'League Gothic', sans-serif;
 
     &, .tiles, .tile, .digit {
-      height: $stats-digit-height * 1em;       // :TODO: this really freaks out the animation engine right now
+      height: emsize(54px, 32px);   // 32px = 2em
     }
     .digit {
       line-height: $stats-digit-height;
