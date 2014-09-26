@@ -248,19 +248,57 @@ layout: default
 
 <!-- START STATS BG WRAPPER -->
 <div class="bg-wrap">
+<section class="stats">
+  <a id="progress"></a>
+    <div class="container">
+        <div class="col">
+      			<!-- TRIGGER --><a id="load-stats"></a><!-- /TRIGGER -->
 
+            <h2>Campaign Progress</h2>
+
+            <div class="metrics">
+                <div class="metric">
+                    <div class="title views">Views</div>
+                    <div class="total"><div class="view-total number-spinner">0</div></div>
+                </div>
+                <div class="metric">
+                    <div class="title abpt">Tweets</div>
+                    <div class="total"><div class="twitter-total number-spinner">0</div></div>
+                </div>
+                <div class="metric">
+                    <div class="title emails">Emails</div>
+                    <div class="total"><div class="email-total number-spinner">0</div></div>
+                </div>
+                <div class="metric">
+                    <div class="title abpf">Posts</div>
+                    <div class="total"><div class="facebook-total number-spinner">0</div></div>
+                </div>
+                <!--
+                <div class="metric">
+                    <div class="title calls">Calls</div>
+                    <div class="total"><div class="call-total number-spinner">0</div></div>
+                </div>
+                -->
+            </div>
+        </div>
+        <div class="australia-map status inactive">
+          <div class="map-blocker"></div>
+          <img src="{{ "/img/australia-outline.svg" | prepend: site.baseurl }}" />
+        </div>
+    </div>
+</section>
 <section class="support">
   <a id="supporters"></a>
     <div class="container">
         <div class="col">
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
             <div class="twitter-support">
-              <i class="fa fa-abpt"></i>
               <h2><strong class="tweets-support-total number-spinner">0</strong> people supporting <strong>#stopthespies</strong></h2>
             </div>
 
             <p class="intro">
-                By tweeting &ldquo;<em>#stopthespies</em>&rdquo; you will automatically be added to the list below.
+              <i class="fa fa-abpt"></i>
+              By tweeting &ldquo;<em>#stopthespies</em>&rdquo; you will automatically be added to the list below.
             </p>
 
         </div>
