@@ -15,6 +15,7 @@ $stats-label-vadjust: 0.4;
   height: $stats-row-height;
   float: left;
   clear: left;
+  background: rgba(red($primaryBg), green($primaryBg), blue($primaryBg), 0.7);
 
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-top: 0;
@@ -31,6 +32,8 @@ $stats-label-vadjust: 0.4;
   .number-spinner {
     font-size: 2em;
     font-family: 'League Gothic', sans-serif;
+    position: relative;
+    top: 2px;
 
     &, .tiles, .tile, .digit {
       height: emsize(54px, 32px);   // 32px = 2em
@@ -38,8 +41,6 @@ $stats-label-vadjust: 0.4;
     .digit {
       line-height: $stats-digit-height;
     }
-  }
-  .tiles {
   }
   .tile {
     padding: 0 0.2em;

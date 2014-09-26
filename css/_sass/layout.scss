@@ -117,10 +117,6 @@
     z-index: 0;
   }
 
-	.metrics {
-		@include column($one);
-	}
-
   @media (min-width: $set-stats-map-adjacent) {
     .col {
       @include column($one-half);
