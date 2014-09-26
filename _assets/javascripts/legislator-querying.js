@@ -250,7 +250,7 @@ function onSearchComplete()
   // focus response area if we haven't previously viewed the site
   if (!Cookie.has('already-viewed')) {
     STS.anim.scrollToEl($('#take-action'));
-    Cookie.set('already-viewed', 1, { maxAge : opts.USER_PROGRESS_COOKIE_LIFETIME });
+    Cookie.set('already-viewed', 1);
   }
 }
 

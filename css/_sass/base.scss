@@ -166,3 +166,28 @@ body {
   background: $primaryBg;
   background-image: linear-gradient(-127deg, $primaryBgLeft 3%, $primaryBgRight 88%);
 }
+
+
+
+// ie8 prompt
+#browser-fail {
+  z-index: 100000;    // if I see anyone else using big zindexes, why i outta...
+  position: fixed;
+  font-size: emsize(12px);
+  line-height: 1.5;
+  border-bottom: $statGreenL;
+  width: 100%;
+  top: 0; left: 0;
+  padding: 0.6em;
+  background: $statRed;
+  color: white;
+  font-weight: bold;
+
+  a {
+    color: white;
+    &:hover {
+      color: $statGreenD;
+    }
+    text-decoration: underline;
+  }
+}
