@@ -21,7 +21,7 @@ if (window.L) {
 }
 
 // all maps are the same, just add more things to this selector & adjust after creating
-var mapEls = '.campaign-map';
+var mapEls = '.australia-map.status';
 var maps = [];
 var mapShapes = [];
 var MAPS_DISABLED = false;
