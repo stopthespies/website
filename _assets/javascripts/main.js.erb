@@ -40,7 +40,7 @@ var
   SEND_EMAIL_URL      = STS.options.SEND_EMAIL_URL,
   LOG_URL_BASE      = STS.options.LOG_URL_BASE,
 
-  MAP_START_SHADING = 100;   // this many actions to occur before we begin weighted shading of the campaign stats map
+  MAP_START_SHADING = 1;   // this many actions to occur before we begin weighted shading of the campaign stats map
 
 // Start up scripts
 $(function() {
