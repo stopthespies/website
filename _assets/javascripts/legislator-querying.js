@@ -244,7 +244,7 @@ function onLocationError()
 {
   $('.postcode-steps').addClass('no-location');
   anim.hideVSlide($('.how .location-search'), 0.4);
-  anim.appearVSlide($('.how .location-error'), 0.4);
+  TweenMax.fromTo($('.how .location-error'), 0.4, {display:'block', opacity: 0}, {opacity: 1});
 }
 
 function onSearchError()
