@@ -249,42 +249,17 @@ Eye.MAX_BLINK_DELAY = 10000;
 					));
 				});
 
-			});
+				// Show eyes on scroll to canvas
+				var showEyesCanvas = function() {
+					showEyes(data.eyes);
+					ScrollHandler.removeTrigger(showEyesCanvas);
+				}
+				ScrollHandler.addTrigger($canvas, showEyesCanvas);
 
-			// Check eyes visibility on window scroll
-			$(window).scroll(checkEyesVisible);
-			checkEyesVisible();
+			});
 
 			// Start rendering
 			startRenderEyes();
-
-		}
-
-
-		/**
-		 * Check eyes visibility
-		 */
-		function checkEyesVisible() {
-
-			// Check eye canvases visibility
-			$('.eyecanvas').each(function() {
-				var $canvas = $(this);
-				var data = $canvas.data('display');
-
-				// Check visibility
-				var visible = (
-					$canvas.offset().top < $(window).scrollTop() + $(window).height() &&
-					$canvas.offset().top + $canvas.height() > $(window).scrollTop()
-				);
-
-				// Show/hide eyes & set visibility
-				if (visible != data.visible) {
-					if (visible) showEyes(data.eyes);
-					else hideEyes(data.eyes);
-					data.visible = visible;
-				}
-
-			});
 
 		}
 
