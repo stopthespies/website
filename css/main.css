@@ -1602,9 +1602,33 @@ body {
   font-weight: normal;
   font-style: normal; }
 @font-face {
+  font-family: 'Roboto';
+  src: url("../fonts/Roboto-Regular-webfont.eot");
+  src: url("../fonts/Roboto-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Regular-webfont.woff") format("woff"), url("../fonts/Roboto-Regular-webfont.ttf") format("truetype"), url("../fonts/Roboto-Regular-webfont.svg#robotoregular") format("svg");
+  font-weight: 400;
+  font-style: normal; }
+@font-face {
+  font-family: 'Roboto';
+  src: url("../fonts/Roboto-Bold-webfont.eot");
+  src: url("../fonts/Roboto-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Bold-webfont.woff") format("woff"), url("../fonts/Roboto-Bold-webfont.ttf") format("truetype"), url("../fonts/Roboto-Bold-webfont.svg#robotobold") format("svg");
+  font-weight: 700;
+  font-style: normal; }
+@font-face {
+  font-family: 'Roboto';
+  src: url("../fonts/Roboto-Italic-webfont.eot");
+  src: url("../fonts/Roboto-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Italic-webfont.woff") format("woff"), url("../fonts/Roboto-Italic-webfont.ttf") format("truetype"), url("../fonts/Roboto-Italic-webfont.svg#robotoitalic") format("svg");
+  font-weight: 400;
+  font-style: italic; }
+@font-face {
   font-family: 'spies';
   src: url("../fonts/spies.eot?78099107");
   src: url("../fonts/spies.eot?78099107#iefix") format("embedded-opentype"), url("../fonts/spies.woff?78099107") format("woff"), url("../fonts/spies.ttf?78099107") format("truetype"), url("../fonts/spies.svg?78099107#spies") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Droid Sans Mono';
+  src: url("../fonts/DroidSansMono-webfont.eot");
+  src: url("../fonts/DroidSansMono-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/DroidSansMono-webfont.woff") format("woff"), url("../fonts/DroidSansMono-webfont.ttf") format("truetype"), url("../fonts/DroidSansMono-webfont.svg#droid_sans_monoregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 [class^="fa-"]:before, [class*=" fa-"]:before {
@@ -1835,6 +1859,39 @@ img.you-can-stop {
   margin-bottom: 0.83333em;
   letter-spacing: -0.04167em; }
 
+.who {
+  position: relative; }
+  .who .col {
+    position: relative;
+    z-index: 1;
+    display: inline;
+    float: left;
+    width: 97.22222%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%; }
+  .who .leaflet-map-pane {
+    opacity: 0.1; }
+  @media (min-width: 769px) {
+    .who .col {
+      display: inline;
+      float: left;
+      width: 47.22222%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%; }
+    .who .australia-map {
+      position: absolute;
+      width: 60%;
+      height: 100%;
+      left: 40%;
+      top: 0; }
+    .who .leaflet-map-pane {
+      opacity: 0.7; }
+    .who .about {
+      margin-top: -3em; }
+    .who .btn {
+      position: relative;
+      left: 150%; } }
+
 .menu {
   background: #373943;
   text-transform: uppercase;
@@ -1894,11 +1951,18 @@ img.you-can-stop {
       width: 47.22222%;
       margin-left: 1.38889%;
       margin-right: 1.38889%; } }
-  @media (min-width: 860px) {
+  @media (min-width: 640px) {
     .menu li {
       display: inline;
       float: left;
-      width: 22.22222%;
+      width: 30.55556%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%; } }
+  @media (min-width: 980px) {
+    .menu li {
+      display: inline;
+      float: left;
+      width: 17.22222%;
       margin-left: 1.38889%;
       margin-right: 1.38889%;
       padding-top: 1.78571em; } }
@@ -1956,6 +2020,28 @@ img.you-can-stop {
     .introduction.rights .eyecanvas, .introduction.rights .eyemarks {
       margin-left: 10%;
       margin-top: 90px; } }
+
+.introduction .col {
+  display: inline;
+  float: left;
+  width: 97.22222%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%; }
+@media (min-width: 550px) {
+  .introduction .col {
+    display: inline;
+    float: left;
+    width: 80.55556%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%;
+    margin-left: 9.72222%; } }
+@media (min-width: 769px) {
+  .introduction .col {
+    display: inline;
+    float: left;
+    width: 47.22222%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%; } }
 
 .cta {
   text-align: center;
@@ -2070,23 +2156,32 @@ section.video {
 
 .metrics {
   margin-top: 2em;
-  text-align: left; }
+  text-align: left;
+  width: 16em; }
 
 .metric {
   *zoom: 1;
   height: 3.6em;
-  float: left;
   clear: left;
-  background: rgba(50, 36, 70, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-top: 0; }
+  width: 16em;
+  overflow: visible; }
   .metric:before, .metric:after {
     content: "";
     display: table; }
   .metric:after {
     clear: both; }
-  .metric:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.4); }
+  .metric .border {
+    *zoom: 1;
+    background: rgba(50, 36, 70, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 0; }
+    .metric .border:before, .metric .border:after {
+      content: "";
+      display: table; }
+    .metric .border:after {
+      clear: both; }
+    .metric .border:first-child {
+      border-top: 1px solid rgba(255, 255, 255, 0.4); }
   .metric .number-spinner {
     font-size: 2em;
     font-family: 'League Gothic', sans-serif;
@@ -2118,6 +2213,39 @@ section.video {
     color: #45cba1; }
   .metric .title.abpf {
     color: #4fb9e3; }
+
+.stats {
+  padding-bottom: 0;
+  position: relative;
+  text-align: center; }
+  .stats .australia-map {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 130%;
+    z-index: 0;
+    margin-top: -7em; }
+  .stats .metrics {
+    margin: 3em auto 0 auto; }
+  @media (min-width: 801px) {
+    .stats {
+      min-height: 38em;
+      text-align: left; }
+      .stats .col {
+        display: inline;
+        float: left;
+        width: 47.22222%;
+        margin-left: 1.38889%;
+        margin-right: 1.38889%; }
+      .stats .australia-map {
+        width: 80%;
+        position: absolute;
+        margin-top: 0; }
+      .stats .metrics {
+        margin: 2em 0; }
+      .stats .metric {
+        width: auto; } }
 
 section.how.search {
   padding-bottom: 0; }
@@ -2272,6 +2400,96 @@ section.how.results {
     height: 0;
     overflow: hidden; }
 
+.how .postcode-steps, .how .location-privacy, .how .postcode-lookup {
+  display: block;
+  width: 102.77778%;
+  margin-left: -1.38889%;
+  margin-right: -1.38889%;
+  *zoom: 1; }
+  .how .postcode-steps:before, .how .postcode-steps:after, .how .location-privacy:before, .how .location-privacy:after, .how .postcode-lookup:before, .how .postcode-lookup:after {
+    content: "";
+    display: table; }
+  .how .postcode-steps:after, .how .location-privacy:after, .how .postcode-lookup:after {
+    clear: both; }
+.how .location-privacy p {
+  display: inline;
+  float: left;
+  width: 97.22222%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%; }
+.how .input-group {
+  display: inline;
+  float: left;
+  width: 80.55556%;
+  margin-left: 1.38889%;
+  margin-right: 1.38889%;
+  margin-left: 9.72222%; }
+  .how .input-group .form-control {
+    display: block;
+    float: left;
+    width: 60%;
+    height: auto; }
+  .how .input-group .input-group-btn {
+    display: block;
+    width: 40%; }
+  @media (min-width: 780px) {
+    .how .input-group {
+      display: inline;
+      float: left;
+      width: 63.88889%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%;
+      margin-left: 18.05556%; } }
+@media (min-width: 850px) {
+  .how .col {
+    display: inline;
+    float: left;
+    width: 80.55556%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%;
+    margin-left: 9.72222%;
+    margin-bottom: 1.875em; } }
+@media (min-width: 730px) {
+  .how .location-error p {
+    margin-top: 6.5em; } }
+@media (max-width: 729px) {
+  .how .no-location .step-2 {
+    background: transparent;
+    min-height: 0; } }
+
+.legislators {
+  display: block;
+  width: 102.77778%;
+  margin-left: -1.38889%;
+  margin-right: -1.38889%;
+  *zoom: 1; }
+  .legislators:before, .legislators:after {
+    content: "";
+    display: table; }
+  .legislators:after {
+    clear: both; }
+
+.legislator {
+  max-width: 350px;
+  margin: 0 auto 1em auto; }
+  @media (min-width: 600px) {
+    .legislator {
+      max-width: none;
+      display: inline;
+      float: left;
+      width: 47.22222%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%; }
+      .legislator.l3 {
+        margin-left: 26.38889%; } }
+  @media (min-width: 1000px) {
+    .legislator, .legislator.l3 {
+      display: inline;
+      float: left;
+      width: 30.55556%;
+      margin-left: 1.38889%;
+      margin-right: 1.38889%; } }
+
 .support h2 {
   text-transform: none;
   font-family: 'League Gothic', sans-serif;
@@ -2291,12 +2509,77 @@ section.how.results {
   line-height: 0.7em;
   color: white; }
 
+.tweet-overlay {
+  opacity: 0.6;
+  background: #302344;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-pointer-events: none;
+  -moz-pointer-events: none;
+  pointer-events: none; }
+
+.tweet.bigger .tweet-text,
+.tweet.biggest .tweet-text {
+  font-size: 16px; }
+
+.tweet-text {
+  font-size: 11px;
+  color: #fff;
+  position: relative;
+  z-index: 1; }
+
+.tweet-handle, .tweet-name {
+  font-size: 10px;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  white-space: nowrap; }
+
+.tweet-handle {
+  color: #45caa0; }
+
+.tweet-name {
+  color: #fff;
+  margin-top: 5em; }
+
 .tweet {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   display: block;
   float: left;
-  position: relative; }
+  padding: 5px;
+  position: absolute;
+  z-index: 0;
+  overflow: hidden; }
+  .tweet:hover {
+    z-index: 2; }
+  .tweet a:hover {
+    text-decoration: none; }
+  .tweet .tweet-text {
+    display: none; }
+  @media (min-width: 620px) {
+    .tweet {
+      width: 150px;
+      height: 150px;
+      padding: 10px; }
+      .tweet .tweet-handle, .tweet .tweet-name {
+        font-size: 12px; }
+      .tweet .tweet-name {
+        margin-top: 9em; } }
+  @media (min-width: 820px) {
+    .tweet {
+      width: 200px;
+      height: 200px;
+      padding: 20px; }
+      .tweet .tweet-text {
+        display: block; }
+      .tweet .tweet-name {
+        margin-top: 0; } }
 
 .twitter-support {
   text-align: center; }
@@ -2319,75 +2602,6 @@ section.how.results {
   top: 0;
   left: 0;
   cursor: pointer; }
-
-.tweet-overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: #302344;
-  opacity: 0.6;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  z-index: 1; }
-
-.tweet:hover .tweet-overlay {
-  opacity: 0.85; }
-
-/*
-@-webkit-keyframes testAnim {
-	0% {
-		-webkit-filter: blur(3px) grayscale(.8) opacity(0.8);
-
-	}
-	100% {
-		-webkit-filter: blur(0px) grayscale(0) opacity(1);
-
-	}
-}
-
- the photo to be animated via filters
-.tweet img:hover {
-	-webkit-animation-name: testAnim;
-	 -webkit-animation-duration: 0.5s;
-	 -webkit-animation-iteration-count: 1;
-	 -webkit-animation-direction: alternate;
-	 -webkit-animation-timing-function: ease-out;
-	 -webkit-animation-fill-mode: forwards;
-	 -webkit-animation-delay: 0s;
-}*/
-.tweet.bigger .tweet-text,
-.tweet.biggest .tweet-text {
-  font-size: 16px; }
-
-.tweet-text {
-  font-size: 11px;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 30px;
-  color: #fff;
-  z-index: 2; }
-
-.tweet-handle {
-  font-size: 12px;
-  position: absolute;
-  bottom: 10px;
-  left: 20px;
-  right: 30px;
-  color: #45caa0;
-  z-index: 2;
-  font-weight: bold; }
-
-.tweet-name {
-  font-size: 12px;
-  position: absolute;
-  bottom: 25px;
-  left: 20px;
-  right: 30px;
-  color: #fff;
-  z-index: 2;
-  font-weight: bold; }
 
 #tweet-board {
   position: relative;
@@ -2484,12 +2698,11 @@ section.how.results {
     background: #d22e31; }
 
 .sharbx {
-  position: fixed;
-  display: none;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 1em;
   z-index: 10;
-  right: -9em;
-  top: 15%;
-  text-align: left;
   font-size: 0.5em; }
   .sharbx i {
     width: 2.5em;
@@ -2497,14 +2710,14 @@ section.how.results {
   .sharbx span.share {
     border-radius: 0; }
     .sharbx span.share:first-child {
-      border-top-left-radius: 3px; }
-    .sharbx span.share:last-child {
       border-bottom-left-radius: 3px; }
+    .sharbx span.share:last-child {
+      border-bottom-right-radius: 3px; }
   .sharbx .number-spinner {
+    display: none;
     font-size: 12px;
     margin: 0;
     position: relative;
-    display: block;
     top: -0.4em;
     left: -1em;
     height: 1em;
@@ -2513,33 +2726,57 @@ section.how.results {
   .sharbx .share {
     text-align: left;
     white-space: nowrap;
-    width: 11.7em;
     left: 0;
     overflow: visible;
+    float: left;
+    width: 33%;
+    padding: 0;
     -webkit-transition: left 0.3s ease-out;
     -o-transition: left 0.3s ease-out;
     transition: left 0.3s ease-out; }
   .sharbx i {
     display: block;
     font-size: 1.5em;
-    line-height: 0;
+    line-height: 2.6;
     margin-bottom: -1.1em;
     position: relative;
-    top: 0.4em;
-    width: 7.7em; }
+    text-align: center;
+    top: -0.15em;
+    width: 100%; }
   .sharbx .text {
     display: block;
     visibility: hidden; }
   .sharbx .number-spinner, .sharbx .text {
     text-align: right; }
-  .sharbx span.share:hover {
-    left: -9.6em;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px; }
 
 @media (min-width: 430px) {
   .sharbx {
-    display: block; } }
+    position: fixed;
+    right: -9em;
+    top: 5%;
+    text-align: left;
+    font-size: 0.5em; }
+    .sharbx i {
+      text-align: left;
+      line-height: 0;
+      top: 0.4em;
+      width: 7.7em; }
+    .sharbx span.share {
+      float: none;
+      width: 11.7em;
+      padding: 1em; }
+      .sharbx span.share:first-child {
+        border-radius: 0;
+        border-top-left-radius: 3px; }
+      .sharbx span.share:last-child {
+        border-radius: 0;
+        border-bottom-left-radius: 3px; }
+    .sharbx span.share:hover {
+      left: -9.6em;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px; }
+    .sharbx .number-spinner {
+      display: block; } }
 @media (min-width: 769px) {
   .sharbx {
     font-size: 0.7em; }
@@ -2593,7 +2830,10 @@ section.how.results {
   position: absolute; }
   .australia-map img {
     width: 100%;
-    opacity: 0.2; }
+    opacity: 0.2;
+    position: relative;
+    z-index: 1;
+    display: block; }
   .australia-map.inactive .leaflet-clickable {
     cursor: default; }
 
@@ -2661,56 +2901,37 @@ section.how.results {
   .container:after {
     clear: both; }
 
-.who .col, .menu .col, .introduction .col, .stats .col, .how .col, .support .col, .extra .col, .reading .col {
+section {
+  padding: 3.75em 0; }
+  section.who {
+    padding: 7.5em 0;
+    overflow: hidden; }
+  @media (min-height: 481px) {
+    section {
+      padding: 4.375em 0; }
+      section.who {
+        padding: 8.75em 0; } }
+  @media (min-height: 801px) {
+    section {
+      padding: 5em 0; }
+      section.who {
+        padding: 11.25em 0; } }
+  @media (min-height: 1100px) {
+    section {
+      padding: 5.625em 0; } }
+  @media (max-width: 480px) {
+    section {
+      padding: 2.5em 0; }
+      section.who {
+        padding: 3.75em 0;
+        overflow: hidden; } }
+
+.menu .col, .stats .col, .how .col, .support .col, .extra .col, .reading .col {
   display: inline;
   float: left;
   width: 97.22222%;
   margin-left: 1.38889%;
   margin-right: 1.38889%; }
-
-.who {
-  position: relative; }
-  .who .col {
-    position: relative;
-    z-index: 1; }
-  .who .leaflet-map-pane {
-    opacity: 0.1; }
-  @media (min-width: 769px) {
-    .who .col {
-      display: inline;
-      float: left;
-      width: 47.22222%;
-      margin-left: 1.38889%;
-      margin-right: 1.38889%; }
-    .who .australia-map {
-      position: absolute;
-      width: 60%;
-      height: 100%;
-      left: 40%;
-      top: 0; }
-    .who .leaflet-map-pane {
-      opacity: 0.7; }
-    .who .about {
-      margin-top: -3em; }
-    .who .btn {
-      position: relative;
-      left: 150%; } }
-
-@media (min-width: 550px) {
-  .introduction .col {
-    display: inline;
-    float: left;
-    width: 80.55556%;
-    margin-left: 1.38889%;
-    margin-right: 1.38889%;
-    margin-left: 9.72222%; } }
-@media (min-width: 769px) {
-  .introduction .col {
-    display: inline;
-    float: left;
-    width: 47.22222%;
-    margin-left: 1.38889%;
-    margin-right: 1.38889%; } }
 
 @media (min-width: 850px) {
   .extra .col, .reading .col {
@@ -2740,131 +2961,18 @@ section.how.results {
       margin-right: 1.38889%;
       margin-bottom: 1em;
       max-width: none; } }
+  .step h4 {
+    padding: 0.5em 1em; }
 
+@media (min-width: 730px) {
+  .step-2 {
+    float: right; }
+
+  .step-1 {
+    float: left; } }
 .stats .col, .support .col, .how .col {
   z-index: 1;
   position: relative; }
-
-.stats {
-  padding-bottom: 0;
-  position: relative; }
-  .stats .australia-map {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 150%;
-    z-index: 0; }
-  @media (min-width: 801px) {
-    .stats .col {
-      display: inline;
-      float: left;
-      width: 47.22222%;
-      margin-left: 1.38889%;
-      margin-right: 1.38889%; }
-    .stats .australia-map {
-      width: 80%; } }
-
-.how .step h4, .extra .step h4 {
-  padding: 0.5em 1em; }
-@media (min-width: 730px) {
-  .how .step-2, .extra .step-2 {
-    float: right; }
-  .how .step-1, .extra .step-1 {
-    float: left; } }
-
-.how .postcode-steps, .how .location-privacy, .how .postcode-lookup {
-  display: block;
-  width: 102.77778%;
-  margin-left: -1.38889%;
-  margin-right: -1.38889%;
-  *zoom: 1; }
-  .how .postcode-steps:before, .how .postcode-steps:after, .how .location-privacy:before, .how .location-privacy:after, .how .postcode-lookup:before, .how .postcode-lookup:after {
-    content: "";
-    display: table; }
-  .how .postcode-steps:after, .how .location-privacy:after, .how .postcode-lookup:after {
-    clear: both; }
-.how .location-privacy p {
-  display: inline;
-  float: left;
-  width: 97.22222%;
-  margin-left: 1.38889%;
-  margin-right: 1.38889%; }
-.how .input-group {
-  display: inline;
-  float: left;
-  width: 80.55556%;
-  margin-left: 1.38889%;
-  margin-right: 1.38889%;
-  margin-left: 9.72222%; }
-  .how .input-group .form-control {
-    display: block;
-    float: left;
-    width: 60%;
-    height: auto; }
-  .how .input-group .input-group-btn {
-    display: block;
-    width: 40%; }
-  @media (min-width: 780px) {
-    .how .input-group {
-      display: inline;
-      float: left;
-      width: 63.88889%;
-      margin-left: 1.38889%;
-      margin-right: 1.38889%;
-      margin-left: 18.05556%; } }
-@media (min-width: 850px) {
-  .how .col {
-    display: inline;
-    float: left;
-    width: 80.55556%;
-    margin-left: 1.38889%;
-    margin-right: 1.38889%;
-    margin-left: 9.72222%;
-    margin-bottom: 1.875em; } }
-@media (min-width: 730px) {
-  .how .location-error p {
-    margin-top: 6.5em; } }
-@media (max-width: 729px) {
-  .how .no-location .step-2 {
-    background: transparent;
-    min-height: 0; } }
-
-.legislators {
-  display: block;
-  width: 102.77778%;
-  margin-left: -1.38889%;
-  margin-right: -1.38889%;
-  *zoom: 1; }
-  .legislators:before, .legislators:after {
-    content: "";
-    display: table; }
-  .legislators:after {
-    clear: both; }
-
-.legislator {
-  max-width: 350px;
-  margin: 0 auto 1em auto; }
-  @media (min-width: 600px) {
-    .legislator {
-      max-width: none;
-      display: inline;
-      float: left;
-      width: 47.22222%;
-      margin-left: 1.38889%;
-      margin-right: 1.38889%; }
-      .legislator.l3 {
-        margin-left: 26.38889%; } }
-  @media (min-width: 1000px) {
-    .legislator, .legislator.l3 {
-      display: inline;
-      float: left;
-      width: 30.55556%;
-      margin-left: 1.38889%;
-      margin-right: 1.38889%; } }
-
-section.map {
-  padding: 0; }
 
 .footer {
   text-align: right; }
@@ -2882,18 +2990,6 @@ section.map {
   margin-left: 1.38889%;
   margin-right: 1.38889%;
   margin-left: 34.72222%; }
-
-section {
-  padding: 5em 0; }
-  @media (min-height: 801px) {
-    section {
-      padding: 5em 0; } }
-  section.who {
-    padding: 3.75em 0;
-    overflow: hidden; }
-    @media (min-height: 801px) {
-      section.who {
-        padding: 10em 0; } }
 
 /**
  * Vendors Folder

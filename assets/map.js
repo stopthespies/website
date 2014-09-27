@@ -37,7 +37,6 @@ var winH = $(window).height();
 
 var MAP_INIT_CALLBACKS = {
   '.status' : function(el) {
-    $(el).find('img').remove();
     STS.anim.map.enter(el);
   }
 };
@@ -67,14 +66,17 @@ function initMaps()
     return;
   }
 
-  $.ajax({
-    url: '/map/electorates.json',
-    dataType: "json",
-    data: {},
-    success: function(geojson) {
-      showElectorates(geojson);
-    }
-  });
+  // short delay on pulling electorate data, it's large
+  setTimeout(function() {
+    $.ajax({
+      url: '/map/electorates.json',
+      dataType: "json",
+      data: {},
+      success: function(geojson) {
+        showElectorates(geojson);
+      }
+    });
+  }, 100);
 }
 
 function showElectorates(geojson)

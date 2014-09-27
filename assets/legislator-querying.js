@@ -93,10 +93,6 @@ var legislatorTemplate = $('#legislator-template').html();
 
 function renderLegislators(reps) {
 
-  clearTimeout(searchWait1);
-  clearTimeout(searchWait2);
-  setLegislatorsState(null);
-
   var container = $('.legislators').empty(), idx = 0;
 
   legislators = reps;
@@ -225,9 +221,22 @@ function watchRequestTimes()
   searchWait1 = setTimeout(function() {
     setLegislatorsState('waiting');
   }, WAIT_TIME_MESSAGE);
-  searchWait1 = setTimeout(function() {
+  searchWait2 = setTimeout(function() {
     setLegislatorsState('waiting-long');
   }, WAIT_TIME_SLOW_MESSAGE);
+}
+
+function clearRequestWatches()
+{
+  if (searchWait1) {
+    clearTimeout(searchWait1);
+  }
+  if (searchWait2) {
+    clearTimeout(searchWait2);
+  }
+
+  searchWait1 = null;
+  searchWait2 = null;
 }
 
 // Hide the geo query box in case of a location error and show a message
@@ -252,6 +261,9 @@ function onSearchComplete()
     STS.anim.scrollToEl($('#take-action'));
     Cookie.set('already-viewed', 1);
   }
+
+  clearRequestWatches();
+  setLegislatorsState(null);
 }
 
 // EXPORTS

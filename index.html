@@ -33,11 +33,7 @@
 	<meta property="og:description" content="Innocent or not, you will be spied on if Australia's bill passes. Under the new data retention proposal, records of everything you do online or on your phone would be collected and stored. But we can stop it." />
 	
 
-    <!-- Custom CSS -->
-    <link href="//fonts.googleapis.com/css?family=Roboto:400,700,400italic|Droid+Sans+Mono" rel="stylesheet"/>
-    <link href="/css/vendor/leaflet.css" rel="stylesheet" />
-    <link href="/css/vendor/tooltipster.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/main.css">
 
 <!--[if lte IE 8]>
     <script src="/js/respond.min.js"></script>
@@ -117,6 +113,7 @@
       <ul>
         <li><a href="#video">What it's about</a></li>
         <li><a href="#take-action">My representatives</a></li>
+        <li><a href="#progress">Progress</a></li>
         <li><a href="#supporters">#stopthespies</a></li>
         <li><a href="#further-reading">What else can I do?</a></li>
       </ul>
@@ -124,6 +121,7 @@
   </div>
 </section>
 
+  <a id="video"></a>
 
 <!-- START INTRO BACKGROUND BLOCK -->
 <div class="bg-wrap">
@@ -232,7 +230,7 @@
             <h3>Contact your Representative</h3>
 
             <p class="intro">
-              By contacting your representative, you’ll show that you’re part of a movement that condemns compulsory data retention as a violation of international human rights law. 
+              By contacting your representative, you’ll show that you’re part of a movement that condemns compulsory data retention as a violation of international human rights law.
             </p>
 
             <div class="postcode-steps">
@@ -312,29 +310,37 @@
 <!-- START STATS BG WRAPPER -->
 <div class="bg-wrap">
 <section class="stats">
-  <a id="progress"></a>
     <div class="container">
         <div class="col">
-      			<!-- TRIGGER --><a id="load-stats"></a><!-- /TRIGGER -->
+            <!-- TRIGGER --><a id="load-stats"></a><!-- /TRIGGER -->
 
+            <a id="progress"></a>
             <h2>Campaign Progress</h2>
 
             <div class="metrics">
                 <div class="metric">
+                  <div class="border">
                     <div class="title views">Views</div>
                     <div class="total"><div class="view-total number-spinner">0</div></div>
+                  </div>
                 </div>
                 <div class="metric">
+                  <div class="border">
                     <div class="title abpt">Tweets</div>
                     <div class="total"><div class="twitter-total number-spinner">0</div></div>
+                  </div>
                 </div>
                 <div class="metric">
+                  <div class="border">
                     <div class="title emails">Emails</div>
                     <div class="total"><div class="email-total number-spinner">0</div></div>
+                  </div>
                 </div>
                 <div class="metric">
+                  <div class="border">
                     <div class="title abpf">Posts</div>
                     <div class="total"><div class="facebook-total number-spinner">0</div></div>
+                  </div>
                 </div>
                 <!--
                 <div class="metric">
@@ -585,9 +591,8 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 
 <!-- TWEET -->
 <script type="text/template" id="tweet-template">
-    <div class="tweet tooltip <%= sizeClass %>">
+    <div class="tweet tooltip <%= sizeClass %>" title="">
       <a href="<%= retweet_link %>" target="_blank">
-        <div class="tweet-overlay"></div>
         <img class="" src="<%= avatar %>" title="@<%= handle %> - <%= tweet %> - <%= followers %>" />
         <p class="tweet-text"><%= tweet %></p>
         <p class="tweet-name"><%= name %></p>
