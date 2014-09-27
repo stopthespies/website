@@ -305,8 +305,26 @@ function shadeWardsByActivity(totalEvents, reps)
       var shapeData = STS.CampaignMap.getGeoJSONShape(shape);
       var g = shapeData[0];
       var $paths = shapeData[1];
+      var opacity;
 
-      $paths.css('fill-opacity', reptotal / totalEvents);
+      // :TODO: finalise
+      if (reptotal < 2) {
+        opacity = 0;
+      } else if (reptotal < 10) {
+        opacity = 0.5;
+      } else if (reptotal < 50) {
+        opacity = 0.6;
+      } else if (reptotal < 80) {
+        opacity = 0.7;
+      } else if (reptotal < 150) {
+        opacity = 0.8;
+      } else if (reptotal < 200) {
+        opacity = 0.9;
+      } else {
+        opacity = 1;
+      }
+
+      $paths.css('fill-opacity', opacity);
     }
   }
 }

@@ -2509,9 +2509,7 @@ section.how.results {
   line-height: 0.7em;
   color: white; }
 
-.tweet-overlay {
-  opacity: 0.6;
-  background: #302344;
+.tweet .over {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -2522,21 +2520,35 @@ section.how.results {
   -moz-pointer-events: none;
   pointer-events: none; }
 
+.tweet .over {
+  background: rgba(48, 35, 68, 0.85); }
+
+.tweet:hover {
+  z-index: 1; }
+  .tweet:hover .over {
+    background: rgba(48, 35, 68, 0.6); }
+
+.tweet .over {
+  z-index: 1; }
+
+.tweet a:hover {
+  text-decoration: none; }
+
 .tweet.bigger .tweet-text,
 .tweet.biggest .tweet-text {
   font-size: 16px; }
 
 .tweet-text {
   font-size: 11px;
-  color: #fff;
+  color: #fff; }
+
+.tweet-text, .tweet-handle, .tweet-name {
   position: relative;
-  z-index: 1; }
+  z-index: 2; }
 
 .tweet-handle, .tweet-name {
   font-size: 10px;
   font-weight: bold;
-  position: relative;
-  z-index: 1;
   margin: 0;
   white-space: nowrap; }
 
@@ -2554,12 +2566,15 @@ section.how.results {
   float: left;
   padding: 5px;
   position: absolute;
-  z-index: 0;
   overflow: hidden; }
-  .tweet:hover {
-    z-index: 2; }
-  .tweet a:hover {
-    text-decoration: none; }
+  .tweet a {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px; }
   .tweet .tweet-text {
     display: none; }
   @media (min-width: 620px) {
