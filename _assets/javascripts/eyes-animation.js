@@ -56,7 +56,7 @@ Eye.prototype.setOpen = function(open, delay, onComplete) {
  * Blink eye
  */
 Eye.prototype.blink = function(delay, onComplete) {
-	
+
 	// Animate open
 	if (this._open_tw) this._open_tw.kill();
 	this._open = 1;
@@ -225,7 +225,7 @@ Eye.MAX_BLINK_DELAY = 10000;
 				var $marks = $(this);
 
 				// Check for eye canvas
-				var $canvas = $marks.siblings('.eyecanvas');
+				var $canvas = $marks.closest('section').find('.eyecanvas');
 				if (!$canvas.length) return true;
 				var data = {};
 				$canvas.data('display', data);
