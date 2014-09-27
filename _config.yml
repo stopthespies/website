@@ -26,6 +26,7 @@ stats_read_path: /stats
 shares_read_path: /shares
 send_email_path: /email
 log_path: /log
+api_socket_path: /api/socket.io
 
 legislators_locator_url : https://test.stopthespies.org/legislators
 

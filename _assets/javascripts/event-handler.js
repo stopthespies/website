@@ -41,7 +41,7 @@ window.io || (io = {});
   }
 
   if (STS.options.ENABLE_REALTIME) {
-    io = io.connect(STS.options.API_BASE_URL);
+    io = io.connect(STS.options.API_BASE_URL, { resource : STS.options.API_SOCKET_BASEURL });
 
     io.on('connect', function() {
       __CONNECTED__ = true;
