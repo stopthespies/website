@@ -29,11 +29,14 @@
 }
 
 
-.tweet-overlay {
-  opacity: 0.6;
-  background: #302344;
+// $tweet-index: 0;
+// $overlay-index: 1;
+$tweet-bg-index: 1;
+$tweet-text-index: 2;
+
+.tweet .over {
   position: absolute;
-  z-index: 1;
+  z-index: $tweet-bg-index;
   top: 0;
   left: 0;
   width: 100%;
@@ -43,6 +46,25 @@
   pointer-events: none;
 }
 
+.tweet .over {
+  background: rgba(48, 35, 68, 0.85);
+}
+
+.tweet:hover {
+  z-index: $tweet-bg-index;
+
+  .over {
+    background: rgba(48, 35, 68, 0.6);
+  }
+}
+
+.tweet .over {
+  z-index: $tweet-bg-index;
+}
+
+.tweet a:hover {
+  text-decoration: none;
+}
 
 .tweet.bigger .tweet-text,
 .tweet.biggest .tweet-text {
@@ -52,14 +74,14 @@
 .tweet-text {
   font-size: 11px;
   color: #fff;
+}
+.tweet-text, .tweet-handle, .tweet-name {
   position: relative;
-  z-index: 1;
+  z-index: $tweet-text-index;
 }
 .tweet-handle, .tweet-name {
   font-size: 10px;
   font-weight: bold;
-  position: relative;
-  z-index: 1;
   margin: 0;
   white-space: nowrap;
 }
@@ -78,15 +100,15 @@
   float: left;
   padding: 5px;
   position:absolute;
-  z-index: 0;
+  // z-index: $tweet-index;
   overflow: hidden;
 
-  &:hover {
-    z-index: 2;
-  }
-
-  a:hover {
-    text-decoration: none;
+  a {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    padding: 20px;
   }
 
   .tweet-text {
