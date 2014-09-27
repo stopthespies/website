@@ -66,14 +66,17 @@ function initMaps()
     return;
   }
 
-  $.ajax({
-    url: '/map/electorates.json',
-    dataType: "json",
-    data: {},
-    success: function(geojson) {
-      showElectorates(geojson);
-    }
-  });
+  // short delay on pulling electorate data, it's large
+  setTimeout(function() {
+    $.ajax({
+      url: '/map/electorates.json',
+      dataType: "json",
+      data: {},
+      success: function(geojson) {
+        showElectorates(geojson);
+      }
+    });
+  }, 100);
 }
 
 function showElectorates(geojson)
