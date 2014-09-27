@@ -29,11 +29,20 @@ section {
   @media (min-height: $vertical-section-spacing-step-2) {
     padding: emsize(80px) 0;
     &.who {
-      padding: emsize(160px) 0;
+      padding: emsize(180px) 0;
     }
   }
   @media (min-height: $vertical-section-spacing-step-3) {
     padding: emsize(90px) 0;
+  }
+
+
+  @media (max-width: $vertical-section-spacing-step-x) {
+    padding: emsize(40px) 0;
+    &.who {
+      padding: emsize(60px) 0;
+      overflow:hidden;
+    }
   }
 }
 
