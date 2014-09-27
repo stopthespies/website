@@ -6,7 +6,7 @@ var STS = {
     ENABLE_REALTIME         : 1,
     SOCKET_CONNECT_TIMEOUT  : 1000,
 
-    LEGISLATORS_LOCATOR_URL : 'https://legislators.stopthespies.org',
+    LEGISLATORS_LOCATOR_URL : 'https://test.stopthespies.org/legislators',
 
     API_BASE_URL            : 'https://api.stopthespies.org:443',
 

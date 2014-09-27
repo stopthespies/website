@@ -48,7 +48,7 @@ $(function() {
       hideLegislatorSearch();
       watchRequestTimes();
       $.ajax({
-        url: 'https://legislators.stopthespies.org',
+        url: 'https://test.stopthespies.org/legislators',
         jsonp: "callback",
         dataType: "jsonp",
         data: {
@@ -72,7 +72,7 @@ $(function() {
     watchRequestTimes();
     var postcode = $('input', $(ev.currentTarget)).val();
     $.ajax({
-      url: 'https://legislators.stopthespies.org',
+      url: 'https://test.stopthespies.org/legislators',
       jsonp: "callback",
       dataType: "jsonp",
       data: {
