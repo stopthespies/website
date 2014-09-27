@@ -1,5 +1,7 @@
 (function($, STS, io) {
 
+  var TWEETS_TOOLTIP_WINDOW_SIZE = 820;
+
   // GET TWEETS
 
   ScrollHandler.addTrigger('#load-tweets', bringInTweets);
@@ -16,6 +18,8 @@
 
   function onTweetsLoaded(tweetdata)
   {
+    $('#tweet-board').empty();
+
     _.each(tweetdata.results, function(tweets, type) {
       if(type === 'latest') {
         tweets = tweets.slice(0,40);
@@ -34,6 +38,7 @@
             tweet.sizeClass = '';
 
           }
+
           $('#tweet-board').append(_.template(tweetTemplate, tweet));
           i++;
         });
@@ -42,12 +47,17 @@
 
     $('.tweets-support-total').numberSpinner('set', tweetdata.total);
 
-    //$('#tweet-board img').tooltipster();
-    /*var container = document.querySelector('#tweet-board');
-    var msnry = new Masonry( container, {
-      columnWidth: 200,
-      itemSelector: '.tweet'
-    });*/
+    $('#tweet-board .tweet').tooltipster({
+      maxWidth: 250,
+      offsetY: -30,
+      functionBefore: function(origin, continueTooltip) {
+        if ($(window).width() <= TWEETS_TOOLTIP_WINDOW_SIZE) {
+          origin.tooltipster('content', origin.find('.tweet-text'));
+          continueTooltip();
+        }
+      }
+    });
+
     $('#tweet-board').packery({
       itemSelector: '.tweet',
       stamp: '.stamp'
