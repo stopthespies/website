@@ -18,7 +18,7 @@
 
   function onTweetsLoaded(tweetdata)
   {
-    $('#tweet-board').empty();
+    $('#tweet-board').empty().append('<div class="tweet-overlay"></div>');
 
     _.each(tweetdata.results, function(tweets, type) {
       if(type === 'latest') {

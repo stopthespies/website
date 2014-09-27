@@ -29,6 +29,20 @@
 }
 
 
+.tweet-overlay {
+  opacity: 0.6;
+  background: #302344;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-pointer-events: none;
+  -moz-pointer-events: none;
+  pointer-events: none;
+}
+
 
 .tweet.bigger .tweet-text,
 .tweet.biggest .tweet-text {
@@ -63,24 +77,16 @@
   display: block;
   float: left;
   padding: 5px;
-  position:relative;
+  position:absolute;
+  z-index: 0;
   overflow: hidden;
+
+  &:hover {
+    z-index: 2;
+  }
 
   a:hover {
     text-decoration: none;
-  }
-
-  .tweet-overlay {
-    width: 100%;
-    height: 100%;
-    position:absolute;
-    display: block;
-    background: #302344;
-    opacity: 0.6;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    z-index: 1;
   }
 
   .tweet-text {
@@ -110,10 +116,6 @@
 
     .tweet-name {
       margin-top: 0;
-    }
-
-    &:hover .tweet-overlay {
-      opacity: 0.85;
     }
   }
 }
