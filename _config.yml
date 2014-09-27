@@ -27,7 +27,7 @@ shares_read_path: /shares
 send_email_path: /email
 log_path: /log
 
-legislators_locator_url : https://legislators.stopthespies.org
+legislators_locator_url : https://test.stopthespies.org/legislators
 
 #------------------------------------------------------------------------------#
 # social metadata
