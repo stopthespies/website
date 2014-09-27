@@ -20,6 +20,16 @@ if (window.L) {
   var COUNTRY_BOUNDS = L.latLngBounds(L.latLng(-44.205835, 154.841309), L.latLng(-8.795678, 111.708984));
 }
 
+// these correspond to opacities 0.1 - 0.9 in 0.1 increments. 0 is below first count, 1 is above last.
+var AREA_SHADING_THRESHOLDS = {
+  'all' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
+  'emails' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
+  'views' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
+  'tweets' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
+  'facebooks' : [1, 2, 3, 8, 10, 50, 80, 150, 200]
+  // 'calls' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
+};
+
 // all maps are the same, just add more things to this selector & adjust after creating
 var mapEls = '.australia-map.status';
 var maps = [];
@@ -288,13 +298,19 @@ function getGeoJSONBounds(layer)
 // stats map area activity intensity shading
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function shadeWardsByActivity(totalEvents, reps)
+function shadeWardsByActivity(totalEvents, reps, eventId)
 {
-  var i, j, k, l, rep, shape, reptotal, map;
+  var i, j, k, l, rep, shape, eventCount, map;
 
-  for (j = 0, k = reps.length; j < k && (map = maps[j]); ++j) {
+  if (!eventId) {
+    eventId = 'all';
+  }
+
+  var shadingSteps = AREA_SHADING_THRESHOLDS[eventId];
+
+  for (j = 0, k = maps.length; j < k && (map = maps[j]); ++j) {
     for (i = 0, l = reps.length; i < l && (rep = reps[i]); ++i) {
-      reptotal = STS.getTotal(rep);
+      eventCount = STS.getTotal(rep);
       shape = findMembersElectorate(map, rep._id);
 
       if (!shape) {
@@ -304,23 +320,13 @@ function shadeWardsByActivity(totalEvents, reps)
       var shapeData = STS.CampaignMap.getGeoJSONShape(shape);
       var g = shapeData[0];
       var $paths = shapeData[1];
-      var opacity;
+      var opacity = 0;
 
-      // :TODO: finalise
-      if (reptotal < 2) {
-        opacity = 0;
-      } else if (reptotal < 10) {
-        opacity = 0.5;
-      } else if (reptotal < 50) {
-        opacity = 0.6;
-      } else if (reptotal < 80) {
-        opacity = 0.7;
-      } else if (reptotal < 150) {
-        opacity = 0.8;
-      } else if (reptotal < 200) {
-        opacity = 0.9;
-      } else {
-        opacity = 1;
+      for (var ss = 0, sl = shadingSteps.length; ss < sl; ++ss) {
+        if (eventCount < shadingSteps[ss]) {
+          break;
+        }
+        opacity += 0.1;
       }
 
       $paths.css('fill-opacity', opacity);
