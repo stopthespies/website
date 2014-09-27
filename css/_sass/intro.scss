@@ -68,6 +68,24 @@
   }
 }
 
+
+.introduction {
+  .col {
+    @include column($one);
+  }
+  @media (min-width: $set-info-margin) {
+    .col {
+      @include column($one-twelfth * 10);
+      @include push($one-twelfth);
+    }
+  }
+  @media (min-width: $set-info-2-cols) {
+    .col {
+      @include column($one-half);
+    }
+  }
+}
+
 .cta {
   text-align: center;
   h2 {

@@ -16,3 +16,40 @@
     letter-spacing: emsize(-1px, 24px);
   }
 }
+
+
+
+.who {
+  position: relative;
+  .col {
+    position: relative;
+    z-index: 1;
+  }
+  .leaflet-map-pane {
+    opacity: 0.1;   // keep separate from toplevel anim-driven opacity
+  }
+
+  @media (min-width: $set-header-map-adjacent) {
+    .col {
+      @include column($one-half);
+    }
+    .australia-map {
+      position: absolute;
+      width: 60%;
+      height: 100%;
+      left: 40%;
+      top: 0;
+    }
+    .leaflet-map-pane {
+      opacity: 0.7;
+    }
+
+    .about {
+      margin-top: -3em;
+    }
+    .btn {
+      position: relative;
+      left: 150%;
+    }
+  }
+}
