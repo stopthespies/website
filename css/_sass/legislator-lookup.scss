@@ -109,7 +109,6 @@ section.how.results {
     display: inline-block;
 
     li {
-      cursor: pointer;
       width: 4.5em;
       float: left;
 
@@ -132,8 +131,14 @@ section.how.results {
 
     a {
       color: #5f5a66;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1em 0;
     }
     .wrap {
+      height: 2.1em;
       position: relative;
       padding: 1em 0;
     }
@@ -196,6 +201,8 @@ section.how.results {
 .legislator-search-states {
   font-size: emsize(14px);
   font-style: italic;
+  position: relative;
+  top: -3em;
 
   .state {
     height: 0;
@@ -247,6 +254,9 @@ section.how.results {
 
   @media (min-width: $set-steps-2-cols) {
     .location-error {
+      position: absolute;
+      width: 100%;
+      top: 0; left: 0;
       p {
         margin-top: 6.5em;
       }
