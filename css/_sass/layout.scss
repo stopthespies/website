@@ -48,7 +48,7 @@ section {
 
 // single column areas
 
-.who, .menu, .stats, .how, .support, .extra, .reading {
+.menu, .stats, .how, .support, .extra, .reading {
 	.col {
 		@include column($one);
 	}

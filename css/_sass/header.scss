@@ -24,6 +24,7 @@
   .col {
     position: relative;
     z-index: 1;
+    @include column($one);
   }
   .leaflet-map-pane {
     opacity: 0.1;   // keep separate from toplevel anim-driven opacity
