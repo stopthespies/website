@@ -21,7 +21,7 @@
     $('#tweet-board').empty();
 
     _.each(tweetdata.results, function(tweets, type) {
-      if(type === 'latest') {
+      if(type === 'latest' || type === 'followers') {
         tweets = tweets.slice(0,40);
         tweets = _.uniq(tweets, 'handle');
         var i = 0;
