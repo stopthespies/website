@@ -1,6 +1,7 @@
 (function(TL, TM, TLM, STS) {
 
 var MAP_OPACITY = 0.3;
+var AREA_FLASH_RADIUS = '15px';
 
   //----------------------------------------------------------------------------
   // general use
@@ -103,7 +104,7 @@ var MAP_OPACITY = 0.3;
     var newTimeline = new TLM({ onComplete: completedCB || function() {} });
 
     newTimeline.to($paths, 0.1, {
-      'strokeWidth': '5px',
+      'strokeWidth': AREA_FLASH_RADIUS,
       'stroke': color,
       'fill': color,
       'fillOpacity': 0.2 + (0.8 * intensity),
