@@ -92,12 +92,10 @@
 
 
 .sharbx {
-  position: fixed;
-  display: none;
+  padding: 0;
+  position: absolute;
+  top: 0; right: 1em;
   z-index: 10;
-  right: -9em;
-  top: 15%;
-  text-align: left;
   font-size: 0.5em;
 
   i {
@@ -108,18 +106,18 @@
   span.share {
     border-radius: 0;
     &:first-child {
-      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
     }
     &:last-child {
-      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
     }
   }
 
   .number-spinner {
+    display: none;
     font-size: 12px;
     margin: 0;
     position: relative;
-    display: block;
     top: -0.4em;
     left: -1em;
     height: 1em;
@@ -130,9 +128,12 @@
   .share {
     text-align: left;
     white-space: nowrap;
-    width: 11.7em;
     left: 0;
     overflow: visible;
+
+    float: left;
+    width: 33%;
+    padding: 0;
 
     @include transition(left 0.3s ease-out);
   }
@@ -140,11 +141,12 @@
   i {
     display: block;
     font-size: 1.5em;
-    line-height: 0;
+    line-height: 2.6;
     margin-bottom: -1.1em;
     position: relative;
-    top: 0.4em;
-    width: 7.7em;
+    text-align: center;
+    top: -0.15em;
+    width: 100%;
   }
 
   .text {
@@ -157,15 +159,48 @@
   }
 
   span.share:hover {
-    left: -9.6em;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+
   }
 }
 
 @media (min-width: $show-sharebox) {
   .sharbx {
-    display: block;
+    position: fixed;
+    right: -9em;
+    top: 5%;
+    text-align: left;
+    font-size: 0.5em;
+
+    i {
+      text-align: left;
+      line-height: 0;
+      top: 0.4em;
+      width: 7.7em;
+    }
+
+    span.share {
+      float: none;
+      width: 11.7em;
+      padding: 1em;
+      &:first-child {
+        border-radius: 0;
+        border-top-left-radius: 3px;
+      }
+      &:last-child {
+        border-radius: 0;
+        border-bottom-left-radius: 3px;
+      }
+    }
+
+    span.share:hover {
+      left: -9.6em;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    .number-spinner {
+      display: block;
+    }
   }
 }
 
