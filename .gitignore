@@ -1,4 +1,6 @@
 /.sass-cache
 /_site
+/_deploy
+/_build
 /_assets/javascripts/vendor
 /bower_components/
