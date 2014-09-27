@@ -98,13 +98,7 @@ window.io || (io = {});
 
   function notifyLegislatorMap(reps, event)
   {
-    var colors = {
-      tweets : '#45CBA1',
-      calls : '#36C48F',
-      views : '#EE574A',
-      emails : '#E58231',
-      facebooks : '#4FB9E3'
-    };
+    var colors = STS.CampaignMap.EVENT_COLORS;
 
     var color = colors[event],
         count, ward, rep;

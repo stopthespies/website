@@ -30,6 +30,14 @@ var AREA_SHADING_THRESHOLDS = {
   'facebooks' : [1, 2, 3, 8, 10, 50, 80, 150, 200]
   // 'calls' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
 };
+var MAP_EVENT_COLORS = {
+  all : '#ffffff',
+  tweets : '#45CBA1',
+  calls : '#36C48F',
+  views : '#EE574A',
+  emails : '#E58231',
+  facebooks : '#4FB9E3'
+};
 
 // all maps are the same, just add more things to this selector & adjust after creating
 var mapEls = '.australia-map.status';
@@ -308,10 +316,11 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
   }
 
   var shadingSteps = AREA_SHADING_THRESHOLDS[eventId];
+  var color = MAP_EVENT_COLORS[eventId];
 
   for (j = 0, k = maps.length; j < k && (map = maps[j]); ++j) {
     for (i = 0, l = reps.length; i < l && (rep = reps[i]); ++i) {
-      eventCount = STS.getTotal(rep);
+      eventCount = STS.getTotal(rep, eventId);
       shape = findMembersElectorate(map, rep._id);
 
       if (!shape) {
@@ -330,7 +339,11 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
         opacity += 0.1;
       }
 
-      $paths.css('fill-opacity', opacity);
+      TweenMax.to($paths, 0.3, {
+        fillOpacity: opacity,
+        fill: color,
+        stroke: color
+      });
     }
   }
 }
@@ -449,7 +462,9 @@ STS.CampaignMap = {
   },
 
   activateUI : activateUI,
-  deactivateUI : deactivateUI
+  deactivateUI : deactivateUI,
+
+  EVENT_COLORS : MAP_EVENT_COLORS
 };
 
 })(jQuery, STS);

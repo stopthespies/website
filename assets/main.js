@@ -45,6 +45,8 @@ var
 // Start up scripts
 $(function() {
 
+var statHoverActive = false;  // prevent map shading updating while hovering a particular stat
+
   // ----------------- POP OVERS ----------------------------
 
   $('.metric').tooltipster();
@@ -160,6 +162,15 @@ $(function() {
     if (grandtotal > MAP_START_SHADING) {
       STS.CampaignMap.shadeWardStats(grandtotal, loadedStats);
     }
+
+    // bind hover events to metrics
+    $('.stats .metric').hover(debounce(function(e) {
+      statHoverActive = $(this).data('stat');
+      STS.CampaignMap.shadeWardStats(grandtotal, loadedStats, statHoverActive);
+    }), debounce(function(e) {
+      statHoverActive = false;
+      STS.CampaignMap.shadeWardStats(grandtotal, loadedStats);
+    }));
   }
 
   function statsLoaded()
@@ -187,7 +198,7 @@ $(function() {
       // shade the stats map if we have enough stats for it to say something
       var grandtotal = STS.getTotal(globals);
       if (grandtotal > MAP_START_SHADING) {
-        STS.CampaignMap.shadeWardStats(grandtotal, data);
+        STS.CampaignMap.shadeWardStats(grandtotal, data, statHoverActive);
       }
     }
 
@@ -233,9 +244,12 @@ $(function() {
   STS.events.onStatsLoad = onStatsLoaded;
   STS.events.onSharesLoad = onSharesLoaded;
 
-  STS.getTotal = function(stats)
+  STS.getTotal = function(stats, statset)
   {
-    return (stats.emails || 0) + (stats.calls || 0) + (stats.views || 0) + (stats.tweets || 0) + (stats.facebooks || 0);
+    if (!statset || statset === 'all') {
+      return (stats.emails || 0) + (stats.calls || 0) + (stats.views || 0) + (stats.tweets || 0) + (stats.facebooks || 0);
+    }
+    return stats[statset];
   };
 
 });

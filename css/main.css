@@ -2164,7 +2164,8 @@ section.video {
   height: 3.6em;
   clear: left;
   width: 16em;
-  overflow: visible; }
+  overflow: visible;
+  cursor: pointer; }
   .metric:before, .metric:after {
     content: "";
     display: table; }
@@ -2196,6 +2197,10 @@ section.video {
     border-left: 1px solid rgba(255, 255, 255, 0.2); }
   .metric .title, .metric .total {
     float: left; }
+  .metric:hover {
+    background-color: #322446; }
+    .metric:hover .border, .metric:hover .tile {
+      border-color: rgba(255, 255, 255, 0.4); }
 
 .metric .title {
   width: 5.3125em;

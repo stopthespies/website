@@ -107,8 +107,8 @@ var AREA_FLASH_RADIUS = '15px';
       'strokeWidth': AREA_FLASH_RADIUS,
       'stroke': color,
       'fill': color,
-      'fillOpacity': 0.2 + (0.8 * intensity),
-      'strokeOpacity': 0.2 + (0.8 * intensity),
+      'fillOpacity': 0.4 + (0.6 * intensity),
+      'strokeOpacity': 0.4 + (0.6 * intensity),
       ease: Power1.easeOut
     }).to($paths, 0.5, currentAttrs);
 
