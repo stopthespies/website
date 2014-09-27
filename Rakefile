@@ -7,7 +7,10 @@ require "jekyll"
 
 # Change your GitHub reponame
 GITHUB_REPONAME = "stopthespies/website"
+
 DEVELOP_BRANCH_NAME = "master"
+BUILD_DIR = '_build'    # clean branch for compiling against
+DEPLOY_DIR = '_deploy'  # folder to generate & commit into
 
 
 namespace :site do
@@ -16,18 +19,19 @@ namespace :site do
   task :init_compile do
     pwd = Dir.pwd
 
-    unless File.exist?("./_site/_build/.git")
+    unless File.exist?("./#{BUILD_DIR}/.git")
       puts "\nBuild directory not configured, initing...\n"
 
-      FileUtils.rm_rf("./_site");
+      FileUtils.rm_rf("./#{BUILD_DIR}");
+      FileUtils.rm_rf("./#{DEPLOY_DIR}");
 
       puts "\n...build repo...\n"
 
       # clean building instance (dev branch)
-      FileUtils.mkdir_p("./_site/_build");
-      system "git clone git@github.com:#{GITHUB_REPONAME}.git _site/_build"
+      FileUtils.mkdir_p("./#{BUILD_DIR}");
+      system "git clone git@github.com:#{GITHUB_REPONAME}.git ./#{BUILD_DIR}"
 
-      Dir.chdir("./_site/_build/") do
+      Dir.chdir("./#{BUILD_DIR}") do
         system "git checkout #{DEVELOP_BRANCH_NAME}"
       end
 
@@ -36,9 +40,9 @@ namespace :site do
       puts "\n...deploy repo...\n"
 
       # deploying instance (gh-pages branch)
-      FileUtils.cp_r("./_site/_build", "./_site/_deploy");
+      FileUtils.cp_r("./#{BUILD_DIR}", "./#{DEPLOY_DIR}");
 
-      Dir.chdir("./_site/_deploy/") do
+      Dir.chdir("./#{DEPLOY_DIR}") do
         system "git checkout gh-pages"
       end
 
@@ -47,7 +51,7 @@ namespace :site do
 
     puts "\nEnsure build environment state...\n"
 
-    Dir.chdir('./_site/_build') do
+    Dir.chdir("./#{BUILD_DIR}") do
       # set to latest version before generating
       system "git pull origin #{DEVELOP_BRANCH_NAME}"
       system "git checkout -f #{DEVELOP_BRANCH_NAME}"
@@ -58,7 +62,7 @@ namespace :site do
 
     puts "\nClean deploy environment...\n"
 
-    Dir.chdir("./_site/_deploy") do
+    Dir.chdir("./#{DEPLOY_DIR}") do
       # pull latest deployed version
       system "git pull origin gh-pages"
 
@@ -72,12 +76,12 @@ namespace :site do
 
   desc "\nCompile site...\n"
   task :generate => [:init_compile] do
-    Dir.chdir("./_site/_build") do
-      Jekyll::Site.new(Jekyll.configuration({
-        "source"      => ".",
-        "destination" => "../_deploy"
-      })).process
-    end
+    pwd = Dir.pwd
+
+    Jekyll::Site.new(Jekyll.configuration({
+      "source"      => "./#{BUILD_DIR}",
+      "destination" => "./#{DEPLOY_DIR}"
+    })).process
 
     Dir.chdir pwd
   end
@@ -85,8 +89,9 @@ namespace :site do
 
   desc "\nPublish to gh-pages...\n"
   task :publish => [:generate] do
+    pwd = Dir.pwd
 
-    Dir.chdir('./_site/_deploy') do
+    Dir.chdir("./#{DEPLOY_DIR}") do
       # add all changes and push
       system "git add ."
       system "git ls-files --deleted -z | xargs -0 git rm -f"
@@ -96,6 +101,8 @@ namespace :site do
       system "git push origin gh-pages"
       # puts "\nBuild completed. Please check the latest commit in _site directory and then push to github."
     end
+
+    Dir.chdir pwd
   end
 
 end
