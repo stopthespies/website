@@ -52,15 +52,21 @@
     }
   }
 
-  @media (min-width: $set-menu-2-rows) {
+  @media (min-width: $set-menu-3-rows) {
     li {
       @include column($one-half);
     }
   }
 
+  @media (min-width: $set-menu-2-rows) {
+    li {
+      @include column($one-third);
+    }
+  }
+
   @media (min-width: $set-menu-1-row) {
     li {
-      @include column($one-quarter);
+      @include column($one-fifth);
       padding-top: emsize(25px, 14px);
     }
   }
