@@ -9,6 +9,7 @@ var STS = {
     LEGISLATORS_LOCATOR_URL : 'https://test.stopthespies.org/legislators',
 
     API_BASE_URL            : 'https://test.stopthespies.org:443/api',
+    API_SOCKET_BASEURL      : '/api/socket.io',
 
     TWEETS_READ_URL         : 'https://test.stopthespies.org:443/api/tweets',
     STATS_READ_URL          : 'https://test.stopthespies.org:443/api/stats',
