@@ -1,5 +1,7 @@
 (function(TL, TM, TLM, STS) {
 
+var MAP_OPACITY = 0.3;
+
   //----------------------------------------------------------------------------
   // general use
 
@@ -47,9 +49,15 @@
 
   function mapEnter(mapDOM)
   {
-    mapEnterTween = new TimelineMax({pause: true})
-      .to(mapDOM, 0, {opacity: 0, transform: "rotateY(0) scale(" + STS.CampaignMap.getContainerScale(mapDOM) + ")"})
-      .to(mapDOM, 1.25, {opacity: 0.3});
+    var img = $(mapDOM).find('img');
+
+    var mapEnterTween = new TimelineMax({pause: true}).to(mapDOM, 0, {opacity: 0, transform: "rotateY(0) scale(" + STS.CampaignMap.getContainerScale(mapDOM) + ")"});
+
+    if (img.length) {
+      mapEnterTween.to(img[0], 0.5, {opacity: 0});
+    }
+
+    mapEnterTween.to(mapDOM, 1.25, {opacity: MAP_OPACITY});
 
     return mapEnterTween;
   }

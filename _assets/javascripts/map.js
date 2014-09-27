@@ -36,7 +36,6 @@ var winH = $(window).height();
 
 var MAP_INIT_CALLBACKS = {
   '.status' : function(el) {
-    $(el).find('img').remove();
     STS.anim.map.enter(el);
   }
 };
