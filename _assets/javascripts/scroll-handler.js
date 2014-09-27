@@ -34,7 +34,7 @@ var scroll_listeners = [];
 
 function addCallback(selector, callback, upwards)
 {
-  var el = $(selector);
+  var el = (typeof selector == 'string')? $(selector) : selector;
 
   scroll_triggers.push(el);
   scroll_bindings.push(callback);
