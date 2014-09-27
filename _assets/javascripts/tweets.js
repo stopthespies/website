@@ -16,8 +16,8 @@
 
   function onTweetsLoaded(tweetdata)
   {
-    _.each(tweetdata.latest, function(tweets, type) {
-      if(type === 'celebrities') {
+    _.each(tweetdata.results, function(tweets, type) {
+      if(type === 'latest') {
         tweets = tweets.slice(0,40);
         tweets = _.uniq(tweets, 'handle');
         var i = 0;
