@@ -7,6 +7,9 @@
   img {
     width: 100%;
     opacity: 0.2;
+    position: relative;
+    z-index: 1;
+    display: block;
   }
 
   &.inactive {

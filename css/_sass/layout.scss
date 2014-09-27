@@ -107,22 +107,39 @@
 .stats {
   padding-bottom: 0;
   position: relative;
+  text-align: center;
 
   .australia-map {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     width: 100%;
-    height: 150%; // this block is unstyled/short right now
+    height: 130%; // this block is unstyled/short right now
     z-index: 0;
+    margin-top: -7em;
+  }
+
+  .metrics {
+    margin: 3em auto 0 auto;
   }
 
   @media (min-width: $set-stats-map-adjacent) {
+    min-height: 38em;
+    text-align: left;
     .col {
       @include column($one-half);
     }
     .australia-map {
       width: 80%;
+      position: absolute;
+      margin-top: 0;
+    }
+    .metrics {
+      margin: 2em 0;
+    }
+    .metric {
+      float: left;
+      width: auto;
     }
   }
 }

@@ -8,19 +8,25 @@ $stats-label-vadjust: 0.4;
 .metrics {
   margin-top: 2em;
   text-align: left;
+  width: 16em;
 }
 .metric {
   @include clearfix();
 
   height: $stats-row-height;
-  float: left;
   clear: left;
-  background: rgba(red($primaryBg), green($primaryBg), blue($primaryBg), 0.7);
 
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-top: 0;
-  &:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
+  width: 16em;
+  overflow: visible;
+
+  .border {
+    @include clearfix();
+    background: rgba(red($primaryBg), green($primaryBg), blue($primaryBg), 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 0;
+    &:first-child {
+      border-top: 1px solid rgba(255, 255, 255, 0.4);
+    }
   }
 
   // i {
