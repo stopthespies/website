@@ -13,4 +13,21 @@
     background: transparent;
     color: inherit;
   }
+
+  // these ones are positioned against columns and so their left offsets are percentages
+  .eyemarks {
+    opacity: 1;
+    .r11 { left: 11%; top: emsize(86px); }
+    .r12 { left: 39%; top: emsize(43px); }
+    .r13 { left: 23%; top: emsize(150px); }
+    .r14 { left: 28%; top: emsize(90px); }
+    .r31 { left: 82%; top: emsize(130px); }
+    .r32 { left: 61%; top: emsize(57px); }
+    .r33 { left: 75%; top: emsize(55px); }
+
+    img {
+      &.sm { width: emsize(35px); }
+      &.lg { width: emsize(56px); }
+    }
+  }
 }

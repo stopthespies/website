@@ -287,10 +287,32 @@ section.how.results {
   }
 }
 
+.how {
+  .intro {
+    font-size: emsize(14px);
+    padding: 1em;
+    margin: 0 auto 4em auto;
+    max-width: 650px;
+  }
 
-.legislators {
-  @include row();
+  // these ones are positioned against columns and so their left offsets are percentages
+  .eyemarks {
+    opacity: 1;
+    .r11 { left: 9%; top: emsize(116px); }
+    .r12 { left: 16%; top: emsize(37px); }
+    .r13 { left: 20%; top: emsize(200px); }
+    .r14 { left: 28%; top: emsize(80px); }
+    .r31 { left: 72%; top: emsize(120px); }
+    .r32 { left: 79%; top: emsize(47px); }
+    .r33 { left: 89%; top: emsize(75px); }
+
+    img {
+      &.sm { width: emsize(35px); }
+      &.lg { width: emsize(56px); }
+    }
+  }
 }
+
 .legislator {
   max-width: 350px;
   margin: 0 auto 1em auto;
