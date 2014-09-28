@@ -144,7 +144,9 @@ section.how.results {
     }
 
     .fa {
+      display: block;
       font-size: 1em;
+      text-align: center;
       &, &:before {
         width: auto;
       }
