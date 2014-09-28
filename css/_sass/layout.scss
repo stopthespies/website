@@ -14,6 +14,7 @@
 // vertical spacing scale for sections
 
 section {
+  position: relative; // significant importance on graphic page alignments
   padding: emsize(60px) 0;
   &.who {
     padding: emsize(120px) 0;
