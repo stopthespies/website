@@ -2533,7 +2533,9 @@ section.how.results {
   line-height: 0.7em;
   color: white; }
 
-.tweet .over {
+.tweet:before {
+  content: ' ';
+  display: block;
   position: absolute;
   z-index: 1;
   top: 0;
@@ -2544,16 +2546,13 @@ section.how.results {
   -moz-pointer-events: none;
   pointer-events: none; }
 
-.tweet .over {
+.tweet:before {
   background: rgba(48, 35, 68, 0.85); }
 
 .tweet:hover {
   z-index: 1; }
-  .tweet:hover .over {
+  .tweet:hover:before {
     background: rgba(48, 35, 68, 0.6); }
-
-.tweet .over {
-  z-index: 1; }
 
 .tweet a:hover {
   text-decoration: none; }
@@ -2590,7 +2589,8 @@ section.how.results {
   float: left;
   padding: 5px;
   position: absolute;
-  overflow: hidden; }
+  overflow: hidden;
+  opacity: 0; }
   .tweet a {
     display: block;
     position: absolute;
