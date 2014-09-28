@@ -34,7 +34,9 @@
 $tweet-bg-index: 1;
 $tweet-text-index: 2;
 
-.tweet .over {
+.tweet:before {
+  content: ' ';
+  display: block;
   position: absolute;
   z-index: $tweet-bg-index;
   top: 0;
@@ -46,20 +48,16 @@ $tweet-text-index: 2;
   pointer-events: none;
 }
 
-.tweet .over {
+.tweet:before {
   background: rgba(48, 35, 68, 0.85);
 }
 
 .tweet:hover {
   z-index: $tweet-bg-index;
 
-  .over {
+  &:before {
     background: rgba(48, 35, 68, 0.6);
   }
-}
-
-.tweet .over {
-  z-index: $tweet-bg-index;
 }
 
 .tweet a:hover {
