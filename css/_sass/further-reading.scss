@@ -16,6 +16,7 @@
 
   // these ones are positioned against columns and so their left offsets are percentages
   .eyemarks {
+    top: emsize(-100px);
     opacity: 1;
     .r11 { left: 11%; top: emsize(86px); }
     .r12 { left: 39%; top: emsize(43px); }
@@ -29,5 +30,26 @@
       &.sm { width: emsize(35px); }
       &.lg { width: emsize(56px); }
     }
+  }
+
+  .step .eyemarks {
+    top: 0;
+    opacity: 0.3;
+
+    img {
+      &.sm { width: 4%; }
+      &.lg { width: 8%; }
+    }
+
+    .p11 { left: 17%; top: emsize(31px); }
+    .p12 { left: 29%; top: emsize(52px); }
+    .p13 { left: 19%; top: emsize(60px); }
+    .p14 { left: 68%; top: emsize(62px); }
+    .p15 { left: 88%; top: 5%; }
+    .p31 { left: 6%; top: 55%; }
+    .p32 { left: 83%; top: 13%; }
+    .p33 { left: 53%; bottom: emsize(55px); }
+    .p34 { left: 73%; bottom: emsize(23px); }
+    .p35 { left: 88%; top: 35%; }
   }
 }

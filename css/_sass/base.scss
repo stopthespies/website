@@ -106,7 +106,7 @@ body {
   }
 }
 
-.cta, .introduction {
+.cta, .introduction, .extra {
   // :IMPORTANT: we can't do this for all, because of things (like the map) positioned outside of the page gutter
   overflow:hidden;
   .container {
