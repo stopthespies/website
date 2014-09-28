@@ -102,6 +102,7 @@ $tweet-text-index: 2;
   position:absolute;
   // z-index: $tweet-index;
   overflow: hidden;
+  opacity: 0;   // fadein via js
 
   a {
     display: block;

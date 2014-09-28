@@ -18,6 +18,7 @@
 
   function onTweetsLoaded(tweetdata)
   {
+    // rebuild DOM
     $('#tweet-board').empty();
 
     _.each(tweetdata.results, function(tweets, type) {
@@ -45,8 +46,10 @@
       };
     });
 
+    // set total value
     $('.tweets-support-total').numberSpinner('set', tweetdata.total);
 
+    // add hover tooltips (for low-res displays)
     $('#tweet-board .tweet').tooltipster({
       maxWidth: 250,
       offsetY: -30,
@@ -58,6 +61,10 @@
       }
     });
 
+    // animate them all in
+    TweenMax.staggerFromTo('#tweet-board .tweet', 0.2, { transform: "scale(0.5)", opacity: 0 }, { transform: "scale(1)", opacity: 1, ease: Elastic.easeOut }, 0.15);
+
+    // and pack the layout
     $('#tweet-board').packery({
       itemSelector: '.tweet',
       stamp: '.stamp'
