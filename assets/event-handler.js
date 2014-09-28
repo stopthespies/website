@@ -67,6 +67,10 @@ window.io || (io = {});
       STS.events.onSharesLoad(shares);
     });
 
+    io.on('tweets:updateCount', function(count) {
+      $('.tweets-support-total').numberSpinner('set', count);
+    });
+
     io.on('l:views', function(reps) {
       STS.events.onLegislatorStatsIncrement(reps, 'views');
       notifyLegislatorMap(reps, 'views');
