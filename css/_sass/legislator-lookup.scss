@@ -50,6 +50,7 @@ section.how.results {
 }
 
 .legislators {
+  @include row();
   display: none;
   margin: emsize(30px) 0;
 }
