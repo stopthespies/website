@@ -1750,7 +1750,8 @@ pre, code, tt {
 
 a {
   color: #45cba1;
-  text-decoration: none; }
+  text-decoration: none;
+  outline: 0; }
   a:hover {
     text-decoration: underline; }
 
@@ -1816,11 +1817,6 @@ body {
   min-height: 13.125em;
   border-radius: 8px;
   overflow: hidden; }
-
-/* temporary */
-img.you-can-stop {
-  width: 90%;
-  max-width: 887px; }
 
 .bg-wrap {
   background: #322446;
@@ -2336,7 +2332,6 @@ section.how.results {
     margin: 2em auto;
     display: inline-block; }
     .legislator .contact li {
-      cursor: pointer;
       width: 4.5em;
       float: left;
       position: relative;
@@ -2351,8 +2346,14 @@ section.how.results {
       .legislator .contact li:last-child {
         border-right: 1px solid #e4e4e4; }
     .legislator .contact a {
-      color: #5f5a66; }
+      color: #5f5a66;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1em 0; }
     .legislator .contact .wrap {
+      height: 2.1em;
       position: relative;
       padding: 1em 0; }
     .legislator .contact .fa {
@@ -2400,10 +2401,21 @@ section.how.results {
 
 .legislator-search-states {
   font-size: 0.875em;
-  font-style: italic; }
+  font-style: italic;
+  position: relative;
+  top: -3em; }
   .legislator-search-states .state {
     height: 0;
     overflow: hidden; }
+
+.how.results h3 {
+  text-transform: uppercase;
+  margin-top: 1em; }
+.how.results ul {
+  text-align: left;
+  padding: 1em;
+  margin: 0 auto;
+  max-width: 550px; }
 
 .how .postcode-steps, .how .location-privacy, .how .postcode-lookup {
   display: block;
@@ -2455,8 +2467,13 @@ section.how.results {
     margin-left: 9.72222%;
     margin-bottom: 1.875em; } }
 @media (min-width: 730px) {
-  .how .location-error p {
-    margin-top: 6.5em; } }
+  .how .location-error {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0; }
+    .how .location-error p {
+      margin-top: 6.5em; } }
 @media (max-width: 729px) {
   .how .no-location .step-2 {
     background: transparent;
@@ -2969,6 +2986,7 @@ section {
     margin-left: 1.38889%;
     margin-right: 1.38889%; } }
 .step {
+  position: relative;
   padding-bottom: 1em;
   max-width: 350px;
   margin: 0 auto 1em auto; }
