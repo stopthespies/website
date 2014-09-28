@@ -62,7 +62,7 @@
     });
 
     // animate them all in
-    TweenMax.staggerFromTo('#tweet-board .tweet', 0.2, { transform: "scale(0.5)", opacity: 0 }, { transform: "scale(1)", opacity: 1, ease: Elastic.easeOut }, 0.15);
+    TweenMax.staggerFromTo('#tweet-board .tweet', 0.15, { transform: "scale(0.5)", opacity: 0 }, { transform: "scale(1)", opacity: 1, ease: Elastic.easeOut }, 0.1);
 
     // and pack the layout
     $('#tweet-board').packery({
