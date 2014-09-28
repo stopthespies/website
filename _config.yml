@@ -8,7 +8,7 @@ baseurl: ""
 github_username:  stopthespies
 
 # :TODO: point to live site after validating social tags
-url: http://test.stopthespies.org
+url: https://test.stopthespies.org
 domain: test.stopthespies.org
 
 #------------------------------------------------------------------------------#
