@@ -1,7 +1,7 @@
 // Main application IoC container
 var STS = {
   options: {
-    ABSURL                  : 'http://test.stopthespies.org',
+    ABSURL                  : 'https://test.stopthespies.org',
     BASEURL                 : '',
 
     ENABLE_REALTIME         : 0,
