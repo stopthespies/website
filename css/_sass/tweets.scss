@@ -33,6 +33,7 @@
 // $overlay-index: 1;
 $tweet-bg-index: 1;
 $tweet-text-index: 2;
+$above-tweets-index: 3;
 
 .tweet:before {
   content: ' ';
@@ -172,6 +173,19 @@ $tweet-text-index: 2;
   padding: 0;
   @include clearfix();
   max-width: $content-max-width + 400;  // :NOTE: allow one block of tweets to protrude outwards
+}
+// following section has to go above the tweet board
+.immediately-after-tweetboard {
+  z-index: $above-tweets-index;
+
+  // hide the last row of tweets, so we don't have to worry about danglers. makes accurate paging impossible but it's not like that's important here.
+  margin-top: -100px;
+  @media (min-width: $set-tweet-board-size-1) {
+    margin-top: -170px;
+  }
+  @media (min-width: $set-tweet-board-size-2) {
+    margin-top: -240px;
+  }
 }
 
 
