@@ -172,6 +172,7 @@ $tweet-text-index: 2;
   margin: 0 auto;
   padding: 0;
   @include clearfix();
+  max-width: $content-max-width + 400;  // :NOTE: allow one block of tweets to protrude outwards
 }
 
 
