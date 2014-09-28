@@ -2357,7 +2357,9 @@ section.how.results {
       position: relative;
       padding: 1em 0; }
     .legislator .contact .fa {
-      font-size: 1em; }
+      display: block;
+      font-size: 1em;
+      text-align: center; }
       .legislator .contact .fa, .legislator .contact .fa:before {
         width: auto; }
     .legislator .contact .number-spinner {
@@ -2644,7 +2646,8 @@ section.how.results {
   position: relative;
   margin: 0 auto;
   padding: 0;
-  *zoom: 1; }
+  *zoom: 1;
+  max-width: 1680px; }
   #tweet-board:before, #tweet-board:after {
     content: "";
     display: table; }

@@ -1,9 +1,10 @@
 // Main application IoC container
 var STS = {
   options: {
+    ABSURL                  : 'http://test.stopthespies.org',
     BASEURL                 : '',
 
-    ENABLE_REALTIME         : 1,
+    ENABLE_REALTIME         : 0,
     SOCKET_CONNECT_TIMEOUT  : 1000,
 
     LEGISLATORS_LOCATOR_URL : 'https://test.stopthespies.org/legislators',
