@@ -108,10 +108,13 @@ $above-tweets-index: 3;
     position: absolute;
     top: 0; left: 0;
     right: 0; bottom: 0;
-    padding: 20px;
   }
 
+  .tweet-handle, .tweet-name, .tweet-text {
+    margin: 0 20px;
+  }
   .tweet-text {
+    margin: 20px;
     display: none;
   }
 
