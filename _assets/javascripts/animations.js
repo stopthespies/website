@@ -104,11 +104,11 @@ var AREA_FLASH_RADIUS = '15px';
     var newTimeline = new TLM({ onComplete: completedCB || function() {} });
 
     newTimeline.to($paths, 0.1, {
-      'strokeWidth': AREA_FLASH_RADIUS,
-      'stroke': color,
+      // 'strokeWidth': AREA_FLASH_RADIUS,
+      // 'stroke': color,
       'fill': color,
       'fillOpacity': 0.4 + (0.6 * intensity),
-      'strokeOpacity': 0.4 + (0.6 * intensity),
+      // 'strokeOpacity': 0.4 + (0.6 * intensity),
       ease: Power1.easeOut
     }).to($paths, 0.5, currentAttrs);
 

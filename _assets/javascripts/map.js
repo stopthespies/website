@@ -41,7 +41,8 @@ var MAP_EVENT_COLORS = {
 // all maps are the same, just add more things to this selector & adjust after creating
 var mapEls = '.australia-map.status';
 var maps = [];
-var mapShapes = [];
+var mapStates = [];
+var mapWards = [];
 var MAPS_DISABLED = false;
 
 var winW = $(window).width();
@@ -83,32 +84,63 @@ function initMaps()
     return;
   }
 
+  var states = null, wards = null;
+
+  function checkDone()
+  {
+    if (/*states &&*/ wards) {
+      showElectorates(states, wards);
+    }
+  }
+
   // short delay on pulling electorate data, it's large
   setTimeout(function() {
+    $.ajax({
+      url: '/map/states.json',
+      dataType: "json",
+      data: {},
+      success: function(geojson) {
+        states = geojson;
+        checkDone();
+      }
+    });
     $.ajax({
       url: '/map/electorates.json',
       dataType: "json",
       data: {},
       success: function(geojson) {
-        showElectorates(geojson);
+        wards = geojson;
+        checkDone();
       }
     });
   }, 100);
 }
 
-function showElectorates(geojson)
+function showElectorates(statejson, geojson)
 {
-  var wardOptions = {
+  var stateOptions = {
     style : function(feature) {
-      // :TODO: finalise pallete and hookup to legislator data
-      var color = '#fff';
-
       var style = {
         weight: 1,
-        opacity: 0.3,
+        opacity: 0.4,
         fillOpacity: 0.05,
-        color: color,
-        fillColor: color
+        color: '#F0F',
+        fillColor: '#fff'
+      };
+
+      feature.__defaultStyle = style; // reference here for use in callbacks
+
+      return style;
+    }
+  };
+
+  var wardOptions = {
+    style : function(feature) {
+      var style = {
+        weight: 0,
+        fillOpacity: 0.1,
+        // color: color,
+        fillColor: '#fff'
       };
 
       feature.__defaultStyle = style; // reference here for use in callbacks
@@ -134,13 +166,16 @@ function showElectorates(geojson)
   mapEls.each(function() {
     mapDOM = this;
     var map = L.map(mapDOM, {}).setView(DEFAULT_COORDS, DEFAULT_ZOOM);
-    var layer = L.geoJson(geojson, wardOptions).addTo(map);
+
+    var states =  L.geoJson(statejson, stateOptions).addTo(map);
+    var electorates = L.geoJson(geojson, wardOptions).addTo(map);
 
     exactFitMap(map, COUNTRY_BOUNDS);
 
     deactivateUI(map);
     maps.push(map);
-    mapShapes.push(layer);
+    mapWards.push(electorates);
+    mapStates.push(states);
   });
 
   STS.TOTAL_MAPS_COUNT = maps.length;
@@ -340,8 +375,8 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
 
       TweenMax.to($paths, 0.3, {
         fillOpacity: opacity,
-        fill: color,
-        stroke: color
+        fill: color
+        // stroke: color
       });
     }
   }
@@ -352,11 +387,11 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // :IMPORTANT: we assume there is one and only one layer on the map, and it's the geoJSON
-function getShapeLayer(map)
+function getElectorateLayer(map)
 {
   for (var i = 0, l = maps.length; i < l; ++i) {
     if (maps[i] === map) {
-      return mapShapes[i];
+      return mapWards[i];
     }
   }
   return null;
@@ -379,7 +414,7 @@ function findElectorate(map, wardName)
 {
   var matched;
 
-  getShapeLayer(map).eachLayer(function(layer) {
+  getElectorateLayer(map).eachLayer(function(layer) {
     if (!matched && layer.feature.properties.electorate === wardName) {
       matched = layer;
     }
@@ -404,7 +439,7 @@ function findMembersElectorate(map, memberIds)
 
   l = memberIds.length;
 
-  getShapeLayer(map).eachLayer(function(layer) {
+  getElectorateLayer(map).eachLayer(function(layer) {
     if (matched) {
       return;
     }
