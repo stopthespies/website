@@ -1,18 +1,10 @@
-.extra {
-  background: $dimBreakoutBg;
-  color: $textMid;
-  padding-top: 80px;
-}
-
 .sharing-buttons {
-  max-width: emsize(250px);
   margin: 0 auto;
 
   .tot {
     display: block;
-    font-size: 3em;
-    margin-top: -1.15em;
-    opacity: 0.1;
+    font-size: 1em;
+    margin-top: -0.3em;
     position: relative;
     top: 0.4em;
     z-index: 0;
@@ -230,6 +222,7 @@
 // }
 
 @media (min-width: $set-sharebox-size-3) {
+  font-size: 1em;
   .sharbx {
     right: 0;
     .text {
