@@ -69,22 +69,6 @@ $stats-label-vadjust: 0.4;
     .border, .tile {
       border-color: rgba(255, 255, 255, 0.4);
     }
-
-    &.views .number-spinner {
-      text-shadow: 0 0 2px $statRed;
-    }
-    &.emails .number-spinner {
-      text-shadow: 0 0 2px $statOrange;
-    }
-    &.calls .number-spinner {
-      text-shadow: 0 0 2px $statGreenD;
-    }
-    &.abpt .number-spinner {
-      text-shadow: 0 0 2px $statGreenL;
-    }
-    &.abpf .number-spinner {
-      text-shadow: 0 0 2px $statBlue;
-    }
   }
 }
 
@@ -110,6 +94,21 @@ $stats-label-vadjust: 0.4;
   }
   &.abpf {
     .title { color: $statBlue; }
+  }
+  &.views .number-spinner {
+    text-shadow: 0 0 2px $statRed;
+  }
+  &.emails .number-spinner {
+    text-shadow: 0 0 2px $statOrange;
+  }
+  &.calls .number-spinner {
+    text-shadow: 0 0 2px $statGreenD;
+  }
+  &.abpt .number-spinner {
+    text-shadow: 0 0 2px $statGreenL;
+  }
+  &.abpf .number-spinner {
+    text-shadow: 0 0 2px $statBlue;
   }
 }
 
