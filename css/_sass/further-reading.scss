@@ -103,8 +103,29 @@
     }
   }
 }
+
 .extra .keep-in-touch .share {
-  text-align: center;
+  background: transparent;
+  position: relative;
+  margin-bottom: 0;
+  i {
+    font-size: 1.5em;
+  }
+
+  &.abpf {
+    color: #3c5a96;
+    &:hover {
+      background: transparent;
+      color: darken(#3c5a96, 10%);
+    }
+  }
+  &.abpt {
+    color: #59adeb;
+    &:hover {
+      background: transparent;
+      color: darken(#59adeb, 10%);
+    }
+  }
 }
 
 @media (min-width: $set-reading-hide-share-counts) {
@@ -128,6 +149,18 @@
   }
 
   .extra .keep-in-touch .share {
-    float: none;
+    margin-left: 40%;
+
+    i {
+      position: absolute;
+      top: -0.3em;
+      left: -2.8em;
+    }
+    .text {
+      padding: 0;
+    }
+    a {
+      left: -4.8em;
+    }
   }
 }
