@@ -139,6 +139,7 @@
       </p>
     </div>
     <div class="col">
+      <!-- :TODO: image -->
     </div>
     <div class="eyemarks">
       <img class="r12 lg" src="/img/eyes/eye-large-down-l.svg" />
@@ -149,15 +150,7 @@
 </section>
 <section class="introduction countries">
   <div class="container">
-    <div class="col">
-      <p></p>
-    </div>
-    <div class="eyemarks">
-      <img class="r11 sm" src="/img/eyes/eye-small-down.svg" />
-      <img class="r12 lg" src="/img/eyes/eye-large-down-l.svg" />
-      <img class="r13 sm" src="/img/eyes/eye-small-down.svg" />
-    </div>
-    <div class="col">
+    <div class="col rev-order-desktop">
       <h2>Why you should be worried</h2>
       <h3>It's only data, right?</h3>
       <p>
@@ -166,6 +159,14 @@
       <p>
        Even if this information were only being collected to fight terrorism—and this is far from clear—there remains a frightening risk that it will be misused or fall into the wrong hands.
       </p>
+    </div>
+    <div class="col">
+      <!-- :TODO: image -->
+    </div>
+    <div class="eyemarks">
+      <img class="r11 sm" src="/img/eyes/eye-small-down.svg" />
+      <img class="r12 lg" src="/img/eyes/eye-large-down-l.svg" />
+      <img class="r13 sm" src="/img/eyes/eye-small-down.svg" />
     </div>
   </div>
 </section>
@@ -182,6 +183,7 @@
       </p>
     </div>
     <div class="col">
+      <!-- :TODO: image -->
     </div>
     <div class="eyemarks">
       <img class="r11 sm" src="/img/eyes/eye-small-down.svg" />
@@ -256,9 +258,7 @@
                     <form class="postcode-lookup">
                       <div class="input-group">
                         <input type="text" class="form-control" pattern="[0-9]{4}" required>
-                        <span class="input-group-btn">
-                          <button class="btn btn-primary" type="submit">Lookup!</button>
-                        </span>
+                        <button class="btn btn-info" type="submit">Lookup!</button>
                       </div>
                     </form>
 
@@ -331,34 +331,36 @@
             <h2>Campaign Progress</h2>
 
             <div class="metrics">
-                <div class="metric" data-stat="views">
+                <div class="metric views" data-stat="views">
                   <div class="border">
-                    <div class="title views">Views</div>
                     <div class="total"><div class="view-total number-spinner">0</div></div>
+                    <div class="title">Pageviews</div>
                   </div>
                 </div>
-                <div class="metric" data-stat="tweets">
+                <div class="metric abpt" data-stat="tweets">
                   <div class="border">
-                    <div class="title abpt">Tweets</div>
                     <div class="total"><div class="twitter-total number-spinner">0</div></div>
+                    <div class="title">Legislators tweeted</div>
                   </div>
                 </div>
-                <div class="metric" data-stat="emails">
+                <div class="metric emails" data-stat="emails">
                   <div class="border">
-                    <div class="title emails">Emails</div>
                     <div class="total"><div class="email-total number-spinner">0</div></div>
+                    <div class="title">Legislator contact page visits</div>
                   </div>
                 </div>
-                <div class="metric" data-stat="facebooks">
+                <div class="metric abpf" data-stat="facebooks">
                   <div class="border">
-                    <div class="title abpf">Posts</div>
                     <div class="total"><div class="facebook-total number-spinner">0</div></div>
+                    <div class="title">Facebook pages posted to</div>
                   </div>
                 </div>
                 <!--
-                <div class="metric">
-                    <div class="title calls">Calls</div>
+                <div class="metric calls">
+                  <div class="border">
                     <div class="total"><div class="call-total number-spinner">0</div></div>
+                    <div class="title">Calls</div>
+                  </div>
                 </div>
                 -->
             </div>
@@ -375,12 +377,12 @@
         <div class="col">
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
             <div class="twitter-support">
-              <h2><strong class="tweets-support-total number-spinner">0</strong> People taking part in the <strong>#StoptheSpies</strong> Campaign.</h2>
+              <h2><strong class="tweets-support-total number-spinner">0</strong> people talking about <strong>#StoptheSpies</strong></h2>
             </div>
 
             <p class="intro">
               <i class="fa fa-abpt"></i>
-              By tweeting &ldquo;<em>#stopthespies</em>&rdquo; or sharing this URL of this site on Twitter, you will automatically be added to the list below.
+              By tweeting &ldquo;<em>#stopthespies</em>&rdquo; or sharing the URL of this site on Twitter, you will automatically be added to the list below.
             </p>
 
         </div>
@@ -427,29 +429,29 @@
                 <div class="step step-2">
                     <h4>Spread the Word</h4>
                     <div class="sharing-buttons">
+                        <span class="tot twitter-total number-spinner">0</span>
                         <span class="share abpt">
                             <span class="text">
-                              <i class="fa fa-abpt"></i>&nbsp;Share <span class="light">on</span> Twitter
+                              <i class="fa fa-abpt"></i>&nbsp; Share <span class="light">on</span> Twitter
                             </span>
-                            <span class="tot twitter-total number-spinner">0</span>
                             <a target="_blank" href="https://twitter.com/intent/tweet?related=EFF,efa_oz&amp;text=Australia%27s%20new%20data%20retention%20bill%20would%20track%20everything%20you%20do%20online%E2%80%94even%20if%20you%27ve%20done%20nothing%20wrong.&amp;url=https://test.stopthespies.org"></a>
                         </span>
+                        <span class="tot facebook-total number-spinner">0</span>
                         <span class="share abpf">
                             <span class="text">
                               <i class="fa fa-abpf"></i>&nbsp; Share <span class="light">on</span> Facebook
                             </span>
-                            <span class="tot facebook-total number-spinner">0</span>
                             <a target="_blank" href="https://www.facebook.com/sharer.php?u=https://test.stopthespies.org"></a>
                         </span>
+                        <span class="tot google-total number-spinner">0</span>
                         <span class="share abpg">
                             <span class="text">
                               <i class="fa fa-abpg"></i>&nbsp; Share <span class="light">on</span> Google+
                             </span>
-                            <span class="tot google-total number-spinner">0</span>
                             <a target="_blank" href="https://plus.google.com/share?url=https://test.stopthespies.org"></a>
                         </span>
                     </div>
-
+                    <!--
                     <h4>Keep in Touch</h4>
                     <div class="sharing-buttons keep-in-touch">
                       <span class="share abpt">
@@ -457,10 +459,11 @@
                         <a href="https://twitter.com/stopthespies" target="_blank"></a>
                       </span>
                       <span class="share abpf">
-                          <span class="text"><i class="fa fa-abpf"></i> <span>/Stop-The-Spies</span></span>
+                          <span class="text"><i class="fa fa-abpf"></i> <span>Stop-The-Spies</span></span>
                           <a href="https://www.facebook.com/pages/Stop-The-Spies/354999514650401" target="_blank"></a>
                       </span>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
