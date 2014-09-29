@@ -52,17 +52,19 @@ $member-card-corners: 8px;
 $member-card-button-borders: #E4E4E4;
 $member-card-button-counters: #787878;
 
+/* theming for bootstrap widgets */
+
 $btn-primary-bg: $primaryOrange;
 $btn-info-bg: $statGreenL;
 $btn-default-bg: $dimBreakoutBg;
-
-/* theming for bootstrap widgets */
 
 $brand1:        $primaryOrange !default;
 $brand2:        #D3CEAA !default;
 $brand3:        #FBF7E4 !default;
 $brand4:        #424242 !default;
 $brand5:        $primaryOrange !default;
+
+$input-border-focus: $statGreenL;
 
 /* These variables are included after bootstrap's, so you can add overrides here */
 

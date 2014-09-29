@@ -43,10 +43,6 @@ section.how.results {
     font-size: 2.5em;
     color: $primaryOrange;
   }
-
-  .input-group {
-    margin-top: 3.5em;
-  }
 }
 
 .legislators {
@@ -229,61 +225,69 @@ section.how.results {
 
 
 
-
-.how {
-  .postcode-steps, .location-privacy, .postcode-lookup {
-    @include row();
-  }
-  .location-privacy {
-    p {
-      @include column($one);
-    }
-  }
-  .input-group {
-      @include column($one-twelfth * 10);
-      @include push($one-twelfth);
-
-    .form-control {
-      display: block;
-      float: left;
-      width: 60%;
-      height: auto;
-    }
-    .input-group-btn {
-      display: block;
-      width: 40%;
-    }
-
-    @media (min-width: $set-search-pad-postcode) {
-      @include column($one-twelfth * 8);
-      @include push($one-twelfth * 2);
-    }
-  }
-
-  @media (min-width: $set-larger-content-margin) {
+@media (min-width: $set-larger-content-margin) {
+  .how {
     .col {
       @include column($one-twelfth * 10);
       @include push($one-twelfth);
       margin-bottom: emsize(30px);
     }
   }
+}
 
-  @media (min-width: $set-steps-2-cols) {
-    .location-error {
-      position: absolute;
-      width: 100%;
-      top: 0; left: 0;
-      p {
-        margin-top: 6.5em;
-      }
-    }
+.location-privacy {
+  p {
+    @include column($one);
+  }
+}
+
+.how {
+  .input-group {
+    padding: 0 1em;
   }
 
-  @media (max-width: ($set-steps-2-cols - 1)) {
-    .no-location .step-2 {
-      background: transparent;
-      min-height: 0;
+  .postcode-lookup {
+    margin: 3.5em auto 0 auto;
+    max-width: 20em;
+  }
+
+  input, button {
+    float: left;
+    display: block;
+    line-height: 3em;
+    height: 3em;
+  }
+  input {
+    padding: 0 3% 0 3%;
+    width: 54%;
+    height: 40px;
+    margin-right: -1%;
+    @include border-right-radius(0);
+  }
+  button {
+    padding: 0;
+    width: 40%;
+    height: 42px; // :SHONK:
+    @include border-left-radius(0);
+    border: 1px solid $statGreenL;
+  }
+}
+
+@media (min-width: $set-steps-2-cols) {
+  .location-error {
+    position: absolute;
+    width: 100%;
+    top: 0; left: 0;
+    p {
+      margin-top: 6.5em;
     }
+  }
+}
+
+@media (max-width: ($set-steps-2-cols - 1)) {
+  .no-location .step-2 {
+    background: transparent;
+    min-height: 0;
   }
 }
 
