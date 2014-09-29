@@ -24,9 +24,18 @@
   }
 
   .fa-abpt {
-    font-size: 1.5em;
+    margin-top: 20px;
+    display: block;
+    font-size: 10em;
+    margin-top: -0.3em;
+    opacity: 0.1;
+
     line-height: 0.7em;
     color: white;
+
+    position: absolute;
+    left: 50%;
+    margin-left: -110px;
   }
 }
 
