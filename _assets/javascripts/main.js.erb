@@ -244,10 +244,10 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
   STS.events.onStatsLoad = onStatsLoaded;
   STS.events.onSharesLoad = onSharesLoaded;
 
-  STS.getTotal = function(stats, statset)
+  STS.getTotal = function(stats, statset, includeviews)
   {
     if (!statset || statset === 'all') {
-      return (stats.emails || 0) + (stats.calls || 0) + (stats.views || 0) + (stats.tweets || 0) + (stats.facebooks || 0);
+      return (stats.emails || 0) + (stats.calls || 0) + ((includeviews ? stats.views : 0) || 0) + (stats.tweets || 0) + (stats.facebooks || 0);
     }
     return stats[statset];
   };

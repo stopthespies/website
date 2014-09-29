@@ -319,7 +319,7 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
 
   for (j = 0, k = maps.length; j < k && (map = maps[j]); ++j) {
     for (i = 0, l = reps.length; i < l && (rep = reps[i]); ++i) {
-      eventCount = STS.getTotal(rep, eventId);
+      eventCount = STS.getTotal(rep, eventId, true);
       shape = findMembersElectorate(map, rep._id);
 
       if (!shape) {
