@@ -1710,7 +1710,10 @@ section.how.results {
     background: #f0f0f0; }
     .legislator .pic img {
       border-radius: 8px;
-      max-width: 100%; }
+      max-width: 100%;
+      width: 88px;
+      height: 115px;
+      background: #ccc; }
   .legislator .details {
     padding: 0 1em; }
   .legislator .contact {

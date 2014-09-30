@@ -195,6 +195,21 @@
 
 
 </div>
+
+<section class="introduction cost">
+  <div class="container">
+    <div class="col">
+      <h2>Who's paying for all this?</h2>
+      <h3>The Australian public</h3>
+      <p>
+        Nec eros morbi nostra fringilla. Magnis aptent venenatis. Irure integer egestas blandit. Facilisis ullamco cursus quam. Fringilla occaecat sed eleifend.
+      </p>
+    </div>
+    <div class="col">
+      <p class="bigdollars"><span>$$$</span></p>
+    </div>
+  </div>
+</section>
 <!-- END INTRO BACKGROUND BLOCK -->
 
 <section class="cta bg-wrap">
@@ -305,7 +320,8 @@
             </div>
 
             <div class="location-privacy">
-                <p>We use your postcode to find legislators that represent you. We don't store this data and we use encrypted requests.</p>
+                <p>We use your postcode to find legislators that represent you. We don't store this data and we use encrypted requests.<br />
+                Legislator data is proved by <a href="http://www.openaustralia.org/">Open Australia</a></p>
             </div>
 
             <h3>Here are some talking points you can use</h3>
@@ -567,7 +583,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script type="text/template" id="legislator-template">
    <div class="legislator l<%= counter %>" data-legislator-id="<%= member_id %>">
         <div class="pic">
-            <img class="" src="<%= image %>" />
+            <img class="" src="<%= image %>"  onerror="this.src='/img/profile.png';" />
         </div>
         <div class="details">
             <h3><%= full_name %></h3>
@@ -584,7 +600,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
               	</li>-->
 
                 <!-- :TODO: hookup to email service after confirming legalities -->
-                <% if(contact_details && contact_details.contact_page && contact_details.contact_page !== 'null') { %>
+                <% if(typeof contact_details !== 'undefined'  && contact_details.contact_page && contact_details.contact_page !== 'null') { %>
                 <li class="email-action" title="Contact this <%= typeString %> directly">
                   <div class="wrap">
                     <a href="<%= contact_details.contact_page %>" target="_blank">
@@ -604,7 +620,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                 </li>
                 -->
 
-                <% if(contact_details && contact_details.twitter && contact_details.twitter !== 'null') { %>
+                <% if(typeof contact_details !== 'undefined'  && contact_details.twitter && contact_details.twitter !== 'null') { %>
                 <li class="tweets-action" title="Tweet this <%= typeString %>">
                   <div class="wrap">
                     <a href="https://twitter.com/intent/tweet?text=Dear%20%40<%= contact_details.twitter %>: Don't sacrifice our rights. Reject the Australian data retention bill. https://stopthespies.org" target="_blank">
@@ -615,7 +631,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                 </li>
                 <% }; %>
 
-                <% if(contact_details && contact_details.facebook && contact_details.facebook !== 'null') { %>
+                <% if(typeof contact_details !== 'undefined' && contact_details.facebook && contact_details.facebook !== 'null') { %>
                 <li class="facebooks-action" title="Post to this <%= typeString %>'s Facebook page">
                   <div class="wrap">
                     <a href="<%= contact_details.facebook %>" target="_blank">

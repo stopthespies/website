@@ -32,11 +32,11 @@ var AREA_SHADING_THRESHOLDS = {
 };
 var MAP_EVENT_COLORS = {
   all : '#ffffff',
-  tweets : '#45CBA1',
-  calls : '#36C48F',
-  views : '#EE574A',
-  emails : '#E58231',
-  facebooks : '#4FB9E3'
+  tweets : '#4099FF',
+  calls : '#006600',
+  views : '#ee574a',
+  emails : '#66FF33',
+  facebooks : '#3B5998'
 };
 
 // all maps are the same, just add more things to this selector & adjust after creating
