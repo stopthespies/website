@@ -206,7 +206,7 @@
       left: 0;
     }
 
-    span.share:hover .text {
+    span.share:hover .text, span.share.anim .text {
       visibility: visible;
     }
   }
