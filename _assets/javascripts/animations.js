@@ -79,26 +79,16 @@ var AREA_FLASH_RADIUS = '8px';
     var g = shapeData[0];
     var $paths = shapeData[1];
 
-    var currentAttrs;
+    // :NOTE: leaflet does something internally and moves things into a CSS subproperty
+    var baseAttrs = layer.feature.__defaultStyle.css ? layer.feature.__defaultStyle.css : layer.feature.__defaultStyle;
 
     // abort any running animations on this electorate and read stateless attributes to finish on
     for (var i = 0, l = runningMapTweens.length, running; i < l && (running = runningMapTweens[i]); ++i) {
       if (running[0] === g) {
         running[1].kill();
-        currentAttrs = running[2];
         runningMapTweens.splice(i, 1);
         break;
       }
-    }
-
-    // read current attributes if we're not doing anything yet
-    if (!currentAttrs) {
-      currentAttrs = [
-        ['stroke-width', 'strokeWidth'], ['stroke', 'stroke'], ['stroke-opacity', 'strokeOpacity'], ['fill', 'fill'], ['fill-opacity', 'fillOpacity']
-      ].reduce(function(attrs, at) {
-        attrs[at[1]] = $paths.attr(at[0]);
-        return attrs;
-      }, {});
     }
 
     var newTimeline = new TLM({ onComplete: completedCB || function() {} });
@@ -110,9 +100,15 @@ var AREA_FLASH_RADIUS = '8px';
       'fillOpacity': 0.4 + (0.6 * intensity),
       'strokeOpacity': 0.4 + (0.6 * intensity),
       ease: Power1.easeOut
-    }).to($paths, 0.9, currentAttrs);
+    }).to($paths, 0.9, {
+      'strokeWidth': baseAttrs.weight,
+      'stroke': baseAttrs.color,
+      'fill': baseAttrs.fillColor,
+      'fillOpacity': baseAttrs.fillOpacity,
+      'strokeOpacity': baseAttrs.opacity
+    });
 
-    runningMapTweens.push([g, newTimeline, currentAttrs]);
+    runningMapTweens.push([g, newTimeline]);
   }
 
   //----------------------------------------------------------------------------
