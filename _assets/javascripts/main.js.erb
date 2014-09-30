@@ -153,6 +153,8 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
     $('.email-total').numberSpinner('set', loadedGlobals.emails || 0);
     $('.call-total').numberSpinner('set', loadedGlobals.calls || 0);
     $('.view-total').numberSpinner('set', loadedGlobals.views || 0);
+    $('.facebook-total').numberSpinner('set', loadedGlobals.facebooks || 0);
+    $('.twitter-total').numberSpinner('set', loadedGlobals.tweets || 0);
     $('.facebook-total').numberSpinner('set', socialStats.facebook || 0);
     $('.google-total').numberSpinner('set', socialStats.googleplus || 0);
     $('.twitter-total').numberSpinner('set', socialStats.twitter || 0);
@@ -194,6 +196,8 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
       $('.email-total').numberSpinner('set', globals.emails || 0);
       $('.call-total').numberSpinner('set', globals.calls || 0);
       $('.view-total').numberSpinner('set', globals.views || 0);
+      $('.facebook-total').numberSpinner('set', globals.facebooks || 0);
+      $('.twitter-total').numberSpinner('set', globals.tweets || 0);
 
       // shade the stats map if we have enough stats for it to say something
       var grandtotal = STS.getTotal(globals);

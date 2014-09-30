@@ -530,7 +530,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
               	</li>-->
 
                 <!-- :TODO: hookup to email service after confirming legalities -->
-                <% if(contact_details && contact_details.contact_page && contact_details.contact_page !== 'null') { %>
+                <% if(typeof contact_details !== 'undefined'  && contact_details.contact_page && contact_details.contact_page !== 'null') { %>
                 <li class="email-action" title="Contact this <%= typeString %> directly">
                   <div class="wrap">
                     <a href="<%= contact_details.contact_page %>" target="_blank">
@@ -550,7 +550,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                 </li>
                 -->
 
-                <% if(contact_details && contact_details.twitter && contact_details.twitter !== 'null') { %>
+                <% if(typeof contact_details !== 'undefined'  && contact_details.twitter && contact_details.twitter !== 'null') { %>
                 <li class="tweets-action" title="Tweet this <%= typeString %>">
                   <div class="wrap">
                     <a href="https://twitter.com/intent/tweet?text=Dear%20%40<%= contact_details.twitter %>: Don't sacrifice our rights. Reject the Australian data retention bill. https://stopthespies.org" target="_blank">
@@ -561,7 +561,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                 </li>
                 <% }; %>
 
-                <% if(contact_details && contact_details.facebook && contact_details.facebook !== 'null') { %>
+                <% if(typeof contact_details !== 'undefined' && contact_details.facebook && contact_details.facebook !== 'null') { %>
                 <li class="facebooks-action" title="Post to this <%= typeString %>'s Facebook page">
                   <div class="wrap">
                     <a href="<%= contact_details.facebook %>" target="_blank">
