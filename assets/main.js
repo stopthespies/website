@@ -193,6 +193,8 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
       $('.email-total').numberSpinner('set', globals.emails || 0);
       $('.call-total').numberSpinner('set', globals.calls || 0);
       $('.view-total').numberSpinner('set', globals.views || 0);
+      $('.facebook-total').numberSpinner('set', globals.facebooks || 0);
+      $('.twitter-total').numberSpinner('set', globals.tweets || 0);
 
       // shade the stats map if we have enough stats for it to say something
       var grandtotal = STS.getTotal(globals);
@@ -229,10 +231,10 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   // init live counter widgets
 
-  $('.email-total, .call-total, .view-total, .facebook-total:not(.tot), .google-total:not(.tot), .twitter-total:not(.tot)').addClass('number-spinner').numberSpinner({
+  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner({
       min_digits: 6
     });
-  $('.tweets-support-total, .facebook-total.tot, .google-total.tot, .twitter-total.tot').numberSpinner();
+  $('.tweets-support-total, .facebook-share-total, .google-share-total, .twitter-share-total').numberSpinner();
 
   // LOG INITIAL VIEW
 

@@ -339,11 +339,14 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
         opacity += 0.1;
       }
 
-      TweenMax.to($paths, 0.3, {
+      // set new baseline style
+      shape.feature.__defaultStyle = $.extend(shape.feature.__defaultStyle, {
         fillOpacity: opacity,
-        fill: color,
-        stroke: color
+        fillColor: color,
+        color: color
       });
+
+      TweenMax.to($paths, 0.3, shape.feature.__defaultStyle);
     }
   }
 }
