@@ -209,14 +209,36 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   function onSharesLoaded(stats)
   {
+    function applyValues()
+    {
+      // apply to share panels
+      var shares = $('.share');
+      $('.facebook-share-total', shares).numberSpinner('set', socialStats.facebook || 0);
+      $('.google-share-total', shares).numberSpinner('set', socialStats.googleplus || 0);
+      $('.twitter-share-total', shares).numberSpinner('set', socialStats.twitter || 0);
+    }
+
+    // sploosh.
+    var timeline = new TimelineMax({});
+
+    if (!socialStats) {
+      var shareboxs = $('.sharbx .share').addClass('anim');
+      var maxLeft = shareboxs.outerWidth() - ($(window).innerWidth() - shareboxs.offset().left);
+      timeline.eventCallback('onComplete', function() {
+        shareboxs.css('left', '').removeClass('anim');
+      });
+      timeline.staggerTo('.sharbx .share', 0.5, { left: -maxLeft, onComplete: applyValues }, 0.4);
+      timeline.staggerTo('.sharbx .share', 0.4, { delay: 0.8, left: 0 }, 0.3);
+    } else {
+      timeline.staggerTo('.sharbx .share', 0.5, { left: -10, onComplete: function() {
+        shareboxs.css('left', '');
+      }}, 0.4);
+
+      applyValues();
+    }
+
     // assign social stats for stats section (deferred until animated in)
     socialStats = stats;
-
-    // apply to share panels
-    var shares = $('.share');
-    $('.facebook-share-total', shares).numberSpinner('set', socialStats.facebook || 0);
-    $('.google-share-total', shares).numberSpinner('set', socialStats.googleplus || 0);
-    $('.twitter-share-total', shares).numberSpinner('set', socialStats.twitter || 0);
   }
 
   // ------------------------------ LOAD DATA ----------------------------------

@@ -2282,21 +2282,11 @@ section.how.results {
       font-size: 16px;
       top: 0.3em;
       left: 0; }
-    .sharbx span.share:hover .text {
+    .sharbx span.share:hover .text, .sharbx span.share.anim .text {
       visibility: visible; } }
 @media (min-width: 1865px) {
   .sharbx {
-    font-size: 1em;
-    right: 0; }
-    .sharbx .text {
-      visibility: visible; }
-    .sharbx span.share:hover {
-      left: 0;
-      border-radius: 0; }
-      .sharbx span.share:hover:first-child {
-        border-top-left-radius: 3px; }
-      .sharbx span.share:hover:last-child {
-        border-bottom-left-radius: 3px; } }
+    font-size: 1em; } }
 .extra {
   background: #e7e7e7;
   color: #5f5a66;
