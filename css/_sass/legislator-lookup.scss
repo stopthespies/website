@@ -195,8 +195,10 @@ section.how.results {
 }
 
 .location-privacy {
+  @include clearfix();
   font-size: emsize(13px);
   font-style: italic;
+  margin-bottom: 1em;
 }
 
 
