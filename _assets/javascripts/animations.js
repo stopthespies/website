@@ -97,8 +97,8 @@ var AREA_FLASH_RADIUS = '8px';
       'strokeWidth': AREA_FLASH_RADIUS,
       'stroke': color,
       'fill': color,
-      'fillOpacity': 0.4 + (0.6 * intensity),
-      'strokeOpacity': 0.4 + (0.6 * intensity),
+      'fillOpacity': 1,//0.4 + (0.6 * intensity),
+      'strokeOpacity': 1,//0.4 + (0.6 * intensity),
       ease: Power1.easeOut
     }).to($paths, 0.9, {
       'strokeWidth': baseAttrs.weight,
