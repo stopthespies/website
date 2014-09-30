@@ -84,7 +84,7 @@
           <span class="text">
             Share <span class="light">on</span> Twitter
           </span>
-          <span class="tot twitter-total number-spinner">0</span>
+          <span class="tot twitter-share-total number-spinner">0</span>
           <a target="_blank" href="https://twitter.com/intent/tweet?related=EFF,efa_oz&amp;text=Australia%27s%20new%20data%20retention%20bill%20would%20track%20everything%20you%20do%20online%E2%80%94even%20if%20you%27ve%20done%20nothing%20wrong.&amp;url=https://test.stopthespies.org"></a>
       </span>
       <span class="share abpf">
@@ -92,7 +92,7 @@
           <span class="text">
             Share <span class="light">on</span> Facebook
           </span>
-          <span class="tot facebook-total number-spinner">0</span>
+          <span class="tot facebook-share-total number-spinner">0</span>
           <a target="_blank" href="https://www.facebook.com/sharer.php?u=https://test.stopthespies.org"></a>
       </span>
       <span class="share abpg">
@@ -100,7 +100,7 @@
           <span class="text">
             Share <span class="light">on</span> Google+
           </span>
-          <span class="tot google-total number-spinner">0</span>
+          <span class="tot google-share-total number-spinner">0</span>
           <a target="_blank" href="https://plus.google.com/share?url=https://test.stopthespies.org"></a>
       </span>
   </div>
@@ -393,11 +393,11 @@
         <div class="col">
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
             <div class="twitter-support">
-              <i class="fa fa-abpt"></i>
               <h2><strong class="tweets-support-total number-spinner">0</strong> people talking about <strong>#StoptheSpies</strong></h2>
             </div>
 
             <p class="intro">
+              <i class="fa fa-abpt"></i>
               By tweeting &ldquo;<em>#stopthespies</em>&rdquo; or sharing the URL of this site on Twitter, you will automatically be added to the list below.
             </p>
 
@@ -445,21 +445,21 @@
                 <div class="step step-2">
                     <h4>Spread the Word</h4>
                     <div class="sharing-buttons">
-                        <span class="tot twitter-total number-spinner">0</span>
+                        <!--<span class="tot twitter-share-total number-spinner">0</span>-->
                         <span class="share abpt">
                             <span class="text">
                               <i class="fa fa-abpt"></i>&nbsp; Share <span class="light">on</span> Twitter
                             </span>
                             <a target="_blank" href="https://twitter.com/intent/tweet?related=EFF,efa_oz&amp;text=Australia%27s%20new%20data%20retention%20bill%20would%20track%20everything%20you%20do%20online%E2%80%94even%20if%20you%27ve%20done%20nothing%20wrong.&amp;url=https://test.stopthespies.org"></a>
                         </span>
-                        <span class="tot facebook-total number-spinner">0</span>
+                        <!--<span class="tot facebook-share-total number-spinner">0</span>-->
                         <span class="share abpf">
                             <span class="text">
                               <i class="fa fa-abpf"></i>&nbsp; Share <span class="light">on</span> Facebook
                             </span>
                             <a target="_blank" href="https://www.facebook.com/sharer.php?u=https://test.stopthespies.org"></a>
                         </span>
-                        <span class="tot google-total number-spinner">0</span>
+                        <!--<span class="tot google-share-total number-spinner">0</span>-->
                         <span class="share abpg">
                             <span class="text">
                               <i class="fa fa-abpg"></i>&nbsp; Share <span class="light">on</span> Google+
@@ -583,7 +583,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script type="text/template" id="legislator-template">
    <div class="legislator l<%= counter %>" data-legislator-id="<%= member_id %>">
         <div class="pic">
-            <img class="" src="<%= image %>"  onerror="this.src='/img/profile.png';" />
+            <img class="" src="<%= image %>" onerror="this.onerror=null;this.src='/img/profile.png';" />
         </div>
         <div class="details">
             <h3><%= full_name %></h3>
@@ -703,7 +703,6 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script src="/assets/map.js"></script>
 <script src="/assets/legislator-querying.js"></script>
 <script src="/assets/tweets.js"></script>
-<script src="/assets/eyes.js"></script>
 <script src="/assets/vendor/jquery.numberSpinner.js"></script>
 <script src="/assets/main.js"></script>
 

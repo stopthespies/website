@@ -1571,7 +1571,7 @@ section.video {
 .metric .title {
   font-weight: bold;
   line-height: 1;
-  padding: 1em 1em 1em 1em;
+  padding: 0.5em 1em 1.5em 1em;
   font-size: 0.875em; }
 .metric.views .title {
   color: #ee574a; }
@@ -1788,8 +1788,15 @@ section.how.results {
   font-size: 0.875em; }
 
 .location-privacy {
+  *zoom: 1;
   font-size: 0.8125em;
-  font-style: italic; }
+  font-style: italic;
+  margin-bottom: 1em; }
+  .location-privacy:before, .location-privacy:after {
+    content: "";
+    display: table; }
+  .location-privacy:after {
+    clear: both; }
 
 .legislator-search-states {
   font-size: 0.875em;
@@ -1974,16 +1981,9 @@ section.how.results {
   .support .intro em {
     color: #45cba1; }
 .support .fa-abpt {
-  margin-top: 20px;
-  display: block;
-  font-size: 10em;
-  margin-top: -0.3em;
-  opacity: 0.1;
+  font-size: 1.5em;
   line-height: 0.7em;
-  color: white;
-  position: absolute;
-  left: 50%;
-  margin-left: -110px; }
+  color: white; }
 
 .tweet:before {
   content: ' ';
@@ -2041,8 +2041,7 @@ section.how.results {
   float: left;
   padding: 5px;
   position: absolute;
-  overflow: hidden;
-  opacity: 0; }
+  overflow: hidden; }
   .tweet a {
     display: block;
     position: absolute;
@@ -2436,8 +2435,7 @@ section.how.results {
   .extra .sharing-buttons .text {
     z-index: 0; }
   .extra .sharing-buttons .share {
-    width: 60%;
-    float: left; }
+    width: 55%; }
     .extra .sharing-buttons .share a {
       z-index: 2; }
   .extra .sharing-buttons i {
