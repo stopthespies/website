@@ -109,7 +109,7 @@ section.how.results {
     display: inline-block;
 
     li {
-      width: 4.5em;
+      width: 4em;
       float: left;
 
       &:first-child {
@@ -220,25 +220,15 @@ section.how.results {
     text-transform: uppercase;
     margin-top: 1em;
   }
-  ul {
+  ul.points {
     text-align: left;
-    padding: 1em;
+    padding-left: 1em 0 0 1.5em;
     margin: 0 auto;
     max-width: 550px;
   }
 }
 
 
-
-@media (min-width: $set-larger-content-margin) {
-  .how {
-    .col {
-      @include column($one-twelfth * 10);
-      @include push($one-twelfth);
-      margin-bottom: emsize(30px);
-    }
-  }
-}
 
 .location-privacy {
   p {
@@ -335,17 +325,18 @@ section.how.results {
   .col {
     @include column($one);
   }
-  @media (min-width: $set-larger-content-margin) {
-    .col {
-      @include column($one-twelfth * 10);
-      @include push($one-twelfth);
-    }
-    .results {
-      .col {
-        @include column($one);
-      }
-    }
-  }
+  // @media (min-width: $set-larger-legislator-margin) {
+  //   .col {
+  //     @include column($one-twelfth * 10);
+  //     @include push($one-twelfth);
+  //     margin-bottom: emsize(30px);
+  //   }
+  //   .results {
+  //     .col {
+  //       @include column($one);
+  //     }
+  //   }
+  // }
 
   // these ones are positioned against columns and so their left offsets are percentages
   .eyemarks {

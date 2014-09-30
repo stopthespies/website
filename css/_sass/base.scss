@@ -69,6 +69,12 @@ a {
   outline: 0;
 }
 
+ul.points {
+  padding-left: 1.5em;
+  li {
+    margin-bottom: 1em;
+  }
+}
 
 //-----------------------------------------------------------------
 //  Spying eyes (position indicators for animation & image fallbacks

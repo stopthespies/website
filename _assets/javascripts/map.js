@@ -339,13 +339,17 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
       }
 
       // set new baseline style
-      shape.feature.__defaultStyle = $.extend(shape.feature.__defaultStyle, {
+      var newAttrs = {
         fillOpacity: opacity,
         fillColor: color,
         color: color
-      });
+      };
+      shape.feature.__defaultStyle = $.extend(shape.feature.__defaultStyle, newAttrs);
+      if (shape.feature.__defaultStyle.css) {
+        shape.feature.__defaultStyle.css = $.extend(shape.feature.__defaultStyle.css, newAttrs);
+      }
 
-      TweenMax.to($paths, 0.3, shape.feature.__defaultStyle);
+      TweenMax.to($paths, 0.3, STS.anim.leafletStyleToSVGStyle(shape.feature.__defaultStyle));
     }
   }
 }
