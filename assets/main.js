@@ -40,6 +40,8 @@ var
   SEND_EMAIL_URL      = STS.options.SEND_EMAIL_URL,
   LOG_URL_BASE      = STS.options.LOG_URL_BASE,
 
+  SIDE_SHAREBOX_START_WIDTH = 430,    // :IMPORTANT: must match CSS value for $show-sharebox
+
   MAP_START_SHADING = 1;   // this many actions to occur before we begin weighted shading of the campaign stats map
 
 // Start up scripts
@@ -209,6 +211,11 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   function onSharesLoaded(stats)
   {
+    var firstLoad = !socialStats;
+
+    // assign social stats for stats section (deferred until animated in)
+    socialStats = stats;
+
     function applyValues()
     {
       // apply to share panels
@@ -221,24 +228,24 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
     // sploosh.
     var timeline = new TimelineMax({});
 
-    if (!socialStats) {
-      var shareboxs = $('.sharbx .share').addClass('anim');
-      var maxLeft = shareboxs.outerWidth() - ($(window).innerWidth() - shareboxs.offset().left);
-      timeline.eventCallback('onComplete', function() {
-        shareboxs.css('left', '').removeClass('anim');
-      });
-      timeline.staggerTo('.sharbx .share', 0.5, { left: -maxLeft, onComplete: applyValues }, 0.4);
-      timeline.staggerTo('.sharbx .share', 0.4, { delay: 0.8, left: 0 }, 0.3);
-    } else {
-      timeline.staggerTo('.sharbx .share', 0.5, { left: -10, onComplete: function() {
-        shareboxs.css('left', '');
-      }}, 0.4);
+    if ($(window).width() > SIDE_SHAREBOX_START_WIDTH) {
+      if (firstLoad) {
+        var shareboxs = $('.sharbx .share').addClass('anim');
+        var maxLeft = shareboxs.outerWidth() - ($(window).innerWidth() - shareboxs.offset().left);
+        timeline.eventCallback('onComplete', function() {
+          shareboxs.css('left', '').removeClass('anim');
+        });
+        timeline.staggerTo('.sharbx .share', 0.5, { left: -maxLeft, onComplete: applyValues }, 0.4);
+        timeline.staggerTo('.sharbx .share', 0.4, { delay: 0.8, left: 0 }, 0.3);
+      } else {
+        timeline.staggerTo('.sharbx .share', 0.5, { left: -10, onComplete: function() {
+          shareboxs.css('left', '');
+        }}, 0.4);
 
-      applyValues();
+        applyValues();
+      }
     }
-
-    // assign social stats for stats section (deferred until animated in)
-    socialStats = stats;
+    // :NOTE: no share counters *anywhere* else on mobile so we don't need to run applyValues. Don't run it on the sharebox.
   }
 
   // ------------------------------ LOAD DATA ----------------------------------
