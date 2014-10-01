@@ -269,7 +269,8 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   // LOG INITIAL VIEW
 
-  io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'visits'}, function(d) {});
+  io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'visits', 'repeat' : Cookie.has('already-viewed')}, function(d) {});
+  Cookie.set('already-viewed', 1);
 
   // -------------------------------- EXPORTS ----------------------------------
 
