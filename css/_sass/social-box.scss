@@ -44,9 +44,9 @@
 .sharing-buttons span.light {font-weight: normal;}
 
 .sharing-buttons .share.abpt {
-    background: #59adeb;
+    background: $socialTw;
     &:hover {
-      background: darken(#59adeb, 10%);
+      background: darken($socialTw, 10%);
     }
 }
 
@@ -59,23 +59,23 @@
 }
 
 .sharing-buttons .share.abpf {
-    background: #3c5a96;
+    background: $socialFb;
     .tot {
       color: white;
     }
 
     &:hover {
-      background: darken(#3c5a96, 10%);
+      background: darken($socialFb, 10%);
     }
 }
 
 .sharing-buttons .share.abpf img {margin-top:-3px;}
 
 .sharing-buttons .share.abpg {
-    background: #db585a;
+    background: $socialGp;
 
     &:hover {
-      background: darken(#db585a, 10%);
+      background: darken($socialGp, 10%);
     }
 }
 
@@ -203,7 +203,8 @@
     .number-spinner {
       font-size: 16px;
       top: 0.3em;
-      left: 0;
+      left: 1.5em;
+      text-align: center;
     }
 
     span.share:hover .text, span.share.anim .text {
