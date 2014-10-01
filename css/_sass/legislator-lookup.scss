@@ -26,7 +26,8 @@ section.how.results {
 
 .postcode-steps, .extra-steps {
   overflow: hidden;
-
+  margin-top: 50px;
+  
   p {
     margin: 1em 10%;
     text-align: center;
@@ -293,7 +294,6 @@ section.how.results {
     margin: 0 auto 4em auto;
     max-width: 650px;
   }
-
   // steps boxes
   .step {
     position: relative;
