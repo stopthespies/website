@@ -106,3 +106,12 @@
 .fa-phone:before { content: '\e808'; } /* '' */
 .fa-abpt:before { content: '\e809'; } /* '' */
 .fa-globe:before { content: '\e80a'; } /* '' */
+
+// that'll do, pig.
+.fa-sts {
+  height: 1em;
+  width: 1.9em;
+  display: inline-block;
+  background-image: url(../img/stslogo-o.svg);
+  background-size: 100% 100%;
+}

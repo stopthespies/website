@@ -10,6 +10,17 @@ $stats-label-vadjust: 0.4;
   text-align: left;
   max-width: 16em;
 }
+
+.metric, .ourselves {
+  .number-spinner {
+    font-family: 'League Gothic', sans-serif;
+    font-size: 1.5em;
+  }
+  .tile {
+    padding: 0 0.2em;
+  }
+}
+
 .metric {
   @include clearfix();
 
@@ -35,29 +46,6 @@ $stats-label-vadjust: 0.4;
   //   margin-right: 0.4em;
   // }
 
-  .number-spinner {
-    font-size: 2em;
-    font-family: 'League Gothic', sans-serif;
-    top: 2px;
-    position: relative;
-    margin: 0 auto;
-    display: block;
-
-    &, .tiles, .tile, .digit {
-      height: emsize(54px, 32px);   // 32px = 2em
-    }
-    .digit {
-      line-height: $stats-digit-height;
-    }
-  }
-  .tile {
-    padding: 0 0.2em;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-    &:last-child {
-      border-right: 1px solid rgba(255, 255, 255, 0.2);
-    }
-  }
-
   .total {
     height: $stats-row-height;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
@@ -70,9 +58,7 @@ $stats-label-vadjust: 0.4;
       border-color: rgba(255, 255, 255, 0.4);
     }
   }
-}
 
-.metric {
   .title {
     font-weight: bold;
     line-height: 1;
@@ -80,35 +66,90 @@ $stats-label-vadjust: 0.4;
     @include emfz(14px);
   }
 
+  .number-spinner {
+    font-size: 2em;
+
+    &, .tiles, .tile, .digit {
+      height: emsize(54px, 32px);   // 32px = 2em
+    }
+
+    top: 2px;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+  }
+  .tile {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    &:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+  .digit {
+    line-height: $stats-digit-height;
+  }
+
   &.views {
-    .title { color: $statRed; }
+    .title { color: $statOrange; }
+    .number-spinner { text-shadow: 0 0 2px $statOrange; }
   }
   &.emails {
-    .title { color: $statOrange; }
+    .title { color: $statGreenL; }
+    .number-spinner { text-shadow: 0 0 2px $statGreenL; }
   }
   &.calls {
     .title { color: $statGreenD; }
+    .number-spinner { text-shadow: 0 0 2px $statGreenD; }
   }
   &.abpt {
-    .title { color: $statGreenL; }
+    .title { color: $socialTw; }
+    .number-spinner { text-shadow: 0 0 2px $socialTw; }
   }
   &.abpf {
-    .title { color: $statBlue; }
+    .title { color: $socialFb; }
+    .number-spinner { text-shadow: 0 0 2px $socialFb; }
   }
-  &.views .number-spinner {
-    text-shadow: 0 0 2px $statRed;
+  &.abpg {
+    .title { color: $socialGp; }
+    .number-spinner { text-shadow: 0 0 2px $socialGp; }
   }
-  &.emails .number-spinner {
-    text-shadow: 0 0 2px $statOrange;
+}
+
+.ourselves {
+  margin-top: 2em;
+  text-align: center;
+
+  div {
+    @include column($one);
+    height: 2em;
+    margin-top: 1em;
   }
-  &.calls .number-spinner {
-    text-shadow: 0 0 2px $statGreenD;
+
+  i {
+    font-size: 1.4em;
+    margin-right: 0.5em;
+    overflow: visible;
+
+    &.fa-sts {
+      margin-left: -0.2em;
+      margin-right: 0.3em;
+    }
   }
-  &.abpt .number-spinner {
-    text-shadow: 0 0 2px $statGreenL;
+
+  .visits {
+    color: $statOrange;
+    .number-spinner { text-shadow: 0 0 2px $statOrange; }
   }
-  &.abpf .number-spinner {
-    text-shadow: 0 0 2px $statBlue;
+  .abpt {
+    color: $socialTw;
+    .number-spinner { text-shadow: 0 0 2px $socialTw; }
+  }
+  .abpf {
+    color: $socialFb;
+    .number-spinner { text-shadow: 0 0 2px $socialFb; }
+  }
+  .abpg {
+    color: $socialGp;
+    .number-spinner { text-shadow: 0 0 2px $socialGp; }
   }
 }
 
