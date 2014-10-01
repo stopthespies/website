@@ -147,6 +147,9 @@
       <img class="r14 lg" src="/img/eyes/eye-large-down-l.svg" />
     </div>
   </div>
+  <div class="eyecanvas" style="height: 500px;">
+    <canvas width="1280" height="500" style="margin-left: -640px; margin-top: -250px;"></canvas>
+  </div>
 </section>
 <section class="introduction countries">
   <div class="container">
@@ -169,6 +172,9 @@
       <img class="r13 sm" src="/img/eyes/eye-small-down.svg" />
     </div>
   </div>
+  <div class="eyecanvas" style="height: 500px;">
+    <canvas width="1280" height="500" style="margin-left: -640px; margin-top: -250px;"></canvas>
+  </div>
 </section>
 <section class="introduction rights">
   <div class="container">
@@ -190,6 +196,9 @@
       <img class="r12 lg" src="/img/eyes/eye-large-down-l.svg" />
       <img class="r14 lg" src="/img/eyes/eye-large-down-l.svg" />
     </div>
+  </div>
+  <div class="eyecanvas" style="height: 500px;">
+    <canvas width="1280" height="500" style="margin-left: -640px; margin-top: -250px;"></canvas>
   </div>
 </section>
 
@@ -234,7 +243,9 @@
       <img class="r34 sm" src="/img/eyes/eye-small-up.svg" />
       <img class="r35 lg" src="/img/eyes/eye-large-up-l.svg" />
     </div>
-    <div class="eyecanvas"></div>
+  </div>
+  <div class="eyecanvas" style="height: 500px;">
+   <canvas width="1280" height="500" style="margin-left: -640px; margin-top: -250px;"></canvas>
   </div>
 </section>
 
@@ -293,7 +304,9 @@
           <img class="r33 sm" src="/img/eyes/eye-small-down.svg" />
         </div>
     </div>
-    <div class="eyecanvas"></div>
+    <div class="eyecanvas" style="height: 500px;">
+      <canvas width="1280" height="500" style="margin-left: -640px; margin-top: -250px;"></canvas>
+    </div>
 </section>
 <section class="how results">
     <div class="container">
@@ -320,17 +333,17 @@
             </div>
 
             <div class="location-privacy">
-                <p>We use your postcode to find legislators that represent you. We don't store this data and we use encrypted requests.<br />
-                Legislator data is proved by <a href="http://www.openaustralia.org/">Open Australia</a></p>
+                <p>We use your postcode to find legislators that represent you, it is not stored and, is transferred over a secure connection.<br />
+                Legislator data is provided by <a href="http://www.openaustralia.org/">Open Australia</a></p>
             </div>
 
             <h3>Here are some talking points you can use</h3>
 
-            <ul>
-              <li style="margin-bottom: 10px;">I oppose the data retention bill in Australia. As my representative, I'm asking you to reject this proposal.</li>
-              <li style="margin-bottom: 10px;">I value my digital privacy. When I use the Internet, I want secure, private communication. I don't want to be surveilled and spied on when I'm not suspected of a crime.</li>
-              <li style="margin-bottom: 10px;">The proposal would push all the costs of data retention onto Internet Service Providers, who would pass the costs onto their customers. That means higher bills for Australians, as well as higher costs for new ISPs looking to enter the market. </li>
-              <li style="margin-bottom: 10px;">Courts around the world are finding data retention mandates unconstitutional because they violate individual privacy rights. Let's do the right thing in Australia and stop this bill before it becomes a law.</li>
+            <ul class="points">
+              <li>I oppose the data retention bill in Australia. As my representative, I'm asking you to reject this proposal.</li>
+              <li>I value my digital privacy. When I use the Internet, I want secure, private communication. I don't want to be surveilled and spied on when I'm not suspected of a crime.</li>
+              <li>The proposal would push all the costs of data retention onto Internet Service Providers, who would pass the costs onto their customers. That means higher bills for Australians, as well as higher costs for new ISPs looking to enter the market. </li>
+              <li>Courts around the world are finding data retention mandates unconstitutional because they violate individual privacy rights. Let's do the right thing in Australia and stop this bill before it becomes a law.</li>
             </ul>
         </div>
     </div>
@@ -347,38 +360,56 @@
             <h2>Campaign Progress</h2>
 
             <div class="metrics">
-                <div class="metric views" data-stat="views">
+                <div class="metric animate views" data-stat="views">
                   <div class="border">
-                    <div class="total"><div class="view-total number-spinner">0</div></div>
-                    <div class="title">Pageviews</div>
+                    <div class="total"><div class="view-total number-spinner pad">0</div></div>
+                    <div class="title">Legislators matched for you</div>
                   </div>
                 </div>
-                <div class="metric abpt" data-stat="tweets">
+                <div class="metric animate abpt" data-stat="tweets">
                   <div class="border">
-                    <div class="total"><div class="twitter-total number-spinner">0</div></div>
-                    <div class="title">Legislators tweeted</div>
+                    <div class="total"><div class="twitter-total number-spinner pad">0</div></div>
+                    <div class="title">Legislators tweeted directly</div>
                   </div>
                 </div>
-                <div class="metric emails" data-stat="emails">
+                <div class="metric animate emails" data-stat="emails">
                   <div class="border">
-                    <div class="total"><div class="email-total number-spinner">0</div></div>
+                    <div class="total"><div class="email-total number-spinner pad">0</div></div>
                     <div class="title">Legislator contact page visits</div>
                   </div>
                 </div>
-                <div class="metric abpf" data-stat="facebooks">
+                <div class="metric animate abpf" data-stat="facebooks">
                   <div class="border">
-                    <div class="total"><div class="facebook-total number-spinner">0</div></div>
-                    <div class="title">Facebook pages posted to</div>
+                    <div class="total"><div class="facebook-total number-spinner pad">0</div></div>
+                    <div class="title">Legislator Facebook page visits</div>
                   </div>
                 </div>
                 <!--
-                <div class="metric calls">
+                <div class="metric animate calls">
                   <div class="border">
-                    <div class="total"><div class="call-total number-spinner">0</div></div>
+                    <div class="total"><div class="call-total number-spinner pad">0</div></div>
                     <div class="title">Calls</div>
                   </div>
                 </div>
                 -->
+                <div class="ourselves animate">
+                  <div class="visits" title="Visitors to this site">
+                    <i class="fa fa-sts"></i>
+                    <span class="total"><span class="visit-total number-spinner pad">0</span></span>
+                  </div>
+                  <div class="abpt" title="Shares on Twitter">
+                    <i class="fa fa-abpt"></i>
+                    <span class="total"><span class="twitter-share-total number-spinner pad">0</span></span>
+                  </div>
+                  <div class="abpf" title="Shares on Facebook">
+                    <i class="fa fa-abpf"></i>
+                    <span class="total"><span class="facebook-share-total number-spinner pad">0</span></span>
+                  </div>
+                  <div class="abpg" title="Shares on Google+">
+                    <i class="fa fa-abpg"></i>
+                    <span class="total"><span class="google-share-total number-spinner pad">0</span></span>
+                  </div>
+                </div>
             </div>
         </div>
         <div class="australia-map status inactive">
@@ -440,7 +471,6 @@
                       <img class="p34 sm" src="/img/eyes/eye-small-up.svg" />
                       <img class="p35 lg" src="/img/eyes/eye-large-up-l.svg" />
                     </div>
-                    <!-- <div class="eyecanvas"></div> -->
                 </div>
                 <div class="step step-2">
                     <h4>Spread the Word</h4>
@@ -495,7 +525,9 @@
           <img class="r33 lg" src="/img/eyes/eye-large-down-l.svg" />
         </div>
     </div>
-    <div class="eyecanvas"></div>
+    <div class="eyecanvas" style="height: 500px;">
+      <canvas width="1280" height="500" style="margin-left: -640px; margin-top: -250px;"></canvas>
+    </div>
 </section>
 
 <!-- ################################################################ MODALS ########################################################### -->
@@ -581,7 +613,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 
 <!-- LEGISLATOR TEMPLATE -->
 <script type="text/template" id="legislator-template">
-   <div class="legislator l<%= counter %>" data-legislator-id="<%= member_id %>">
+   <div class="legislator l<%= counter %>" data-legislator-id="<%= member_id %>" data-person-id="<%= person_id %>">
         <div class="pic">
             <img class="" src="<%= image %>" onerror="this.onerror=null;this.src='/img/profile.png';" />
         </div>
@@ -703,6 +735,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script src="/assets/map.js"></script>
 <script src="/assets/legislator-querying.js"></script>
 <script src="/assets/tweets.js"></script>
+<script src="/assets/eyes-animation.js"></script>
 <script src="/assets/vendor/jquery.numberSpinner.js"></script>
 <script src="/assets/main.js"></script>
 
