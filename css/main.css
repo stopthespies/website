@@ -1142,6 +1142,13 @@ body {
   width: 100%;
   height: 100%; }
 
+.eyecanvas {
+  overflow: hidden; }
+  .eyecanvas canvas {
+    position: absolute;
+    left: 50%;
+    top: 50%; }
+
 .eyemarks {
   opacity: 0.2;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)"; }
@@ -1159,13 +1166,14 @@ body {
     .eyemarks img.lg {
       width: 4.75em; }
 
-.cta, .introduction, .extra {
+.cta, .extra {
   overflow: hidden; }
-  .cta .container, .introduction .container, .extra .container {
-    position: relative; }
-  .cta .col, .introduction .col, .extra .col {
-    position: relative;
-    z-index: 1; }
+
+.cta .container, .introduction .container, .extra .container {
+  position: relative; }
+.cta .col, .introduction .col, .extra .col {
+  position: relative;
+  z-index: 1; }
 
 .actions {
   padding: 1.25em 1.25em 0 1.25em;
@@ -1378,20 +1386,20 @@ body {
 .introduction .eyemarks .r14 {
   left: 90%;
   top: -2.5em; }
-.introduction.countries .eyecanvas, .introduction.countries .eyemarks {
+.introduction.countries .eyemarks {
   margin-top: 10px; }
   @media (min-width: 769px) {
-    .introduction.countries .eyecanvas, .introduction.countries .eyemarks {
+    .introduction.countries .eyemarks {
       margin-top: -90px;
       margin-left: 0%;
       transform: scale(-1);
       -webkit-transform: scale(-1); } }
-.introduction.rights .eyecanvas, .introduction.rights .eyemarks {
+.introduction.rights .eyemarks {
   margin-left: 10%;
   margin-top: -20px;
   width: 80%; }
   @media (min-width: 769px) {
-    .introduction.rights .eyecanvas, .introduction.rights .eyemarks {
+    .introduction.rights .eyemarks {
       margin-left: 10%;
       margin-top: 90px; } }
 
@@ -1911,7 +1919,7 @@ section.how.results {
     top: 0;
     left: 0; }
     .location-error p {
-      margin-top: 6.5em; } }
+      margin-top: 7.5em; } }
 @media (max-width: 729px) {
   .no-location .step-2 {
     background: transparent;
@@ -2575,16 +2583,22 @@ section {
   section.who {
     padding: 7.5em 0;
     overflow: hidden; }
+  section .eyecanvas {
+    top: -3.75em; }
   @media (min-height: 481px) {
     section {
       padding: 4.375em 0; }
       section.who {
-        padding: 8.75em 0; } }
+        padding: 8.75em 0; }
+      section .eyecanvas {
+        top: -4.375em; } }
   @media (min-height: 801px) {
     section {
       padding: 5em 0; }
       section.who {
-        padding: 11.25em 0; } }
+        padding: 11.25em 0; }
+      section .eyecanvas {
+        top: -5em; } }
   @media (min-height: 1100px) {
     section {
       padding: 5.625em 0; } }
@@ -2593,7 +2607,9 @@ section {
       padding: 2.5em 0; }
       section.who {
         padding: 3.75em 0;
-        overflow: hidden; } }
+        overflow: hidden; }
+      section .eyecanvas {
+        top: -2.5em; } }
 
 .menu .col, .stats .col, .support .col, .extra .col, .reading .col {
   display: inline;

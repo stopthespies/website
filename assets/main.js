@@ -26,6 +26,7 @@
 
 
 
+
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
 
 (function($, io, opts) {
