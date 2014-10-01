@@ -6,7 +6,7 @@
 /**
  * Constructor
  */
-var Eye = function(x, y, scale, focus_x, focus_y) {
+var Eye = function(x, y, scale, focus_x, focus_y, opacity) {
 
 	// Set position, scale and focus position
 	this._x = x;
@@ -14,6 +14,7 @@ var Eye = function(x, y, scale, focus_x, focus_y) {
 	this._scale = scale;
 	this._focus_x = focus_x;
 	this._focus_y = focus_y;
+	this._opacity = opacity;
 
 	// Initialise display settings
 	this._width = Eye.MIN_WIDTH + Math.random() * (Eye.MAX_WIDTH - Eye.MIN_WIDTH);
@@ -115,7 +116,7 @@ Eye.prototype.render = function(ctx) {
 
 	// Render eye body
 	ctx.globalCompositeOperation = 'source-over';
-	ctx.fillStyle = Eye.FILL_COLOUR;
+	ctx.fillStyle = 'rgba(255,255,255,' + this._opacity + ')';
 	ctx.beginPath();
 	ctx.moveTo(
 		this._x - this._scale * (this._width / 2),
@@ -144,7 +145,7 @@ Eye.prototype.render = function(ctx) {
 
 	// Render pupil
 	ctx.globalCompositeOperation = 'destination-out';
-	ctx.fillStyle = Eye.FILL_COLOUR;
+	ctx.fillStyle = '#FFFFFF';
 	ctx.beginPath();
 	ctx.arc(
 		this._x + this._scale * (Math.cos(f_angle) * this._p_offset),
@@ -178,7 +179,6 @@ Eye.MIN_PUPIL_SIZE = 30;
 Eye.MAX_PUPIL_SIZE = 35;
 Eye.MIN_PUPIL_OFFSET = 15;
 Eye.MAX_PUPIL_OFFSET = 15;
-Eye.FILL_COLOUR = '#FFFFFF';
 
 // Animation settings
 Eye.MIN_OPEN_SPEED = 0.4;
@@ -205,6 +205,10 @@ Eye.MAX_BLINK_DELAY = 10000;
 		var render_framerate = 17;
 		var render_timer;
 
+		// Display settings
+		var eye_size_sm = 50;
+		var eye_size_lg = 76;
+
 		// Animation settings
 		var eye_open_delay = 0.1;
 
@@ -225,9 +229,10 @@ Eye.MAX_BLINK_DELAY = 10000;
 				var $marks = $(this);
 
 				// Check for eye canvas
-				var $canvas = $marks.closest('section').find('.eyecanvas');
+				var $canvas = $marks.closest('section').find('.eyecanvas canvas');
 				if (!$canvas.length) return true;
 				var data = {};
+				data.marks = $marks;
 				$canvas.data('display', data);
 
 				// Get canvas element and context; check support
@@ -240,13 +245,7 @@ Eye.MAX_BLINK_DELAY = 10000;
 				$marks.find('img').each(function() {
 					var $img = $(this);
 					$img.css('visibility', 'hidden');
-					data.eyes.push(new Eye(
-						$img.offset().left - $canvas.offset().left + ($img.width() / 2),
-						$img.offset().top - $canvas.offset().top + ($img.width() / 2 * 0.52),
-						($img.hasClass('sm')? 0.45 : 0.70),
-						$marks.offset().left - $canvas.offset().left,
-						$marks.offset().top - $canvas.offset().top
-					));
+					data.eyes.push(new Eye(0, 0, 1, 0, 0, $img.css('opacity')));
 				});
 
 				// Show eyes on scroll to canvas
@@ -258,8 +257,40 @@ Eye.MAX_BLINK_DELAY = 10000;
 
 			});
 
+			// Position eyes on window resize
+			$(window).on('resize', debounce(function(e) {
+				positionEyes();
+			}));
+			positionEyes();
+
 			// Start rendering
 			startRenderEyes();
+
+		}
+
+
+		/**
+		 * Position eyes
+		 */
+		function positionEyes() {
+
+			// Position within each canvas
+			$('.eyecanvas canvas').each(function() {
+				var $canvas = $(this);
+				var data = $canvas.data('display');
+
+				// Position eyes by image coordinates
+				data.marks.find('img').each(function(ii, img) {
+					var $img = $(img);
+					var eye = data.eyes[ii];
+					eye._x = $img.offset().left - $canvas.offset().left + ($img.width() / 2),
+					eye._y = $img.offset().top - $canvas.offset().top + ($img.width() / 2 * 0.52),
+					eye._scale = ($img.hasClass('sm')? ($img.width() / eye_size_sm) * 0.45 : ($img.width() / eye_size_lg) * 0.70),
+					eye._focus_x = data.marks.offset().left - $canvas.offset().left,
+					eye._focus_y = data.marks.offset().top - $canvas.offset().top
+				});
+
+			});
 
 		}
 
@@ -334,7 +365,7 @@ Eye.MAX_BLINK_DELAY = 10000;
 		function renderEyes() {
 
 			// Render eye canvases
-			$('.eyecanvas').each(function() {
+			$('.eyecanvas canvas').each(function() {
 				var data = $(this).data('display');
 
 				// Clear canvas
