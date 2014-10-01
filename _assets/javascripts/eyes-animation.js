@@ -231,6 +231,10 @@ Eye.MAX_BLINK_DELAY = 10000;
 			$('.eyemarks').each(function() {
 				var $marks = $(this);
 
+        if ($marks.closest('step').length) {
+          return true;
+        }
+
 				// Check for eye canvas
 				var $canvas = $marks.closest('section').find('.eyecanvas canvas');
 				if (!$canvas.length) return true;
