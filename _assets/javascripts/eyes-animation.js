@@ -21,7 +21,10 @@ var Eye = function(x, y, scale, focus_x, focus_y, opacity) {
 	this._height = Eye.MIN_HEIGHT + Math.random() * (Eye.MAX_HEIGHT - Eye.MIN_HEIGHT);
 	this._c_height = Eye.MIN_CORNER_HEIGHT + Math.random() * (Eye.MAX_CORNER_HEIGHT - Eye.MIN_CORNER_HEIGHT);
 	this._c_size = Eye.MIN_CURVE_SIZE + Math.random() * (Eye.MAX_CURVE_SIZE - Eye.MIN_CURVE_SIZE);
-	this._p_size = Eye.MIN_PUPIL_SIZE + Math.random() * (Eye.MAX_PUPIL_SIZE - Eye.MIN_PUPIL_SIZE);
+
+  var pupilscale = this._width / Eye.MAX_WIDTH;
+
+	this._p_size = Eye.MIN_PUPIL_SIZE + pupilscale * (Eye.MAX_PUPIL_SIZE - Eye.MIN_PUPIL_SIZE);
 	this._p_offset = Eye.MIN_PUPIL_OFFSET + Math.random() * (Eye.MAX_PUPIL_OFFSET - Eye.MIN_PUPIL_OFFSET);
 	this._open = 0;
 
@@ -167,18 +170,18 @@ Eye.prototype.render = function(ctx) {
 
 
 // Display settings
-Eye.MIN_WIDTH = 100;
-Eye.MAX_WIDTH = 120;
-Eye.MIN_HEIGHT = 70;
-Eye.MAX_HEIGHT = 80;
+Eye.MIN_WIDTH = 90;
+Eye.MAX_WIDTH = 110;
+Eye.MIN_HEIGHT = 60;
+Eye.MAX_HEIGHT = 70;
 Eye.MIN_CORNER_HEIGHT = 0.5;
 Eye.MAX_CORNER_HEIGHT = 0.5;
 Eye.MIN_CURVE_SIZE = 0.25;
 Eye.MAX_CURVE_SIZE = 0.35;
-Eye.MIN_PUPIL_SIZE = 30;
-Eye.MAX_PUPIL_SIZE = 35;
-Eye.MIN_PUPIL_OFFSET = 15;
-Eye.MAX_PUPIL_OFFSET = 15;
+Eye.MIN_PUPIL_SIZE = 25;
+Eye.MAX_PUPIL_SIZE = 28;
+Eye.MIN_PUPIL_OFFSET = 8;
+Eye.MAX_PUPIL_OFFSET = 13;
 
 // Animation settings
 Eye.MIN_OPEN_SPEED = 0.4;
