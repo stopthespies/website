@@ -169,10 +169,10 @@ section.how.results {
           top: -1px;
         }
       }
-      &.email-action:hover { border: 4px solid $statOrange; }
+      &.email-action:hover { border: 4px solid #45cba1; }
       &.call-action:hover { border: 4px solid $statGreenD; }
-      &.facebooks-action:hover { border: 4px solid $statBlue; }
-      &.tweets-action:hover { border: 4px solid $statGreenL; }
+      &.facebooks-action:hover { border: 4px solid #4c70ea; }
+      &.tweets-action:hover { border: 4px solid #59adeb; }
     }
   }
 }
