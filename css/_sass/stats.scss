@@ -69,6 +69,10 @@ $stats-label-vadjust: 0.4;
   .number-spinner {
     font-size: 2em;
 
+    .digit {
+      line-height: emsize(54px, 32px);   // 32px = 2em
+    }
+
     &, .tiles, .tile, .digit {
       height: emsize(54px, 32px);   // 32px = 2em
     }
