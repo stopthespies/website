@@ -100,20 +100,15 @@ var AREA_FLASH_RADIUS = '8px';
       'fillOpacity': 1,//0.4 + (0.6 * intensity),
       'strokeOpacity': 1,//0.4 + (0.6 * intensity),
       ease: Power1.easeOut
-    }).to($paths, 0.9, leafletStyleToSVGStyle(baseAttrs));
+    }).to($paths, 0.9, {
+      'strokeWidth': baseAttrs.weight,
+      'stroke': baseAttrs.color,
+      'fill': baseAttrs.fillColor,
+      'fillOpacity': baseAttrs.fillOpacity,
+      'strokeOpacity': baseAttrs.opacity
+    });
 
     runningMapTweens.push([g, newTimeline]);
-  }
-
-  function leafletStyleToSVGStyle(style)
-  {
-    return {
-      'strokeWidth': style.weight,
-      'stroke': style.color,
-      'fill': style.fillColor,
-      'fillOpacity': style.fillOpacity,
-      'strokeOpacity': style.opacity
-    };
   }
 
   //----------------------------------------------------------------------------
@@ -127,9 +122,7 @@ var AREA_FLASH_RADIUS = '8px';
     map : {
       enter : mapEnter,
       notifyElectorate: pingElectorate
-    },
-
-    leafletStyleToSVGStyle : leafletStyleToSVGStyle
+    }
   };
 
 })(TweenLite, TweenMax, TimelineMax, STS);

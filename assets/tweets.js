@@ -46,9 +46,6 @@
       };
     });
 
-    // tell other things DOM is ready to adjust (for column count equalising)
-    $('body').addClass('tweets-loaded');
-
     // set total value
     $('.tweets-support-total').numberSpinner('set', tweetdata.total);
 

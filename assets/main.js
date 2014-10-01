@@ -26,7 +26,6 @@
 
 
 
-
 var legislators = {}; // Too lazy to pass this variable around to modals ATM - TODO
 
 (function($, io, opts) {
@@ -50,9 +49,9 @@ $(function() {
 
 var statHoverActive = false;  // prevent map shading updating while hovering a particular stat
 
-  // ----------------- POPOVERS ----------------------------
+  // ----------------- POP OVERS ----------------------------
 
-  $('.ourselves div').tooltipster();
+  $('.metric').tooltipster();
 
   // ----------------- MODALS ----------------------------
 
@@ -136,7 +135,7 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
   var legislatorGlobalStats, legislatorStats, socialStats;
 
   ScrollHandler.addTrigger('#load-stats', bringInStats);
-  TweenLite.set(".stats .animate", { transform: "scaleX(0)", opacity: 0 });
+  TweenLite.set(".stats .metric", { transform: "scaleX(0)", opacity: 0 });
 
   function bringInStats()
   {
@@ -151,9 +150,8 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   function animateStats()
   {
-    TweenMax.staggerFromTo(".stats .animate", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
+    TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
 
-    $('.visit-total').numberSpinner('set', legislatorGlobalStats.visits || 0);
     $('.email-total').numberSpinner('set', legislatorGlobalStats.emails || 0);
     $('.call-total').numberSpinner('set', legislatorGlobalStats.calls || 0);
     $('.view-total').numberSpinner('set', legislatorGlobalStats.views || 0);
@@ -194,7 +192,6 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
     // update numbers if we've already shown the stats
     if (statsLoaded()) {
-      $('.visit-total').numberSpinner('set', globals.visits || 0);
       $('.email-total').numberSpinner('set', globals.emails || 0);
       $('.call-total').numberSpinner('set', globals.calls || 0);
       $('.view-total').numberSpinner('set', globals.views || 0);
@@ -222,9 +219,10 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
     function applyValues()
     {
       // apply to share panels
-      $('.facebook-share-total').numberSpinner('set', socialStats.facebook || 0);
-      $('.google-share-total').numberSpinner('set', socialStats.googleplus || 0);
-      $('.twitter-share-total').numberSpinner('set', socialStats.twitter || 0);
+      var shares = $('.share');
+      $('.facebook-share-total', shares).numberSpinner('set', socialStats.facebook || 0);
+      $('.google-share-total', shares).numberSpinner('set', socialStats.googleplus || 0);
+      $('.twitter-share-total', shares).numberSpinner('set', socialStats.twitter || 0);
     }
 
     // sploosh.
@@ -238,7 +236,7 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
           shareboxs.css('left', '').removeClass('anim');
         });
         timeline.staggerTo('.sharbx .share', 0.5, { left: -maxLeft, onComplete: applyValues }, 0.4);
-        timeline.staggerTo('.sharbx .share', 0.4, { delay: 1.5, left: 0 }, 0.3);
+        timeline.staggerTo('.sharbx .share', 0.4, { delay: 0.8, left: 0 }, 0.3);
       } else {
         timeline.staggerTo('.sharbx .share', 0.5, { left: -10, onComplete: function() {
           shareboxs.css('left', '');
@@ -262,14 +260,14 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   // init live counter widgets
 
-  $('.number-spinner.pad').numberSpinner({
+  $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner({
       min_digits: 6
     });
-  $('.number-spinner:not(.pad)').numberSpinner();
+  $('.tweets-support-total, .facebook-share-total, .google-share-total, .twitter-share-total').numberSpinner();
 
   // LOG INITIAL VIEW
 
-  io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'visits'}, function(d) {});
+  io.api('log', {url: LOG_URL_BASE, method: 'POST'}, {'event' : 'views'}, function(d) {});
 
   // -------------------------------- EXPORTS ----------------------------------
 
