@@ -16,16 +16,18 @@
     }
     p {
       text-align: left;
+      color: #54555A;
     }
   }
   p.bigdollars {
     text-transform: uppercase;
     text-align: center;
+    font-family: Helvetica;
     overflow: hidden;
     span {
       @include emfz(86px);
       color: $primaryOrange;
-      font-family: 'League Gothic', sans-serif;
+      /*font-family: 'League Gothic', sans-serif;*/
       display: block;
     }
   }
