@@ -243,9 +243,8 @@ Eye.MAX_BLINK_DELAY = 10000;
 				// Replace eye images
 				data.eyes = [];
 				$marks.find('img').each(function() {
-					var $img = $(this);
-					$img.css('visibility', 'hidden');
-					data.eyes.push(new Eye(0, 0, 1, 0, 0, $img.css('opacity')));
+					$(this).css('visibility', 'hidden');
+					data.eyes.push(new Eye(0, 0, 1, 0, 0, $marks.css('opacity')));
 				});
 
 				// Show eyes on scroll to canvas
