@@ -236,7 +236,7 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
           shareboxs.css('left', '').removeClass('anim');
         });
         timeline.staggerTo('.sharbx .share', 0.5, { left: -maxLeft, onComplete: applyValues }, 0.4);
-        timeline.staggerTo('.sharbx .share', 0.4, { delay: 0.8, left: 0 }, 0.3);
+        timeline.staggerTo('.sharbx .share', 0.4, { delay: 1.5, left: 0 }, 0.3);
       } else {
         timeline.staggerTo('.sharbx .share', 0.5, { left: -10, onComplete: function() {
           shareboxs.css('left', '');
