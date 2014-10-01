@@ -1,7 +1,7 @@
 (function(TL, TM, TLM, STS) {
 
 var MAP_OPACITY = 0.3;
-var AREA_FLASH_RADIUS = '15px';
+var AREA_FLASH_RADIUS = '8px';
 
   //----------------------------------------------------------------------------
   // general use
@@ -79,40 +79,41 @@ var AREA_FLASH_RADIUS = '15px';
     var g = shapeData[0];
     var $paths = shapeData[1];
 
-    var currentAttrs;
+    // :NOTE: leaflet does something internally and moves things into a CSS subproperty
+    var baseAttrs = layer.feature.__defaultStyle.css ? layer.feature.__defaultStyle.css : layer.feature.__defaultStyle;
 
     // abort any running animations on this electorate and read stateless attributes to finish on
     for (var i = 0, l = runningMapTweens.length, running; i < l && (running = runningMapTweens[i]); ++i) {
       if (running[0] === g) {
         running[1].kill();
-        currentAttrs = running[2];
         runningMapTweens.splice(i, 1);
         break;
       }
     }
 
-    // read current attributes if we're not doing anything yet
-    if (!currentAttrs) {
-      currentAttrs = [
-        ['stroke-width', 'strokeWidth'], ['stroke', 'stroke'], ['stroke-opacity', 'strokeOpacity'], ['fill', 'fill'], ['fill-opacity', 'fillOpacity']
-      ].reduce(function(attrs, at) {
-        attrs[at[1]] = $paths.attr(at[0]);
-        return attrs;
-      }, {});
-    }
-
     var newTimeline = new TLM({ onComplete: completedCB || function() {} });
 
-    newTimeline.to($paths, 0.1, {
+    newTimeline.to($paths, 0.5, {
       'strokeWidth': AREA_FLASH_RADIUS,
       'stroke': color,
       'fill': color,
-      'fillOpacity': 0.4 + (0.6 * intensity),
-      'strokeOpacity': 0.4 + (0.6 * intensity),
+      'fillOpacity': 1,//0.4 + (0.6 * intensity),
+      'strokeOpacity': 1,//0.4 + (0.6 * intensity),
       ease: Power1.easeOut
-    }).to($paths, 0.5, currentAttrs);
+    }).to($paths, 0.9, leafletStyleToSVGStyle(baseAttrs));
 
-    runningMapTweens.push([g, newTimeline, currentAttrs]);
+    runningMapTweens.push([g, newTimeline]);
+  }
+
+  function leafletStyleToSVGStyle(style)
+  {
+    return {
+      'strokeWidth': style.weight,
+      'stroke': style.color,
+      'fill': style.fillColor,
+      'fillOpacity': style.fillOpacity,
+      'strokeOpacity': style.opacity
+    };
   }
 
   //----------------------------------------------------------------------------
@@ -126,7 +127,9 @@ var AREA_FLASH_RADIUS = '15px';
     map : {
       enter : mapEnter,
       notifyElectorate: pingElectorate
-    }
+    },
+
+    leafletStyleToSVGStyle : leafletStyleToSVGStyle
   };
 
 })(TweenLite, TweenMax, TimelineMax, STS);

@@ -1,16 +1,165 @@
 .extra {
+  background: $dimBreakoutBg;
+  color: $textMid;
+  padding-top: 80px;
+
+  .step {
+    position: relative;
+    padding-bottom: 1em;
+    margin: 0 auto 1em auto;
+    max-width: 550px;
+
+    @media (min-width: $set-reading-2-cols) {
+      @include column($one-half);
+      max-width: none;
+    }
+
+    h4 {
+      padding: 0.5em 1em;
+      clear: left;
+    }
+  }
+
   .step-1 {
     color: $textLight;
   }
-  .share {
-    margin: 10px 20px;
-  }
   .actions {
     padding-top: 0;
+    z-index: 1;
+    position: relative;
+    .btn {
+      margin: 2em 0 1em 0;
+    }
   }
 
   h4 {
     background: transparent;
     color: inherit;
+  }
+
+  // these ones are positioned against columns and so their left offsets are percentages
+  .eyemarks {
+    top: emsize(-100px);
+    opacity: 1;
+    .r11 { left: 11%; top: emsize(86px); }
+    .r12 { left: 39%; top: emsize(43px); }
+    .r13 { left: 23%; top: emsize(150px); }
+    .r14 { left: 28%; top: emsize(90px); }
+    .r31 { left: 82%; top: emsize(130px); }
+    .r32 { left: 61%; top: emsize(57px); }
+    .r33 { left: 75%; top: emsize(55px); }
+
+    img {
+      &.sm { width: emsize(35px); }
+      &.lg { width: emsize(56px); }
+    }
+  }
+
+  .step .eyemarks {
+    top: 0;
+    opacity: 0.3;
+
+    img {
+      &.sm { width: 4%; }
+      &.lg { width: 8%; }
+    }
+
+    .p11 { left: 17%; top: emsize(31px); }
+    .p12 { left: 29%; top: emsize(52px); }
+    .p13 { left: 19%; top: emsize(60px); }
+    .p14 { left: 68%; top: emsize(62px); }
+    .p15 { left: 88%; top: 5%; }
+    .p31 { left: 6%; top: 55%; }
+    .p32 { left: 83%; top: 13%; }
+    .p33 { left: 53%; bottom: emsize(55px); }
+    .p34 { left: 73%; bottom: emsize(23px); }
+    .p35 { left: 88%; top: 35%; }
+  }
+}
+
+
+
+.extra .sharing-buttons {
+  .tot {
+    float: left;
+    width: 38%;
+    text-align: right;
+    font-size: 1.5em;
+    line-height: 2em;
+    position: relative;
+    left: -0.7em;
+    color: $textMid;
+    display: none;
+  }
+  .share {
+    display: block;
+    text-align: center;
+    margin: 0 auto 1em auto;
+    max-width: 15em;
+    padding: 1em 0;
+    text-align: left;
+    .text {
+      padding: 0 1em;
+    }
+  }
+}
+
+.extra .keep-in-touch .share {
+  background: transparent;
+  position: relative;
+  margin-bottom: 0;
+  i {
+    font-size: 1.5em;
+  }
+
+  &.abpf {
+    color: #3c5a96;
+    &:hover {
+      background: transparent;
+      color: darken(#3c5a96, 10%);
+    }
+  }
+  &.abpt {
+    color: #59adeb;
+    &:hover {
+      background: transparent;
+      color: darken(#59adeb, 10%);
+    }
+  }
+}
+
+@media (min-width: $set-reading-hide-share-counts) {
+  .extra .sharing-buttons {
+    .tot {
+      display: block;
+    }
+    .text {
+      z-index: 0;
+    }
+    .share {
+      width: 55%;
+      a {
+        z-index: 2;
+      }
+    }
+    i {
+      text-align: center;
+    }
+  }
+
+  .extra .keep-in-touch .share {
+    margin-left: 40%;
+
+    i {
+      position: absolute;
+      top: -0.3em;
+      left: -2.8em;
+    }
+    .text {
+      padding: 0;
+    }
+    a {
+      left: -4.8em;
+    }
   }
 }

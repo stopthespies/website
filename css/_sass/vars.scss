@@ -52,17 +52,19 @@ $member-card-corners: 8px;
 $member-card-button-borders: #E4E4E4;
 $member-card-button-counters: #787878;
 
+/* theming for bootstrap widgets */
+
 $btn-primary-bg: $primaryOrange;
 $btn-info-bg: $statGreenL;
 $btn-default-bg: $dimBreakoutBg;
-
-/* theming for bootstrap widgets */
 
 $brand1:        $primaryOrange !default;
 $brand2:        #D3CEAA !default;
 $brand3:        #FBF7E4 !default;
 $brand4:        #424242 !default;
 $brand5:        $primaryOrange !default;
+
+$input-border-focus: $statGreenL;
 
 /* These variables are included after bootstrap's, so you can add overrides here */
 
@@ -89,15 +91,14 @@ $set-header-map-adjacent: 769px;
 $set-info-margin: 550px;
 $set-info-2-cols: 769px;
 
-$set-search-pad-postcode: 780px;
-
 $set-larger-content-margin: 850px;
 $set-steps-2-cols: 730px;
 $set-legislator-smaller-thumbs: 481px;
 $set-legislator-smallest-thumbs: 601px;
 
-$set-legislator-results-2col: 600px;
+$set-legislator-results-2col: 650px;
 $set-legislator-results-3col: 1000px;
+// $set-larger-legislator-margin: 1000px;
 
 $set-stats-map-adjacent: 801px;
 
@@ -106,7 +107,7 @@ $set-cta-fontstep-2: 550px;
 $set-cta-fontstep-3: 660px;
 
 $set-menu-show-small-logo: 420px;
-$set-menu-1-row: 980px;
+$set-menu-1-row: 1080px;
 $set-menu-2-rows: 640px;
 $set-menu-3-rows: 420px;
 
@@ -121,6 +122,9 @@ $set-sharebox-size-3: 1865px;
 
 $set-tweet-board-size-1: 620px;
 $set-tweet-board-size-2: 820px;   // :IMPORTANT: must match JS var in tweets.js
+
+$set-reading-2-cols: 900px;
+$set-reading-hide-share-counts: 900px;
 
 
 $vertical-section-spacing-step-1: 481px;

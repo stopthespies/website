@@ -41,6 +41,8 @@ var
   SEND_EMAIL_URL      = STS.options.SEND_EMAIL_URL,
   LOG_URL_BASE      = STS.options.LOG_URL_BASE,
 
+  SIDE_SHAREBOX_START_WIDTH = 430,    // :IMPORTANT: must match CSS value for $show-sharebox
+
   MAP_START_SHADING = 1;   // this many actions to occur before we begin weighted shading of the campaign stats map
 
 // Start up scripts
@@ -131,7 +133,7 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   // ---------- bring in metrics -----------
 
-  var loadedGlobals, loadedStats, socialStats;
+  var legislatorGlobalStats, legislatorStats, socialStats;
 
   ScrollHandler.addTrigger('#load-stats', bringInStats);
   TweenLite.set(".stats .metric", { transform: "scaleX(0)", opacity: 0 });
@@ -151,32 +153,31 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
   {
     TweenMax.staggerFromTo(".stats .metric", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
 
-    $('.email-total').numberSpinner('set', loadedGlobals.emails || 0);
-    $('.call-total').numberSpinner('set', loadedGlobals.calls || 0);
-    $('.view-total').numberSpinner('set', loadedGlobals.views || 0);
-    $('.facebook-total').numberSpinner('set', socialStats.facebook || 0);
-    $('.google-total').numberSpinner('set', socialStats.googleplus || 0);
-    $('.twitter-total').numberSpinner('set', socialStats.twitter || 0);
+    $('.email-total').numberSpinner('set', legislatorGlobalStats.emails || 0);
+    $('.call-total').numberSpinner('set', legislatorGlobalStats.calls || 0);
+    $('.view-total').numberSpinner('set', legislatorGlobalStats.views || 0);
+    $('.facebook-total').numberSpinner('set', legislatorGlobalStats.facebooks || 0);
+    $('.twitter-total').numberSpinner('set', legislatorGlobalStats.tweets || 0);
 
     // shade the stats map if we have enough stats for it to say something
-    var grandtotal = STS.getTotal(loadedGlobals);
+    var grandtotal = STS.getTotal(legislatorGlobalStats);
     if (grandtotal > MAP_START_SHADING) {
-      STS.CampaignMap.shadeWardStats(grandtotal, loadedStats);
+      STS.CampaignMap.shadeWardStats(grandtotal, legislatorStats);
     }
 
     // bind hover events to metrics
     $('.stats .metric').hover(debounce(function(e) {
       statHoverActive = $(this).data('stat');
-      STS.CampaignMap.shadeWardStats(grandtotal, loadedStats, statHoverActive);
+      STS.CampaignMap.shadeWardStats(grandtotal, legislatorStats, statHoverActive);
     }), debounce(function(e) {
       statHoverActive = false;
-      STS.CampaignMap.shadeWardStats(grandtotal, loadedStats);
+      STS.CampaignMap.shadeWardStats(grandtotal, legislatorStats);
     }));
   }
 
   function statsLoaded()
   {
-    return loadedGlobals !== undefined && loadedStats !== undefined && socialStats !== undefined;
+    return legislatorGlobalStats !== undefined && legislatorStats !== undefined;
   }
 
   function onStatsLoaded(data)
@@ -195,6 +196,8 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
       $('.email-total').numberSpinner('set', globals.emails || 0);
       $('.call-total').numberSpinner('set', globals.calls || 0);
       $('.view-total').numberSpinner('set', globals.views || 0);
+      $('.facebook-total').numberSpinner('set', globals.facebooks || 0);
+      $('.twitter-total').numberSpinner('set', globals.tweets || 0);
 
       // shade the stats map if we have enough stats for it to say something
       var grandtotal = STS.getTotal(globals);
@@ -203,20 +206,47 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
       }
     }
 
-    loadedStats = data;
-    loadedGlobals = globals;
+    legislatorStats = data;
+    legislatorGlobalStats = globals;
   }
 
   function onSharesLoaded(stats)
   {
+    var firstLoad = !socialStats;
+
     // assign social stats for stats section (deferred until animated in)
     socialStats = stats;
 
-    // apply to share panels
-    var shares = $('.share');
-    $('.facebook-total', shares).numberSpinner('set', socialStats.facebook || 0);
-    $('.google-total', shares).numberSpinner('set', socialStats.googleplus || 0);
-    $('.twitter-total', shares).numberSpinner('set', socialStats.twitter || 0);
+    function applyValues()
+    {
+      // apply to share panels
+      var shares = $('.share');
+      $('.facebook-share-total', shares).numberSpinner('set', socialStats.facebook || 0);
+      $('.google-share-total', shares).numberSpinner('set', socialStats.googleplus || 0);
+      $('.twitter-share-total', shares).numberSpinner('set', socialStats.twitter || 0);
+    }
+
+    // sploosh.
+    var timeline = new TimelineMax({});
+
+    if ($(window).width() > SIDE_SHAREBOX_START_WIDTH) {
+      if (firstLoad) {
+        var shareboxs = $('.sharbx .share').addClass('anim');
+        var maxLeft = shareboxs.outerWidth() - ($(window).innerWidth() - shareboxs.offset().left);
+        timeline.eventCallback('onComplete', function() {
+          shareboxs.css('left', '').removeClass('anim');
+        });
+        timeline.staggerTo('.sharbx .share', 0.5, { left: -maxLeft, onComplete: applyValues }, 0.4);
+        timeline.staggerTo('.sharbx .share', 0.4, { delay: 1.5, left: 0 }, 0.3);
+      } else {
+        timeline.staggerTo('.sharbx .share', 0.5, { left: -10, onComplete: function() {
+          shareboxs.css('left', '');
+        }}, 0.4);
+
+        applyValues();
+      }
+    }
+    // :NOTE: no share counters *anywhere* else on mobile so we don't need to run applyValues. Don't run it on the sharebox.
   }
 
   // ------------------------------ LOAD DATA ----------------------------------
@@ -234,7 +264,7 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
   $('.email-total, .call-total, .view-total, .facebook-total, .google-total, .twitter-total').addClass('number-spinner').numberSpinner({
       min_digits: 6
     });
-  $('.tweets-support-total').addClass('number-spinner').numberSpinner();
+  $('.tweets-support-total, .facebook-share-total, .google-share-total, .twitter-share-total').numberSpinner();
 
   // LOG INITIAL VIEW
 
@@ -245,10 +275,10 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
   STS.events.onStatsLoad = onStatsLoaded;
   STS.events.onSharesLoad = onSharesLoaded;
 
-  STS.getTotal = function(stats, statset)
+  STS.getTotal = function(stats, statset, includeviews)
   {
     if (!statset || statset === 'all') {
-      return (stats.emails || 0) + (stats.calls || 0) + (stats.views || 0) + (stats.tweets || 0) + (stats.facebooks || 0);
+      return (stats.emails || 0) + (stats.calls || 0) + ((includeviews ? stats.views : 0) || 0) + (stats.tweets || 0) + (stats.facebooks || 0);
     }
     return stats[statset];
   };

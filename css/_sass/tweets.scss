@@ -15,6 +15,8 @@
 
   .intro {
     text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
 
     em {
       color: $statGreenL;
@@ -33,8 +35,11 @@
 // $overlay-index: 1;
 $tweet-bg-index: 1;
 $tweet-text-index: 2;
+$above-tweets-index: 3;
 
-.tweet .over {
+.tweet:before {
+  content: ' ';
+  display: block;
   position: absolute;
   z-index: $tweet-bg-index;
   top: 0;
@@ -46,20 +51,16 @@ $tweet-text-index: 2;
   pointer-events: none;
 }
 
-.tweet .over {
+.tweet:before {
   background: rgba(48, 35, 68, 0.85);
 }
 
 .tweet:hover {
   z-index: $tweet-bg-index;
 
-  .over {
+  &:before {
     background: rgba(48, 35, 68, 0.6);
   }
-}
-
-.tweet .over {
-  z-index: $tweet-bg-index;
 }
 
 .tweet a:hover {
@@ -108,10 +109,13 @@ $tweet-text-index: 2;
     position: absolute;
     top: 0; left: 0;
     right: 0; bottom: 0;
-    padding: 20px;
   }
 
+  .tweet-handle, .tweet-name, .tweet-text {
+    margin: 0 20px;
+  }
   .tweet-text {
+    margin: 20px;
     display: none;
   }
 
@@ -172,6 +176,23 @@ $tweet-text-index: 2;
   margin: 0 auto;
   padding: 0;
   @include clearfix();
+  max-width: $content-max-width + 400;  // :NOTE: allow one block of tweets to protrude outwards
+}
+// following section has to go above the tweet board
+
+.tweets-loaded {
+  .immediately-after-tweetboard {
+    z-index: $above-tweets-index;
+
+    // hide the last row of tweets, so we don't have to worry about danglers. makes accurate paging impossible but it's not like that's important here.
+    margin-top: -100px;
+    @media (min-width: $set-tweet-board-size-1) {
+      margin-top: -170px;
+    }
+    @media (min-width: $set-tweet-board-size-2) {
+      margin-top: -240px;
+    }
+  }
 }
 
 

@@ -43,13 +43,10 @@ section.how.results {
     font-size: 2.5em;
     color: $primaryOrange;
   }
-
-  .input-group {
-    margin-top: 3.5em;
-  }
 }
 
 .legislators {
+  @include row();
   display: none;
   margin: emsize(30px) 0;
 }
@@ -95,6 +92,9 @@ section.how.results {
     img {
       border-radius: $member-card-corners;
       max-width: 100%;
+      width: 88px;
+      height: 115px;
+      background: #ccc;
     }
   }
 
@@ -109,8 +109,7 @@ section.how.results {
     display: inline-block;
 
     li {
-      cursor: pointer;
-      width: 4.5em;
+      width: 4em;
       float: left;
 
       &:first-child {
@@ -132,14 +131,22 @@ section.how.results {
 
     a {
       color: #5f5a66;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1em 0;
     }
     .wrap {
+      height: 2.1em;
       position: relative;
       padding: 1em 0;
     }
 
     .fa {
+      display: block;
       font-size: 1em;
+      text-align: center;
       &, &:before {
         width: auto;
       }
@@ -188,14 +195,18 @@ section.how.results {
 }
 
 .location-privacy {
+  @include clearfix();
   font-size: emsize(13px);
   font-style: italic;
+  margin-bottom: 1em;
 }
 
 
 .legislator-search-states {
   font-size: emsize(14px);
   font-style: italic;
+  position: relative;
+  top: -3em;
 
   .state {
     height: 0;
@@ -204,67 +215,147 @@ section.how.results {
 }
 
 
+.how.results {
+  h3 {
+    text-transform: uppercase;
+    margin-top: 1em;
+  }
+  ul.points {
+    text-align: left;
+    padding-left: 1em 0 0 1.5em;
+    margin: 0 auto;
+    max-width: 550px;
+  }
+}
 
 
+
+.location-privacy {
+  p {
+    @include column($one);
+  }
+}
 
 .how {
-  .postcode-steps, .location-privacy, .postcode-lookup {
-    @include row();
-  }
-  .location-privacy {
-    p {
-      @include column($one);
-    }
-  }
   .input-group {
-      @include column($one-twelfth * 10);
-      @include push($one-twelfth);
-
-    .form-control {
-      display: block;
-      float: left;
-      width: 60%;
-      height: auto;
-    }
-    .input-group-btn {
-      display: block;
-      width: 40%;
-    }
-
-    @media (min-width: $set-search-pad-postcode) {
-      @include column($one-twelfth * 8);
-      @include push($one-twelfth * 2);
-    }
+    padding: 0 1em;
   }
 
-  @media (min-width: $set-larger-content-margin) {
-    .col {
-      @include column($one-twelfth * 10);
-      @include push($one-twelfth);
-      margin-bottom: emsize(30px);
+  .postcode-lookup {
+    margin: 3.5em auto 0 auto;
+    max-width: 20em;
+  }
+
+  input, button {
+    float: left;
+    display: block;
+    line-height: 3em;
+    height: 3em;
+  }
+  input {
+    padding: 0 3% 0 3%;
+    width: 54%;
+    height: 40px;
+    margin-right: -1%;
+    @include border-right-radius(0);
+  }
+  button {
+    padding: 0;
+    width: 40%;
+    height: 42px; // :SHONK:
+    @include border-left-radius(0);
+    border: 1px solid $statGreenL;
+  }
+}
+
+@media (min-width: $set-steps-2-cols) {
+  .location-error {
+    position: absolute;
+    width: 100%;
+    top: 0; left: 0;
+    p {
+      margin-top: 6.5em;
+    }
+  }
+}
+
+@media (max-width: ($set-steps-2-cols - 1)) {
+  .no-location .step-2 {
+    background: transparent;
+    min-height: 0;
+  }
+}
+
+.how {
+  .intro {
+    font-size: emsize(14px);
+    padding: 1em;
+    margin: 0 auto 4em auto;
+    max-width: 650px;
+  }
+
+  // steps boxes
+  .step {
+    position: relative;
+    padding-bottom: 1em;
+    max-width: 350px;
+    margin: 0 auto 1em auto;
+
+    @media (min-width: $set-steps-2-cols) {
+      @include column($one-half);
+      margin-bottom: 1em;
+      max-width: none;
+    }
+
+    h4 {
+      padding: 0.5em 1em;
     }
   }
 
   @media (min-width: $set-steps-2-cols) {
-    .location-error {
-      p {
-        margin-top: 6.5em;
-      }
+    .step-2 { // swap rows on desktop
+      float: right;
+    }
+    .step-1 {
+      float: left;
     }
   }
 
-  @media (max-width: ($set-steps-2-cols - 1)) {
-    .no-location .step-2 {
-      background: transparent;
-      min-height: 0;
+  // gutter to constrain widths at wider res
+  .col {
+    @include column($one);
+  }
+  // @media (min-width: $set-larger-legislator-margin) {
+  //   .col {
+  //     @include column($one-twelfth * 10);
+  //     @include push($one-twelfth);
+  //     margin-bottom: emsize(30px);
+  //   }
+  //   .results {
+  //     .col {
+  //       @include column($one);
+  //     }
+  //   }
+  // }
+
+  // these ones are positioned against columns and so their left offsets are percentages
+  .eyemarks {
+    opacity: 1;
+    .r11 { left: 9%; top: emsize(116px); }
+    .r12 { left: 16%; top: emsize(37px); }
+    .r13 { left: 20%; top: emsize(200px); }
+    .r14 { left: 28%; top: emsize(80px); }
+    .r31 { left: 72%; top: emsize(120px); }
+    .r32 { left: 79%; top: emsize(47px); }
+    .r33 { left: 89%; top: emsize(75px); }
+
+    img {
+      &.sm { width: emsize(35px); }
+      &.lg { width: emsize(56px); }
     }
   }
 }
 
-
-.legislators {
-  @include row();
-}
 .legislator {
   max-width: 350px;
   margin: 0 auto 1em auto;

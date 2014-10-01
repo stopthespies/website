@@ -31,11 +31,11 @@ var AREA_SHADING_THRESHOLDS = {
 };
 var MAP_EVENT_COLORS = {
   all : '#ffffff',
-  tweets : '#45CBA1',
-  calls : '#36C48F',
-  views : '#EE574A',
-  emails : '#E58231',
-  facebooks : '#4FB9E3'
+  tweets : '#4099FF',
+  calls : '#006600',
+  views : '#ee574a',
+  emails : '#66FF33',
+  facebooks : '#3B5998'
 };
 
 // all maps are the same, just add more things to this selector & adjust after creating
@@ -319,7 +319,7 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
 
   for (j = 0, k = maps.length; j < k && (map = maps[j]); ++j) {
     for (i = 0, l = reps.length; i < l && (rep = reps[i]); ++i) {
-      eventCount = STS.getTotal(rep, eventId);
+      eventCount = STS.getTotal(rep, eventId, true);
       shape = findMembersElectorate(map, rep._id);
 
       if (!shape) {
@@ -338,11 +338,18 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
         opacity += 0.1;
       }
 
-      TweenMax.to($paths, 0.3, {
+      // set new baseline style
+      var newAttrs = {
         fillOpacity: opacity,
-        fill: color,
-        stroke: color
-      });
+        fillColor: color,
+        color: color
+      };
+      shape.feature.__defaultStyle = $.extend(shape.feature.__defaultStyle, newAttrs);
+      if (shape.feature.__defaultStyle.css) {
+        shape.feature.__defaultStyle.css = $.extend(shape.feature.__defaultStyle.css, newAttrs);
+      }
+
+      TweenMax.to($paths, 0.3, STS.anim.leafletStyleToSVGStyle(shape.feature.__defaultStyle));
     }
   }
 }

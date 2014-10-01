@@ -18,16 +18,17 @@
 
   function onTweetsLoaded(tweetdata)
   {
+    // rebuild DOM
     $('#tweet-board').empty();
 
     _.each(tweetdata.results, function(tweets, type) {
-      if(type === 'latest') {
+      if(type === 'latest' || type === 'followers') {
         tweets = tweets.slice(0,40);
         tweets = _.uniq(tweets, 'handle');
         var i = 0;
         _.each(tweets, function(tweet) {
           tweet.avatar = tweet.avatar.replace('_normal', '');
-          tweet.avatar = tweet.avatar.replace('pbs.twimg.com', 'release.stopthespies.org');
+          tweet.avatar = tweet.avatar.replace(/^(https?:)?\/\/((\w|\.|:)+)/, STS.options.ABSURL);
           if(i % 7 == 0) {
             tweet.sizeClass = '';
             //tweet.sizeClass = 'bigger';
@@ -45,8 +46,13 @@
       };
     });
 
+    // tell other things DOM is ready to adjust (for column count equalising)
+    $('body').addClass('tweets-loaded');
+
+    // set total value
     $('.tweets-support-total').numberSpinner('set', tweetdata.total);
 
+    // add hover tooltips (for low-res displays)
     $('#tweet-board .tweet').tooltipster({
       maxWidth: 250,
       offsetY: -30,
@@ -58,6 +64,10 @@
       }
     });
 
+    // animate them all in
+    // TweenMax.staggerFromTo('#tweet-board .tweet', 0.15, { transform: "scale(0.5)", opacity: 0 }, { transform: "scale(1)", opacity: 1, ease: Elastic.easeOut }, 0.1);
+
+    // and pack the layout
     $('#tweet-board').packery({
       itemSelector: '.tweet',
       stamp: '.stamp'

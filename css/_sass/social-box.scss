@@ -1,18 +1,10 @@
-.extra {
-  background: $dimBreakoutBg;
-  color: $textMid;
-  padding-top: 80px;
-}
-
 .sharing-buttons {
-  max-width: emsize(250px);
   margin: 0 auto;
 
   .tot {
     display: block;
-    font-size: 3em;
-    margin-top: -1.15em;
-    opacity: 0.1;
+    font-size: 1em;
+    margin-top: -0.3em;
     position: relative;
     top: 0.4em;
     z-index: 0;
@@ -211,39 +203,27 @@
     .number-spinner {
       font-size: 16px;
       top: 0.3em;
-      left: 0;
+      left: 1.5em;
+      text-align: center;
     }
 
-    span.share:hover .text {
+    span.share:hover .text, span.share.anim .text {
       visibility: visible;
     }
   }
 }
 
-@media (min-width: $set-sharebox-size-2) {
-  .sharbx {
-    font-size: 1em;
-    .number-spinner {
-      font-size: 22px;
-    }
-  }
-}
+// @media (min-width: $set-sharebox-size-2) {
+//   .sharbx {
+//     font-size: 1em;
+//     .number-spinner {
+//       font-size: 22px;
+//     }
+//   }
+// }
 
 @media (min-width: $set-sharebox-size-3) {
   .sharbx {
-    right: 0;
-    .text {
-      visibility: visible;
-    }
-    span.share:hover {
-      left: 0;
-      border-radius: 0;
-      &:first-child {
-        border-top-left-radius: 3px;
-      }
-      &:last-child {
-        border-bottom-left-radius: 3px;
-      }
-    }
+    font-size: 1em;
   }
 }

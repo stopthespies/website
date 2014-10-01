@@ -66,8 +66,15 @@ a {
   &:hover {
     text-decoration: underline;
   }
+  outline: 0;
 }
 
+ul.points {
+  padding-left: 1.5em;
+  li {
+    margin-bottom: 1em;
+  }
+}
 
 //-----------------------------------------------------------------
 //  Spying eyes (position indicators for animation & image fallbacks
@@ -105,7 +112,7 @@ body {
   }
 }
 
-.cta, .introduction {
+.cta, .introduction, .extra {
   // :IMPORTANT: we can't do this for all, because of things (like the map) positioned outside of the page gutter
   overflow:hidden;
   .container {
@@ -154,17 +161,13 @@ body {
   overflow: hidden;
 }
 
-/* temporary */
-  img.you-can-stop {
-    width: 90%;
-    max-width: 887px;
-  }
-
 
 // :IMPORTANT: must go after step styles
 .bg-wrap {
   background: $primaryBg;
   background-image: linear-gradient(-127deg, $primaryBgLeft 3%, $primaryBgRight 88%);
+  width: 100%;
+  overflow: hidden;
 }
 
 

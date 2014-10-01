@@ -8,8 +8,8 @@ baseurl: ""
 github_username:  stopthespies
 
 # :TODO: point to live site after validating social tags
-url: http://stage.stopthespies.org
-domain: stage.stopthespies.org
+url: https://test.stopthespies.org
+domain: test.stopthespies.org
 
 #------------------------------------------------------------------------------#
 # realtime server config
@@ -20,13 +20,13 @@ realtime_connection_timeout: 1000   # ms to wait before giving up on socket conn
 #------------------------------------------------------------------------------#
 # API urls and endpoints
 
-api_url: https://test.stopthespies.org:443/api
+api_url: https://api.stopthespies.org:443
 tweets_read_path: /tweets
 stats_read_path: /stats
 shares_read_path: /shares
 send_email_path: /email
 log_path: /log
-api_socket_path: /api
+api_socket_path: socket.io
 
 legislators_locator_url : https://test.stopthespies.org/legislators
 

@@ -83,6 +83,10 @@
     .col {
       @include column($one-half);
     }
+    // flip reverse DOM ordered content for desktop, mobile flows linearly
+    .rev-order-desktop {
+      float: right;
+    }
   }
 }
 

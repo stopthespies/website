@@ -8,15 +8,14 @@ $stats-label-vadjust: 0.4;
 .metrics {
   margin-top: 2em;
   text-align: left;
-  width: 16em;
+  max-width: 16em;
 }
 .metric {
   @include clearfix();
 
-  height: $stats-row-height;
   clear: left;
+  text-align: center;
 
-  width: 16em;
   overflow: visible;
 
   .border {
@@ -24,9 +23,10 @@ $stats-label-vadjust: 0.4;
     background: rgba(red($primaryBg), green($primaryBg), blue($primaryBg), 0.7);
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-top: 0;
-    &:first-child {
-      border-top: 1px solid rgba(255, 255, 255, 0.4);
-    }
+  }
+
+  &:first-child .border {
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
   }
 
   // i {
@@ -38,8 +38,10 @@ $stats-label-vadjust: 0.4;
   .number-spinner {
     font-size: 2em;
     font-family: 'League Gothic', sans-serif;
-    position: relative;
     top: 2px;
+    position: relative;
+    margin: 0 auto;
+    display: block;
 
     &, .tiles, .tile, .digit {
       height: emsize(54px, 32px);   // 32px = 2em
@@ -51,10 +53,14 @@ $stats-label-vadjust: 0.4;
   .tile {
     padding: 0 0.2em;
     border-left: 1px solid rgba(255, 255, 255, 0.2);
+    &:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
   }
 
-  .title, .total {
-    float: left;
+  .total {
+    height: $stats-row-height;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   }
 
   cursor: pointer;
@@ -66,27 +72,43 @@ $stats-label-vadjust: 0.4;
   }
 }
 
-.metric .title {
-  width: emsize(85px);
-  padding-left: 0.8em;
-  font-weight: bold;
-  line-height: ($stats-digit-height * 2) + $stats-label-vadjust;
-  @include emfz(14px);
+.metric {
+  .title {
+    font-weight: bold;
+    line-height: 1;
+    padding: 0.5em 1em 1.5em 1em;
+    @include emfz(14px);
+  }
 
   &.views {
-    color: $statRed;
+    .title { color: $statRed; }
   }
   &.emails {
-    color: $statOrange;
+    .title { color: $statOrange; }
   }
   &.calls {
-    color: $statGreenD;
+    .title { color: $statGreenD; }
   }
   &.abpt {
-    color: $statGreenL;
+    .title { color: $statGreenL; }
   }
   &.abpf {
-    color: $statBlue;
+    .title { color: $statBlue; }
+  }
+  &.views .number-spinner {
+    text-shadow: 0 0 2px $statRed;
+  }
+  &.emails .number-spinner {
+    text-shadow: 0 0 2px $statOrange;
+  }
+  &.calls .number-spinner {
+    text-shadow: 0 0 2px $statGreenD;
+  }
+  &.abpt .number-spinner {
+    text-shadow: 0 0 2px $statGreenL;
+  }
+  &.abpf .number-spinner {
+    text-shadow: 0 0 2px $statBlue;
   }
 }
 

@@ -48,7 +48,7 @@ $(function() {
       hideLegislatorSearch();
       watchRequestTimes();
       $.ajax({
-        url: 'https://test.stopthespies.org/legislators',
+        url: STS.options.LEGISLATORS_LOCATOR_URL,
         jsonp: "callback",
         dataType: "jsonp",
         data: {
@@ -72,7 +72,7 @@ $(function() {
     watchRequestTimes();
     var postcode = $('input', $(ev.currentTarget)).val();
     $.ajax({
-      url: 'https://test.stopthespies.org/legislators',
+      url: STS.options.LEGISLATORS_LOCATOR_URL,
       jsonp: "callback",
       dataType: "jsonp",
       data: {
@@ -143,7 +143,7 @@ function renderLegislators(reps) {
     });
 
     // log event to the server
-    io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds}, function(d) {});
+    io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds, 'repeat' : Cookie.has('already-viewed') }, function(d) {});
   });
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 
@@ -244,7 +244,7 @@ function onLocationError()
 {
   $('.postcode-steps').addClass('no-location');
   anim.hideVSlide($('.how .location-search'), 0.4);
-  anim.appearVSlide($('.how .location-error'), 0.4);
+  TweenMax.fromTo($('.how .location-error'), 0.4, {display:'block', opacity: 0}, {opacity: 1});
 }
 
 function onSearchError()

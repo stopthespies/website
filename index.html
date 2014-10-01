@@ -10,10 +10,10 @@ layout: default
           <a href="#take-action" class="btn btn-primary btn-lg">Take Action Now</a>
           <div class="about">
             <p>
-              The Australian government is on the verge of passing new surveillance laws, that could require your ISP to track and record your movements online, and allow the interception of data from entire networks. These plans are made on the pretext of fighting terrorism, but they really belong in a police state.
+              The Australian government is on the verge of ordering your ISP to track and record your movements online. These plans are made on the pretext of fighting terrorism, but they really belong in a police state.
             </p>
             <p>
-              This website is your hub for information about these proposals and tools for you to contact your representatives to oppose them.
+              This website hopes to provide you with the information you need to be informed and tools to contact your representatives to let them know how you feel about this issue. With your help, we can stop the spies.
             </p>
           </div>
         </div>
@@ -30,24 +30,24 @@ layout: default
           <span class="text">
             Share <span class="light">on</span> Twitter
           </span>
-          <span class="tot twitter-total number-spinner">0</span>
-          <a target="_blank" href="https://twitter.com/intent/tweet?related=EFF,efa_oz&amp;text=Australia%27s%20new%20data%20retention%20bill%20would%20track%20everything%20you%20do%20online%E2%80%94even%20if%20you%27ve%20done%20nothing%20wrong.&amp;url=https%3A%2F%2Fstopthespies.org"></a>
+          <span class="tot twitter-share-total number-spinner">0</span>
+          <a target="_blank" href="https://twitter.com/intent/tweet?related=EFF,efa_oz&amp;text=Australia%27s%20new%20data%20retention%20bill%20would%20track%20everything%20you%20do%20online%E2%80%94even%20if%20you%27ve%20done%20nothing%20wrong.&amp;url={{ site.url }}"></a>
       </span>
       <span class="share abpf">
           <i class="fa fa-abpf"></i>
           <span class="text">
             Share <span class="light">on</span> Facebook
           </span>
-          <span class="tot facebook-total number-spinner">0</span>
-          <a target="_blank" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frelease.stopthespies.org%2F"></a>
+          <span class="tot facebook-share-total number-spinner">0</span>
+          <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ site.url }}"></a>
       </span>
       <span class="share abpg">
           <i class="fa fa-abpg"></i>
           <span class="text">
             Share <span class="light">on</span> Google+
           </span>
-          <span class="tot google-total number-spinner">0</span>
-          <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Frelease.stopthespies.org%2F"></a>
+          <span class="tot google-share-total number-spinner">0</span>
+          <a target="_blank" href="https://plus.google.com/share?url={{ site.url }}"></a>
       </span>
   </div>
 </section>
@@ -85,6 +85,7 @@ layout: default
       </p>
     </div>
     <div class="col">
+      <!-- :TODO: image -->
     </div>
     <div class="eyemarks">
       <img class="r12 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
@@ -96,15 +97,7 @@ layout: default
 </section>
 <section class="introduction countries">
   <div class="container">
-    <div class="col">
-      <p></p>
-    </div>
-    <div class="eyemarks">
-      <img class="r11 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
-      <img class="r12 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
-      <img class="r13 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
-    </div>
-    <div class="col">
+    <div class="col rev-order-desktop">
       <h2>Why you should be worried</h2>
       <h3>It's only data, right?</h3>
       <p>
@@ -113,6 +106,14 @@ layout: default
       <p>
        Even if this information were only being collected to fight terrorism—and this is far from clear—there remains a frightening risk that it will be misused or fall into the wrong hands.
       </p>
+    </div>
+    <div class="col">
+      <!-- :TODO: image -->
+    </div>
+    <div class="eyemarks">
+      <img class="r11 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+      <img class="r12 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
+      <img class="r13 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
     </div>
   </div>
   <canvas class="eyecanvas" width="1300" height="365"></canvas>
@@ -130,6 +131,7 @@ layout: default
       </p>
     </div>
     <div class="col">
+      <!-- :TODO: image -->
     </div>
     <div class="eyemarks">
       <img class="r11 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
@@ -142,6 +144,21 @@ layout: default
 
 
 </div>
+
+<section class="introduction cost">
+  <div class="container">
+    <div class="col">
+      <h2>Who's paying for all this?</h2>
+      <h3>The Australian public</h3>
+      <p>
+        Nec eros morbi nostra fringilla. Magnis aptent venenatis. Irure integer egestas blandit. Facilisis ullamco cursus quam. Fringilla occaecat sed eleifend.
+      </p>
+    </div>
+    <div class="col">
+      <p class="bigdollars"><span>$$$</span></p>
+    </div>
+  </div>
+</section>
 <!-- END INTRO BACKGROUND BLOCK -->
 
 <section class="cta bg-wrap">
@@ -205,9 +222,7 @@ layout: default
                     <form class="postcode-lookup">
                       <div class="input-group">
                         <input type="text" class="form-control" pattern="[0-9]{4}" required>
-                        <span class="input-group-btn">
-                          <button class="btn btn-primary" type="submit">Lookup!</button>
-                        </span>
+                        <button class="btn btn-info" type="submit">Lookup!</button>
                       </div>
                     </form>
 
@@ -215,7 +230,19 @@ layout: default
             </div>
 
         </div>
+
+        <div class="eyemarks">
+          <img class="r11 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+          <img class="r12 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+          <img class="r13 lg" src="{{ "/img/eyes/eye-large-down-r.svg" | prepend: site.baseurl }}" />
+          <img class="r14 lg" src="{{ "/img/eyes/eye-large-down-r.svg" | prepend: site.baseurl }}" />
+
+          <img class="r31 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+          <img class="r32 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
+          <img class="r33 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+        </div>
     </div>
+    <div class="eyecanvas"></div>
 </section>
 <section class="how results">
     <div class="container">
@@ -242,15 +269,17 @@ layout: default
             </div>
 
             <div class="location-privacy">
-                <p>We use your postcode to find legislators that represent you. We don't store this data and we use encrypted requests.</p>
+                <p>We use your postcode to find legislators that represent you. We don't store this data and we use encrypted requests.<br />
+                Legislator data is proved by <a href="http://www.openaustralia.org/">Open Australia</a></p>
             </div>
-            <h3 style="margin-top: 30px;">HERE ARE SOME TALKING POINTS YOU CAN USE</h3>
 
-            <ul style="text-align: left; width: 500px; margin:auto;">
-              <li style="margin-bottom: 10px;">I oppose the data retention bill in Australia. As my representative, I'm asking you to reject this proposal.</li>
-              <li style="margin-bottom: 10px;">I value my digital privacy. When I use the Internet, I want secure, private communication. I don't want to be surveilled and spied on when I'm not suspected of a crime.</li>
-              <li style="margin-bottom: 10px;">The proposal would push all the costs of data retention onto Internet Service Providers, who would pass the costs onto their customers. That means higher bills for Australians, as well as higher costs for new ISPs looking to enter the market. </li>
-              <li style="margin-bottom: 10px;">Courts around the world are finding data retention mandates unconstitutional because they violate individual privacy rights. Let's do the right thing in Australia and stop this bill before it becomes a law.</li>
+            <h3>Here are some talking points you can use</h3>
+
+            <ul class="points">
+              <li>I oppose the data retention bill in Australia. As my representative, I'm asking you to reject this proposal.</li>
+              <li>I value my digital privacy. When I use the Internet, I want secure, private communication. I don't want to be surveilled and spied on when I'm not suspected of a crime.</li>
+              <li>The proposal would push all the costs of data retention onto Internet Service Providers, who would pass the costs onto their customers. That means higher bills for Australians, as well as higher costs for new ISPs looking to enter the market. </li>
+              <li>Courts around the world are finding data retention mandates unconstitutional because they violate individual privacy rights. Let's do the right thing in Australia and stop this bill before it becomes a law.</li>
             </ul>
         </div>
     </div>
@@ -267,34 +296,36 @@ layout: default
             <h2>Campaign Progress</h2>
 
             <div class="metrics">
-                <div class="metric" data-stat="views">
+                <div class="metric views" data-stat="views">
                   <div class="border">
-                    <div class="title views">Views</div>
                     <div class="total"><div class="view-total number-spinner">0</div></div>
+                    <div class="title">Pageviews</div>
                   </div>
                 </div>
-                <div class="metric" data-stat="tweets">
+                <div class="metric abpt" data-stat="tweets">
                   <div class="border">
-                    <div class="title abpt">Tweets</div>
                     <div class="total"><div class="twitter-total number-spinner">0</div></div>
+                    <div class="title">Legislators tweeted</div>
                   </div>
                 </div>
-                <div class="metric" data-stat="emails">
+                <div class="metric emails" data-stat="emails">
                   <div class="border">
-                    <div class="title emails">Emails</div>
                     <div class="total"><div class="email-total number-spinner">0</div></div>
+                    <div class="title">Legislator contact page visits</div>
                   </div>
                 </div>
-                <div class="metric" data-stat="facebooks">
+                <div class="metric abpf" data-stat="facebooks">
                   <div class="border">
-                    <div class="title abpf">Posts</div>
                     <div class="total"><div class="facebook-total number-spinner">0</div></div>
+                    <div class="title">Facebook pages posted to</div>
                   </div>
                 </div>
                 <!--
-                <div class="metric">
-                    <div class="title calls">Calls</div>
+                <div class="metric calls">
+                  <div class="border">
                     <div class="total"><div class="call-total number-spinner">0</div></div>
+                    <div class="title">Calls</div>
+                  </div>
                 </div>
                 -->
             </div>
@@ -311,12 +342,12 @@ layout: default
         <div class="col">
             <!-- TRIGGER --><a id="load-tweets"></a><!-- /TRIGGER -->
             <div class="twitter-support">
-              <h2><strong class="tweets-support-total number-spinner">0</strong> People taking part in the <strong>#StoptheSpies</strong> Campaign.</h2>
+              <h2><strong class="tweets-support-total number-spinner">0</strong> people talking about <strong>#StoptheSpies</strong></h2>
             </div>
 
             <p class="intro">
               <i class="fa fa-abpt"></i>
-              By tweeting &ldquo;<em>#stopthespies</em>&rdquo; or sharing this URL of this site on Twitter, you will automatically be added to the list below.
+              By tweeting &ldquo;<em>#stopthespies</em>&rdquo; or sharing the URL of this site on Twitter, you will automatically be added to the list below.
             </p>
 
         </div>
@@ -328,7 +359,7 @@ layout: default
 <!-- END STATS BG WRAPPER -->
 </div>
 
-<section class="extra">
+<section class="extra immediately-after-tweetboard">
   <a id="further-reading"></a>
     <div class="container">
         <div class="col">
@@ -345,33 +376,47 @@ layout: default
                       </p>
                       <a href="https://www.getup.org.au/campaigns/privacy/mandatory-data-retention-efa--2/sign-the-petition" class="btn btn-primary">Sign a petition now</a>
                     </div>
+                    <div class="eyemarks">
+                      <img class="p11 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+                      <img class="p12 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+                      <img class="p13 lg" src="{{ "/img/eyes/eye-large-down-r.svg" | prepend: site.baseurl }}" />
+                      <img class="p14 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+                      <img class="p15 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
+
+                      <img class="p31 sm" src="{{ "/img/eyes/eye-small-up.svg" | prepend: site.baseurl }}" />
+                      <img class="p32 lg" src="{{ "/img/eyes/eye-large-up-r.svg" | prepend: site.baseurl }}" />
+                      <img class="p33 sm" src="{{ "/img/eyes/eye-small-up.svg" | prepend: site.baseurl }}" />
+                      <img class="p34 sm" src="{{ "/img/eyes/eye-small-up.svg" | prepend: site.baseurl }}" />
+                      <img class="p35 lg" src="{{ "/img/eyes/eye-large-up-l.svg" | prepend: site.baseurl }}" />
+                    </div>
+                    <!-- <div class="eyecanvas"></div> -->
                 </div>
                 <div class="step step-2">
                     <h4>Spread the Word</h4>
                     <div class="sharing-buttons">
+                        <!--<span class="tot twitter-share-total number-spinner">0</span>-->
                         <span class="share abpt">
                             <span class="text">
-                              <i class="fa fa-abpt"></i>&nbsp;Share <span class="light">on</span> Twitter
+                              <i class="fa fa-abpt"></i>&nbsp; Share <span class="light">on</span> Twitter
                             </span>
-                            <span class="tot twitter-total number-spinner">0</span>
-                            <a target="_blank" href="https://twitter.com/intent/tweet?related=EFF,efa_oz&amp;text=Australia%27s%20new%20data%20retention%20bill%20would%20track%20everything%20you%20do%20online%E2%80%94even%20if%20you%27ve%20done%20nothing%20wrong.&amp;url=https%3A%2F%2Fstopthespies.org"></a>
+                            <a target="_blank" href="https://twitter.com/intent/tweet?related=EFF,efa_oz&amp;text=Australia%27s%20new%20data%20retention%20bill%20would%20track%20everything%20you%20do%20online%E2%80%94even%20if%20you%27ve%20done%20nothing%20wrong.&amp;url={{ site.url }}"></a>
                         </span>
+                        <!--<span class="tot facebook-share-total number-spinner">0</span>-->
                         <span class="share abpf">
                             <span class="text">
                               <i class="fa fa-abpf"></i>&nbsp; Share <span class="light">on</span> Facebook
                             </span>
-                            <span class="tot facebook-total number-spinner">0</span>
-                            <a target="_blank" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Frelease.stopthespies.org%2F"></a>
+                            <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ site.url }}"></a>
                         </span>
+                        <!--<span class="tot google-share-total number-spinner">0</span>-->
                         <span class="share abpg">
                             <span class="text">
                               <i class="fa fa-abpg"></i>&nbsp; Share <span class="light">on</span> Google+
                             </span>
-                            <span class="tot google-total number-spinner">0</span>
-                            <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Frelease.stopthespies.org%2F"></a>
+                            <a target="_blank" href="https://plus.google.com/share?url={{ site.url }}"></a>
                         </span>
                     </div>
-
+                    <!--
                     <h4>Keep in Touch</h4>
                     <div class="sharing-buttons keep-in-touch">
                       <span class="share abpt">
@@ -379,14 +424,27 @@ layout: default
                         <a href="https://twitter.com/stopthespies" target="_blank"></a>
                       </span>
                       <span class="share abpf">
-                          <span class="text"><i class="fa fa-abpf"></i> <span>/Stop-The-Spies</span></span>
+                          <span class="text"><i class="fa fa-abpf"></i> <span>Stop-The-Spies</span></span>
                           <a href="https://www.facebook.com/pages/Stop-The-Spies/354999514650401" target="_blank"></a>
                       </span>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
+
+        <div class="eyemarks">
+          <img class="r11 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+          <img class="r12 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+          <img class="r13 lg" src="{{ "/img/eyes/eye-large-down-r.svg" | prepend: site.baseurl }}" />
+          <img class="r14 lg" src="{{ "/img/eyes/eye-large-down-r.svg" | prepend: site.baseurl }}" />
+
+          <img class="r31 sm" src="{{ "/img/eyes/eye-small-down.svg" | prepend: site.baseurl }}" />
+          <img class="r32 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
+          <img class="r33 lg" src="{{ "/img/eyes/eye-large-down-l.svg" | prepend: site.baseurl }}" />
+        </div>
     </div>
+    <div class="eyecanvas"></div>
 </section>
 
 <!-- ################################################################ MODALS ########################################################### -->
@@ -474,7 +532,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <script type="text/template" id="legislator-template">
    <div class="legislator l<%= counter %>" data-legislator-id="<%= member_id %>">
         <div class="pic">
-            <img class="" src="<%= image %>" />
+            <img class="" src="<%= image %>" onerror="this.onerror=null;this.src='/img/profile.png';" />
         </div>
         <div class="details">
             <h3><%= full_name %></h3>
@@ -491,7 +549,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
               	</li>-->
 
                 <!-- :TODO: hookup to email service after confirming legalities -->
-                <% if(contact_details && contact_details.contact_page && contact_details.contact_page !== 'null') { %>
+                <% if(typeof contact_details !== 'undefined'  && contact_details.contact_page && contact_details.contact_page !== 'null') { %>
                 <li class="email-action" title="Contact this <%= typeString %> directly">
                   <div class="wrap">
                     <a href="<%= contact_details.contact_page %>" target="_blank">
@@ -511,7 +569,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                 </li>
                 -->
 
-                <% if(contact_details && contact_details.twitter && contact_details.twitter !== 'null') { %>
+                <% if(typeof contact_details !== 'undefined'  && contact_details.twitter && contact_details.twitter !== 'null') { %>
                 <li class="tweets-action" title="Tweet this <%= typeString %>">
                   <div class="wrap">
                     <a href="https://twitter.com/intent/tweet?text=Dear%20%40<%= contact_details.twitter %>: Don't sacrifice our rights. Reject the Australian data retention bill. https://stopthespies.org" target="_blank">
@@ -522,7 +580,7 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
                 </li>
                 <% }; %>
 
-                <% if(contact_details && contact_details.facebook && contact_details.facebook !== 'null') { %>
+                <% if(typeof contact_details !== 'undefined' && contact_details.facebook && contact_details.facebook !== 'null') { %>
                 <li class="facebooks-action" title="Post to this <%= typeString %>'s Facebook page">
                   <div class="wrap">
                     <a href="<%= contact_details.facebook %>" target="_blank">
@@ -541,7 +599,6 @@ I urge you to take immediate action to rein in the NSA by supporting S. 2685, th
 <!-- TWEET -->
 <script type="text/template" id="tweet-template">
     <div class="tweet tooltip <%= sizeClass %>" title="">
-      <div class="over"></div>
       <a href="<%= retweet_link %>" target="_blank">
         <img class="" src="<%= avatar %>" title="@<%= handle %> - <%= tweet %> - <%= followers %>" />
         <p class="tweet-text"><%= tweet %></p>
