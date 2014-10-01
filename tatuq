@@ -1,0 +1,13 @@
+[1mdiff --git a/index.html b/index.html[m
+[1mindex 98d4a9c..7acb549 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -527,7 +527,7 @@[m [mI urge you to take immediate action to rein in the NSA by supporting S. 2685, th[m
+ [m
+ <!-- LEGISLATOR TEMPLATE -->[m
+ <script type="text/template" id="legislator-template">[m
+[31m-   <div class="legislator l<%= counter %>" data-legislator-id="<%= member_id %>">[m
+[32m+[m[32m   <div class="legislator l<%= counter %>" data-legislator-id="<%= member_id %>" data-person-id="<%= person_id %>">[m
+         <div class="pic">[m
+             <img class="" src="<%= image %>" onerror="this.onerror=null;this.src='/img/profile.png';" />[m
+         </div>[m
