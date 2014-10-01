@@ -231,7 +231,7 @@ Eye.MAX_BLINK_DELAY = 10000;
 			$('.eyemarks').each(function() {
 				var $marks = $(this);
 
-        if ($marks.closest('step').length) {
+        if ($marks.closest('.step').length) {
           return true;
         }
 
