@@ -1063,6 +1063,13 @@ body {
   content: '\e80a'; }
 
 /* '' */
+.fa-sts {
+  height: 1em;
+  width: 1.9em;
+  display: inline-block;
+  background-image: url(../img/stslogo-o.svg);
+  background-size: 100% 100%; }
+
 html {
   font-size: 100%;
   *font-size: 16px;
@@ -1118,6 +1125,11 @@ a {
   outline: 0; }
   a:hover {
     text-decoration: underline; }
+
+ul.points {
+  padding-left: 1.5em; }
+  ul.points li {
+    margin-bottom: 1em; }
 
 body {
   overflow-x: hidden; }
@@ -1523,6 +1535,12 @@ section.video {
   text-align: left;
   max-width: 16em; }
 
+.metric .number-spinner, .ourselves .number-spinner {
+  font-family: 'League Gothic', sans-serif;
+  font-size: 1.5em; }
+.metric .tile, .ourselves .tile {
+  padding: 0 0.2em; }
+
 .metric {
   *zoom: 1;
   clear: left;
@@ -1546,22 +1564,6 @@ section.video {
       clear: both; }
   .metric:first-child .border {
     border-top: 1px solid rgba(255, 255, 255, 0.4); }
-  .metric .number-spinner {
-    font-size: 2em;
-    font-family: 'League Gothic', sans-serif;
-    top: 2px;
-    position: relative;
-    margin: 0 auto;
-    display: block; }
-    .metric .number-spinner, .metric .number-spinner .tiles, .metric .number-spinner .tile, .metric .number-spinner .digit {
-      height: 1.6875em; }
-    .metric .number-spinner .digit {
-      line-height: 1.7; }
-  .metric .tile {
-    padding: 0 0.2em;
-    border-left: 1px solid rgba(255, 255, 255, 0.2); }
-    .metric .tile:last-child {
-      border-right: 1px solid rgba(255, 255, 255, 0.2); }
   .metric .total {
     height: 3.6em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
@@ -1569,32 +1571,84 @@ section.video {
     background-color: #322446; }
     .metric:hover .border, .metric:hover .tile {
       border-color: rgba(255, 255, 255, 0.4); }
+  .metric .title {
+    font-weight: bold;
+    line-height: 1;
+    padding: 0.5em 1em 1.5em 1em;
+    font-size: 0.875em; }
+  .metric .number-spinner {
+    font-size: 2em;
+    top: 2px;
+    position: relative;
+    margin: 0 auto;
+    display: block; }
+    .metric .number-spinner, .metric .number-spinner .tiles, .metric .number-spinner .tile, .metric .number-spinner .digit {
+      height: 1.6875em; }
+  .metric .tile {
+    border-left: 1px solid rgba(255, 255, 255, 0.2); }
+    .metric .tile:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.2); }
+  .metric .digit {
+    line-height: 1.7; }
+  .metric.views .title {
+    color: #e58231; }
+  .metric.views .number-spinner {
+    text-shadow: 0 0 2px #e58231; }
+  .metric.emails .title {
+    color: #45cba1; }
+  .metric.emails .number-spinner {
+    text-shadow: 0 0 2px #45cba1; }
+  .metric.calls .title {
+    color: #36c48f; }
+  .metric.calls .number-spinner {
+    text-shadow: 0 0 2px #36c48f; }
+  .metric.abpt .title {
+    color: #59adeb; }
+  .metric.abpt .number-spinner {
+    text-shadow: 0 0 2px #59adeb; }
+  .metric.abpf .title {
+    color: #4c70ea; }
+  .metric.abpf .number-spinner {
+    text-shadow: 0 0 2px #4c70ea; }
+  .metric.abpg .title {
+    color: #db585a; }
+  .metric.abpg .number-spinner {
+    text-shadow: 0 0 2px #db585a; }
 
-.metric .title {
-  font-weight: bold;
-  line-height: 1;
-  padding: 0.5em 1em 1.5em 1em;
-  font-size: 0.875em; }
-.metric.views .title {
-  color: #ee574a; }
-.metric.emails .title {
-  color: #e58231; }
-.metric.calls .title {
-  color: #36c48f; }
-.metric.abpt .title {
-  color: #45cba1; }
-.metric.abpf .title {
-  color: #4fb9e3; }
-.metric.views .number-spinner {
-  text-shadow: 0 0 2px #ee574a; }
-.metric.emails .number-spinner {
-  text-shadow: 0 0 2px #e58231; }
-.metric.calls .number-spinner {
-  text-shadow: 0 0 2px #36c48f; }
-.metric.abpt .number-spinner {
-  text-shadow: 0 0 2px #45cba1; }
-.metric.abpf .number-spinner {
-  text-shadow: 0 0 2px #4fb9e3; }
+.ourselves {
+  margin-top: 2em;
+  text-align: center; }
+  .ourselves div {
+    display: inline;
+    float: left;
+    width: 97.22222%;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%;
+    height: 2em;
+    margin-top: 1em; }
+  .ourselves i {
+    font-size: 1.4em;
+    margin-right: 0.5em;
+    overflow: visible; }
+    .ourselves i.fa-sts {
+      margin-left: -0.2em;
+      margin-right: 0.3em; }
+  .ourselves .visits {
+    color: #e58231; }
+    .ourselves .visits .number-spinner {
+      text-shadow: 0 0 2px #e58231; }
+  .ourselves .abpt {
+    color: #59adeb; }
+    .ourselves .abpt .number-spinner {
+      text-shadow: 0 0 2px #59adeb; }
+  .ourselves .abpf {
+    color: #4c70ea; }
+    .ourselves .abpf .number-spinner {
+      text-shadow: 0 0 2px #4c70ea; }
+  .ourselves .abpg {
+    color: #db585a; }
+    .ourselves .abpg .number-spinner {
+      text-shadow: 0 0 2px #db585a; }
 
 .stats {
   padding-bottom: 0;
@@ -1724,7 +1778,7 @@ section.how.results {
     margin: 2em auto;
     display: inline-block; }
     .legislator .contact li {
-      width: 4.5em;
+      width: 4em;
       float: left;
       position: relative;
       border: 1px solid #e4e4e4;
@@ -1812,21 +1866,12 @@ section.how.results {
 .how.results h3 {
   text-transform: uppercase;
   margin-top: 1em; }
-.how.results ul {
+.how.results ul.points {
   text-align: left;
-  padding: 1em;
+  padding-left: 1em 0 0 1.5em;
   margin: 0 auto;
   max-width: 550px; }
 
-@media (min-width: 850px) {
-  .how .col {
-    display: inline;
-    float: left;
-    width: 80.55556%;
-    margin-left: 1.38889%;
-    margin-right: 1.38889%;
-    margin-left: 9.72222%;
-    margin-bottom: 1.875em; } }
 .location-privacy p {
   display: inline;
   float: left;
@@ -1903,20 +1948,6 @@ section.how.results {
   width: 97.22222%;
   margin-left: 1.38889%;
   margin-right: 1.38889%; }
-@media (min-width: 850px) {
-  .how .col {
-    display: inline;
-    float: left;
-    width: 80.55556%;
-    margin-left: 1.38889%;
-    margin-right: 1.38889%;
-    margin-left: 9.72222%; }
-  .how .results .col {
-    display: inline;
-    float: left;
-    width: 97.22222%;
-    margin-left: 1.38889%;
-    margin-right: 1.38889%; } }
 .how .eyemarks {
   opacity: 1; }
   .how .eyemarks .r11 {
@@ -1948,7 +1979,7 @@ section.how.results {
 .legislator {
   max-width: 350px;
   margin: 0 auto 1em auto; }
-  @media (min-width: 600px) {
+  @media (min-width: 650px) {
     .legislator {
       max-width: none;
       display: inline;
@@ -2109,14 +2140,14 @@ section.how.results {
   #tweet-board:after {
     clear: both; }
 
-.immediately-after-tweetboard {
+.tweets-loaded .immediately-after-tweetboard {
   z-index: 3;
   margin-top: -100px; }
   @media (min-width: 620px) {
-    .immediately-after-tweetboard {
+    .tweets-loaded .immediately-after-tweetboard {
       margin-top: -170px; } }
   @media (min-width: 820px) {
-    .immediately-after-tweetboard {
+    .tweets-loaded .immediately-after-tweetboard {
       margin-top: -240px; } }
 
 .twitter-support {
@@ -2181,11 +2212,11 @@ section.how.results {
     background: #22364b; }
 
 .sharing-buttons .share.abpf {
-  background: #3c5a96; }
+  background: #4c70ea; }
   .sharing-buttons .share.abpf .tot {
     color: white; }
   .sharing-buttons .share.abpf:hover {
-    background: #2d4472; }
+    background: #1e4ce5; }
 
 .sharing-buttons .share.abpf img {
   margin-top: -3px; }
@@ -2281,7 +2312,8 @@ section.how.results {
     .sharbx .number-spinner {
       font-size: 16px;
       top: 0.3em;
-      left: 0; }
+      left: 1.5em;
+      text-align: center; }
     .sharbx span.share:hover .text, .sharbx span.share.anim .text {
       visibility: visible; } }
 @media (min-width: 1865px) {
