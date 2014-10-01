@@ -1714,7 +1714,8 @@ section.how.results {
     font-size: 1.5em; }
 
 .postcode-steps, .extra-steps {
-  overflow: hidden; }
+  overflow: hidden;
+  margin-top: 50px; }
   .postcode-steps p, .extra-steps p {
     margin: 1em 10%;
     text-align: center; }
@@ -1831,13 +1832,13 @@ section.how.results {
         left: -1px;
         top: -1px; }
     .legislator .contact li.email-action:hover {
-      border: 4px solid #e58231; }
+      border: 4px solid #45cba1; }
     .legislator .contact li.call-action:hover {
       border: 4px solid #36c48f; }
     .legislator .contact li.facebooks-action:hover {
-      border: 4px solid #4fb9e3; }
+      border: 4px solid #4c70ea; }
     .legislator .contact li.tweets-action:hover {
-      border: 4px solid #45cba1; }
+      border: 4px solid #59adeb; }
 
 .retry-legislators {
   display: none; }
