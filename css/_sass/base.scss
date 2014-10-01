@@ -89,6 +89,14 @@ body {
   top: 0; left: 0;
   width: 100%; height: 100%;
 }
+.eyecanvas {
+  overflow: hidden;
+
+  canvas {
+    position: absolute;
+    left: 50%; top: 50%;
+  }
+}
 
 .eyemarks {
   opacity: 0.2;
@@ -112,9 +120,11 @@ body {
   }
 }
 
-.cta, .introduction, .extra {
+.cta, .extra {
   // :IMPORTANT: we can't do this for all, because of things (like the map) positioned outside of the page gutter
   overflow:hidden;
+}
+.cta, .introduction, .extra {
   .container {
     position: relative;
   }

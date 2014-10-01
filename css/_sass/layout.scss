@@ -28,16 +28,28 @@ section {
     overflow:hidden;
   }
 
+  .eyecanvas {
+    top: emsize(-60px);
+  }
+
   @media (min-height: $vertical-section-spacing-step-1) {
     padding: emsize(70px) 0;
     &.who {
       padding: emsize(140px) 0;
+    }
+
+    .eyecanvas {
+      top: emsize(-70px);
     }
   }
   @media (min-height: $vertical-section-spacing-step-2) {
     padding: emsize(80px) 0;
     &.who {
       padding: emsize(180px) 0;
+    }
+
+    .eyecanvas {
+      top: emsize(-80px);
     }
   }
   @media (min-height: $vertical-section-spacing-step-3) {
@@ -50,6 +62,10 @@ section {
     &.who {
       padding: emsize(60px) 0;
       overflow:hidden;
+    }
+
+    .eyecanvas {
+      top: emsize(-40px);
     }
   }
 }
