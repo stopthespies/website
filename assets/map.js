@@ -30,6 +30,10 @@ var AREA_SHADING_THRESHOLDS = {
   'facebooks' : [1, 2, 3, 8, 10, 50, 80, 150, 200]
   // 'calls' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
 };
+
+// scale the above range globally
+var OPACITY_SCALE_FACTOR = 1;
+
 var MAP_EVENT_COLORS = {
   all : '#ffffff',
   visits : '#E58231',     // orange
@@ -88,32 +92,50 @@ function initMaps()
     return;
   }
 
+  var states, electorates;
+
+  function whenReady()
+  {
+    if (states && electorates) {
+      showElectorates(states, electorates);
+    }
+  }
+
   // short delay on pulling electorate data, it's large
   setTimeout(function() {
+    $.ajax({
+      url: '/map/states.json',
+      dataType: "json",
+      data: {},
+      success: function(geojson) {
+        states = geojson;
+        whenReady();
+      }
+    });
     $.ajax({
       url: '/map/electorates.json',
       dataType: "json",
       data: {},
       success: function(geojson) {
-        showElectorates(geojson);
+        electorates = geojson;
+        whenReady();
       }
     });
   }, 100);
 }
 
-function showElectorates(geojson)
+function showElectorates(states, geojson)
 {
   var wardOptions = {
     style : function(feature) {
-      // :TODO: finalise pallete and hookup to legislator data
       var color = '#fff';
 
       var style = {
         weight: 1,
-        opacity: 0.3,
-        fillOpacity: 0.05,
-        color: color,
-        fillColor: color
+        color: '#322446',
+        opacity: 0.6,
+        fillColor: color,
+        fillOpacity: 0.05
       };
 
       feature.__defaultStyle = style; // reference here for use in callbacks
@@ -134,12 +156,32 @@ function showElectorates(geojson)
     }
   };
 
+  var stateOptions = {
+    style : function(feature) {
+      var style = {
+        weight: 2,
+        color: '#C7C7C7',
+        opacity: 1,
+        fillOpacity: 0
+      };
+
+      feature.__defaultStyle = style; // reference here for use in callbacks
+
+      return style;
+    }
+  };
+
   mapEls = $(mapEls);
 
   mapEls.each(function() {
     mapDOM = this;
     var map = L.map(mapDOM, {}).setView(DEFAULT_COORDS, DEFAULT_ZOOM);
+
+    // add electorates
     var layer = L.geoJson(geojson, wardOptions).addTo(map);
+
+    // add overlay
+    L.geoJson(states, stateOptions).addTo(map);
 
     exactFitMap(map, COUNTRY_BOUNDS);
 
@@ -343,12 +385,16 @@ function shadeWardsByActivity(totalEvents, reps, eventId)
         opacity += 0.1;
       }
 
+      opacity *= OPACITY_SCALE_FACTOR;
+
       // set new baseline style
       var newAttrs = {
         fillOpacity: opacity,
         fillColor: color,
-        color: color
+        // opacity: opacity//,
+        // color: color
       };
+
       shape.feature.__defaultStyle = $.extend(shape.feature.__defaultStyle, newAttrs);
       if (shape.feature.__defaultStyle.css) {
         shape.feature.__defaultStyle.css = $.extend(shape.feature.__defaultStyle.css, newAttrs);
@@ -433,6 +479,17 @@ function findMembersElectorate(map, memberIds)
   return matched;
 }
 
+function findRandomElectorate(map)
+{
+  if (MAPS_DISABLED) {
+    return null;
+  }
+
+  var layers = getShapeLayer(map)._layers;
+
+  return layers[Math.floor(Math.random() * layers.length)];
+}
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 // exports
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -442,7 +499,11 @@ STS.CampaignMap = {
   focusArea : focusGeoJSON,
 
   getWardForMember : function(mapId, rep) {
-    return findMembersElectorate(maps[mapId], rep);
+    var electorate = findMembersElectorate(maps[mapId], rep);
+    if (electorate) {
+      return electorate;
+    }
+    return findRandomElectorate(maps[mapId]);
   },
   focusWard : focusByWardName,
   focusMembersWard : focusByMembers,

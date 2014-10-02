@@ -1080,7 +1080,8 @@ body {
   font-family: 'Roboto', sans-serif;
   background: #322546;
   color: #c7c7c7;
-  line-height: 1.36; }
+  line-height: 1.36;
+  -moz-osx-font-smoothing: grayscale; }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
@@ -1169,8 +1170,12 @@ body {
 .cta, .extra {
   overflow: hidden; }
 
-.cta .container, .introduction .container, .extra .container {
+.container {
   position: relative; }
+
+.stats .container {
+  position: static; }
+
 .cta .col, .introduction .col, .extra .col {
   position: relative;
   z-index: 1; }
@@ -1233,13 +1238,26 @@ body {
   text-align: left; }
 .who h1 {
   color: #f1592a;
-  font-size: 6.25em;
+  font-size: 3.4375em;
   line-height: 1;
-  margin: 0.2em 0; }
+  margin: 0.2em 0;
+  white-space: nowrap; }
 .who h2 {
+  font-size: emfz(22px);
   font-weight: bold;
   margin-bottom: 0.83333em;
   letter-spacing: -0.04167em; }
+@media (min-width: 300px) {
+  .who h1 {
+    font-size: 4.0625em; } }
+@media (min-width: 380px) {
+  .who h1 {
+    font-size: 5em; }
+  .who h2 {
+    font-size: 1.5em; } }
+@media (min-width: 480px) {
+  .who h1 {
+    font-size: 6.25em; } }
 
 .who {
   position: relative; }
@@ -1253,7 +1271,12 @@ body {
     margin-right: 1.38889%; }
   .who .leaflet-map-pane {
     opacity: 0.1; }
-  @media (min-width: 769px) {
+  .who .australia-map img {
+    margin-top: 0; }
+  @media (min-width: 480px) {
+    .who .australia-map img {
+      margin-top: -22%; } }
+  @media (min-width: 799px) {
     .who .col {
       display: inline;
       float: left;
@@ -1266,6 +1289,8 @@ body {
       height: 100%;
       left: 40%;
       top: 0; }
+      .who .australia-map img {
+        margin-top: -22%; }
     .who .leaflet-map-pane {
       opacity: 0.7; }
     .who .about {
@@ -1431,6 +1456,9 @@ body {
 
 .cta {
   text-align: center;
+  background-image: url(../img/bg.jpg);
+  background-position: center center;
+  background-size: cover;
   font-size: 0.4em; }
   .cta h2 {
     font-family: 'League Gothic', sans-serif;
@@ -1592,6 +1620,8 @@ section.video {
     position: relative;
     margin: 0 auto;
     display: block; }
+    .metric .number-spinner .digit {
+      line-height: 1.6875em; }
     .metric .number-spinner, .metric .number-spinner .tiles, .metric .number-spinner .tile, .metric .number-spinner .digit {
       height: 1.6875em; }
   .metric .tile {
@@ -1669,7 +1699,7 @@ section.video {
     top: 0;
     right: 0;
     width: 100%;
-    height: 130%;
+    height: 700px;
     z-index: 0;
     margin-top: -7em; }
   .stats .metrics {
@@ -1686,6 +1716,7 @@ section.video {
         margin-right: 1.38889%; }
       .stats .australia-map {
         width: 80%;
+        height: 130%;
         position: absolute;
         margin-top: 0; }
       .stats .metrics {
@@ -1963,25 +1994,25 @@ section.how.results {
   opacity: 1; }
   .how .eyemarks .r11 {
     left: 9%;
-    top: 7.25em; }
+    top: 5.375em; }
   .how .eyemarks .r12 {
     left: 16%;
-    top: 2.3125em; }
+    top: 0.4375em; }
   .how .eyemarks .r13 {
     left: 20%;
-    top: 12.5em; }
+    top: 10.625em; }
   .how .eyemarks .r14 {
     left: 28%;
-    top: 5em; }
+    top: 3.125em; }
   .how .eyemarks .r31 {
     left: 72%;
-    top: 7.5em; }
+    top: 5.625em; }
   .how .eyemarks .r32 {
     left: 79%;
-    top: 2.9375em; }
+    top: 1.0625em; }
   .how .eyemarks .r33 {
     left: 89%;
-    top: 4.6875em; }
+    top: 2.8125em; }
   .how .eyemarks img.sm {
     width: 2.1875em; }
   .how .eyemarks img.lg {
@@ -2592,14 +2623,16 @@ section {
     section {
       padding: 4.375em 0; }
       section.who {
-        padding: 8.75em 0; }
+        padding: 8.75em 0;
+        padding-bottom: 7.5em; }
       section .eyecanvas {
         top: -4.375em; } }
   @media (min-height: 801px) {
     section {
       padding: 5em 0; }
       section.who {
-        padding: 11.25em 0; }
+        padding: 11.25em 0;
+        padding-bottom: 7.5em; }
       section .eyecanvas {
         top: -5em; } }
   @media (min-height: 1100px) {

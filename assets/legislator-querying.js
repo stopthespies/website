@@ -126,10 +126,10 @@ function renderLegislators(reps) {
     showLegislatorSearch();
   });
 
-  $('.retry-legislators .map').off('click').on('click', function(e) {
-    e.preventDefault();
-    // :TODO: move to and activate map
-  });
+  // $('.retry-legislators .map').off('click').on('click', function(e) {
+  //   e.preventDefault();
+  //   // :TODO: move to and activate map
+  // });
 
   // init counters
   container.find('.number-spinner').numberSpinner();
@@ -143,7 +143,7 @@ function renderLegislators(reps) {
     });
 
     // log event to the server
-    io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds, 'repeat' : Cookie.has('already-viewed') }, function(d) {});
+    io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds}, function(d) {});
   });
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 
@@ -256,10 +256,10 @@ window.setLegislatorsState = setLegislatorsState; // :DEBUG:
 
 function onSearchComplete()
 {
-  // focus response area if we haven't previously viewed the site
-  if (!Cookie.has('already-viewed')) {
+  // focus response area if we haven't previously run a search
+  if (!Cookie.has('already-searched')) {
     STS.anim.scrollToEl($('#take-action'));
-    Cookie.set('already-viewed', 1);
+    Cookie.set('already-searched', 1);
   }
 
   clearRequestWatches();
