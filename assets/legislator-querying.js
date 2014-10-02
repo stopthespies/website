@@ -8,6 +8,18 @@ var WAIT_TIME_MESSAGE = 2000,
 
 $(function() {
 
+   // show international campaigns if not in australia
+  $('body').on('click', '.not-in-australia', function(e) {
+    $('.not-in-australia').fadeOut(750);
+
+    $('.not-in-australia-container').slideDown(300, function () {
+
+      $('.postcode-steps').fadeOut(150);
+      $('.how.results').fadeOut(150);
+    })
+    return false;
+  });
+
   // ----------------- GEO-BASED ----------------------
 
   // jiggle the location box somewhat to draw attention back
@@ -125,6 +137,7 @@ function renderLegislators(reps) {
     resetLegislatorResults();
     showLegislatorSearch();
   });
+
 
   // $('.retry-legislators .map').off('click').on('click', function(e) {
   //   e.preventDefault();
