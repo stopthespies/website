@@ -126,10 +126,10 @@ function renderLegislators(reps) {
     showLegislatorSearch();
   });
 
-  $('.retry-legislators .map').off('click').on('click', function(e) {
-    e.preventDefault();
-    // :TODO: move to and activate map
-  });
+  // $('.retry-legislators .map').off('click').on('click', function(e) {
+  //   e.preventDefault();
+  //   // :TODO: move to and activate map
+  // });
 
   // init counters
   container.find('.number-spinner').numberSpinner();
