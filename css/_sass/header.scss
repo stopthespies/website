@@ -6,14 +6,37 @@
   }
   h1 {
     color: $primaryOrange;
-    @include emfz(100px);
+    @include emfz(55px);
     line-height: 1;
     margin: emsize(20px, 100px) 0;
+    white-space: nowrap;
   }
   h2 {
+    font-size: emfz(22px);
     font-weight: bold;
     margin-bottom: emsize(20px, 24px);
     letter-spacing: emsize(-1px, 24px);
+  }
+
+  @media (min-width: $set-header-fontsize1) {
+    h1 {
+      @include emfz(65px);
+    }
+  }
+
+  @media (min-width: $set-header-fontsize2) {
+    h1 {
+      @include emfz(80px);
+    }
+    h2 {
+      @include emfz(24px);
+    }
+  }
+
+  @media (min-width: $set-header-fontsize3) {
+    h1 {
+      @include emfz(100px);
+    }
   }
 }
 
@@ -30,6 +53,20 @@
     opacity: 0.1;   // keep separate from toplevel anim-driven opacity
   }
 
+  .australia-map {
+    img {
+      margin-top: 0; // magic.
+    }
+  }
+
+  @media (min-width: $vertical-section-spacing-step-x) {
+    .australia-map {
+      img {
+        margin-top: -22%; // magic.
+      }
+    }
+  }
+
   @media (min-width: $set-header-map-adjacent) {
     .col {
       @include column($one-half);
@@ -40,6 +77,9 @@
       height: 100%;
       left: 40%;
       top: 0;
+      img {
+        margin-top: -22%; // magic.
+      }
     }
     .leaflet-map-pane {
       opacity: 0.7;

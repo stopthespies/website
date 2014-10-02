@@ -124,10 +124,10 @@ body {
   // :IMPORTANT: we can't do this for all, because of things (like the map) positioned outside of the page gutter
   overflow:hidden;
 }
+.container {
+  position: relative;
+}
 .cta, .introduction, .extra {
-  .container {
-    position: relative;
-  }
   .col {
     position: relative;
     z-index: 1;
