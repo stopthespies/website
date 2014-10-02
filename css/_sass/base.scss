@@ -129,6 +129,9 @@ body {
 .container {
   position: relative;
 }
+.stats .container {
+  position: static; // for map alignment outside of top
+}
 .cta, .introduction, .extra {
   .col {
     position: relative;

@@ -55,7 +55,9 @@ var AREA_FLASH_RADIUS = '8px';
     var mapEnterTween = new TimelineMax({pause: true}).to(mapDOM, 0, {opacity: 0, transform: "rotateY(0) scale(" + STS.CampaignMap.getContainerScale(mapDOM) + ")"});
 
     if (img.length) {
-      mapEnterTween.to(img[0], 0.5, {opacity: 0});
+      mapEnterTween.to(img[0], 0.5, {opacity: 0, onComplete: function() {
+        img.remove();
+      }});
     }
 
     mapEnterTween.to(mapDOM, 1.25, {opacity: MAP_OPACITY});
