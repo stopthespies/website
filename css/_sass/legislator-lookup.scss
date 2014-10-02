@@ -27,7 +27,7 @@ section.how.results {
 .postcode-steps, .extra-steps {
   overflow: hidden;
   margin-top: 50px;
-  
+
   p {
     margin: 1em 10%;
     text-align: center;
@@ -341,13 +341,13 @@ section.how.results {
   // these ones are positioned against columns and so their left offsets are percentages
   .eyemarks {
     opacity: 1;
-    .r11 { left: 9%; top: emsize(116px); }
-    .r12 { left: 16%; top: emsize(37px); }
-    .r13 { left: 20%; top: emsize(200px); }
-    .r14 { left: 28%; top: emsize(80px); }
-    .r31 { left: 72%; top: emsize(120px); }
-    .r32 { left: 79%; top: emsize(47px); }
-    .r33 { left: 89%; top: emsize(75px); }
+    .r11 { left: 9%; top: emsize(86px); }
+    .r12 { left: 16%; top: emsize(7px); }
+    .r13 { left: 20%; top: emsize(170px); }
+    .r14 { left: 28%; top: emsize(50px); }
+    .r31 { left: 72%; top: emsize(90px); }
+    .r32 { left: 79%; top: emsize(17px); }
+    .r33 { left: 89%; top: emsize(45px); }
 
     img {
       &.sm { width: emsize(35px); }
