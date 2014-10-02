@@ -432,6 +432,44 @@ function findMembersElectorate(map, memberIds)
   return matched;
 }
 
+function findRandomStateElectorate(map, constituency)
+{
+  if (MAPS_DISABLED) {
+    return null;
+  }
+
+  var constituencies = {
+    "act" : "ACT",
+    "australian capital territory" : "ACT",
+    "nsw" : "NSW",
+    "new south wales" : "NSW",
+    "nt" : "NT",
+    "northern territory" : "NT",
+    "qld" : "QLD",
+    "queensland" : "QLD",
+    "sa" : "SA",
+    "south australia" : "SA",
+    "tas" : "TAS",
+    "tasmania" : "TAS",
+    "vic" : "VIC",
+    "victoria" : "VIC",
+    "wa" : "WA",
+    "western australia" : "WA",
+  };
+
+  var selection = [];
+
+  constituency = constituencies[constituency] || constituency.nsw;  // just being paranoid with the backup value
+
+  getShapeLayer(map).eachLayer(function(layer) {
+    if (layer.state == constituency) {
+      selection.push(layer);
+    }
+  });
+
+  return selection[Math.floor(Math.random()*items.length)];
+}
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 // exports
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -441,7 +479,11 @@ STS.CampaignMap = {
   focusArea : focusGeoJSON,
 
   getWardForMember : function(mapId, rep) {
-    return findMembersElectorate(maps[mapId], rep);
+    if (rep.house === '1') {
+      return findMembersElectorate(maps[mapId], rep._id);
+    }
+    // senate = '2'
+    return findRandomStateElectorate(maps[mapId], rep.constituency);
   },
   focusWard : focusByWardName,
   focusMembersWard : focusByMembers,
