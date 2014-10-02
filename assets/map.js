@@ -35,7 +35,7 @@ var AREA_SHADING_THRESHOLDS = {
 var OPACITY_SCALE_FACTOR = 1;
 
 var MAP_EVENT_COLORS = {
-  all : '#ffffff',
+  all : '#C7C7C7',
   visits : '#E58231',     // orange
 
   views : '#E58231',      // orange
