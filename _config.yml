@@ -40,10 +40,10 @@ facebook_username: stopthespiesaustralia
 
 # :TODO: final image paths should be relative URLs via `| prepend: site.baseurl`
 share_twitter_card: summary_large_image
-share_image_twitter: http://dummyimage.com/450x250/049/fff		# Sizing for large image card (summary_large_image) - requires approval
-#share_image_twitter: http://dummyimage.com/280x150/049/fff		# Sizing for standard summary card (summary)
-share_image_facebook: http://dummyimage.com/1200x1200/009/fff
-share_image_gplus: http://dummyimage.com/800x600/900/fff
+share_image_twitter: /img/share/tw.png		# large image card 450x250 (summary_large_image) - requires approval
+#share_image_twitter: http://dummyimage.com/280x150/049/fff		# standard summary card 280x150 (summary)
+share_image_facebook: /img/share/fb.png # 1200x1200
+share_image_gplus: /img/share/gp.png      # 800x600
 
 
 #------------------------------------------------------------------------------#
