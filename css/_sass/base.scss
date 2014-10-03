@@ -77,11 +77,25 @@ ul.points {
   padding: 1em 0 0 1.5em;
   margin: 0 auto;
   max-width: 550px;
-  li {
-    margin-bottom: 1em;
-  }
+  list-style: none;
+
   a {
     color: $color-body-bg;
+
+    &:hover {
+      text-decoration: none;
+      color: $statGreenL;
+    }
+  }
+
+  li {
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid rgb(214, 214, 214);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
