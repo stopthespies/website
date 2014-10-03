@@ -221,12 +221,6 @@ section.how.results {
     text-transform: uppercase;
     margin-top: 1em;
   }
-  ul.points {
-    text-align: left;
-    padding-left: 1em 0 0 1.5em;
-    margin: 0 auto;
-    max-width: 550px;
-  }
 }
 
 
@@ -269,6 +263,10 @@ section.how.results {
   }
 }
 
+.steps {
+  display: block;
+}
+
 @media (min-width: $set-steps-2-cols) {
   .location-error {
     position: absolute;
@@ -277,6 +275,11 @@ section.how.results {
     p {
       margin-top: 7.5em;
     }
+  }
+
+  .steps {
+    display: flex;
+    justify-content: space-between;
   }
 }
 

@@ -73,8 +73,15 @@ a {
 
 ul.points {
   padding-left: 1.5em;
+  text-align: left;
+  padding: 1em 0 0 1.5em;
+  margin: 0 auto;
+  max-width: 550px;
   li {
     margin-bottom: 1em;
+  }
+  a {
+    color: $color-body-bg;
   }
 }
 
@@ -151,7 +158,6 @@ body {
 .actions p {
   text-align: justify;
 }
-
 
 
 .step h4 {  // two-column action steps
