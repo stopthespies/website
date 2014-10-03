@@ -129,13 +129,6 @@ function renderLegislators(reps) {
       theme: 'tooltipster-eyes'
   });
 
-  // bind postcode & failed search retry
-  $('.retry-legislators .postcode a, .legislator-search-states .btn').off('click').on('click', function(e) {
-    e.preventDefault();
-    resetLegislatorResults();
-    showLegislatorSearch();
-  });
-
 
   // $('.retry-legislators .map').off('click').on('click', function(e) {
   //   e.preventDefault();
@@ -276,6 +269,13 @@ function onSearchComplete()
   }
 
   clearRequestWatches();
+
+  // bind postcode & failed search retry
+  $('.retry-legislators .postcode a, .legislator-search-states .btn').off('click').on('click', function(e) {
+    e.preventDefault();
+    resetLegislatorResults();
+    showLegislatorSearch();
+  });
 }
 
 // EXPORTS
