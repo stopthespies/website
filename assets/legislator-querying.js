@@ -10,13 +10,11 @@ $(function() {
 
    // show international campaigns if not in australia
   $('body').on('click', '.not-in-australia', function(e) {
-    $('.not-in-australia').fadeOut(750);
+    anim.hideVSlide($('.not-in-australia'), 0.75);
+    anim.appearVSlide($('.not-in-australia-container'), 0.3);
+    anim.hideVSlide($('.postcode-steps'), 0.75);
+    anim.hideVSlide($('.how.results'), 0.75);
 
-    $('.not-in-australia-container').slideDown(300, function () {
-
-      $('.postcode-steps').fadeOut(150);
-      $('.how.results').fadeOut(150);
-    })
     return false;
   });
 
@@ -131,13 +129,6 @@ function renderLegislators(reps) {
       theme: 'tooltipster-eyes'
   });
 
-  // bind postcode & failed search retry
-  $('.retry-legislators .postcode a, .legislator-search-states .btn').off('click').on('click', function(e) {
-    e.preventDefault();
-    resetLegislatorResults();
-    showLegislatorSearch();
-  });
-
 
   // $('.retry-legislators .map').off('click').on('click', function(e) {
   //   e.preventDefault();
@@ -161,6 +152,8 @@ function renderLegislators(reps) {
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 
   anim.appearVSlide($('.retry-legislators'), 0.8);
+
+  setLegislatorsState(null);
 };
 
 function setLegislatorCounts(stats)
@@ -276,7 +269,13 @@ function onSearchComplete()
   }
 
   clearRequestWatches();
-  setLegislatorsState(null);
+
+  // bind postcode & failed search retry
+  $('.retry-legislators .postcode a, .legislator-search-states .btn').off('click').on('click', function(e) {
+    e.preventDefault();
+    resetLegislatorResults();
+    showLegislatorSearch();
+  });
 }
 
 // EXPORTS

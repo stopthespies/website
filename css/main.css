@@ -1128,9 +1128,23 @@ a {
     text-decoration: underline; }
 
 ul.points {
-  padding-left: 1.5em; }
+  padding-left: 1.5em;
+  text-align: left;
+  padding: 1em 0 0 1.5em;
+  margin: 0 auto;
+  max-width: 550px;
+  list-style: none; }
+  ul.points a {
+    color: #322546; }
+    ul.points a:hover {
+      text-decoration: none;
+      color: #45cba1; }
   ul.points li {
-    margin-bottom: 1em; }
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #d6d6d6; }
+    ul.points li:last-child {
+      border-bottom: none; }
 
 body {
   overflow-x: hidden; }
@@ -1211,11 +1225,7 @@ body {
   background: #322446;
   background-image: linear-gradient(-127deg, #322446 3%, #231735 88%);
   width: 100%;
-  overflow: hidden;
-  background-image: url("/img/bg.jpg");
-  background-origin: padding-box;
-  background-position: 50% 50%;
-  background-size: cover; }
+  overflow: hidden; }
 
 #browser-fail {
   z-index: 100000;
@@ -1911,12 +1921,7 @@ section.how.results {
 
 .how.results h3 {
   text-transform: uppercase;
-  margin-top: 1em; }
-.how.results ul.points {
-  text-align: left;
-  padding-left: 1em 0 0 1.5em;
-  margin: 0 auto;
-  max-width: 550px; }
+  margin-top: 2em; }
 
 .location-privacy p {
   display: inline;
@@ -1950,6 +1955,9 @@ section.how.results {
   border-top-left-radius: 0;
   border: 1px solid #45cba1; }
 
+.steps {
+  display: block; }
+
 @media (min-width: 730px) {
   .location-error {
     position: absolute;
@@ -1957,7 +1965,11 @@ section.how.results {
     top: 0;
     left: 0; }
     .location-error p {
-      margin-top: 7.5em; } }
+      margin-top: 7.5em; }
+
+  .steps {
+    display: flex;
+    justify-content: space-between; } }
 @media (max-width: 729px) {
   .no-location .step-2 {
     background: transparent;
@@ -1965,7 +1977,7 @@ section.how.results {
 .how .intro {
   font-size: 0.875em;
   padding: 1em;
-  margin: 0 auto 4em auto;
+  margin: 0 auto 1em auto;
   max-width: 650px; }
 .how .step {
   position: relative;
@@ -2044,7 +2056,17 @@ section.how.results {
       margin-right: 1.38889%; } }
 
 .not-in-australia-container {
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  display: none;
+  height: 0; }
+  .not-in-australia-container td, .not-in-australia-container th {
+    padding: 0.5em 0.5em 0.5em 1em;
+    border-bottom: 1px solid #d6d6d6; }
+  .not-in-australia-container tr:last-child td {
+    border-bottom: none; }
+
+.legislator-search-states {
+  margin-top: 2em; }
 
 .support h2 {
   text-transform: none;
@@ -2372,6 +2394,8 @@ section.how.results {
   background: #e7e7e7;
   color: #5f5a66;
   padding-top: 80px; }
+  .extra .steps {
+    margin-bottom: 3em; }
   .extra .step {
     position: relative;
     padding-bottom: 1em;
@@ -2464,6 +2488,8 @@ section.how.results {
     .extra .step .eyemarks .p35 {
       left: 88%;
       top: 35%; }
+  .extra ul.points {
+    font-weight: bold; }
 
 .extra .sharing-buttons .tot {
   float: left;
