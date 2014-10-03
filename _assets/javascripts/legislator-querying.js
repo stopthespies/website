@@ -116,6 +116,7 @@ function renderLegislators(reps) {
 
     if (legislator.contact_details && legislator.contact_details.twitter) {
       legislator.contact_details.twitter = legislator.contact_details.twitter.replace(/^(https?:\/\/)(www\\.)?twitter\.com\//, '');
+      legislator.contact_details.twitter = legislator.contact_details.twitter.replace(/^(http?:\/\/)(www\\.)?twitter\.com\//, '');
     }
 
     container.append(_.template(legislatorTemplate, legislator));
