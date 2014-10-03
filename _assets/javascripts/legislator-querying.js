@@ -10,13 +10,10 @@ $(function() {
 
    // show international campaigns if not in australia
   $('body').on('click', '.not-in-australia', function(e) {
-    anim.hideVSlide($('.not-in-australia'), 0.75, function() {
-      $('.not-in-australia').remove();
-    });
-
-    anim.appearVSlide($('.not-in-australia-container'), 0.3, function () {
-      anim.hideVslide($('.postcode-steps, .how.results'));
-    });
+    anim.hideVSlide($('.not-in-australia'), 0.75);
+    anim.appearVSlide($('.not-in-australia-container'), 0.3);
+    anim.hideVSlide($('.postcode-steps'), 0.75);
+    anim.hideVSlide($('.how.results'), 0.75);
 
     return false;
   });
