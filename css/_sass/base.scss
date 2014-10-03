@@ -91,7 +91,7 @@ ul.points {
   li {
     margin-bottom: 0.5em;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid rgb(214, 214, 214);
+    border-bottom: 1px solid $textBorderColor;
 
     &:last-child {
       border-bottom: none;

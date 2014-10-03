@@ -294,7 +294,7 @@ section.how.results {
   .intro {
     font-size: emsize(14px);
     padding: 1em;
-    margin: 0 auto 4em auto;
+    margin: 0 auto 1em auto;
     max-width: 650px;
   }
   // steps boxes
@@ -380,4 +380,13 @@ section.how.results {
 
 .not-in-australia-container {
   margin-bottom: 50px;
+  display: none;
+  height: 0;
+  td, th {
+    padding: 0.5em 0.5em 0.5em 1em;
+    border-bottom: 1px solid $textBorderColor;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
 }
