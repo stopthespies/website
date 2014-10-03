@@ -159,6 +159,8 @@ function renderLegislators(reps) {
   TweenMax.staggerFromTo(".legislators .legislator", 0.3, { transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }, 0.2);
 
   anim.appearVSlide($('.retry-legislators'), 0.8);
+
+  setLegislatorsState(null);
 };
 
 function setLegislatorCounts(stats)
@@ -274,7 +276,6 @@ function onSearchComplete()
   }
 
   clearRequestWatches();
-  setLegislatorsState(null);
 }
 
 // EXPORTS
