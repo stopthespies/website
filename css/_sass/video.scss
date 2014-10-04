@@ -1,34 +1,49 @@
 section.video {
   background: #000;
+  background-image: url(../img/video-posterimg.jpg);
+  background-size: cover;
+  text-align: center;
+
+  .fa-play {
+    color: $statGreenL;
+    text-shadow: 0 0 1px $statGreenL;
+    font-size: emsize(90px);
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    &:before {
+      position: relative;
+      left: -50%;
+      top: -50%;
+      display: block;
+      text-align: center;
+    }
+  }
+
+  .col {
+    margin: emsize(60px) auto;
+    max-width: 800px;
+  }
 }
 
 .video-container {
-  height: 160px;
-  padding: 80px;
-  text-align: center;
-  max-width: 760px;
-  background: $brand4;
-  margin: auto;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  border-radius: 8px;
-  text-transform: uppercase;
+  background: black;
+  border-radius: 5px;
   vertical-align: center;
-  font-size: 24px;
-  font-weight: 700;
-  margin-top: 30px;
-  i {
-    font-size: 90px;
-  }
 
   position: relative;
-  overflow: hidden;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
 }
 
 .video-container iframe,
 .video-container object,
 .video-container embed {
   position: absolute;
+  border: 0;
   top: 0;
   left: 0;
   width: 100%;
