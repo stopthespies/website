@@ -52,7 +52,12 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   // ----------------- POPOVERS ----------------------------
 
-  $('.ourselves div').tooltipster();
+  $('.ourselves div').tooltipster({
+    delay: 200,
+    maxWidth: 300,
+    position: 'bottom',
+    theme: 'tooltipster-eyes'
+  });
 
   // ----------------- MODALS ----------------------------
 
