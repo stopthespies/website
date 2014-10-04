@@ -130,7 +130,6 @@ function renderLegislators(reps) {
       theme: 'tooltipster-eyes'
   });
 
-
   // $('.retry-legislators .map').off('click').on('click', function(e) {
   //   e.preventDefault();
   //   // :TODO: move to and activate map
@@ -146,6 +145,11 @@ function renderLegislators(reps) {
     io.api('stats', STS.options.STATS_READ_URL, {legislators: legislatorIds}, function(stats) {
       STS.events.onLegislatorStats(stats);
     });
+
+    // direct attention to legislator buttons
+    if (!Cookie.has('already-searched')) {
+      $('.contact li', container).first().tooltipster('show');
+    }
 
     // log event to the server
     io.api('log', {url: STS.options.LOG_URL_BASE, method: 'POST'}, {'event' : 'views', 'legislators' : legislatorIds}, function(d) {});
