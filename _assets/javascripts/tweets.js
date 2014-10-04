@@ -24,8 +24,9 @@
     _.each(tweetdata.results, function(tweets, type) {
       if(type === 'latest' || type === 'followers') {
         console.log(tweets);
-        tweets = tweets.slice(0,40);
         tweets = _.uniq(tweets, 'handle');
+        
+        tweets = tweets.slice(0,40);
         var i = 0;
         _.each(tweets, function(tweet) {
           tweet.avatar = tweet.avatar.replace('_normal', '');
