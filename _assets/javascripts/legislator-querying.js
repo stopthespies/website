@@ -125,7 +125,7 @@ function renderLegislators(reps) {
   // tooltips
   $('.contact li', container).tooltipster({
       delay: 200,
-      maxWidth: 300,
+      maxWidth: 200,
       position: 'bottom',
       theme: 'tooltipster-eyes'
   });
