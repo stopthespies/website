@@ -147,8 +147,19 @@ function renderLegislators(reps) {
     });
 
     // direct attention to legislator buttons
+    function doneWithIndicator()
+    {
+      var first = $('.contact li', container).first();
+
+      if (first[0] !== this) {
+        first.tooltipster('hide');
+      }
+      $('.contact li', container).off('mouseover touchstart', doneWithIndicator);
+    }
+
     if (!Cookie.has('already-searched')) {
       $('.contact li', container).first().tooltipster('show');
+      $('.contact li', container).on('mouseover touchstart', doneWithIndicator);
     }
 
     // log event to the server
