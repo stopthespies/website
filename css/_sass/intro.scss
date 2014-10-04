@@ -8,6 +8,12 @@
     text-transform: uppercase;
   }
 
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
   &.cost {
     background: $color-breakout-block;
     text-align: center;
@@ -40,7 +46,13 @@
     .r14 { left: 90%; top: emsize(-40px); }
   }
 
+  &.people {
+    padding-bottom: 0;
+  }
+
   &.countries {
+    padding-bottom: 0;
+
     .eyemarks {
       // transform: scale(-1);
       // -webkit-transform: scale(-1);
@@ -64,7 +76,7 @@
 
       @media (min-width: $set-info-2-cols) {
         margin-left: 10%;
-        margin-top: 90px;
+        margin-top: 220px;
       }
     }
   }
