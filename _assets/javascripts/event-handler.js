@@ -59,7 +59,7 @@ window.io || (io = {});
     //----------------------------------------------------------------------------
 
     io.on('stats:update', function(stats) {
-      STS.events.onStatsLoad(stats);
+      STS.events.onStatsUpdate(stats);
     });
 
     io.on('shares:update', function(shares) {
