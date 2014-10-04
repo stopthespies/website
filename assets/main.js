@@ -190,6 +190,7 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
   {
     var globals, i, l, rep;
 
+    // check for new globals update
     for (i = 0, l = data.length; i < l && (rep = data[i]); ++i) {
       if (rep._id === 'overall_totals') {
         globals = rep;
@@ -279,7 +280,19 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   // -------------------------------- EXPORTS ----------------------------------
 
-  STS.events.onStatsLoad = onStatsLoaded;
+  STS.events.onStatsUpdate = function(data) {
+    if (!statsLoaded()) {
+      return;
+    }
+
+    var stats = legislatorStats;
+
+    for (var i = 0, l = data.length; i < l; ++i) {
+      stats[i] = data[i];
+    }
+
+    onStatsLoaded(stats);
+  };
   STS.events.onSharesLoad = onSharesLoaded;
 
   STS.getTotal = function(stats, statset, includeviews)

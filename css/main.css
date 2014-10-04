@@ -1127,23 +1127,22 @@ a {
   a:hover {
     text-decoration: underline; }
 
-ul.points {
-  padding-left: 1.5em;
+.points {
   text-align: left;
-  padding: 1em 0 0 1.5em;
+  padding: 1em 0 0;
   margin: 0 auto;
-  max-width: 550px;
+  max-width: 600px;
   list-style: none; }
-  ul.points a {
+  .points a {
     color: #322546; }
-    ul.points a:hover {
+    .points a:hover {
       text-decoration: none;
       color: #45cba1; }
-  ul.points li {
+  .points li, .points p.point {
     margin-bottom: 0.5em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #d6d6d6; }
-    ul.points li:last-child {
+    .points li:last-child, .points p.point:last-child {
       border-bottom: none; }
 
 body {
@@ -1223,7 +1222,7 @@ body {
 
 .bg-wrap {
   background: #322446;
-  background-image: linear-gradient(-127deg, #322446 3%, #231735 88%);
+  background-image: linear-gradient(-127deg, #322446 20%, #231735 88%);
   width: 100%;
   overflow: hidden; }
 
@@ -1397,6 +1396,10 @@ body {
   font-size: 1.5em;
   color: #54555A;
   text-transform: uppercase; }
+.introduction img {
+  display: block;
+  margin: 0 auto;
+  max-width: 400px; }
 .introduction.cost {
   background: white;
   text-align: center; }
@@ -1427,14 +1430,18 @@ body {
 .introduction .eyemarks .r14 {
   left: 90%;
   top: -2.5em; }
-.introduction.countries .eyemarks {
-  margin-top: 10px; }
-  @media (min-width: 769px) {
-    .introduction.countries .eyemarks {
-      margin-top: -90px;
-      margin-left: 0%;
-      transform: scale(-1);
-      -webkit-transform: scale(-1); } }
+.introduction.people {
+  padding-bottom: 0; }
+.introduction.countries {
+  padding-bottom: 0; }
+  .introduction.countries .eyemarks {
+    margin-top: 10px; }
+    @media (min-width: 769px) {
+      .introduction.countries .eyemarks {
+        margin-top: -90px;
+        margin-left: 0%;
+        transform: scale(-1);
+        -webkit-transform: scale(-1); } }
 .introduction.rights .eyemarks {
   margin-left: 10%;
   margin-top: -20px;
@@ -1442,7 +1449,7 @@ body {
   @media (min-width: 769px) {
     .introduction.rights .eyemarks {
       margin-left: 10%;
-      margin-top: 90px; } }
+      margin-top: 220px; } }
 
 .introduction .col {
   display: inline;
@@ -1541,7 +1548,8 @@ body {
   font-family: Arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
-  padding: 16px; }
+  padding: 16px;
+  text-align: center; }
 
 section.video {
   background: #000;
