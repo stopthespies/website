@@ -29,7 +29,7 @@
         tweets = tweets.slice(0,40);
         var i = 0;
         _.each(tweets, function(tweet) {
-          tweet.avatar = tweet.avatar.replace('_200x200', '');
+          tweet.avatar = tweet.avatar.replace('_normal', '_200x200');
           tweet.avatar = tweet.avatar.replace(/^(https?:)?\/\/((\w|\.|:)+)/, STS.options.ABSURL);
           if(i % 7 == 0) {
             tweet.sizeClass = '';
