@@ -1563,7 +1563,7 @@ section.video {
     cursor: pointer;
     position: absolute;
     left: 50%;
-    top: 50%; }
+    top: 45%; }
     section.video .fa-play:before {
       position: relative;
       left: -50%;

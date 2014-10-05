@@ -58,7 +58,14 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
     position: 'bottom',
     theme: 'tooltipster-eyes'
   });
-
+    var videoLoaded = false;
+    $('.video-container').on('click', function (el) {
+      if(!videoLoaded)
+        var video = '<iframe align="center" frameborder="0" border="0" id="big-video" style=""  x-src="//www.youtube-nocookie.com/embed/U4mIDeRCv9I?rel=0&amp;autoplay=1&amp;modestbranding=1&amp;autohide=1" src="//www.youtube-nocookie.com/embed/U4mIDeRCv9I?rel=0&amp;autoplay=1&amp;modestbranding=1&amp;autohide=1"></iframe>';
+        $('.fa-play').remove();
+        $('.video-container').append(video);
+      videoLoaded = true;
+    });
   // ----------------- MODALS ----------------------------
 
   $('body').on('click', '.contact .call-action', function (e) {
