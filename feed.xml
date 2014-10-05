@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stop Australia's Data Retention Bill</title>
-    <description>Innocent or not, you will be spied on if Australia's bill passes. Under the new data retention proposal, records of everything you do online or on your phone would be collected and stored. But we can stop it.</description>
-    <link>https://test.stopthespies.org/</link>
-    <atom:link href="https://test.stopthespies.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 06 Oct 2014 05:24:35 +1000</pubDate>
-    <lastBuildDate>Mon, 06 Oct 2014 05:24:35 +1000</lastBuildDate>
+    <description>Innocent or not, you will be spied on if Australia's bill passes. Under the new data retention proposal, details of everything you do online or on your phone would be collected and stored. But we can stop it.</description>
+    <link>https://stopthespies.org/</link>
+    <atom:link href="https://stopthespies.org/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 06 Oct 2014 06:06:18 +1000</pubDate>
+    <lastBuildDate>Mon, 06 Oct 2014 06:06:18 +1000</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -26,8 +26,8 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 </description>
         <pubDate>Thu, 07 Aug 2014 08:16:58 +1000</pubDate>
-        <link>https://test.stopthespies.org/jekyll/update/2014/08/07/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">https://test.stopthespies.org/jekyll/update/2014/08/07/welcome-to-jekyll/</guid>
+        <link>https://stopthespies.org/jekyll/update/2014/08/07/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">https://stopthespies.org/jekyll/update/2014/08/07/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>

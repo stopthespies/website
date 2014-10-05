@@ -1,13 +1,13 @@
 // Main application IoC container
 var STS = {
   options: {
-    ABSURL                  : 'https://test.stopthespies.org',
+    ABSURL                  : 'https://stopthespies.org',
     BASEURL                 : '',
 
     ENABLE_REALTIME         : 1,
     SOCKET_CONNECT_TIMEOUT  : 1000,
 
-    LEGISLATORS_LOCATOR_URL : 'https://test.stopthespies.org/legislators',
+    LEGISLATORS_LOCATOR_URL : 'https://legislators.stopthespies.org/',
 
     API_BASE_URL            : 'https://api.stopthespies.org:443',
     API_SOCKET_BASEURL      : 'socket.io',
