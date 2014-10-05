@@ -73,7 +73,8 @@ $(function() {
     }, onLocationError);
   }
 
-  window.ScrollHandler.addTrigger('#request-location', askLocation);
+  //window.ScrollHandler.addTrigger('#request-location', askLocation);
+  $('.btn-autolookup').on('click', askLocation);
 
   // ----------------- POSTCODE LOOKUP ----------------------
 
