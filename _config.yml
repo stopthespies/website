@@ -3,13 +3,13 @@
 
 title: Stop Australia's Data Retention Bill
 email: admin@stopthespies.org
-description: Innocent or not, you will be spied on if Australia's bill passes. Under the new data retention proposal, records of everything you do online or on your phone would be collected and stored. But we can stop it.
+description: Innocent or not, you will be spied on if Australia's bill passes. Under the new data retention proposal, details of everything you do online or on your phone would be collected and stored. But we can stop it.
 baseurl: ""
 github_username:  stopthespies
 
 # :TODO: point to live site after validating social tags
-url: https://test.stopthespies.org
-domain: test.stopthespies.org
+url: https://stopthespies.org
+domain: stopthespies.org
 
 #------------------------------------------------------------------------------#
 # realtime server config
@@ -28,7 +28,7 @@ send_email_path: /email
 log_path: /log
 api_socket_path: socket.io
 
-legislators_locator_url : https://test.stopthespies.org/legislators
+legislators_locator_url : https://legislators.stopthespies.org/
 
 #------------------------------------------------------------------------------#
 # social metadata
