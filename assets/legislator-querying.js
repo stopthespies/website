@@ -104,6 +104,14 @@ var legislatorTemplate = $('#legislator-template').html();
 
 function renderLegislators(reps) {
 
+  // More rushed thomas code, if someone outside of aus uses get -location it shows not in australia
+  if(typeof reps.error !== 'undefined' && reps.error === 'not-australia') {
+    anim.hideVSlide($('.not-in-australia'), 0.75);
+    anim.appearVSlide($('.not-in-australia-container'), 0.3);
+    anim.hideVSlide($('.postcode-steps'), 0.75);
+    anim.hideVSlide($('.how.results'), 0.75);
+    return false;
+  }
   var container = $('.legislators').empty(), idx = 0;
 
   legislators = reps;
