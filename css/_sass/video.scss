@@ -11,7 +11,7 @@ section.video {
     cursor: pointer;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 45%;
 
     &:before {
       position: relative;
@@ -29,13 +29,13 @@ section.video {
 }
 
 .video-container {
-  background: black;
+  cursor: pointer;
   border-radius: 5px;
   vertical-align: center;
 
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
-  padding-top: 25px;
+  // padding-top: 25px;   // youtube progress bar adjustment
   height: 0;
 }
 
@@ -51,6 +51,10 @@ section.video {
 }
 
 .video-container:hover {
-  background: darken($brand4, 10%);
-  cursor: pointer;
+  // background: darken($brand4, 10%);
+
+  .fa-play {
+    color: lighten($statGreenL, 10%);
+    text-shadow: 0 0 2px $statGreenL;
+  }
 }
