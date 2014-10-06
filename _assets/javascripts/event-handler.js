@@ -39,7 +39,7 @@ window.io || (io = {});
 
     PRE_LOAD_CALLS = [];
   }
-
+  /*
   if (STS.options.ENABLE_REALTIME) {
     var opts = undefined;
     if (STS.options.API_SOCKET_BASEURL) {
@@ -95,6 +95,7 @@ window.io || (io = {});
       notifyLegislatorMap(reps, 'facebooks');
     });
   }
+  */
 
   //----------------------------------------------------------------------------
   // reusable event handlers
