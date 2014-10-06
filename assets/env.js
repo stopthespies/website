@@ -4,7 +4,7 @@ var STS = {
     ABSURL                  : 'https://stopthespies.org',
     BASEURL                 : '',
 
-    ENABLE_REALTIME         : 1,
+    ENABLE_REALTIME         : 0,
     SOCKET_CONNECT_TIMEOUT  : 1000,
 
     LEGISLATORS_LOCATOR_URL : 'https://legislators.stopthespies.org/',
