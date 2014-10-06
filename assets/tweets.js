@@ -23,7 +23,6 @@
 
     _.each(tweetdata.results, function(tweets, type) {
       if(type === 'latest' || type === 'followers') {
-        console.log(tweets);
         tweets = _.uniq(tweets, 'handle');
         
         tweets = tweets.slice(0,40);
