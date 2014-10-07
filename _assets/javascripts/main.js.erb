@@ -340,7 +340,7 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
     if (!statset || statset === 'all') {
       return (stats.emails || 0) + (stats.calls || 0) + ((includeviews ? stats.views : 0) || 0) + (stats.tweets || 0) + (stats.facebooks || 0);
     }
-    return stats[statset];
+    return (stats[statset] || 0);
   };
 
 });
