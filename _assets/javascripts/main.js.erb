@@ -273,10 +273,10 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
     // sploosh.
     var timeline = new TimelineMax({});
     var mobile = $(window).width() <= SIDE_SHAREBOX_START_WIDTH;
+    var shareboxs = $('.sharbx .share').addClass('anim');
 
     if (!mobile && firstLoad) {
       // animate in on desktop first load
-      var shareboxs = $('.sharbx .share').addClass('anim');
       var maxLeft = shareboxs.outerWidth() - ($(window).innerWidth() - shareboxs.offset().left);
       timeline.eventCallback('onComplete', function() {
         shareboxs.css('left', '').removeClass('anim');
