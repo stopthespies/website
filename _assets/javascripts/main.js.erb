@@ -172,24 +172,24 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   function animateStats()
   {
-    TweenMax.staggerFromTo(".stats .animate", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
-
     var context = $('section.stats');
+
+    TweenMax.staggerFromTo(".stats .animate", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1, onComplete: function() {
+      $('.visit-total', context).numberSpinner('set', legislatorGlobalStats.visits || 0);
+      $('.email-total', context).numberSpinner('set', legislatorGlobalStats.emails || 0);
+      $('.call-total', context).numberSpinner('set', legislatorGlobalStats.calls || 0);
+      $('.view-total', context).numberSpinner('set', legislatorGlobalStats.views || 0);
+      $('.facebook-total', context).numberSpinner('set', legislatorGlobalStats.facebooks || 0);
+      $('.twitter-total', context).numberSpinner('set', legislatorGlobalStats.tweets || 0);
+
+      $('.facebook-share-total', context).numberSpinner('set', socialStats.facebook || 0);
+      $('.google-share-total', context).numberSpinner('set', socialStats.googleplus || 0);
+      $('.twitter-share-total', context).numberSpinner('set', socialStats.twitter || 0);
+    }}, 0.2);
 
     $('.visit-total, .email-total, .call-total, \
       .view-total, .facebook-total, .twitter-total, \
       .facebook-share-total, .twitter-share-total, .google-share-total', context).numberSpinner('set', 0, false);
-
-    $('.visit-total', context).numberSpinner('set', legislatorGlobalStats.visits || 0);
-    $('.email-total', context).numberSpinner('set', legislatorGlobalStats.emails || 0);
-    $('.call-total', context).numberSpinner('set', legislatorGlobalStats.calls || 0);
-    $('.view-total', context).numberSpinner('set', legislatorGlobalStats.views || 0);
-    $('.facebook-total', context).numberSpinner('set', legislatorGlobalStats.facebooks || 0);
-    $('.twitter-total', context).numberSpinner('set', legislatorGlobalStats.tweets || 0);
-
-    $('.facebook-share-total', context).numberSpinner('set', socialStats.facebook || 0);
-    $('.google-share-total', context).numberSpinner('set', socialStats.googleplus || 0);
-    $('.twitter-share-total', context).numberSpinner('set', socialStats.twitter || 0);
 
     // shade the stats map if we have enough stats for it to say something
     var grandtotal = STS.getTotal(legislatorGlobalStats);
