@@ -22,12 +22,12 @@ if (window.L) {
 
 // these correspond to opacities 0.1 - 0.9 in 0.1 increments. 0 is below first count, 1 is above last.
 var AREA_SHADING_THRESHOLDS = {
-  'all' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
-  'emails' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
-  'views' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
-  'tweets' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
-  'facebooks' : [1, 2, 3, 8, 10, 50, 80, 150, 200]
-  // 'calls' : [1, 2, 3, 8, 10, 50, 80, 150, 200],
+  'all' : [1, 3, 5, 10, 15, 20, 30, 40, 50],
+  'emails' : [1, 3, 5, 10, 15, 20, 30, 40, 50],
+  'views' : [1, 3, 5, 10, 15, 20, 30, 40, 50],
+  'tweets' : [1, 3, 5, 10, 15, 20, 30, 40, 50],
+  'facebooks' : [1, 3, 5, 10, 15, 20, 30, 40, 50]
+  // 'calls' : [1, 3, 5, 10, 15, 20, 30, 40, 50],
 };
 
 // scale the above range globally
