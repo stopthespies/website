@@ -172,14 +172,24 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
 
   function animateStats()
   {
-    TweenMax.staggerFromTo(".stats .animate", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1 }, 0.2);
+    var context = $('section.stats');
 
-    $('.visit-total').numberSpinner('set', legislatorGlobalStats.visits || 0);
-    $('.email-total').numberSpinner('set', legislatorGlobalStats.emails || 0);
-    $('.call-total').numberSpinner('set', legislatorGlobalStats.calls || 0);
-    $('.view-total').numberSpinner('set', legislatorGlobalStats.views || 0);
-    $('.facebook-total').numberSpinner('set', legislatorGlobalStats.facebooks || 0);
-    $('.twitter-total').numberSpinner('set', legislatorGlobalStats.tweets || 0);
+    TweenMax.staggerFromTo(".stats .animate", 0.2, { transform: "scaleX(0)", opacity: 0 }, { transform: "scaleX(1)", opacity: 1, onComplete: function() {
+      $('.visit-total', context).numberSpinner('set', legislatorGlobalStats.visits || 0);
+      $('.email-total', context).numberSpinner('set', legislatorGlobalStats.emails || 0);
+      $('.call-total', context).numberSpinner('set', legislatorGlobalStats.calls || 0);
+      $('.view-total', context).numberSpinner('set', legislatorGlobalStats.views || 0);
+      $('.facebook-total', context).numberSpinner('set', legislatorGlobalStats.facebooks || 0);
+      $('.twitter-total', context).numberSpinner('set', legislatorGlobalStats.tweets || 0);
+
+      $('.facebook-share-total', context).numberSpinner('set', socialStats.facebook || 0);
+      $('.google-share-total', context).numberSpinner('set', socialStats.googleplus || 0);
+      $('.twitter-share-total', context).numberSpinner('set', socialStats.twitter || 0);
+    }}, 0.2);
+
+    $('.visit-total, .email-total, .call-total, \
+      .view-total, .facebook-total, .twitter-total, \
+      .facebook-share-total, .twitter-share-total, .google-share-total', context).numberSpinner('set', 0, false);
 
     // shade the stats map if we have enough stats for it to say something
     var grandtotal = STS.getTotal(legislatorGlobalStats);
@@ -241,35 +251,49 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
     // assign social stats for stats section (deferred until animated in)
     socialStats = stats;
 
-    function applyValues()
+    function applyValues(skipFloater)
     {
+      function isNotInShareBox()
+      {
+        return $(this).closest('.sharbx').length == 0;
+      }
+
       // apply to share panels
-      $('.facebook-share-total').numberSpinner('set', socialStats.facebook || 0);
-      $('.google-share-total').numberSpinner('set', socialStats.googleplus || 0);
-      $('.twitter-share-total').numberSpinner('set', socialStats.twitter || 0);
+      if (skipFloater) {
+        $('.facebook-share-total').filter(isNotInShareBox).numberSpinner('set', socialStats.facebook || 0);
+        $('.google-share-total').filter(isNotInShareBox).numberSpinner('set', socialStats.googleplus || 0);
+        $('.twitter-share-total').filter(isNotInShareBox).numberSpinner('set', socialStats.twitter || 0);
+      } else {
+        $('.facebook-share-total').numberSpinner('set', socialStats.facebook || 0);
+        $('.google-share-total').numberSpinner('set', socialStats.googleplus || 0);
+        $('.twitter-share-total').numberSpinner('set', socialStats.twitter || 0);
+      }
     }
 
     // sploosh.
     var timeline = new TimelineMax({});
+    var mobile = $(window).width() <= SIDE_SHAREBOX_START_WIDTH;
+    var shareboxs = $('.sharbx .share').addClass('anim');
 
-    if ($(window).width() > SIDE_SHAREBOX_START_WIDTH) {
-      if (firstLoad) {
-        var shareboxs = $('.sharbx .share').addClass('anim');
-        var maxLeft = shareboxs.outerWidth() - ($(window).innerWidth() - shareboxs.offset().left);
-        timeline.eventCallback('onComplete', function() {
-          shareboxs.css('left', '').removeClass('anim');
-        });
-        timeline.staggerTo('.sharbx .share', 0.5, { left: -maxLeft, onComplete: applyValues }, 0.4);
-        timeline.staggerTo('.sharbx .share', 0.4, { delay: 1.5, left: 0 }, 0.3);
-      } else {
-        timeline.staggerTo('.sharbx .share', 0.5, { left: -10, onComplete: function() {
-          shareboxs.css('left', '');
-        }}, 0.4);
+    if (!mobile && firstLoad) {
+      // animate in on desktop first load
+      var maxLeft = shareboxs.outerWidth() - ($(window).innerWidth() - shareboxs.offset().left);
+      timeline.eventCallback('onComplete', function() {
+        shareboxs.css('left', '').removeClass('anim');
+      });
+      timeline.staggerTo('.sharbx .share', 0.5, { left: -maxLeft, onComplete: applyValues }, 0.4);
+      timeline.staggerTo('.sharbx .share', 0.4, { delay: 1.5, left: 0 }, 0.3);
+    } else if (!mobile) {
+      // jump on mobile
+      timeline.staggerTo('.sharbx .share', 0.5, { left: -10, onComplete: function() {
+        shareboxs.css('left', '');
+      }}, 0.4);
 
-        applyValues();
-      }
+      applyValues();
+    } else {
+      // apply values to page only on mobile
+      applyValues(true);
     }
-    // :NOTE: no share counters *anywhere* else on mobile so we don't need to run applyValues. Don't run it on the sharebox.
   }
 
   // ------------------------------ LOAD DATA ----------------------------------
@@ -316,7 +340,7 @@ var statHoverActive = false;  // prevent map shading updating while hovering a p
     if (!statset || statset === 'all') {
       return (stats.emails || 0) + (stats.calls || 0) + ((includeviews ? stats.views : 0) || 0) + (stats.tweets || 0) + (stats.facebooks || 0);
     }
-    return stats[statset];
+    return (stats[statset] || 0);
   };
 
 });
