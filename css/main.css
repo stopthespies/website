@@ -1245,6 +1245,10 @@ body {
     #browser-fail a:hover {
       color: #36c48f; }
 
+.supporters img {
+  width: 170px;
+  margin-left: 40px; }
+
 .who h1, .who h2 {
   margin: 0;
   padding: 0;
